@@ -1,15 +1,10 @@
 <!doctype html>
 <html lang="fr">
-
-<head>
-    <meta charset="utf-8">
-    <title>Titre de la page</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-</head>
+<?php include "head.php"; ?>
 
 <body>
-    ICI YA LEPHP
+    <?php include "header.php"; ?>
+    <?php include "body.php"; ?>
+    <?php include "footer.php"; ?>
 </body>
-
-</html>
+<html>
