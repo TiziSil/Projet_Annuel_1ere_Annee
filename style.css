@@ -2,12 +2,17 @@
     box-sizing: content-box;
   }; */
 
+  .text-bg {
+    background-color: #897C7C !important;
+    color: #DEC7B1;
+
+}  
   .form-control-dark {
     border-color: var(--bs-gray);
   }
   .form-control-dark:focus {
     border-color: #fff;
-    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+    box-shadow: 0 0 0 .25rem rgba(126, 90, 90, 0.25);
   }
   
   .text-small {
