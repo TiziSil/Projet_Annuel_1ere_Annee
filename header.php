@@ -1,40 +1,27 @@
 <header>
-    <div class="px-3 py-2 text-bg">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="col d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"></svg>
+  <div class="py-2 text-bg">
+    <div class="container">
+      <div class="d-flex align-items-center">
+        <svg class="burger col-5">
+          <a href="#">
+            <image height="32px" fill="#DEC7B1" width="32px" href="assets\images\burger-solid.svg" />
           </a>
+        </svg>
 
-          <h1 class="col">Makisine</h1>
 
-          <ul class="nav col col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-              <a href="#" class="nav-link text-secondary">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
-                Orders
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
-                Products
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                Customers
-              </a>
-            </li>
-          </ul>
-        </div>
+        <button class="bouton-berger" type="button" aria-label="toggle curtain navigation">
+        </button>
+
+        <h1 class="col-5">Makisine</h1>
+
+
+        <a href="#" class="nav-link text-white">
+          <svg fill="white" class="d-block" width="40%" height="24">
+            <use href="#people-circle" />
+          </svg>
+          Mon compte
+        </a>
       </div>
     </div>
-  </header>
+  </div>
+</header>

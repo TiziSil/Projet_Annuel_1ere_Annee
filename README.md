@@ -4,7 +4,7 @@
 
 ### Github
 
-1. S'assurer que Git est bien installer. S'il ne l'est pas, l'installer en suivant le lien : `https://git-scm.com/download/win`.
+1. S'assurer que Git est bien installé. S'il ne l'est pas, l'installer en suivant le lien : `https://git-scm.com/download/win`.
 2. Pour commencer, il faudra "cloner" le projet dans son VSCode. Pour se faire, il suffit d'aller sur VSCode, ouvrir son terminal, se déplacer dans son répertoire XAMP, puis "htdocs" et cloner le projet dans ce fichier. Voici comment :
    En écrivant cette commande : `git clone https://github.com/TiziSil/Projet_Annuel_1ere_Annee.git` puis faire "entrer".
 
