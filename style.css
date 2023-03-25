@@ -2,18 +2,48 @@
     box-sizing: content-box;
   }; */
 
-  .image-burger {
-    width: 240px;
-    height: 240px;
-  } 
-  .text-bg {
-    background-color: #897C7C !important;
-    color: #DEC7B1;
+.image-burger {
+  width: 32px;
+  height: 32px;
 }
 
-.burger{
-height: 32px; 
-width: 32px;
+.mon-compte-button {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  color: white;
+  float: right;
+}
+
+.burger-button {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  float: left;
+}
+.burger-button:hover {
+  transition: transform 500ms ease-in-out;
+  transform: rotate(360deg);
+}
+.burger-button svg {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.text-bg {
+  background-color: #897c7c !important;
+  /* color: #dec7b1; */
+  color: #ffffff;
+}
+
+.burger {
+  height: 32px;
+  width: 32px;
 }
 
 #accueil {
@@ -23,21 +53,19 @@ width: 32px;
   background-size: cover; /* or "contain" depending on what you want */
   background-position: center center;
   background-repeat: no-repeat;
-  text-align:center;
-  margin:auto;
-  padding:0;
+  text-align: center;
+  margin: auto;
+  padding: 0;
 }
 
-.bouton-berger{
+.bouton-berger {
   position: fixed;
   z-index: 10;
   border-radius: 50%;
   outline: none;
   cursor: pointer;
-  display: flex ;
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white
+  background-color: white;
 }
-
-
