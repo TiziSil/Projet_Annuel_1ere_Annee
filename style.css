@@ -1,6 +1,45 @@
-/* .selector-for-some-widget {
-    box-sizing: content-box;
-  }; */
+/* Tuile n°1 Accueil */
+.taille-tuile-1 {
+  height: 85vh !important;
+}
+
+.gros-cercle {
+  position: absolute;
+  top: 50%;
+  right: 27%;
+  transform: translate(50%, -50%);
+  height: 500px;
+  width: 500px;
+  padding: 80px;
+  background-color: #F4E9E9;
+  border-radius: 100%;
+}
+
+.gros-cercle .contenu-cercle {
+  text-align: left;
+  margin-top: 60px;
+}
+
+.gros-cercle .contenu-cercle a svg {
+  margin-right: 15px
+}
+
+
+.gros-cercle .contenu-cercle a {
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  transform: translate(0px);
+  color: black;
+  margin-bottom: 20px
+}
+
+.gros-cercle .contenu-cercle a:hover {
+  text-decoration: none;
+  color: #897c7c;
+  transition: all 0.25s ease-in-out;
+  transform: translate(+5px);
+  margin-bottom: 20px
+}
 
 .image-burger {
   width: 32px;
@@ -13,6 +52,7 @@
   display: inline-block;
   color: white;
   float: right;
+  transition: all 0.25s ease-in-out;
 }
 
 .burger-button {
@@ -20,9 +60,11 @@
   height: 32px;
   display: inline-block;
   float: left;
+  transition: all 500ms ease-in-out;
+  transform: rotate(0);
 }
 .burger-button:hover {
-  transition: transform 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
   transform: rotate(360deg);
 }
 .burger-button svg {
@@ -37,7 +79,6 @@
 
 .text-bg {
   background-color: #897c7c !important;
-  /* color: #dec7b1; */
   color: #ffffff;
 }
 
@@ -50,7 +91,7 @@
   background-image: url("assets/AccueilPhoto.png");
   width: 100%;
   height: 100%;
-  background-size: cover; /* or "contain" depending on what you want */
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   text-align: center;
@@ -69,3 +110,5 @@
   align-items: center;
   background-color: white;
 }
+
+/* Tuile n°2 Ques-ce que Makisine ? */
