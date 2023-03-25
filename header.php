@@ -1,6 +1,6 @@
 <header>
   <div class="py-2 text-bg">
-    <div class="container-fluid  text-center">
+    <div class="container-fluid text-center">
       <div class="mx-3 d-flex align-items-center">
         <div class="col">
           <a href="#" class="burger-button">

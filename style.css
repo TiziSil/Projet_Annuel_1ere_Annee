@@ -11,7 +11,7 @@
   height: 500px;
   width: 500px;
   padding: 80px;
-  background-color: #F4E9E9;
+  background-color: #f4e9e9;
   border-radius: 100%;
 }
 
@@ -21,16 +21,15 @@
 }
 
 .gros-cercle .contenu-cercle a svg {
-  margin-right: 15px
+  margin-right: 15px;
 }
-
 
 .gros-cercle .contenu-cercle a {
   text-decoration: none;
   transition: all 0.25s ease-in-out;
   transform: translate(0px);
   color: black;
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 
 .gros-cercle .contenu-cercle a:hover {
@@ -38,7 +37,7 @@
   color: #897c7c;
   transition: all 0.25s ease-in-out;
   transform: translate(+5px);
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 
 .image-burger {
@@ -112,3 +111,29 @@
 }
 
 /* Tuile n°2 Ques-ce que Makisine ? */
+
+.titre-tuile-2 svg {
+  margin-right: 25px;
+}
+
+.titre-tuile-2 h3 {
+  vertical-align: bottom;
+}
+
+.tuile-2 {
+  border: solid 1px #897c7c;
+  border-radius: 71px;
+  text-align: center;
+  padding: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.tuile-2 div p {
+  font-size: 20px;
+}
+
+.tuile-2 div {
+  margin-bottom: 20px;
+  
+}
