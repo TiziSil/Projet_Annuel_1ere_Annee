@@ -369,3 +369,37 @@
   border: solid 2px rgba(137, 124, 124, 0.8);
   background-color: rgba(255, 255, 255, 0.7);
 }
+
+
+/* Footer  */
+
+footer {
+  padding-top: 30px;
+  background-color: #897c7c;
+}
+
+.colonne-footer * {
+  display: block;
+}
+
+footer * a {
+  color:black
+}
+
+.footer-haut {
+  margin-bottom: 30px;
+}
+
+.footer-bas {
+  margin-top: 30px;
+  font-size: medium;
+}
+
+.lien-reseaux-sociaux {
+  font-size: xx-large;
+}
+
+.lien-reseaux-sociaux a {
+  padding-right: 15px;
+  line-height: 0px;
+}
