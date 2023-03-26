@@ -5,7 +5,7 @@
                 <h2>Bienvenue sur Makisine !</h2>
             </div>
             <div class="contenu-cercle">
-                <a href="#" class="d-flex">
+                <a href="#about-makisine" class="d-flex">
                     <svg width="32px" height="32px">
                         <image height="32px" width="32px" href="assets/images/chef.svg" />
                     </svg>

@@ -1,4 +1,10 @@
 /* Tuile n°1 Accueil */
+
+.logo img {
+  object-fit: cover;
+  height: 70px;
+}
+
 .taille-tuile-1 {
   height: 85vh !important;
 }
@@ -374,8 +380,12 @@
 /* Footer  */
 
 footer {
-  padding-top: 30px;
+  padding-top: 70px;
   background-color: #897c7c;
+}
+
+.trait {
+  border-top: solid rgba(0, 0, 0, 0.3) 2px;
 }
 
 .colonne-footer * {
@@ -402,4 +412,27 @@ footer * a {
 .lien-reseaux-sociaux a {
   padding-right: 15px;
   line-height: 0px;
+}
+
+.menu-burger {
+  display: grid;
+  border-bottom-right-radius: 17px;
+}
+
+.menu-burger a {
+  text-decoration: none;
+  color: #FFFFFF;
+  margin-top: 25px;
+  transition: all 0.25s ease-in-out;
+}
+
+.menu-burger a:hover{
+  transform: scale(1.1);
+  transition: all 0.25s ease-in-out;
+}
+
+.burger-button-menu {
+  position: relative;
+  top: 3px;
+  left: 4px;
 }

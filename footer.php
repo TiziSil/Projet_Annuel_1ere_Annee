@@ -1,5 +1,5 @@
-<footer>
-    <div class="py-4">
+<footer id="footer">
+    <div class="py-4 trait">
         <div class="container">
             <div class="row footer-haut">
                 <div class="col colonne-footer">
