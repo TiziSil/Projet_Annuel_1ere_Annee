@@ -1,6 +1,6 @@
 <section id="categorie-recettes" class="col">
     <div class="py-4 text-bg">
-        <div class=" titre-tuile-2 d-flex justify-content-center align-items-center">
+        <div class=" titre-tuile-4 d-flex justify-content-center align-items-center">
             <svg width="48px" height="48px">
                 <image height="48px" width="48px" href="assets/images/cupcake.svg" />
             </svg>
