@@ -2,7 +2,7 @@
     <div class="py-4 text-bg">
         <div class=" titre-tuile-2 d-flex justify-content-center align-items-center">
             <svg width="48px" height="48px">
-                <image height="48px" width="48px" href="assets/images/chef.svg" />
+                <image height="48px" width="48px" href="assets/images/chef-white.svg" />
             </svg>
             <h2 class="align-items-center">Qu'est-ce que Makisine ?</h2>
         </div>
