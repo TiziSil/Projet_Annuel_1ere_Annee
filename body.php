@@ -7,4 +7,5 @@
 <!-- Tuile n°4 Recettes -->
 <?php include "./home-page/tuile-4-recettes.php" ?>
 <!-- Tuile n°5 Boutique -->
+<?php include "./home-page/tuile-5-boutique.php" ?>
 <!-- Tuile n°6 Publicités -->

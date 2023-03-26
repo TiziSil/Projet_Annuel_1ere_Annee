@@ -183,6 +183,65 @@
   background-color: rgba(255, 255, 255, 0.6);
 }
 
+
+/* Tuile n°4 Recettes */
+
+
+.titre-tuile-4 svg {
+}
+
+.tuile-4 {
+  width: 100%;
+  height: 100%;
+  border-radius: 71px;
+  padding: 30px;
+  border: solid 1px #897c7c;
+  border-radius: 71px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: large;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.liste-recette div {
+  border-radius: 16px;
+  background-color: #897c7c;
+  margin: auto;
+  margin-bottom: 30px;
+  width: 500px;
+  padding: 30px;
+  align-items: center!important;    
+  justify-content: center!important;
+  display: flex!important;
+  flex-wrap: wrap;
+}
+
+.liste-recette div H4 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.liste-recette div img {
+  border-radius: 71px;
+  width: 300px;
+  object-fit: cover;
+  height: 300px;
+  display: flex !important;
+  margin-right: 30px;
+}
+
+.liste-recette div img {
+  border-radius: 71px;
+  width: 300px;
+  object-fit: cover;
+  height: 300px;
+  display: flex !important;
+}
+
+
+/* Tuile n°5 Boutique */
+
 .titre-tuile-4 svg {
 }
 
