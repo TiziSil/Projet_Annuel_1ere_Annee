@@ -2,7 +2,7 @@
     <div class="py-4 text-bg">
         <div class=" titre-tuile-4 d-flex justify-content-center align-items-center">
             <svg width="48px" height="48px">
-                <image height="48px" width="48px" href="assets/images/cupcake.svg" />
+                <image height="48px" width="48px" href="assets/images/open-book.svg" />
             </svg>
             <h2 class="align-items-center titre-tuile-4">Recettes</h2>
         </div>

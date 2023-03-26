@@ -183,7 +183,6 @@
   background-color: rgba(255, 255, 255, 0.6);
 }
 
-
 /* Tuile n°4 Recettes */
 
 .titre-tuile-4 svg {
@@ -210,9 +209,9 @@
   margin-bottom: 30px;
   width: 500px;
   padding: 30px;
-  align-items: center!important;    
-  justify-content: center!important;
-  display: flex!important;
+  align-items: center !important;
+  justify-content: center !important;
+  display: flex !important;
   flex-wrap: wrap;
 }
 
@@ -239,11 +238,7 @@
   display: flex !important;
 }
 
-
 /* Tuile n°5 Boutique */
-
-.titre-tuile-4 svg {
-}
 
 .tuile-4 {
   width: 100%;
@@ -265,9 +260,9 @@
   margin-bottom: 30px;
   width: 500px;
   padding: 30px;
-  align-items: center!important;    
-  justify-content: center!important;
-  display: flex!important;
+  align-items: center !important;
+  justify-content: center !important;
+  display: flex !important;
   flex-wrap: wrap;
 }
 
@@ -295,6 +290,7 @@
 }
 
 /* tuile 5 boutique */
+
 .splash-boutique {
   background-image: url("assets/images/ustensile-cuisine-transformed.jpeg");
   background-size: cover;
@@ -312,20 +308,19 @@
 
 .splash-interieur .box-button {
   text-decoration: none;
-  height: 100px; 
+  height: 100px;
   width: 400px;
   border-radius: 17px;
   border: solid 2px rgba(255, 255, 255, 0.8);
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-
 .splash-interieur .box-button a {
   text-decoration: none;
   color: #897c7c;
-  font-weight:bold;
+  font-weight: bold;
   font-style: italic;
-  font-size: 24px; 
+  font-size: 24px;
   transition: all 0.5s ease-in-out;
 }
 
@@ -334,8 +329,43 @@
   letter-spacing: 2px;
 }
 
-
 #boutique {
   margin-top: 50px;
   height: 100vh;
+}
+
+/* tuile 6 Publiciité */
+
+#pub {
+  background-color: #897c7c;
+  width: 100%;
+}
+
+.carousel-pub {
+  width: 700px;
+  height: 500px;
+}
+
+.carousel-item img {
+  border-radius: 17px;
+  object-fit: cover;
+  width: 700px;
+  height: 500px;
+  position: relative;
+  text-align: center;
+}
+
+.carousel-item div {
+  position: absolute;
+  color: black;
+  z-index: 15;
+  font-weight: bold;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%);
+  text-decoration: none;
+  border-radius: 17px;
+  padding: 15px 30px 0 30px;
+  border: solid 2px rgba(137, 124, 124, 0.8);
+  background-color: rgba(255, 255, 255, 0.7);
 }

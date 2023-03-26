@@ -9,3 +9,4 @@
 <!-- Tuile n°5 Boutique -->
 <?php include "./home-page/tuile-5-boutique.php" ?>
 <!-- Tuile n°6 Publicités -->
+<?php include "./home-page/tuile-6-pub.php" ?>
