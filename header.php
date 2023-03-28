@@ -6,12 +6,12 @@
           <image height="32px" fill="#DEC7B1" width="32px" href="assets\images\burger-solid.svg" />
         </svg>
       </button>
-      <a href="#about-makisine">Qu'est ce que Makisine ?</a>
-      <a href="#categorie-recettes">Catégorie de recettes</a>
-      <a href="#recettes">Recettes</a>
-      <a href="#boutique">Notre boutique</a>
-      <a href="#pub">Promotions</a>
-      <a href="#footer">Nous contacter</a>
+      <a href="index.php#about-makisine">Qu'est ce que Makisine ?</a>
+      <a href="index.php#categorie-recettes">Catégorie de recettes</a>
+      <a href="index.php#recettes">Recettes</a>
+      <a href="index.php#boutique">Notre boutique</a>
+      <a href="index.php#pub">Promotions</a>
+      <a href="index.php#footer">Nous contacter</a>
     </div>
   </div>
   <div class="py-2 text-bg">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="col">
-          <a href="#" class="mon-compte-button" title="Mon compte">
+          <a href="mon-compte" class="mon-compte-button" title="Mon compte">
             <svg fill="white" class="d-block" width="32px" height="32px">
               <use href="#people-circle" />
             </svg>

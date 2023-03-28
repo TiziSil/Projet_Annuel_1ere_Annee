@@ -34,7 +34,7 @@
   text-decoration: none;
   transition: all 0.25s ease-in-out;
   transform: translate(0px);
-  color: black;
+  color: #000000;
   margin-bottom: 20px;
 }
 
@@ -55,7 +55,7 @@
   width: 32px;
   height: 32px;
   display: inline-block;
-  color: white;
+  color: #ffffff;
   float: right;
   transition: all 0.25s ease-in-out;
 }
@@ -113,7 +113,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #ffffff;
 }
 
 /* Tuile n°2 Ques-ce que Makisine ? */
@@ -167,7 +167,7 @@
 }
 
 .tableau a {
-  color: black;
+  color: #000000;
   text-decoration: none;
   transition: all 0.25s ease-in-out;
   transform: translate(0px);
@@ -186,7 +186,7 @@
   height: 100%;
   border-radius: 71px;
   padding: 30px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-F: rgba(255, 255, 255, 0.6);
 }
 
 /* Tuile n°4 Recettes */
@@ -363,7 +363,7 @@
 
 .carousel-item div {
   position: absolute;
-  color: black;
+  color: #000000;
   z-index: 15;
   font-weight: bold;
   top: 15px;
@@ -393,7 +393,7 @@ footer {
 }
 
 footer * a {
-  color:black
+  color:#000000
 }
 
 .footer-haut {
@@ -421,7 +421,7 @@ footer * a {
 
 .menu-burger a {
   text-decoration: none;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 25px;
   transition: all 0.25s ease-in-out;
 }
