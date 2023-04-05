@@ -1,12 +1,19 @@
 <?php
 
 $page = $_SERVER['REQUEST_URI'];
+$fichier = substr(dirname(__FILE__), strrpos(str_replace('\\', '/', dirname(__FILE__)), '/') + 1);
+if ($fichier === 'htdocs' || $fichier === 'www') {
+    $fichier = '';
+} else {
+    $fichier = '/' . $fichier;
+}
+
 
 switch ($page) {
 
     case '':
-    case '/ProjetAnnuel/index.php':
-    case '/ProjetAnnuel/':
+    case $fichier . '/index.php':
+    case $fichier . '/':
         // <!-- Tuile n°1 Accueil -->
         include "./home-page/tuile-1-accueil.php";
         // <!-- Tuile n°2 Qu'est-ce que Makisine -->
@@ -21,11 +28,11 @@ switch ($page) {
         include "./home-page/tuile-6-pub.php";
         break;
 
-    case '/ProjetAnnuel/mon-compte':
+    case $fichier . '/mon-compte':
         require './pages/mon-compte.php';
         break;
 
-    case '/ProjetAnnuel/mes-paiements':
+    case $fichier . '/mes-paiements':
         require './pages/mes-paiements.php';
         break;
 

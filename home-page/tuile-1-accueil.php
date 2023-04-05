@@ -17,7 +17,7 @@
                     </svg>
                     <h4>S'inscrire</h4>
                 </a>
-                <a href="#" class="d-flex">
+                <a href="#" onclick="ouvrirModaleConnexion()" class="d-flex">
                     <svg width="32px" height="32px">
                         <image height="32px" width="32px" href="assets/images/user-lock-solid.svg" />
                     </svg>

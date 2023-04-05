@@ -1,3 +1,6 @@
+<?php include "pages/modale-connexion-mon-compte.php"
+?>
+
 <header>
   <div style="z-index:15;position: absolute;" class="collapse" id="navbarToggleExternalContent">
     <div class="p-4 text-bg col menu-burger">
@@ -31,7 +34,7 @@
         </div>
 
         <div class="col">
-          <a href="mon-compte" class="mon-compte-button" title="Mon compte">
+          <a href="#" onclick="ouvrirModaleConnexion()" class="mon-compte-button" title="Mon compte">
             <svg fill="white" class="d-block" width="32px" height="32px">
               <use href="#people-circle" />
             </svg>
