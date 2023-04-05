@@ -11,7 +11,7 @@
                     </svg>
                     <h4>Qu'est-ce que Makisine ?</h4>
                 </a>
-                <a href="#" class="d-flex">
+                <a href="#" onclick="ouvrirModaleInscription()" class="d-flex">
                     <svg width="32px" height="32px">
                         <image style="margin-left:2px" height="28px" width="28px" href="assets/images/user-solid.svg" />
                     </svg>

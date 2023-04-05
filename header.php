@@ -1,5 +1,5 @@
-<?php include "pages/modale-connexion-mon-compte.php"
-?>
+<?php include "pages/modale-connexion.php"; ?>
+<?php include "pages/modale-inscription.php"; ?>
 
 <header>
   <div style="z-index:15;position: absolute;" class="collapse" id="navbarToggleExternalContent">
