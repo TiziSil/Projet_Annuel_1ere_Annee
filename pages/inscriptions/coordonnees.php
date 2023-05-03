@@ -13,7 +13,7 @@
             <label>Email</label>
         </div>
         <div class="champ">
-            <input autocomplete="off" onfocus="(this.type='date')" onblur="(this.type='text')" name="birthday" required="required">
+            <input autocomplete="off" type="date" value="1879-01-01" name="birthday" required="required">
             <label>Date de naissance</label>
         </div>
         <div class="champ">

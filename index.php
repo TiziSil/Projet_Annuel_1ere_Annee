@@ -4,7 +4,7 @@
 
 <body>
     <?php include "header.php"; ?>
-    <?php include "body.php"; ?>
+    <?php include "rooting.php"; ?>
     <?php include "footer.php"; ?>
 </body>
 <html>
