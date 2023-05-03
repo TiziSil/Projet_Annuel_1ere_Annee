@@ -1,28 +1,28 @@
 <div id="inscriptions-coordonnees">
     <form class="form-inscription">
         <div class="champ">
-            <label class="label-champ">Prénom</label>
-            <input type="text" class="input-champ" name="firstname" required="required" value="">
+            <input autocomplete="off" type="text" name="firstname" required="required" value="">
+            <label>Prénom</label>
         </div>
         <div class="champ">
-            <label class="label-champ">Nom</label>
-            <input type="text" class="input-champ" name="lastname"  required="required">
+            <input autocomplete="off" type="text" name="lastname" required="required">
+            <label>Nom</label>
         </div>
         <div class="champ">
-            <label class="label-champ">Email</label>
-            <input type="email" class="input-champ" name="email"  required="required">
+            <input autocomplete="off" type="email" name="email" required="required">
+            <label>Email</label>
         </div>
         <div class="champ">
-            <label class="label-champ">Date de naissance</label>
-            <input type="date" class="input-champ" name="birthday" required="required" >
+            <input autocomplete="off" onfocus="(this.type='date')" onblur="(this.type='text')" name="birthday" required="required">
+            <label>Date de naissance</label>
         </div>
         <div class="champ">
-            <label class="label-champ">Mot de passe</label>
-            <input type="password" class="input-champ" name="pwd" required="required">
+            <input autocomplete="off" type="password" name="pwd" required="required">
+            <label>Mot de passe</label>
         </div>
         <div class="champ">
-            <label class="label-champ">Confirmation mot de passe</label>
-            <input type="password" class="input-champ" name="pwdConfirm" required="required">
+            <input autocomplete="off" type="password" name="pwdConfirm" required="required">
+            <label>Confirmation mot de passe</label>
         </div>
         <button class="button3">Suivant</button>
     </form>

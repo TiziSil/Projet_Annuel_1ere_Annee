@@ -24,10 +24,6 @@ function fermerModaleinscription() {
   console.log(modale);
 }
 
-function afficherListePays() {
-  console.log(listeDesPays);
-}
-
 /* FIL ARIANE */
 const adresse = document.querySelector("#inscriptions-adresse");
 const avatar = document.querySelector("#inscriptions-avatar");
@@ -48,17 +44,16 @@ function afficherAvatar() {
   adresse.style.display = "none";
 }
 
-// var filAriane = "Accueil";
+// Liste pays INSCRIPTION
 
-// filAriane += " > Coordonnées";
-
-// filAriane += " > Adresse postale";
-
-// // Afficher le fil d'Ariane sur la page
-// var filArianeElement = document.getElementById("fil-ariane");
-// filArianeElement.innerHTML = filAriane;
-
-recupererListeDesPays();
-
+function listePays() {
+  const autrePays = document.querySelector("#pays-inscription").value;
+  console.log(autrePays);
+  if (autrePays === "") {
+    document.getElementById("autre-pays").style.display = "block";
+  } else {
+    document.getElementById("autre-pays").style.display = "none";
+  }
+}
 
 //Captcha

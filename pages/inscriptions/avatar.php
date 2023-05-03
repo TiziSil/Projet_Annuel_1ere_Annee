@@ -17,8 +17,15 @@
 
         </div>
 
-
-
-        <button class="button3">Suivant</button>
+        <div class="cgu-et-bouton d-flex flex-column">
+            <div>
+                <label for="cgu" class="form-label">
+                    <input type="checkbox" class="form-check-input" id="cgu" name="cgu" required="required" />
+                    <span class="slider"></span>
+                </label>
+                <label>&ensp; J'accepte les CGUs</label>
+            </div>
+            <button class="button3">Enregistrer</button>
+        </div>
     </form>
 </div>

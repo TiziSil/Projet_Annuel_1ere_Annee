@@ -11,6 +11,7 @@
                 <div class="champ">
                     <input placeholder="Et votre mot de passe" class="input-champ" type="password">
                 </div>
+
                 <div class="btn">
                     <button class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se connecter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     <button class="button2">S'enregistrer</button>
