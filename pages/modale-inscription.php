@@ -1,8 +1,3 @@
-<?php
-//session_start();
-include "conf.inc.php";
-require "core/functions.php";
-?>
 
 <div id="modale-inscription" class="modale-inscription">
     <div class="modale-content-inscription">
@@ -80,7 +75,7 @@ require "core/functions.php";
                 </div>
                 <div>
                     <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
-                    <label for="cgu" class="form-label">Je m'inscris aux newletter</label>
+                    <label for="cgu" class="form-label">Inscription aux newletter</label>
                 </div>
                 <button class="button3">Suivant</button>
             </form>

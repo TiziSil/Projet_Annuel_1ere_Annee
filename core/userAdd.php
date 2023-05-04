@@ -1,5 +1,5 @@
 <?php 
-session_start();
+//session_start();
 require "functions.php";
 require "../pages/modale-inscription.php"
 
@@ -63,7 +63,7 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 }
 // --> Unicité de l'email (plus tard)
 $connection = connectDB();
-$queryPrepared = $connection ->prepare("SELECT * FROM makisine_utilisateur WHERE email = :email");
+$queryPrepared = $connection ->prepare("SELECT * FROM "DB_PREFIX."utilisateur WHERE email = :email");
 //$queryPrepared = $connection->prepare("SELECT * FROM esgi_user WHERE email=:email");
 $queryPrepared-> execute([ "email" => $email ]);
 $results = $queryPrepared -> fetch();
@@ -119,10 +119,10 @@ if(empty($listOfErrors)){
 
 
 
-	$queryPrepared = $connection -> prepare("INSERT INTO makisine_UTILISATEUR
-															(gender, firstname, lastname, email, pwd, birthday, country)
+	$queryPrepared = $connection -> prepare("INSERT INTO ".DB_PREFIX."UTILISATEUR
+															(nom_utilisateur, prénom_utilisateur, email, pwd, birthday, country)
 											VALUES
-															( :gender, :firstname, :lastname, :email, :pwd, :birthday, :country)") ;
+															( :gender, :lastname, :firstname,  :email, :pwd, :birthday, :country)") ;
 	$queryPrepared -> execute([
 								"gender" => $gender,
 								"firstname" => $firstname,
