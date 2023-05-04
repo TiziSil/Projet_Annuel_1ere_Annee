@@ -17,6 +17,10 @@
                 <input onclick="afficherAvatar()" type="radio" id="value-3" name="value-radio" value="value-3">
                 <span>Avatar</span>
             </label>
+            <label>
+                <input onclick="afficherVerifications()" type="radio" id="value-4" name="value-radio" value="value-4">
+                <span>Vérifications</span>
+            </label>
             <!-- <span class="selection"></span> -->
         </div>
         <div class="content-inscription-forms">
@@ -24,6 +28,7 @@
             include 'inscriptions/coordonnees.php';
             include 'inscriptions/adresse-postale.php';
             include 'inscriptions/avatar.php';
+            include 'inscriptions/verifications.php';
             ?>
         </div>
     </div>
