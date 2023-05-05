@@ -486,6 +486,12 @@
 }
 
 .button3 {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  text-align: center;
   margin-bottom: 1em;
   margin-top: 2em;
   padding: 0.5em;
@@ -738,15 +744,6 @@
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
   border-radius: 100%;
 }
-
-.rond-avatar {
-  width: 62px;
-  height: 62px;
-  border-radius: 100%;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-  border: solid #897c7c 4px;
-}
-
 .fleche-droite {
   width: 20px;
   height: 32px;
@@ -987,6 +984,12 @@ footer * a {
 }
 
 /* PUZZLE */
+
+#puzzle {
+  width: 80%;
+  margin-left: 50px;
+}
+
 .puzzle-piece {
   height: auto;
   border: 1px solid black;
@@ -1039,4 +1042,31 @@ footer * a {
 #piece9 {
   top: 0;
   left: 200px;
+}
+
+/* AVATAR */
+
+.rond-avatar {
+  width: 62px;
+  height: 62px;
+  border-radius: 100%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  border: solid #897c7c 4px;
+  position: relative;
+  display: block;
+}
+
+.rond-avatar a {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #000000;
+  text-decoration: none;
+}
+
+/* CGU */
+
+.cgu {
+  margin-top: 32px;
 }

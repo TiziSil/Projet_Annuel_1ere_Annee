@@ -24,6 +24,6 @@
             <input autocomplete="off" type="password" name="pwdConfirm" required="required">
             <label>Confirmation mot de passe</label>
         </div>
-        <button class="button3">Suivant</button>
+        <a onclick="afficherAdressePostal()" class="button3">Suivant</a>
     </form>
 </div>

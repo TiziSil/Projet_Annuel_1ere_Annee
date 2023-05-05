@@ -13,7 +13,7 @@
                 <img class="puzzle-piece" id="piece-9" src="assets/images/PuzzleGourmandise/22.jpg" />
             </div>
         </div>
-        <div>
+        <div class="cgu">
             <label for="cgu" class="form-label">
                 <input type="checkbox" class="form-check-input" id="cgu" name="cgu" required="required" />
                 <span class="slider"></span>

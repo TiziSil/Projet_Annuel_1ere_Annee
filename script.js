@@ -31,24 +31,28 @@ const avatar = document.querySelector("#inscriptions-avatar");
 const coordonnees = document.querySelector("#inscriptions-coordonnees");
 const verifications = document.querySelector("#inscriptions-verifications");
 function afficherCoordonnees() {
+  document.querySelector("#inscription-value-1").checked = true;
   avatar.style.display = "none";
   coordonnees.style.display = "flex";
   adresse.style.display = "none";
   verifications.style.display = "none";
 }
 function afficherAdressePostal() {
+  document.querySelector("#inscription-value-2").checked = true;
   avatar.style.display = "none";
   coordonnees.style.display = "none";
   adresse.style.display = "flex";
   verifications.style.display = "none";
 }
 function afficherAvatar() {
+  document.querySelector("#inscription-value-3").checked = true;
   avatar.style.display = "flex";
   coordonnees.style.display = "none";
   adresse.style.display = "none";
   verifications.style.display = "none";
 }
 function afficherVerifications() {
+  document.querySelector("#inscription-value-4").checked = true;
   coordonnees.style.display = "none";
   adresse.style.display = "none";
   avatar.style.display = "none";
@@ -68,6 +72,7 @@ function listePays() {
 }
 
 //Puzzle
+
 let puzzleEstCorrect = false;
 const pieces = document.querySelectorAll(".puzzle-piece");
 const puzzle = document.querySelector("#puzzle");
@@ -87,22 +92,26 @@ pieces.forEach((p) => {
     pieceRelachee = evenement;
   });
   p.addEventListener("dragend", () => {
-    if (pieceAttrapee || pieceRelachee) {
+    if (pieceAttrapee && pieceRelachee) {
       const div1 = pieceRelachee.target;
       const div2 = pieceAttrapee.target;
-      const div3 = div2.nextSibling;
+      let div3 = div2.nextSibling;
       const pieceDePuzzle = puzzle.querySelectorAll(".puzzle-piece");
+
       const dernier = pieceDePuzzle[pieceDePuzzle.length - 1];
-      puzzle.replaceChild(div2, div1);
-      if (div3 !== dernier) {
+      if (div1 === div3) {
+        puzzle.insertBefore(div1, div2);
+      } else if (div3 !== dernier) {
+        puzzle.replaceChild(div2, div1);
         puzzle.insertBefore(div1, div3);
       } else {
+        puzzle.replaceChild(div2, div1);
         puzzle.appendChild(div1);
       }
-      pieceAttrapee = null;
-      pieceRelachee = null;
-      puzzleEstBon();
     }
+    puzzleEstBon();
+    pieceAttrapee = null;
+    pieceRelachee = null;
   });
 });
 
@@ -132,7 +141,7 @@ let couleurPeau = [
   "#614335",
 ];
 let couleurCheveux = [
-  "#000000",
+  "#ffdbb4",
   "#edb98a",
   "#fd9841",
   "#fcee93",
@@ -140,6 +149,7 @@ let couleurCheveux = [
   "#ae5d29",
   "#614335",
 ];
+let peau = ["#peau-1", "#peau-2"];
 let cheveux = ["#cheveux-1", "#cheveux-2"];
 let yeux = ["#yeux-1", "#yeux-2"];
 let accessoires = ["#none", "#lunettes"];
@@ -147,58 +157,67 @@ let pilosite = ["#none", "#pilosite-1", "#pilosite-2"];
 let bouche = ["#none", "#bouche-1", "#bouche-2", "#bouche-4"];
 
 let iCouleurPeau = 0;
+let iCouleurCheveux = 0;
 let iYeux = 0;
 let iAccessoire = 0;
-let iCheveux = 0;
+let iCoiffure = 0;
 let iPilosite = 0;
-let icouleurCheveux = 0;
-let ibouche = 0;
+let iBouche = 0;
 
 function changerCouleurPeau() {
-  document.querySelector("body").style =
-    "--fill-image: " + couleurPeau[iCouleurPeau % couleurPeau.length];
   iCouleurPeau++;
+  const cheveux =
+    "--couleur-cheveux: " +
+    couleurCheveux[iCouleurCheveux % couleurCheveux.length] +
+    ";";
+  const peau =
+    "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
+  document.querySelector("body").style = cheveux + peau;
 }
 
 function changerCouleurCheveux() {
-  document.querySelector("body").style =
+  iCouleurCheveux++;
+  const cheveux =
     "--couleur-cheveux: " +
-    couleurCheveux[icouleurCheveux % couleurCheveux.length];
-  icouleurCheveux++;
+    couleurCheveux[iCouleurCheveux % couleurCheveux.length] +
+    ";";
+  const peau =
+    "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
+  document.querySelector("body").style = cheveux + peau;
 }
 
-function changerCheveux() {
-  document.querySelector("#cheveuxSelectionner").href.baseVal =
-    cheveux[iCheveux % cheveux.length];
-  iCheveux++;
+function changerCoiffure() {
+  document.querySelector("#cheveuxSelectionne").href.baseVal =
+    cheveux[iCoiffure % cheveux.length];
+  iCoiffure++;
 }
 
 function changerYeux() {
-  document.querySelector("#yeuxSelectionner").href.baseVal =
+  document.querySelector("#yeuxSelectionne").href.baseVal =
     yeux[iYeux % yeux.length];
   iYeux++;
 }
 
 function changerAccessoire() {
-  document.querySelector("#accesoireSelectionner").href.baseVal =
+  document.querySelector("#accesoireSelectionne").href.baseVal =
     accessoires[iAccessoire % accessoires.length];
   iAccessoire++;
 }
 
 function changerPilosite() {
-  document.querySelector("#pilositeSelectionner").href.baseVal =
+  document.querySelector("#pilositeSelectionne").href.baseVal =
     pilosite[iPilosite % pilosite.length];
   iPilosite++;
 }
 
 function changerBouche() {
-  document.querySelector("#boucheSelectionner").href.baseVal =
-    bouche[ibouche % bouche.length];
-  ibouche++;
+  document.querySelector("#boucheSelectionne").href.baseVal =
+    bouche[iBouche % bouche.length];
+  iBouche++;
 }
 
 changerCouleurPeau();
-changerCheveux();
+changerCoiffure();
 changerYeux();
 changerAccessoire();
 changerPilosite();

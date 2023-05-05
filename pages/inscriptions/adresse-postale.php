@@ -27,6 +27,6 @@
             <input type="text" class="input-champ" name="autre">
             <label>Autre pays</label>
         </div>
-        <button class="button3">Suivant</button>
+        <a class="button3" onclick="afficherAvatar()">Suivant</a>
     </form>
 </div>
