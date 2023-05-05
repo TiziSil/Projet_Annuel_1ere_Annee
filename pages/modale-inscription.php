@@ -5,20 +5,24 @@
             <h1 class="h1-inscription">S'inscrire</h1>
             <span class="close" id="close-modale-inscription" onclick="fermerModaleinscription()">&times;</span>
         </div>
-        <div class="radio-input">
+        <div class="radio-input fil-ariane">
             <label>
-                <input type="radio" id="value-1" name="value-radio" value="value-1">
+                <input onclick="afficherCoordonnees()" checked="checked" type="radio" id="inscription-value-1" name="value-radio" value="value-1">
                 <span>Coordonnées</span>
             </label>
             <label>
-                <input type="radio" id="value-2" name="value-radio" value="value-2">
+                <input onclick="afficherAdressePostal()" type="radio" id="inscription-value-2" name="value-radio" value="value-2">
                 <span>Adresse postale</span>
             </label>
             <label>
-                <input type="radio" id="value-3" name="value-radio" value="value-3">
+                <input onclick="afficherAvatar()" type="radio" id="inscription-value-3" name="value-radio" value="value-3">
                 <span>Avatar</span>
             </label>
-            <span class="selection"></span>
+            <label>
+                <input onclick="afficherVerifications()" type="radio" id="inscription-value-4" name="value-radio" value="value-4">
+                <span>Vérifications</span>
+            </label>
+            <!-- <span class="selection"></span> -->
         </div>
         <?php if (isset($_SESSION["listOfErrors"])){ ?>
             <div>

@@ -2,7 +2,9 @@
 <html lang="fr">
 <?php include "head.php"; ?>
 
-<?php include "header.php"; ?>
-<?php include "body.php"; ?>
-<?php include "footer.php"; ?>
-
+<body>
+    <?php include "header.php"; ?>
+    <?php include "rooting.php"; ?>
+    <?php include "footer.php"; ?>
+</body>
+<html>
