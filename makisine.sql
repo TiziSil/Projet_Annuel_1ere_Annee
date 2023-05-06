@@ -1,4 +1,5 @@
-CREATE TABLE makisine_AVATAR(
+--test dans la bdd sur le serveur
+/*CREATE TABLE makisine_AVATAR(
     id_avatar INTEGER PRIMARY KEY,
     forme_visage VARCHAR(255),
     couleur_visage VARCHAR(255),
@@ -175,3 +176,6 @@ CREATE TABLE makisine_constitue(
     PRIMARY KEY (id_ingredient,id_recette)
 );
 
+ALTER TABLE makisine_UTILISATEUR ADD pwd VARCHAR(64);
+commit;
+*/
