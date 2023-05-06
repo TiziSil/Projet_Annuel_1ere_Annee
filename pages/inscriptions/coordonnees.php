@@ -1,4 +1,4 @@
-<div id="inscriptions-coordonnees">
+<div id="inscriptions-coordonnees" action="Projet_Annuel_1ere_Annee/core/userAdd.php" method="POST">
     <form class="form-inscription">
         <div class="champ">
             <input autocomplete="off" type="text" name="firstname" required="required" value="">
