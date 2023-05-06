@@ -1,4 +1,4 @@
-<?
+<?php
 
 function cleanFirstname($firstName){
 	return ucwords(strtolower(trim($firstName)));

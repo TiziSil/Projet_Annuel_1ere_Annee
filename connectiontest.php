@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 include "conf.inc.php";
 // Constantes de connexion à la base de données
 
@@ -15,4 +15,16 @@ try {
     echo "Erreur de connexion à la base de données : " . $e->getMessage();
     exit;
 }
-?> -->
+echo "<br>";
+$servername = "localhost";
+$username = "root";
+$password = "";
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+?>

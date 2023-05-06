@@ -41,7 +41,7 @@
         <?php } ?>    
 
         <div>
-            <form class="form" action = "../core/userAdd.php" method = "POST" >
+            <form class="form" action = "/Projet_Annuel_1ere_Annee/core/userAdd.php" method = "POST" >
                 <div class="champ">
                     <input type="text" class="input-champ" name="firstname" placeholder="Votre prénom" required="required" 
                     value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["firstname"]:""; ?>">
@@ -79,7 +79,7 @@
                 </div>
                 <div>
                     <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
-                    <label for="cgu" class="form-label">Inscription aux newletter</label>
+                    <label for="newsletter" class="form-label">Inscription aux newletter</label>
                 </div>
                 <button class="button3">Suivant</button>
             </form>
