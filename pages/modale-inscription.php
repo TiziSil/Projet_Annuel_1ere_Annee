@@ -25,10 +25,10 @@
         </div>
         <div class="content-inscription-forms">
             <?php
-            include 'inscriptions/coordonnees.php';
-            include 'inscriptions/adresse-postale.php';
-            include 'inscriptions/avatar.php';
-            include 'inscriptions/verifications.php';
+            include './pages/inscriptions/coordonnees.php';
+            include './pages/inscriptions/adresse-postale.php';
+            include './pages/inscriptions/avatar.php';
+            include './pages/inscriptions/verifications.php';
             ?>
         </div>
     </div>
