@@ -1,5 +1,5 @@
 <div id="inscriptions-coordonnees">
-    <form class="form-inscription">
+    <form class="form-inscription" action="/Projet_Annuel_1ere_Annee/core/userAdd.php" method="POST">
         <div class="champ">
             <input autocomplete="off" type="text" name="firstname" required="required" value="">
             <label>Prénom</label>

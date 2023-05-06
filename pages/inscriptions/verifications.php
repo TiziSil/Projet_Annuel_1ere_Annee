@@ -1,5 +1,5 @@
 <div id="inscriptions-verifications">
-    <form class="form-inscription">
+    <form class="form-inscription" action="/Projet_Annuel_1ere_Annee/core/userAdd.php" method="POST">
         <div>
             <div id="puzzle">
                 <img class="puzzle-piece" id="piece-1" src="assets/images/PuzzleGourmandise/00.jpg" />

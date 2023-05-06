@@ -1,5 +1,5 @@
 <div id="inscriptions-adresse">
-    <form class="form-inscription d-flex flex-column justify-content-between">
+    <form class="form-inscription d-flex flex-column justify-content-between" action="/Projet_Annuel_1ere_Annee/core/userAdd.php" method="POST">
         <div class="champ">
             <input type="text" class="input-champ" name="adress" required="required" value="">
             <label>Adresse</label>
