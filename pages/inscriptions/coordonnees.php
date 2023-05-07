@@ -1,19 +1,3 @@
-<?php if(isset($_SESSION['listOfErrors'])) {?>
-	<div class="row">
-		<div class="col-12">
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			  
-			  <?php
-
-			  foreach ($_SESSION['listOfErrors'] as $error)
-			  {
-			  	echo "<li>".$error."</li>";
-			  }
-			  unset($_SESSION['listOfErrors']);}
-			  ?>
-
-
-
 
 <div id="inscriptions-coordonnees" class="form-inscription">
     
