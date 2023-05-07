@@ -1,5 +1,5 @@
 <div id="inscriptions-avatar">
-    <form class="form-inscription" action="/Projet_Annuel_1ere_Annee/core/userAdd.php" method="POST">
+    <form class="form-inscription" >
         <div id="column_gap">
             <div class="rond-avatar"><a href="#" onclick="changerCouleurCheveux()">Couleur cheveux</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerCoiffure()">Coiffure</a></div>
