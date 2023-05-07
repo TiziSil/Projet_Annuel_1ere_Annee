@@ -48,6 +48,7 @@ switch ($page) {
         require './pages/promotions.php';
         break;
 
+
     default:
         http_response_code(404);
         break;

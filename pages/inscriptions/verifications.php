@@ -1,5 +1,6 @@
-<div id="inscriptions-verifications">
-    <form class="form-inscription" action="/Projet_Annuel_1ere_Annee/core/userAdd.php" method="POST">
+
+<div id="inscriptions-verifications" class="form-inscription">
+    
         <div>
             <div id="puzzle">
                 <img class="puzzle-piece" id="piece-1" src="assets/images/PuzzleGourmandise/00.jpg" />
@@ -21,7 +22,7 @@
             <label>&ensp; J'accepte les CGUs</label>
         </div>
         <div class="cgu-et-bouton d-flex flex-column">
-            <button id="button-enregistrer" class="button3" disabled="puzzleEstCorrect !== ">Enregistrer</button>
+        <button type ="submit" id="button-enregistrer" class="button3" disabled="puzzleEstCorrect !== ">Enregistrer</button>
         </div>
-    </form>
+    
 </div>

@@ -1,19 +1,41 @@
-<div id="inscriptions-coordonnees">
-    <form class="form-inscription" action="/Projet_Annuel_1ere_Annee/core/userAdd.php" method="POST">
+<?php if(isset($_SESSION['listOfErrors'])) {?>
+	<div class="row">
+		<div class="col-12">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  
+			  <?php
+
+			  foreach ($_SESSION['listOfErrors'] as $error)
+			  {
+			  	echo "<li>".$error."</li>";
+			  }
+			  unset($_SESSION['listOfErrors']);}
+			  ?>
+
+
+
+
+<div id="inscriptions-coordonnees" class="form-inscription">
+    
+   
         <div class="champ">
-            <input autocomplete="off" type="text" name="firstname" required="required" value="">
+            <input autocomplete="off" type="text" name="firstname" required="required"
+            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["firstname"]:""; ?>">
             <label>Prénom</label>
         </div>
         <div class="champ">
-            <input autocomplete="off" type="text" name="lastname" required="required">
+            <input autocomplete="off" type="text" name="lastname" required="required"
+            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["lastname"]:""; ?>">
             <label>Nom</label>
         </div>
         <div class="champ">
-            <input autocomplete="off" type="email" name="email" required="required">
+            <input autocomplete="off" type="email" name="email" required="required"
+            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
             <label>Email</label>
         </div>
         <div class="champ">
-            <input autocomplete="off" type="date" value="1879-01-01" name="birthday" required="required">
+            <input autocomplete="off" type="date" value="1979-01-01" name="birthday" required="required"
+            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["birthday"]:""; ?>">
             <label>Date de naissance</label>
         </div>
         <div class="champ">
@@ -25,5 +47,5 @@
             <label>Confirmation mot de passe</label>
         </div>
         <a onclick="afficherAdressePostal()" class="button3">Suivant</a>
-    </form>
+
 </div>

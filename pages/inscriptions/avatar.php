@@ -1,11 +1,13 @@
-<div id="inscriptions-avatar">
-    <form class="form-inscription" action="/Projet_Annuel_1ere_Annee/core/userAdd.php" method="POST">
+
+<div id="inscriptions-avatar" class="form-inscription">
+    
+    
         <div id="column_gap">
             <div class="rond-avatar"><a href="#" onclick="changerCouleurCheveux()">Couleur cheveux</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerCoiffure()">Coiffure</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerBouche()">Bouche</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerYeux()">Yeux</a></div>
-            <div class="rond-avatar"><a href="#" onclick="changerPilosite()">Pilositer</a></div>
+            <div class="rond-avatar"><a href="#" onclick="changerPilosite()">Pilositée</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerCouleurPeau()">Peau</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerAccessoire()">Lunettes</a></div>
         </div>
@@ -27,7 +29,7 @@
         </div>
 
         <div class="cgu-et-bouton d-flex flex-column">
-            <a onclick="afficherVerifications()" class="button3">Suivant</a>
+            <a class="button3" onclick="afficherVerifications()">Suivant</a>
         </div>
-    </form>
+    
 </div>
