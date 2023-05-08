@@ -18,6 +18,7 @@ require "functions.php";
 if (
 	 empty ($_POST["firstname"])
 	|| empty ($_POST["lastname"])
+	|| empty ($_POST['pseudo'])
 	|| empty ($_POST["email"])
 	|| empty ($_POST["birthday"])
 	|| empty ($_POST["pwd"])
@@ -40,13 +41,15 @@ if (
 //$gender = $_POST['gender'];
 $firstname = cleanFirstname($_POST['firstname']);
 $lastname = cleanLastname($_POST['lastname']);
+$pseudo = cleanFirstname($_POST['pseudo']);
+$telepone = $_POST['telephone'];
 $email = cleanEmail($_POST['email']);
 $birthday = $_POST['birthday'];
 $pwd = $_POST['pwd'];
 $pwdConfirm = $_POST['pwdConfirm'];
 $address = $_POST['address'];
 $postalcode = $_POST['codepostal'];
-$city = $_POST['ville'];
+$ville = $_POST['ville'];
 $country = $_POST['country'];
 $cgu = $_POST['cgu'];
 
@@ -69,6 +72,10 @@ if(strlen($firstname) < 2){
 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 	$listOfErrors[] = "L'email est incorrect";
 }
+
+//pseudo 
+
+
 // --> Unicité de l'email (plus tard)
 $connection = connectDB();
 $queryPrepared = $connection ->prepare("SELECT * FROM ".DB_PREFIX."utilisateur WHERE email = :email");
@@ -119,7 +126,9 @@ if( !in_array($country, $listCountries) ){
 	$listOfErrors[] = "Le pays n'existe pas";
 }
 
-
+// if (preg_match("#0[1-9](([0-9]{2})){4}#", $telepone)){
+// 	$listOfErrors[] = "Le numéro de téléphone n'est pas valide, doit être de la forme  0123456789";
+// }
 
 //Si OK
 if(empty($listOfErrors)){
@@ -130,16 +139,21 @@ if(empty($listOfErrors)){
 
 
 	$queryPrepared = $connection -> prepare("INSERT INTO ".DB_PREFIX."UTILISATEUR
-															(prenom_utilisateur, nom_utilisateur, email, pwd, date_de_naissance, country)
+															(prenom_utilisateur, nom_utilisateur, pseudo, email, telephone, pwd, date_de_naissance, adresse, code_postal, ville, country)
 											VALUES
-															( :firstname,       :lastname,      :email, :pwd, :birthday, :country)") ;
+															( :firstname,       :lastname,       :pseudo,  :email, :telephone, :pwd, :birthday, :address, :codepostal, :ville, :country)") ;
 	$queryPrepared -> execute([
 								
 								"firstname" => $firstname,
 								"lastname" => $lastname,
+								"pseudo" => $pseudo,
 								"email" => $email,
+								"telephone" => $telepone,
 								"pwd" => password_hash($pwd, PASSWORD_DEFAULT),
 								"birthday" => $birthday,
+								"address" => $address,
+								"codepostal" => $postalcode,
+								"ville" => $ville,
 								"country" => $country
 
 			
@@ -157,7 +171,7 @@ if(empty($listOfErrors)){
 	unset($_POST["pwdConfirm"]);
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
-	header('location: erreur.php/');
+	header('location: ../erreur.php/');
 }
 ?> 
 
