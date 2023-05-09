@@ -120,7 +120,7 @@ require "core/functions.php";
 
 
 	<!-- Formulaire -->
-	<form action="core/categoryDel.php" method="POST">
+	<form action="core/categoryDel.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
         <div class="row mt-3 mb-3">
 			<div class="col-8 col-sm-6 col-lg-4">
 				<select class="form-select" name="id_categorieDel" required="required" value="<?= ( !empty($_SESSION["data"]))
@@ -313,7 +313,7 @@ require "core/functions.php";
 
 
 	<!-- Formulaire -->
-	<form action="core/recipeDel.php" method="POST">
+	<form action="core/recipeDel.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
         <div class="row mt-3 mb-3">
 			<div class="col-8 col-sm-6 col-lg-4">
 				<select class="form-select" name="id_recipeDel" required="required" value="<?= ( !empty($_SESSION["data"]))
@@ -335,3 +335,18 @@ require "core/functions.php";
 			</div>
         </div>
 	</form>
+
+
+<!----------------------------------------------------------------------------------------------------------------->
+
+
+    <!-- Inscription Newsletter  -->
+
+    <div class="row">
+		<div class="col-12">
+        <h2>S'inscrire à la Newsletter</h2>
+		</div>
+	</div>
+
+
+	<!-- Alerte erreur supression recette -->
