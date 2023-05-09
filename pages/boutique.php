@@ -6,7 +6,7 @@
             </div>
             <div class="box-button d-flex justify-content-center align-items-center">
                 <a href="">Couverts</a>
-                div
+                
             </div>
             <div class="box-button d-flex justify-content-center align-items-center">
                 <a href="">Notre boutique</a>

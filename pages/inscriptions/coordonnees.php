@@ -1,19 +1,35 @@
-<div id="inscriptions-coordonnees">
-    <form class="form-inscription">
+
+<div id="inscriptions-coordonnees" class="form-inscription">
+    
+   
         <div class="champ">
-            <input autocomplete="off" type="text" name="firstname" required="required" value="">
+            <input autocomplete="off" type="text" name="firstname" required="required"
+            value="mathis <?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["firstname"]:""; ?>">
             <label>Prénom</label>
         </div>
         <div class="champ">
-            <input autocomplete="off" type="text" name="lastname" required="required">
+            <input autocomplete="off" type="text" name="lastname" required="required"
+            value="te<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["lastname"]:""; ?>">
             <label>Nom</label>
         </div>
         <div class="champ">
-            <input autocomplete="off" type="email" name="email" required="required">
+            <input autocomplete="off" type="text" name="pseudo" required="required"
+            value="test<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["pseudo"]:""; ?>">
+            <label>Pseudo</label>
+        </div>
+        <div class="champ">
+            <input autocomplete="off" type="tel" name="telephone" required="required"
+            value="0123456789<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["lastname"]:""; ?>">
+            <label>Téléphone</label>
+        </div>
+        <div class="champ">
+            <input autocomplete="off" type="email" name="email" required="required"
+            value="test@test.fr<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
             <label>Email</label>
         </div>
         <div class="champ">
-            <input autocomplete="off" type="date" value="1879-01-01" name="birthday" required="required">
+            <input autocomplete="off" type="date" value="1979-01-01" name="birthday" required="required"
+            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["birthday"]:""; ?>">
             <label>Date de naissance</label>
         </div>
         <div class="champ">
@@ -24,6 +40,6 @@
             <input autocomplete="off" type="password" name="pwdConfirm" required="required">
             <label>Confirmation mot de passe</label>
         </div>
-        <button class="button3">Suivant</button>
-    </form>
+        <a onclick="afficherAdressePostal()" class="button3">Suivant</a>
+
 </div>
