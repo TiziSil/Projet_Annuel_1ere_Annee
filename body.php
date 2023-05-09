@@ -35,6 +35,10 @@ switch ($page) {
     case $fichier . '/mes-paiements':
         require './pages/mes-paiements.php';
         break;
+    
+    case $fichier . '/backoffice':
+        require './pages/backoffice.php';
+        break;
 
     default:
         http_response_code(404);

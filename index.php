@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="fr">
-<?php include "head.php"; ?>
+<?php session_start();
+include "head.php"; ?>
 
 <body>
     <?php include "header.php"; ?>
