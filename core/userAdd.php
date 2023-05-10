@@ -42,7 +42,7 @@ if (
 $firstname = cleanFirstname($_POST['firstname']);
 $lastname = cleanLastname($_POST['lastname']);
 $pseudo = cleanFirstname($_POST['pseudo']);
-$telepone = $_POST['telephone'];
+$telepone = cleanPhone($_POST['telephone']);
 $email = cleanEmail($_POST['email']);
 $birthday = $_POST['birthday'];
 $pwd = $_POST['pwd'];
@@ -161,7 +161,7 @@ if(empty($listOfErrors)){
 	
 	
 	//Redirection sur la page de connexion
-	header('location: /Projet_Annuel_1ere_Annee/ ');
+	header('location: /Projetannuel/ ');
 }else{
 
 	//Si NOK
@@ -173,6 +173,34 @@ if(empty($listOfErrors)){
 	//Redirection sur la page d'inscription
 	header('location: ../erreur.php/');
 }
+
+//ajout avatar
+
+$couleurPeau = $_POST['couleurPeau'];
+$couleurCheveux = $_POST['couleurCheveux'];
+$coiffure = $_POST['coiffure'];
+$yeux = $_POST['yeux'];
+$accessoire = $_POST['accessoire'];
+$pilosite = $_POST['pilosite'];
+$bouche = $_POST['bouche'];
+
+$queryPrepared = $connection -> prepare("INSERT INTO ".DB_PREFIX."AVATAR
+															(couleurPeau,couleurCheveux,coiffure,yeux,accessoire,pilosite,bouche )
+											VALUES
+											(:couleurPeau, :couleurCheveux, :coiffure, :yeux, :accessoire, :pilosite, :bouche )") ;
+	$queryPrepared -> execute([
+								
+								"couleurPeau" => $couleurPeau,
+								"couleurCheveux" => $couleurCheveux,
+								"coiffure" => $coiffure,
+								"yeux" => $yeux,
+								"accessoire" => $accessoire,
+								"pilosite" => $pilosite,
+								"bouche" => $bouche,
+
+
+			
+	]);
 ?> 
 
 

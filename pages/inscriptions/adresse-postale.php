@@ -3,12 +3,12 @@
     
         <div class="champ">
             <input type="text" class="input-champ" name="address" required="required"
-             value="test avenue de test<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["address"]:""; ?>">
+             value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["address"]:""; ?>">
             <label>Adresse</label>
         </div>
         <div class="champ">
             <input type="number" class="input-champ" name="codepostal" required="required"
-            value="75001<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["cpdepostal"]:""; ?>">
+            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["cpdepostal"]:""; ?>">
             <label>Code postal</label>
         </div>
         <div class="champ">

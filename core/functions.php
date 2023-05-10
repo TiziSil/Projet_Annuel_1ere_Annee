@@ -14,21 +14,22 @@ function cleanEmail($email){
 
 
 function connectDB(){
-    try {
-        $connection = new PDO("mysql:host=".DB_HOST.";dbname=".DB_DATABASE.";port=".DB_PORT, DB_USER, DB_PWD);
-        return $connection;
-    } catch (Exception $e) {
-        error_log("Erreur SQL : " .$e->getMessage());
-        return false;
-    }
+
+	try{
+		$connection = new PDO("mysql:host=".DB_HOST.";dbname=".DB_DATABASE.";port=".DB_PORT,DB_USER, DB_PWD);
+	}catch(Exception $e){
+		die("Erreur SQL ".$e->getMessage());
+	}
+	return $connection;
 }
+
 
 
 function isConnected(){
 	if(!empty($_SESSION['email']) && !empty($_SESSION['login'])){
 
 		$connection = connectDB();
-		$queryPrepared = $connection->prepare("SELECT id FROM ".DB_PREFIX."utilisateur where email=:email");
+		$queryPrepared = $connection->prepare("SELECT id_utilisateur FROM ".DB_PREFIX."UTILISATEUR where email=:email");
 		$queryPrepared->execute(["email"=>$_SESSION['email']]);
 		$result = $queryPrepared->fetch();
 
@@ -42,9 +43,6 @@ function isConnected(){
 
 function redirectIfNotConnected(){
 	if(!isConnected()){
-        //rediriger vers la modale pas le lien pour l'instant redirect vers page accueil
-        header("Location: /Projet_Annuel_1ere_Annee/");
-		//header("Location: ../pages/modale-connexion.php");
+		header("Location: index.php");
 	}
 }
-

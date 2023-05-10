@@ -48,6 +48,13 @@ switch ($page) {
         require './pages/promotions.php';
         break;
 
+    case $fichier . '/backoffice':
+        require './pages/backoffice.php';
+        break;
+    
+    case $fichier . '/attente-validation':
+        require './pages/attente-validation.php';
+        break;
 
     default:
         http_response_code(404);

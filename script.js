@@ -223,3 +223,18 @@ changerAccessoire();
 changerPilosite();
 changerBouche();
 changerCouleurCheveux();
+//enregistrement avatar
+function afficherVerifications() {
+  // Mettre à jour les valeurs des champs cachés avec les valeurs actuelles de l'avatar
+  document.getElementById("couleurPeauInput").value = couleurPeau[iCouleurPeau % couleurPeau.length];
+  document.getElementById("couleurCheveuxInput").value = couleurCheveux[iCouleurCheveux % couleurCheveux.length];
+  document.getElementById("coiffureInput").value = cheveux[iCoiffure % cheveux.length];
+  document.getElementById("yeuxInput").value = yeux[iYeux % yeux.length];
+  document.getElementById("accessoireInput").value = accessoires[iAccessoire % accessoires.length];
+  document.getElementById("pilositeInput").value = pilosite[iPilosite % pilosite.length];
+  document.getElementById("boucheInput").value = bouche[iBouche % bouche.length];
+  
+  // Soumettre le formulaire
+  document.getElementById("avatar-form").submit();
+}
+
