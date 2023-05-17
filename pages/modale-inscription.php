@@ -1,5 +1,5 @@
 <div id="modale-inscription" class="modale-inscription">
-    <form action="/Projet_Annuel_1ere_Annee/core/userAdd.php" method="POST">
+    <form action="/ProjetAnnuel/core/userAdd.php" method="POST">
         <div class="modale-content-inscription">
             <div class="d-flex justify-content-between">
                 <h1 class="h1-inscription">S'inscrire</h1>

@@ -161,7 +161,7 @@ if(empty($listOfErrors)){
 	
 	
 	//Redirection sur la page de connexion
-	header('location: /Projet_Annuel_1ere_Annee/ ');
+	header('location: /ProjetAnnuel/ ');
 }else{
 
 	//Si NOK

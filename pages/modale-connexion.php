@@ -22,7 +22,7 @@
                     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
                         $_SESSION['email'] = $email;
                         $_SESSION['login'] = true;
-                        header("Location: /Projet_Annuel_1ere_Annee/");
+                        header("Location: /ProjetAnnuel/");
                     }else{
                         echo "Identifiants incorrects";
                     }

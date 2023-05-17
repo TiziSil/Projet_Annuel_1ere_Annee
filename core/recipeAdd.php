@@ -21,12 +21,18 @@ $id_categorie = $_POST['id_categorie'];
 $difficulte = $_POST['difficulte'];
 $temps_preparation = $_POST['temps_preparation'];
 $description_recette = $_POST['description_recette'];
-
 $listOfErrorsRecipe = [];
 $isRecipeCreated = false;
 
-// Vérification nom de la recette
+
+// Récupération id de l'utilisateur
 $connection = connectDB();
+$queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."UTILISATEUR WHERE email=:email");
+$queryPrepared->execute([ "email" => $_SESSION["data"]["email"] ]);
+$auteur_recette = $queryPrepared->fetch();
+
+
+// Vérification nom de la recette
 $queryPrepared = $connection->prepare("SELECT * FROM ".DB_PREFIX."RECETTE WHERE nom_recette=:nom_recette");
 $queryPrepared->execute([ "nom_recette" => $nom_recette ]);
 $results = $queryPrepared->fetch();
@@ -70,15 +76,16 @@ if(strlen($description_recette) < 50){
 if(empty($listOfErrorsRecipe)){
 	//Insertion en BDD
 	$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."RECETTE
-											(nom_recette, difficulte, temps_preparation, description_recette)
+											(nom_recette, difficulte, temps_preparation, description_recette, auteur_recette)
 											VALUES 
-											(:nom_recette, :difficulte, :temps_preparation, :description_recette)");
+											(:nom_recette, :difficulte, :temps_preparation, :description_recette, :auteur_recette)");
 
 	$queryPrepared->execute([
 								"nom_recette"=>$nom_recette,
 								"difficulte"=>$difficulte,
 								"temps_preparation"=>$temps_preparation,
-								"description_recette"=>$description_recette
+								"description_recette"=>$description_recette,
+								"nom_recette"=>$auteur_recette
 							]);
 
 	
@@ -94,6 +101,7 @@ if(empty($listOfErrorsRecipe)){
 	$queryPrepared->execute([
 				"recette_categorie"=>$results3[0],
 				"id_categorie"=>$id_categorie
+
 			]);
 
 	$isRecipeCreated = true;
