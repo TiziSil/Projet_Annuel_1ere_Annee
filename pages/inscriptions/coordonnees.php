@@ -19,7 +19,7 @@
         </div>
         <div class="champ">
             <input autocomplete="off" type="tel" name="telephone" required="required"
-            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["lastname"]:""; ?>">
+            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["telephone"]:""; ?>">
             <label>Téléphone</label>
         </div>
         <div class="champ">
