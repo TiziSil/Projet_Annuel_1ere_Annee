@@ -31,28 +31,29 @@ const avatar = document.querySelector("#inscriptions-avatar");
 const coordonnees = document.querySelector("#inscriptions-coordonnees");
 const verifications = document.querySelector("#inscriptions-verifications");
 function afficherCoordonnees() {
-  document.querySelector("#inscription-value-1").checked = true;
+  alert("function coordonnées");
+  document.querySelector("#inscription-value-1");
   avatar.style.display = "none";
   coordonnees.style.display = "flex";
   adresse.style.display = "none";
   verifications.style.display = "none";
 }
 function afficherAdressePostal() {
-  document.querySelector("#inscription-value-2").checked = true;
+  document.querySelector("#inscription-value-2");
   avatar.style.display = "none";
   coordonnees.style.display = "none";
   adresse.style.display = "flex";
   verifications.style.display = "none";
 }
 function afficherAvatar() {
-  document.querySelector("#inscription-value-3").checked = true;
+  document.querySelector("#inscription-value-3");
   avatar.style.display = "flex";
   coordonnees.style.display = "none";
   adresse.style.display = "none";
   verifications.style.display = "none";
 }
 function afficherVerifications() {
-  document.querySelector("#inscription-value-4").checked = true;
+  document.querySelector("#inscription-value-4");
   coordonnees.style.display = "none";
   adresse.style.display = "none";
   avatar.style.display = "none";
