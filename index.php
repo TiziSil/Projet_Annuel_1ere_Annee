@@ -9,6 +9,7 @@ include "head.php"; ?>
 //     echo var_dump($_SESSION);
 // }
 ?>
+
 <body>
     <?php include "header.php"; ?>
     <?php include "rooting.php"; ?>

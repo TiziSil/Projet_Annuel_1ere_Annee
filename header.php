@@ -1,6 +1,5 @@
-
 <?php include "pages/modale-connexion.php"; ?>
-<?php include "pages/modale-inscription.php"; ?> 
+<?php include "pages/modale-inscription.php"; ?>
 <?php include "conf.inc.php" ?>
 
 <header>
