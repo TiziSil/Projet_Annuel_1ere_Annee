@@ -1,3 +1,4 @@
+
 <div id="modale-inscription" class="modale-inscription">
     <form action="/ProjetAnnuel/core/userAdd.php" method="POST">
         <div class="modale-content-inscription">
@@ -8,7 +9,8 @@
             <div class="radio-input fil-ariane">
                 <label>
                     <input onclick="afficherCoordonnees()" checked="checked" type="radio" id="inscription-value-1" name="value-radio" value="value-1">
-                    <span>Coordonnées</span>
+                    console.log("🚀 ~ file: modale-inscription.php:10 ~ onclick:", onclick)
+                <span>Coordonnées</span>
                 </label>
                 <label>
                     <input onclick="afficherAdressePostal()" type="radio" id="inscription-value-2" name="value-radio" value="value-2">

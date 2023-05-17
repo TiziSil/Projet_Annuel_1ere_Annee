@@ -30,29 +30,34 @@ const adresse = document.querySelector("#inscriptions-adresse");
 const avatar = document.querySelector("#inscriptions-avatar");
 const coordonnees = document.querySelector("#inscriptions-coordonnees");
 const verifications = document.querySelector("#inscriptions-verifications");
+
 function afficherCoordonnees() {
-  document.querySelector("#inscription-value-1").checked = true;
+  alert("function coordonnées");
+  document.querySelector("#inscription-value-1");
   avatar.style.display = "none";
   coordonnees.style.display = "flex";
   adresse.style.display = "none";
   verifications.style.display = "none";
 }
+
 function afficherAdressePostal() {
-  document.querySelector("#inscription-value-2").checked = true;
+  document.querySelector("#inscription-value-2");
   avatar.style.display = "none";
   coordonnees.style.display = "none";
   adresse.style.display = "flex";
   verifications.style.display = "none";
 }
+
 function afficherAvatar() {
-  document.querySelector("#inscription-value-3").checked = true;
+  document.querySelector("#inscription-value-3");
   avatar.style.display = "flex";
   coordonnees.style.display = "none";
   adresse.style.display = "none";
   verifications.style.display = "none";
 }
+
 function afficherVerifications() {
-  document.querySelector("#inscription-value-4").checked = true;
+  document.querySelector("#inscription-value-4");
   coordonnees.style.display = "none";
   adresse.style.display = "none";
   avatar.style.display = "none";
@@ -173,9 +178,11 @@ function changerCouleurPeau() {
   const peau =
     "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
   document.querySelector("body").style = cheveux + peau;
+  console.log(couleurPeau, "couleurPeau");
 }
 
 function changerCouleurCheveux() {
+
   iCouleurCheveux++;
   const cheveux =
     "--couleur-cheveux: " +
@@ -184,36 +191,42 @@ function changerCouleurCheveux() {
   const peau =
     "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
   document.querySelector("body").style = cheveux + peau;
+  console.log(couleurCheveux);
 }
 
 function changerCoiffure() {
   document.querySelector("#cheveuxSelectionne").href.baseVal =
     cheveux[iCoiffure % cheveux.length];
   iCoiffure++;
+  console.log(cheveux);
 }
 
 function changerYeux() {
   document.querySelector("#yeuxSelectionne").href.baseVal =
     yeux[iYeux % yeux.length];
   iYeux++;
+  console.log(yeux);
 }
 
 function changerAccessoire() {
   document.querySelector("#accesoireSelectionne").href.baseVal =
     accessoires[iAccessoire % accessoires.length];
   iAccessoire++;
+  console.log(accessoires);
 }
 
 function changerPilosite() {
   document.querySelector("#pilositeSelectionne").href.baseVal =
     pilosite[iPilosite % pilosite.length];
   iPilosite++;
+  console.log(pilosite);  
 }
 
 function changerBouche() {
   document.querySelector("#boucheSelectionne").href.baseVal =
     bouche[iBouche % bouche.length];
   iBouche++;
+  console.log(bouche);
 }
 
 changerCouleurPeau();
@@ -223,4 +236,26 @@ changerAccessoire();
 changerPilosite();
 changerBouche();
 changerCouleurCheveux();
+//enregistrement avatar
+function verificationsAdd() {
+  // Mettre à jour les valeurs des champs cachés avec les valeurs actuelles de l'avatar
+  document.getElementById("couleurPeauInput").value = couleurPeau[iCouleurPeau % couleurPeau.length];
+  document.getElementById("couleurCheveuxInput").value = couleurCheveux[iCouleurCheveux % couleurCheveux.length];
+  document.getElementById("coiffureInput").value = cheveux[iCoiffure % cheveux.length];
+  document.getElementById("yeuxInput").value = yeux[iYeux % yeux.length];
+  document.getElementById("accessoireInput").value = accessoires[iAccessoire % accessoires.length];
+  document.getElementById("pilositeInput").value = pilosite[iPilosite % pilosite.length];
+  document.getElementById("boucheInput").value = bouche[iBouche % bouche.length];
+  
+  // Soumettre le formulaire
+  document.getElementById("avatar-form").submit();
+}
 
+
+console.log('Couleur de peau:', couleurPeauInput);
+console.log('Couleur de cheveux:', couleurCheveuxInput);
+console.log('Coiffure:', coiffureInput);
+console.log('Yeux:', yeuxInput);
+console.log('Accessoire:', accessoireInput);
+console.log('Pilositée:', pilositeInput);
+console.log('Bouche:', boucheInput);

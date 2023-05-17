@@ -32,10 +32,6 @@ switch ($page) {
         require './pages/mon-compte.php';
         break;
 
-    case $fichier . '/mes-paiements':
-        require './pages/mes-paiements.php';
-        break;
-
     case $fichier . '/boutique':
         require './pages/boutique.php';
         break;

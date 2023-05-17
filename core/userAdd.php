@@ -42,7 +42,7 @@ if (
 $firstname = cleanFirstname($_POST['firstname']);
 $lastname = cleanLastname($_POST['lastname']);
 $pseudo = cleanFirstname($_POST['pseudo']);
-$telepone = $_POST['telephone'];
+$telepone = cleanPhone($_POST['telephone']);
 $email = cleanEmail($_POST['email']);
 $birthday = $_POST['birthday'];
 $pwd = $_POST['pwd'];
@@ -78,7 +78,7 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 
 // --> Unicité de l'email (plus tard)
 $connection = connectDB();
-$queryPrepared = $connection ->prepare("SELECT * FROM ".DB_PREFIX."utilisateur WHERE email = :email");
+$queryPrepared = $connection ->prepare("SELECT * FROM ".DB_PREFIX."UTILISATEUR WHERE email = :email");
 
 $queryPrepared-> execute([ "email" => $email ]);
 $results = $queryPrepared -> fetch();
@@ -86,6 +86,14 @@ if (!empty($results)){
 	$listOfErrors[] = "L'email est déjà utilisé";
 }
 
+
+//Pseudo qui n'existe pas encore
+$queryPrepared = $connection -> prepare("SELECT pseudo FROM ".DB_PREFIX."UTILISATEUR WHERE pseudo = :pseudo");
+$queryPrepared -> execute(["pseudo" => $pseudo]);
+$results = $queryPrepared -> fetch();
+if (!empty($results)){
+	$listOfErrors[] = "Le pseudo est déjà utilisé";
+}
 // --> Date de naissance entre 6ans et 99ans
 
 //$birthday = "1986-11-29";
@@ -107,12 +115,12 @@ if (!checkdate($birthdayExploded[1],$birthdayExploded[2],$birthdayExploded[0])){
 
 // --> Complexité du pwd
 if(strlen($pwd) < 8
- || !preg_match("#[a-z]#", $pwd)
- || !preg_match("#[A-Z]#", $pwd)
- || !preg_match("#[0-9]#", $pwd))
- //|| !preg_match("#[!@#$%^&*()\-_=+{};:,<.>§~]/#", $pwd))
+	|| !preg_match("#[a-z]#", $pwd)
+	|| !preg_match("#[A-Z]#", $pwd)
+	|| !preg_match("#[0-9]#", $pwd))
+	//|| !preg_match("#[!@#$%^&*()\-_=+{};:,<.>§~]/#", $pwd))
  {
-	$listOfErrors[] = "Le mot de passe doit faire au min 8 caractères avec des minuscules, des majuscules, des chiffre" ;
+$listOfErrors[] = "Le mot de passe doit faire au min 8 caractères avec au moins une minuscule, une majuscule, un chiffre" ;
 }
 
 
@@ -124,13 +132,27 @@ if( $pwd != $pwdConfirm){
 $listCountries = ["fr", "it", "pt", "pl", "es", "be", "xx"];
 if( !in_array($country, $listCountries) ){
 	$listOfErrors[] = "Le pays n'existe pas";
-}
+}	
 
 // if (preg_match("#0[1-9](([0-9]{2})){4}#", $telepone)){
-// 	$listOfErrors[] = "Le numéro de téléphone n'est pas valide, doit être de la forme  0123456789";
-// }
-
+	// 	$listOfErrors[] = "Le numéro de téléphone n'est pas valide, doit être de la forme  0123456789";	
+	// }
+	
 //Si OK
+	
+	
+	
+	
+//ajout avatar
+//fonctionne PAS
+$couleurPeau = $_POST['couleurPeau'];
+$couleurCheveux = $_POST['couleurCheveux'];
+$coiffure = $_POST['coiffure'];
+$yeux = $_POST['yeux'];
+$accessoire = $_POST['accessoire'];
+$pilosite = $_POST['pilosite'];
+$bouche = $_POST['bouche'];
+
 if(empty($listOfErrors)){
 	//Insertion en BDD
 	// DSN permet une optimisation, USER, PWD
@@ -140,9 +162,9 @@ if(empty($listOfErrors)){
 
 	$queryPrepared = $connection -> prepare("INSERT INTO ".DB_PREFIX."UTILISATEUR
 															(prenom_utilisateur, nom_utilisateur, pseudo, email, telephone, pwd, date_de_naissance, adresse, code_postal, ville, country)
-											VALUES
+											VALUES				
 															( :firstname,       :lastname,       :pseudo,  :email, :telephone, :pwd, :birthday, :address, :codepostal, :ville, :country)") ;
-	$queryPrepared -> execute([
+	$queryPrepared -> execute([													
 								
 								"firstname" => $firstname,
 								"lastname" => $lastname,
@@ -157,7 +179,25 @@ if(empty($listOfErrors)){
 								"country" => $country
 
 			
-	]);
+	]);	
+	//fonctionne PAS						
+	$queryPrepared = $connection -> prepare("INSERT INTO ".DB_PREFIX."AVATAR
+															(couleurPeau,couleurCheveux,coiffure,yeux,accessoire,pilosite,bouche )
+											VALUES				
+															(:couleurPeau, :couleurCheveux, :coiffure, :yeux, :accessoire, :pilosite, :bouche )") ;
+	$queryPrepared -> execute([									
+								
+								"couleurPeau" => $couleurPeau,
+								"couleurCheveux" => $couleurCheveux,
+								"coiffure" => $coiffure,
+								"yeux" => $yeux,
+								"accessoire" => $accessoire,
+								"pilosite" => $pilosite,
+								"bouche" => $bouche,
+
+
+			
+	]);							
 	
 	
 	//Redirection sur la page de connexion
@@ -172,7 +212,10 @@ if(empty($listOfErrors)){
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
 	header('location: ../erreur.php/');
-}
+}	
+
+
 ?> 
 
 
+allo
