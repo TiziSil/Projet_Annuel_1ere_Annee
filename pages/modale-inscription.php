@@ -1,4 +1,3 @@
-
 <div id="modale-inscription" class="modale-inscription">
     <form action="/ProjetAnnuel/core/userAdd.php" method="POST">
         <div class="modale-content-inscription">
@@ -7,23 +6,18 @@
                 <span class="close" id="close-modale-inscription" onclick="fermerModaleinscription()">&times;</span>
             </div>
             <div class="radio-input fil-ariane">
-                <label>
-                    <input onclick="afficherCoordonnees()" checked="checked" type="radio" id="inscription-value-1" name="value-radio" value="value-1">
-                <span>Coordonnées</span>
-                </label>
-                <label>
-                    <input onclick="afficherAdressePostal()" type="radio" id="inscription-value-2" name="value-radio" value="value-2">
-                    <span>Adresse postale</span>
-                </label>
-                <label>
-                    <input onclick="afficherAvatar()" type="radio" id="inscription-value-3" name="value-radio" value="value-3">
-                    <span>Avatar</span>
-                </label>
-                <label>
-                    <input onclick="afficherVerifications()" type="radio" id="inscription-value-4" name="value-radio" value="value-4">
-                    <span>Vérifications</span>
-                </label>
-                <!-- <span class="selection"></span> -->
+                <li>
+                    <a onclick="afficherCoordonnees()" id="inscription-value-1" name="value-radio" value="value-1">Coordonnées</a>
+                </li>
+                <li>
+                    <a onclick="afficherAdressePostal()" id="inscription-value-2" name="value-radio" value="value-2">Adresse postale</a>
+                </li>
+                <li>
+                    <a onclick="afficherAvatar()" id="inscription-value-3" name="value-radio" value="value-3">Avatar</a>
+                </li>
+                <li>
+                    <a onclick="afficherVerifications()" id="inscription-value-4" name="value-radio" value="value-4">Vérifications</a>
+                </li>
             </div>
             <div class="content-inscription-forms">
                 <?php
