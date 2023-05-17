@@ -134,9 +134,9 @@ if( !in_array($country, $listCountries) ){
 	$listOfErrors[] = "Le pays n'existe pas";
 }	
 
-// if (preg_match("#0[1-9](([0-9]{2})){4}#", $telepone)){
-	// 	$listOfErrors[] = "Le numéro de téléphone n'est pas valide, doit être de la forme  0123456789";	
-	// }
+if (!preg_match("#0[1-9](([0-9]{2})){4}#", $telepone)){
+		$listOfErrors[] = "Le numéro de téléphone n'est pas valide, doit être de la forme  0123456789";	
+	}
 	
 //Si OK
 	
