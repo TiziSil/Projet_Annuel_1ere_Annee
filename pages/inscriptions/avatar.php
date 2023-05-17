@@ -1,11 +1,11 @@
 <div id="inscriptions-avatar">
-    <form class="form-inscription" >
+    <form class="form-inscription">
         <div id="column_gap">
             <div class="rond-avatar"><a href="#" onclick="changerCouleurCheveux()">Couleur cheveux</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerCoiffure()">Coiffure</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerBouche()">Bouche</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerYeux()">Yeux</a></div>
-            <div class="rond-avatar"><a href="#" onclick="changerPilosite()">Pilositer</a></div>
+            <div class="rond-avatar"><a href="#" onclick="changerPilosite()">Pilosité</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerCouleurPeau()">Peau</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerAccessoire()">Lunettes</a></div>
         </div>
