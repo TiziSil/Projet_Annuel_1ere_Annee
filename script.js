@@ -223,3 +223,4 @@ changerAccessoire();
 changerPilosite();
 changerBouche();
 changerCouleurCheveux();
+
