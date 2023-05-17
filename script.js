@@ -32,7 +32,6 @@ const coordonnees = document.querySelector("#inscriptions-coordonnees");
 const verifications = document.querySelector("#inscriptions-verifications");
 
 function afficherCoordonnees() {
-  alert("function coordonnées");
   document.querySelector("#inscription-value-1");
   avatar.style.display = "none";
   coordonnees.style.display = "flex";

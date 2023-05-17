@@ -9,7 +9,6 @@
             <div class="radio-input fil-ariane">
                 <label>
                     <input onclick="afficherCoordonnees()" checked="checked" type="radio" id="inscription-value-1" name="value-radio" value="value-1">
-                    console.log("🚀 ~ file: modale-inscription.php:10 ~ onclick:", onclick)
                 <span>Coordonnées</span>
                 </label>
                 <label>
