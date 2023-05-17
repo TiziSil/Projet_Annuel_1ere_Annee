@@ -877,9 +877,6 @@ footer * a {
 
 /* FIL D'ARIANE */
 
-.radio-input input {
-  display: none;
-}
 
 .radio-input {
   margin-bottom: 35px;
@@ -895,11 +892,11 @@ footer * a {
   border: 1px solid #897c7c;
 }
 
-.fil-ariane label:not(:last-child) {
+.fil-ariane li:not(:last-child) {
   border-right: 1px solid rgba(0, 0, 0, 0.2);
   border-width: 50%;
 }
-.radio-input label {
+.radio-input li {
   width: 100%;
   padding: 10px;
   cursor: pointer;

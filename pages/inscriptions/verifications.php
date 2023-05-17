@@ -1,4 +1,3 @@
-
 <div id="inscriptions-verifications" class="form-inscription">
     <form>
         <div>
@@ -22,7 +21,7 @@
             <label>&ensp; J'accepte les CGUs</label>
         </div>
         <div class="cgu-et-bouton d-flex flex-column">
-        <button type ="submit" id="button-enregistrer" class="button3" disabled="puzzleEstCorrect !== ">Enregistrer</button>
+            <button type="submit" id="button-enregistrer" class="button3" disabled="puzzleEstCorrect !== ">Enregistrer</button>
         </div>
-        </form>
+    </form>
 </div>
