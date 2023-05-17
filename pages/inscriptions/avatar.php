@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <form id ="avatar-form">
         <input type="hidden" name="couleurPeau" id="couleurPeauInput" value="">
         <input type="hidden" name="couleurCheveux" id="couleurCheveuxInput" value="">
@@ -8,7 +8,7 @@
         <input type="hidden" name="pilosite" id="pilositeInput" value="">
         <input type="hidden" name="bouche" id="boucheInput" value="">  
     </form>
-</div>
+</div> -->
 
 <div id="inscriptions-avatar" class="form-inscription">
     

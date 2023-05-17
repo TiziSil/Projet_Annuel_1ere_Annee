@@ -1,7 +1,7 @@
 
 <div id="inscriptions-coordonnees" class="form-inscription">
     
-   
+   <form>
         <div class="champ">
             <input autocomplete="off" type="text" name="firstname" required="required"
             value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["firstname"]:""; ?>">
@@ -41,5 +41,5 @@
             <label>Confirmation mot de passe</label>
         </div>
         <a onclick="afficherAdressePostal()" class="button3">Suivant</a>
-
+</form>
 </div>

@@ -1,6 +1,7 @@
 
-<div id="inscriptions-adresse" class="form-inscription">
+<div id="inscriptions-adresse" class="form-inscription d-flex flex-column justify-content-between">
     
+    <form>
         <div class="champ">
             <input type="text" class="input-champ" name="address" required="required"
              value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["address"]:""; ?>">
@@ -32,6 +33,6 @@
             <label>Autre pays</label>
         </div>
         <a class="button3" onclick="afficherAvatar()">Suivant</a>
-      
+</form>
     
 </div>

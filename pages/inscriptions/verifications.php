@@ -1,6 +1,6 @@
 
 <div id="inscriptions-verifications" class="form-inscription">
-    
+    <form>
         <div>
             <div id="puzzle">
                 <img class="puzzle-piece" id="piece-1" src="assets/images/PuzzleGourmandise/00.jpg" />
@@ -24,5 +24,5 @@
         <div class="cgu-et-bouton d-flex flex-column">
         <button type ="submit" id="button-enregistrer" class="button3" disabled="puzzleEstCorrect !== ">Enregistrer</button>
         </div>
-    
+        </form>
 </div>
