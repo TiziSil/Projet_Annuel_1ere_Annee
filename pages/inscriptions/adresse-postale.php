@@ -8,7 +8,7 @@
         </div>
         <div class="champ">
             <input type="number" class="input-champ" name="codepostal" required="required"
-            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["cpdepostal"]:""; ?>">
+            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["codepostal"]:""; ?>">
             <label>Code postal</label>
         </div>
         <div class="champ">

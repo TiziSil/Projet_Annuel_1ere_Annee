@@ -55,6 +55,11 @@ switch ($page) {
     case $fichier . '/attente-validation':
         require './pages/attente-validation.php';
         break;
+    
+    case $fichier . '/paiement':
+        require './pages/paiement/paiement.php';
+        break;
+
 
     default:
         http_response_code(404);
