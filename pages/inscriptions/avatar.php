@@ -1,11 +1,24 @@
-<div id="inscriptions-avatar">
-    <form class="form-inscription" action="/Projet_Annuel_1ere_Annee/core/userAdd.php" method="POST">
+<div>
+    <form id ="avatar-form">
+        <input type="hidden" name="couleurPeau" id="couleurPeauInput" value="">
+        <input type="hidden" name="couleurCheveux" id="couleurCheveuxInput" value="">
+        <input type="hidden" name="coiffure" id="coiffureInput" value="">
+        <input type="hidden" name="yeux" id="yeuxInput" value="">
+        <input type="hidden" name="accessoire" id="accessoireInput" value="">
+        <input type="hidden" name="pilosite" id="pilositeInput" value="">
+        <input type="hidden" name="bouche" id="boucheInput" value="">  
+    </form>
+</div>
+
+<div id="inscriptions-avatar" class="form-inscription">
+    
+    
         <div id="column_gap">
             <div class="rond-avatar"><a href="#" onclick="changerCouleurCheveux()">Couleur cheveux</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerCoiffure()">Coiffure</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerBouche()">Bouche</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerYeux()">Yeux</a></div>
-            <div class="rond-avatar"><a href="#" onclick="changerPilosite()">Pilositer</a></div>
+            <div class="rond-avatar"><a href="#" onclick="changerPilosite()">Pilositée</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerCouleurPeau()">Peau</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerAccessoire()">Lunettes</a></div>
         </div>
@@ -27,7 +40,7 @@
         </div>
 
         <div class="cgu-et-bouton d-flex flex-column">
-            <a onclick="afficherVerifications()" class="button3">Suivant</a>
+            <a onclick="afficherVerifications()"  class="button3">Suivant</a>
         </div>
-    </form>
+    
 </div>

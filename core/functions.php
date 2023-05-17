@@ -12,6 +12,10 @@ function cleanEmail($email){
 	return strtolower(trim($email));
 }
 
+function cleanPhone($telephone){
+	return str_replace('#[ -.]#','',$telephone);
+}
+
 
 function connectDB(){
 
