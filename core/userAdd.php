@@ -1,8 +1,7 @@
-<?php /*
+<?php 
 session_start();
 require "../conf.inc.php";
 require "functions.php";
-//require "../pages/modale-inscription.php";
 
 //recuperer donnée
 //genre
@@ -11,45 +10,51 @@ require "functions.php";
 //date de naissance
 //type de compte
 //mot de passe
+// Vérif données post
+
+
 
 //vérification des données
-if (count($_POST)!=8
-	|| empty ($_POST["firstname"])
+if (
+	 empty ($_POST["firstname"])
 	|| empty ($_POST["lastname"])
+	|| empty ($_POST['pseudo'])
 	|| empty ($_POST["email"])
+	|| empty ($_POST["birthday"])
 	|| empty ($_POST["pwd"])
 	|| empty ($_POST["pwdConfirm"])
+	|| empty ($_POST["address"])
+	|| empty ($_POST["codepostal"])
+	|| empty ($_POST["ville"])
 	|| empty($_POST['country'])
-	|| empty ($_POST["birthday"])
-	//|| !isset ($_POST["newsletter"])
 	|| empty ($_POST["cgu"])
-	//||!isset($_POST["gender"])
+	/*valider avatar et captcha plus tard"*/
+	//|| empty ($_POST["avatar"])
+	//|| empty ($_POST["captcha"])
 
 ){
     die ("Tentative de HACK");
 }
 
-//Nettoyage des données
+
 
 //$gender = $_POST['gender'];
 $firstname = cleanFirstname($_POST['firstname']);
 $lastname = cleanLastname($_POST['lastname']);
+$pseudo = cleanFirstname($_POST['pseudo']);
+$telepone = cleanPhone($_POST['telephone']);
 $email = cleanEmail($_POST['email']);
+$birthday = $_POST['birthday'];
 $pwd = $_POST['pwd'];
 $pwdConfirm = $_POST['pwdConfirm'];
-$birthday = $_POST['birthday'];
+$address = $_POST['address'];
+$postalcode = $_POST['codepostal'];
+$ville = $_POST['ville'];
 $country = $_POST['country'];
-//$account_type = $_POST["account_type"];
-//$newsletter = $_POST['newsletter'];
 $cgu = $_POST['cgu'];
 
 $listOfErrors = [];
 
-// --> Est-ce que le genre est cohérent
-// $listGenders = [0,1,2];// on vérifie que c'est bien les valeurs pour éviter la faille xss
-// if( !in_array($gender, $listGenders) ){
-// 	$listOfErrors[] = "Le genre n'existe pas";
-// }
 
 
 
@@ -67,37 +72,28 @@ if(strlen($firstname) < 2){
 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 	$listOfErrors[] = "L'email est incorrect";
 }
+
+//pseudo 
+
+
 // --> Unicité de l'email (plus tard)
 $connection = connectDB();
-// $queryPrepared = $connection ->prepare("SELECT * FROM ".DB_PREFIX."utilisateur WHERE email = :email");
-// //$queryPrepared = $connection->prepare("SELECT * FROM esgi_user WHERE email=:email");
-// $queryPrepared-> execute([ "email" => $email ]);
-// $results = $queryPrepared -> fetch();
-// if (!empty($results)){
-// 	$listOfErrors[] = "L'email est déjà utilisé";
-// }
+$queryPrepared = $connection ->prepare("SELECT * FROM ".DB_PREFIX."UTILISATEUR WHERE email = :email");
 
-
-// --> Complexité du pwd
-if(strlen($pwd) < 8
- || !preg_match("#[a-z]#", $pwd)
- || !preg_match("#[A-Z]#", $pwd)
- || !preg_match("#[0-9]#", $pwd)){
-	$listOfErrors[] = "Le mot de passe doit faire au min 8 caractères avec des minuscules, des majuscules et des chiffres";
+$queryPrepared-> execute([ "email" => $email ]);
+$results = $queryPrepared -> fetch();
+if (!empty($results)){
+	$listOfErrors[] = "L'email est déjà utilisé";
 }
 
 
-// --> Meme mot de passe de confirmation
-if( $pwd != $pwdConfirm){
-	$listOfErrors[] = "Les mots de passe ne correspondent pas";
+//Pseudo qui n'existe pas encore
+$queryPrepared = $connection -> prepare("SELECT pseudo FROM ".DB_PREFIX."UTILISATEUR WHERE pseudo = :pseudo");
+$queryPrepared -> execute(["pseudo" => $pseudo]);
+$results = $queryPrepared -> fetch();
+if (!empty($results)){
+	$listOfErrors[] = "Le pseudo est déjà utilisé";
 }
-// --> Est-ce que le pays est cohérent
-$listCountries = ["fr", "pl", "al", "be"];
-if( !in_array($country, $listCountries) ){
-	$listOfErrors[] = "Le pays n'existe pas";
-}
-
-
 // --> Date de naissance entre 6ans et 99ans
 
 //$birthday = "1986-11-29";
@@ -117,7 +113,46 @@ if (!checkdate($birthdayExploded[1],$birthdayExploded[2],$birthdayExploded[0])){
 	}
 }
 
+// --> Complexité du pwd
+if(strlen($pwd) < 8
+	|| !preg_match("#[a-z]#", $pwd)
+	|| !preg_match("#[A-Z]#", $pwd)
+	|| !preg_match("#[0-9]#", $pwd))
+	//|| !preg_match("#[!@#$%^&*()\-_=+{};:,<.>§~]/#", $pwd))
+ {
+$listOfErrors[] = "Le mot de passe doit faire au min 8 caractères avec au moins une minuscule, une majuscule, un chiffre" ;
+}
+
+
+// --> Meme mot de passe de confirmation
+if( $pwd != $pwdConfirm){
+	$listOfErrors[] = "Les mots de passe ne correspondent pas";
+}
+// --> Est-ce que le pays est cohérent
+$listCountries = ["fr", "it", "pt", "pl", "es", "be", "xx"];
+if( !in_array($country, $listCountries) ){
+	$listOfErrors[] = "Le pays n'existe pas";
+}	
+
+// if (preg_match("#0[1-9](([0-9]{2})){4}#", $telepone)){
+	// 	$listOfErrors[] = "Le numéro de téléphone n'est pas valide, doit être de la forme  0123456789";	
+	// }
+	
 //Si OK
+	
+	
+	
+	
+//ajout avatar
+//fonctionne PAS
+$couleurPeau = $_POST['couleurPeau'];
+$couleurCheveux = $_POST['couleurCheveux'];
+$coiffure = $_POST['coiffure'];
+$yeux = $_POST['yeux'];
+$accessoire = $_POST['accessoire'];
+$pilosite = $_POST['pilosite'];
+$bouche = $_POST['bouche'];
+
 if(empty($listOfErrors)){
 	//Insertion en BDD
 	// DSN permet une optimisation, USER, PWD
@@ -126,24 +161,47 @@ if(empty($listOfErrors)){
 
 
 	$queryPrepared = $connection -> prepare("INSERT INTO ".DB_PREFIX."UTILISATEUR
-															(prenom_utilisateur, nom_utilisateur, email, pwd, date_de_naissance, country)
-											VALUES
-															( :firstname,       :lastname,      :email, :pwd, :birthday, :country)") ;
-	$queryPrepared -> execute([
-								//"gender" => $gender,
-								"prenom_utlisateur" => $firstname,
-								"nom_utilisateur" => $lastname,
+															(prenom_utilisateur, nom_utilisateur, pseudo, email, telephone, pwd, date_de_naissance, adresse, code_postal, ville, country)
+											VALUES				
+															( :firstname,       :lastname,       :pseudo,  :email, :telephone, :pwd, :birthday, :address, :codepostal, :ville, :country)") ;
+	$queryPrepared -> execute([													
+								
+								"firstname" => $firstname,
+								"lastname" => $lastname,
+								"pseudo" => $pseudo,
 								"email" => $email,
+								"telephone" => $telepone,
 								"pwd" => password_hash($pwd, PASSWORD_DEFAULT),
-								"date_de_naissance" => $birthday,
+								"birthday" => $birthday,
+								"address" => $address,
+								"codepostal" => $postalcode,
+								"ville" => $ville,
 								"country" => $country
 
 			
-	]);
+	]);	
+	//fonctionne PAS						
+	$queryPrepared = $connection -> prepare("INSERT INTO ".DB_PREFIX."AVATAR
+															(couleurPeau,couleurCheveux,coiffure,yeux,accessoire,pilosite,bouche )
+											VALUES				
+															(:couleurPeau, :couleurCheveux, :coiffure, :yeux, :accessoire, :pilosite, :bouche )") ;
+	$queryPrepared -> execute([									
+								
+								"couleurPeau" => $couleurPeau,
+								"couleurCheveux" => $couleurCheveux,
+								"coiffure" => $coiffure,
+								"yeux" => $yeux,
+								"accessoire" => $accessoire,
+								"pilosite" => $pilosite,
+								"bouche" => $bouche,
+
+
+			
+	]);							
 	
 	
 	//Redirection sur la page de connexion
-	header('location: ../home-page/tuile-1-accueil.php');
+	header('location: /Projetannuel/# ');
 }else{
 
 	//Si NOK
@@ -153,8 +211,11 @@ if(empty($listOfErrors)){
 	unset($_POST["pwdConfirm"]);
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
-	header('location: ../erreur.php');
-}*/
+	header('location: ../erreur.php/');
+}	
+
+
 ?> 
 
 
+allo
