@@ -201,7 +201,7 @@ if(empty($listOfErrors)){
 	
 	
 	//Redirection sur la page de connexion
-	header('location: /Projetannuel/# ');
+	header('location: ../');
 }else{
 
 	//Si NOK
@@ -217,5 +217,3 @@ if(empty($listOfErrors)){
 
 ?> 
 
-
-allo
