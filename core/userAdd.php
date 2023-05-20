@@ -201,7 +201,11 @@ if(empty($listOfErrors)){
 	
 	
 	//Redirection sur la page de connexion
+<<<<<<< HEAD
 	header('location: ../');
+=======
+	header('location: ../ ');
+>>>>>>> d394435e60549148e9371bda54171452b77e5d9e
 }else{
 
 	//Si NOK
