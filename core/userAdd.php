@@ -129,7 +129,7 @@ if( $pwd != $pwdConfirm){
 	$listOfErrors[] = "Les mots de passe ne correspondent pas";
 }
 // --> Est-ce que le pays est cohérent
-$listCountries = ["fr", "it", "pt", "pl", "es", "be", "xx"];
+$listCountries = ["fr", "it", "pt", "pl", "es", "be","ch", "xx"];
 if( !in_array($country, $listCountries) ){
 	$listOfErrors[] = "Le pays n'existe pas";
 }	

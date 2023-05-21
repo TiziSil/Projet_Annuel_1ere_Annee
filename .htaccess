@@ -1,9 +1,9 @@
 RewriteEngine On
 RewriteBase /<ProjetAnnuel>/
-
+RewriteRule ^index\.php＄ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule !^index\.php$ /<ProjetAnnuel>/index.php [L]
+RewriteRule . /ProjetAnnuel/index.php [L]
 
 
 

@@ -60,6 +60,9 @@ switch ($page) {
         require './pages/paiement/paiement.php';
         break;
 
+    case $fichier . '/user':
+        require './user.php';
+        break;
 
     default:
         http_response_code(404);

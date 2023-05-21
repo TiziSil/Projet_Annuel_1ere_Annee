@@ -23,11 +23,7 @@
                     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
                         $_SESSION['email'] = $email;
                         $_SESSION['login'] = true;
-<<<<<<< HEAD
-                        header("Location: ../");
-=======
                         header("Location: /");
->>>>>>> d394435e60549148e9371bda54171452b77e5d9e
                     }else{
                         echo "Identifiants incorrects";
                     }
@@ -39,11 +35,7 @@
             <form class="form-connexion" method ="POST">
                 <div class="champ">
                     <input autocomplete="off" placeholder="Veuillez entrer votre adresse email" class="input-champ" type= "email" name="email"
-<<<<<<< HEAD
                     value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
-=======
-                    value ="<?= (!empty($_SESSION['data']))?$_SESSION["data"]["email"]:"";?>">
->>>>>>> d394435e60549148e9371bda54171452b77e5d9e
                 </div>
                 <div class="champ">
                     <input placeholder="Et votre mot de passe" class="input-champ" type = "password" name="pwd">

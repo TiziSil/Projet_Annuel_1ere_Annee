@@ -24,6 +24,7 @@
                 <option value="pl" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="pl")?"selected":""; ?>>Pologne</option>
                 <option value="es" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="es")?"selected":""; ?>>Espagne</option>
                 <option value="be"  <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="be")?"selected":""; ?>>Belgique</option>
+                <option value="ch"  <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="ch")?"selected":""; ?>>Suisse</option>
                 <option value="xx" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["country"]=="xx")?"selected":""; ?>>Autre</option>
             </select>
         </div>
