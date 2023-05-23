@@ -2,6 +2,14 @@
 
     <form>
         <div class="champ">
+            <input autocomplete="off" type="text" name="pseudo" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["pseudo"] : ""; ?>">
+            <label>Pseudo</label>
+        </div>
+        <div class="champ">
+            <input autocomplete="off" type="tel" name="telephone" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["lastname"] : ""; ?>">
+            <label>Téléphone</label>
+        </div>
+        <div class="champ">
             <input type="text" class="input-champ" name="address" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["address"] : ""; ?>">
             <label>Adresse</label>
         </div>
