@@ -12,8 +12,8 @@ if (!isConnected()) {
     echo "Vous êtes connecté";
 }
 ?>
-
 <button><a class="nav-link" href="logout.php">Se déconnecter</a></button>
+
 <body>
     <?php include "header.php"; ?>
     <?php include "rooting.php"; ?>

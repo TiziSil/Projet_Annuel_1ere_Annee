@@ -61,7 +61,7 @@ switch ($page) {
         break;
 
     case $fichier . '/user':
-        require './user.php';
+        require './pages/user.php';
         break;
 
     default:
