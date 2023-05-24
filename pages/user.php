@@ -1,7 +1,7 @@
 <?php
-session_start();
-require "../conf.inc.php";
-require "../core/functions.php";
+
+// require "../conf.inc.php";
+// require "../core/functions.php";
 
 ?>
 <div>
@@ -60,6 +60,7 @@ $results = $results -> fetchAll();
             echo  "<td>".$user["adresse"]."</td>";
             echo  "<td>".$user["code_postal"]."</td>";
             echo  "<td>".$user["ville"]."</td>";
+            echo "<td><a href='/ProjetAnnuel/core/userDel.php?id=".$user["id_utilisateur"]."' class='btn btn-danger'>Suppression</a></td>";
             echo "</tr>";
 
         }
