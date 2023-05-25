@@ -1,22 +1,22 @@
 <div id="inscriptions-adresse" class="form-inscription flex-column justify-content-between">
     <div class="champ">
+        <input autocomplete="off" type="text" name="pseudo" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["pseudo"] : ""; ?>">
+        <label>Pseudo</label>
+    </div>
+    <div class="champ">
         <input autocomplete="off" type="tel" name="telephone" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["lastname"] : ""; ?>">
         <label>Téléphone</label>
     </div>
     <div class="champ">
-        <input autocomplete="off" type="email" name="email" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["email"] : ""; ?>">
-        <label>Email</label>
+        <input type="text" class="input-champ" name="address" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["address"] : ""; ?>">
+        <label>Adresse</label>
     </div>
     <div class="champ">
-        <input autocomplete="off" type="text" class="input-champ" name="address" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["address"] : ""; ?>">
-        <label>Adresse postale</label>
-    </div>
-    <div class="champ">
-        <input autocomplete="off" type="number" class="input-champ" name="codepostal" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["codepostal"] : ""; ?>">
+        <input type="number" class="input-champ" name="codepostal" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["codepostal"] : ""; ?>">
         <label>Code postal</label>
     </div>
     <div class="champ">
-        <input autocomplete="off" type="text" class="input-champ" name="ville" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["ville"] : ""; ?>">
+        <input type="text" class="input-champ" name="ville" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["ville"] : ""; ?>">
         <label>Ville</label>
     </div>
     <div class="champ">

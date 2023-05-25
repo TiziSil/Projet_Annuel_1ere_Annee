@@ -8,11 +8,11 @@
         <label>Nom</label>
     </div>
     <div class="champ">
-        <input autocomplete="off" type="text" name="pseudo" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["pseudo"] : ""; ?>">
-        <label>Pseudo</label>
+        <input autocomplete="off" type="email" name="email" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["email"] : ""; ?>">
+        <label>Email</label>
     </div>
     <div class="champ">
-        <input autocomplete="off" type="date" value="1979-01-01" name="birthday" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["birthday"] : ""; ?>">
+        <input autocomplete="off" type="date" name="birthday" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["birthday"] : "1971-01-01"; ?>">
         <label>Date de naissance</label>
     </div>
     <div class="champ">
