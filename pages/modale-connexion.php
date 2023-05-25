@@ -29,7 +29,7 @@
                 }
 
             ?>
-        </div>
+        </div>git 
         <div>
             <form class="form-connexion" method ="POST">
                 <div class="champ">
@@ -40,9 +40,9 @@
                 </div>
                 <div class="btn">
                     <button class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se connecter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                    <button class="button2">S'enregistrer</button>
+                    <a class="button2" onclick="fermerSeConnecteEtOuvrirInscription()"> S'inscrire </a>
                 </div>
-                <button class="button3">Mot de passe oublié</button>
+                <a class="button3">Mot de passe oublié</a>
             </form>
         </div>
     </div>

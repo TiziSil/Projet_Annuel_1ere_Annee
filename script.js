@@ -22,7 +22,12 @@ function fermerModaleConnexion() {
 function fermerModaleinscription() {
   const modale = document.querySelector("#modale-inscription");
   modale.style.display = "none";
-  console.log(modale);
+  afficherCoordonnees();
+}
+
+function fermerSeConnecteEtOuvrirInscription() {
+  fermerModaleConnexion()
+  ouvrirModaleInscription()
 }
 
 /* FIL ARIANE */
@@ -30,33 +35,53 @@ const adresse = document.querySelector("#inscriptions-adresse");
 const avatar = document.querySelector("#inscriptions-avatar");
 const coordonnees = document.querySelector("#inscriptions-coordonnees");
 const verifications = document.querySelector("#inscriptions-verifications");
+const boutonFilAriane1 = document.querySelector("#inscription-value-1");
+const boutonFilAriane2 = document.querySelector("#inscription-value-2");
+const boutonFilAriane3 = document.querySelector("#inscription-value-3");
+const boutonFilAriane4 = document.querySelector("#inscription-value-4");
 
 function afficherCoordonnees() {
-  document.querySelector("#inscription-value-1");
-  avatar.style.display = "none";
+  boutonFilAriane1.style.color = "#FFFFFF";
+  boutonFilAriane2.style.color = "inherit";
+  boutonFilAriane3.style.color = "inherit";
+  boutonFilAriane4.style.color = "inherit";
+
   coordonnees.style.display = "flex";
+  avatar.style.display = "none";
   adresse.style.display = "none";
   verifications.style.display = "none";
 }
 
 function afficherAdressePostal() {
-  document.querySelector("#inscription-value-2");
+  boutonFilAriane1.style.color = "inherit";
+  boutonFilAriane2.style.color = "#FFFFFF";
+  boutonFilAriane3.style.color = "inherit";
+  boutonFilAriane4.style.color = "inherit";
+
   avatar.style.display = "none";
-  coordonnees.style.display = "none";
   adresse.style.display = "flex";
+  coordonnees.style.display = "none";
   verifications.style.display = "none";
 }
 
 function afficherAvatar() {
-  document.querySelector("#inscription-value-3");
-  avatar.style.display = "flex";
+  boutonFilAriane1.style.color = "inherit";
+  boutonFilAriane2.style.color = "inherit";
+  boutonFilAriane3.style.color = "#FFFFFF";
+  boutonFilAriane4.style.color = "inherit";
+
   coordonnees.style.display = "none";
   adresse.style.display = "none";
+  avatar.style.display = "flex";
   verifications.style.display = "none";
 }
 
 function afficherVerifications() {
-  document.querySelector("#inscription-value-4");
+  boutonFilAriane1.style.color = "inherit";
+  boutonFilAriane2.style.color = "inherit";
+  boutonFilAriane3.style.color = "inherit";
+  boutonFilAriane4.style.color = "#FFFFFF";
+
   coordonnees.style.display = "none";
   adresse.style.display = "none";
   avatar.style.display = "none";
@@ -145,11 +170,11 @@ let couleurPeau = [
   "#614335",
 ];
 let couleurCheveux = [
+  "#fd9841",
+  "#d08b5b",
   "#ffdbb4",
   "#edb98a",
-  "#fd9841",
   "#fcee93",
-  "#d08b5b",
   "#ae5d29",
   "#614335",
 ];
