@@ -28,19 +28,6 @@ switch ($page) {
         include "./home-page/tuile-6-pub.php";
         break;
 
-    case $fichier . '/mon-compte':
-        require './pages/mon-compte.php';
-        break;
-
-    case $fichier . '/mon-compte-enregistre':
-        require './pages/mon-compte-enregistre.php';
-        break;
-    
-
-    case $fichier . '/mes-paiements':
-        require './pages/mes-paiements.php';
-        break;
-
     case $fichier . '/boutique':
         require './pages/boutique.php';
         break;
@@ -65,6 +52,9 @@ switch ($page) {
         require './pages/paiement/paiement.php';
         break;
 
+    case $fichier . '/contact':
+            require './pages/contact.php';
+            break;
 
     default:
         http_response_code(404);
