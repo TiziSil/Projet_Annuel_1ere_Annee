@@ -29,7 +29,7 @@
             }
 
             ?>
-        </div>
+        </div> 
         <div>
             <form class="form-connexion" method="POST">
                 <div class="champ">
@@ -40,9 +40,10 @@
                 </div>
                 <div class="btn">
                     <button class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se connecter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                    <button class="button2">S'enregistrer</button>
+                    <a class="button2" onclick="fermerSeConnecteEtOuvrirInscription()"> S'inscrire </a>
                 </div>
-                <button class="button3">Mot de passe oublié</button>
+                <div class="alert alert-danger" role="alert">Erreur lors de la connexion</div>
+                <a class="button3">Mot de passe oublié</a>
             </form>
         </div>
     </div>
