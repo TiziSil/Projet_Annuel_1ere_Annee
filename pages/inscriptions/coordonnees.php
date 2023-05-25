@@ -28,6 +28,7 @@
         <div class="champ">
             <input autocomplete="off" type="password" name="pwd" required="required">
             <label>Mot de passe</label>
+           
         </div>
         <div class="champ">
             <input autocomplete="off" type="password" name="pwdConfirm" required="required">
