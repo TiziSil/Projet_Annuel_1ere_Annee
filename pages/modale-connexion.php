@@ -42,6 +42,7 @@
                     <button class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se connecter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     <a class="button2" onclick="fermerSeConnecteEtOuvrirInscription()"> S'inscrire </a>
                 </div>
+                <div class="alert alert-danger" role="alert">Erreur lors de la connexion</div>
                 <a class="button3">Mot de passe oublié</a>
             </form>
         </div>
