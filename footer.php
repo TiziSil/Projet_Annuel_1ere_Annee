@@ -21,7 +21,7 @@
                 </div>
                 <div class="col colonne-footer">
                     <h5>Aide</h5>
-                    <a href="#">Nous contacter</a>
+                    <a href="./contact">Nous contacter</a>
                     <a href="#">Centre d'aide</a>
                 </div>
                 <div class="col colonne-footer">

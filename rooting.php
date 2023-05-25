@@ -43,18 +43,18 @@ switch ($page) {
     case $fichier . '/backoffice':
         require './pages/backoffice.php';
         break;
-    
+
     case $fichier . '/attente-validation':
         require './pages/attente-validation.php';
         break;
-    
+
     case $fichier . '/paiement':
         require './pages/paiement/paiement.php';
         break;
 
     case $fichier . '/contact':
-            require './pages/contact.php';
-            break;
+        require './pages/contact.php';
+        break;
 
     default:
         http_response_code(404);

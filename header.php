@@ -15,7 +15,7 @@
       <a href="index.php#recettes">Recettes</a>
       <a href="index.php#boutique">Notre boutique</a>
       <a href="index.php#pub">Promotions</a>
-      <a href="index.php#footer">Nous contacter</a>
+      <a href="./contact">Nous contacter</a>
     </div>
   </div>
   <div class="py-2 text-bg">
@@ -31,7 +31,7 @@
 
 
         <div class="col logo">
-          <img src="assets\images\Logo_light.png" alt="Makisine">
+          <a href="index.php"><img src="assets\images\Logo_light.png" alt="Makisine"></a>
         </div>
 
         <div class="col">
