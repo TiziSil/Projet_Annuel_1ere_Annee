@@ -29,7 +29,7 @@
                 }
 
             ?>
-        </div>git 
+        </div> 
         <div>
             <form class="form-connexion" method ="POST">
                 <div class="champ">
