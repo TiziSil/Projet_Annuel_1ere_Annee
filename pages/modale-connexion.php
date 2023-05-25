@@ -22,11 +22,7 @@
                     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
                         $_SESSION['email'] = $email;
                         $_SESSION['login'] = true;
-<<<<<<< HEAD
                         header("Location: ../");
-=======
-                        
->>>>>>> d394435e60549148e9371bda54171452b77e5d9e
                     }else{
                         echo "Identifiants incorrects";
                     }
