@@ -37,3 +37,19 @@
         <a onclick="afficherAdressePostal()" class="button3">Suivant</a>
     </form>
 </div>
+
+<!-- <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $pseudo = $_POST['pseudo'];
+            $password = $_POST['pwd'];
+            $isPseudoUsed = false;
+
+            if ($isPseudoUsed) {
+                echo "Ce pseudo est déjà utilisé. Veuillez en choisir un autre, s'il vous plait.";
+                exit;
+            }
+            if (!preg_match("/[!@#$%^&*()\-_=+{};:,<.>]/", $password)) {
+                echo "Le mot de passe doit contenir au moins un caractère spécial.";
+                exit;
+            }
+        }
+        ?> -->

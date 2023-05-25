@@ -5,20 +5,19 @@
         </div>
         <div>
             <?php
-        
-            		//On va vérifier que l'on a quelque chose dans $_POST
-                //Ce qui signifie que le formulaire a été validé
-                if( !empty($_POST['email']) &&  !empty($_POST['pwd']) ){
-                    echo "Formulaire validé<br/>";
-                    $email = cleanEmail($_POST["email"]);
-                    $pwd = $_POST["pwd"];
+            //On va vérifier que l'on a quelque chose dans $_POST
+            //Ce qui signifie que le formulaire a été validé
+            if (!empty($_POST['email']) &&  !empty($_POST['pwd'])) {
 
-                    //Récupérer en bdd le mot de passe hashé pour l'email
-                    //provenant du formulaire
-                    $connect = connectDB();
-                    $queryPrepared = $connect->prepare("SELECT pwd FROM ".DB_PREFIX."UTILISATEUR WHERE email=:email");
-                    $queryPrepared->execute(["email"=>$email]);
-                    $results = $queryPrepared->fetch();
+                $email = cleanEmail($_POST["email"]);
+                $pwd = $_POST["pwd"];
+
+                //Récupérer en bdd le mot de passe hashé pour l'email
+                //provenant du formulaire
+                $connect = connectDB();
+                $queryPrepared = $connect->prepare("SELECT pwd FROM " . DB_PREFIX . "UTILISATEUR WHERE email=:email");
+                $queryPrepared->execute(["email" => $email]);
+                $results = $queryPrepared->fetch();
 
                     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
                         $_SESSION['email'] = $email;
@@ -26,7 +25,7 @@
 <<<<<<< HEAD
                         header("Location: ../");
 =======
-                        header("Location: /");
+                        
 >>>>>>> d394435e60549148e9371bda54171452b77e5d9e
                     }else{
                         echo "Identifiants incorrects";
@@ -34,9 +33,9 @@
                 }
 
             ?>
-        </div>
+        </div> 
         <div>
-            <form class="form-connexion" method ="POST">
+            <form class="form-connexion" method="POST">
                 <div class="champ">
                     <input autocomplete="off" placeholder="Veuillez entrer votre adresse email" class="input-champ" type= "email" name="email"
 <<<<<<< HEAD
@@ -46,14 +45,14 @@
 >>>>>>> d394435e60549148e9371bda54171452b77e5d9e
                 </div>
                 <div class="champ">
-                    <input placeholder="Et votre mot de passe" class="input-champ" type = "password" name="pwd">
+                    <input placeholder="Et votre mot de passe" class="input-champ" type="password">
                 </div>
                 <div class="btn">
                     <button class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se connecter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                    <button class="button2">S'enregistrer</button>
+                    <a class="button2" onclick="fermerSeConnecteEtOuvrirInscription()"> S'inscrire </a>
                 </div>
-                <button class="button3">Mot de passe oublié</button>
                 
+                <a class="button3">Mot de passe oublié</a>
             </form>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <?php include "pages/modale-connexion.php"; ?>
-<?php include "pages/modale-inscription.php"; ?> 
-
+<?php include "pages/modale-inscription.php"; ?>
+<?php include "conf.inc.php" ?>
 
 <header>
   <div style="z-index:15;position: absolute;" class="collapse" id="navbarToggleExternalContent">
