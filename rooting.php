@@ -28,14 +28,6 @@ switch ($page) {
         include "./home-page/tuile-6-pub.php";
         break;
 
-    case $fichier . '/mon-compte':
-        require './pages/mon-compte.php';
-        break;
-
-    case $fichier . '/mes-paiements':
-        require './pages/mes-paiements.php';
-        break;
-
     case $fichier . '/boutique':
         require './pages/boutique.php';
         break;
@@ -60,6 +52,9 @@ switch ($page) {
         require './pages/paiement/paiement.php';
         break;
 
+    case $fichier . '/contact':
+            require './pages/contact.php';
+            break;
     case $fichier . '/user':
         require './pages/user.php';
         break;

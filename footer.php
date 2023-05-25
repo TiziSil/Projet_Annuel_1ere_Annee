@@ -5,8 +5,6 @@
                 <div class="col colonne-footer">
                     <h5>Makisine</h5>
                     <a href="#">Nos recettes</a>
-                    <a href="#">Unidays</a>
-                    <a href="#">Etudiant/Diplômé</a>
                     <a href="#">Gestion des cookies</a>
                 </div>
                 <div class="col colonne-footer">
@@ -14,7 +12,6 @@
                     <a href="#">Groupe Makisine</a>
                     <a href="#">Presse</a>
                     <a href="#">Nous rejoindre !</a>
-                    <a href="#">Nouveau look</a>
                 </div>
                 <div class="col colonne-footer">
                     <h5>Travailler avec nous</h5>

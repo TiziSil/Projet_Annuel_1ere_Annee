@@ -22,7 +22,12 @@ function fermerModaleConnexion() {
 function fermerModaleinscription() {
   const modale = document.querySelector("#modale-inscription");
   modale.style.display = "none";
-  console.log(modale);
+  afficherCoordonnees();
+}
+
+function fermerSeConnecteEtOuvrirInscription() {
+  fermerModaleConnexion()
+  ouvrirModaleInscription()
 }
 
 /* FIL ARIANE */
@@ -30,33 +35,53 @@ const adresse = document.querySelector("#inscriptions-adresse");
 const avatar = document.querySelector("#inscriptions-avatar");
 const coordonnees = document.querySelector("#inscriptions-coordonnees");
 const verifications = document.querySelector("#inscriptions-verifications");
+const boutonFilAriane1 = document.querySelector("#inscription-value-1");
+const boutonFilAriane2 = document.querySelector("#inscription-value-2");
+const boutonFilAriane3 = document.querySelector("#inscription-value-3");
+const boutonFilAriane4 = document.querySelector("#inscription-value-4");
 
 function afficherCoordonnees() {
-  document.querySelector("#inscription-value-1").checked = true;
-  avatar.style.display = "none";
+  boutonFilAriane1.style.color = "#FFFFFF";
+  boutonFilAriane2.style.color = "inherit";
+  boutonFilAriane3.style.color = "inherit";
+  boutonFilAriane4.style.color = "inherit";
+
   coordonnees.style.display = "flex";
+  avatar.style.display = "none";
   adresse.style.display = "none";
   verifications.style.display = "none";
 }
 
 function afficherAdressePostal() {
-  document.querySelector("#inscription-value-2").checked = true;
+  boutonFilAriane1.style.color = "inherit";
+  boutonFilAriane2.style.color = "#FFFFFF";
+  boutonFilAriane3.style.color = "inherit";
+  boutonFilAriane4.style.color = "inherit";
+
   avatar.style.display = "none";
-  coordonnees.style.display = "none";
   adresse.style.display = "flex";
+  coordonnees.style.display = "none";
   verifications.style.display = "none";
 }
 
 function afficherAvatar() {
-  document.querySelector("#inscription-value-3").checked = true;
-  avatar.style.display = "flex";
+  boutonFilAriane1.style.color = "inherit";
+  boutonFilAriane2.style.color = "inherit";
+  boutonFilAriane3.style.color = "#FFFFFF";
+  boutonFilAriane4.style.color = "inherit";
+
   coordonnees.style.display = "none";
   adresse.style.display = "none";
+  avatar.style.display = "flex";
   verifications.style.display = "none";
 }
 
 function afficherVerifications() {
-  document.querySelector("#inscription-value-4").checked = true;
+  boutonFilAriane1.style.color = "inherit";
+  boutonFilAriane2.style.color = "inherit";
+  boutonFilAriane3.style.color = "inherit";
+  boutonFilAriane4.style.color = "#FFFFFF";
+
   coordonnees.style.display = "none";
   adresse.style.display = "none";
   avatar.style.display = "none";
@@ -145,11 +170,11 @@ let couleurPeau = [
   "#614335",
 ];
 let couleurCheveux = [
+  "#fd9841",
+  "#d08b5b",
   "#ffdbb4",
   "#edb98a",
-  "#fd9841",
   "#fcee93",
-  "#d08b5b",
   "#ae5d29",
   "#614335",
 ];
@@ -181,7 +206,6 @@ function changerCouleurPeau() {
 }
 
 function changerCouleurCheveux() {
-
   iCouleurCheveux++;
   const cheveux =
     "--couleur-cheveux: " +
@@ -218,7 +242,7 @@ function changerPilosite() {
   document.querySelector("#pilositeSelectionne").href.baseVal =
     pilosite[iPilosite % pilosite.length];
   iPilosite++;
-  console.log(pilosite);  
+  console.log(pilosite);
 }
 
 function changerBouche() {
@@ -238,23 +262,28 @@ changerCouleurCheveux();
 //enregistrement avatar
 function verificationsAdd() {
   // Mettre à jour les valeurs des champs cachés avec les valeurs actuelles de l'avatar
-  document.getElementById("couleurPeauInput").value = couleurPeau[iCouleurPeau % couleurPeau.length];
-  document.getElementById("couleurCheveuxInput").value = couleurCheveux[iCouleurCheveux % couleurCheveux.length];
-  document.getElementById("coiffureInput").value = cheveux[iCoiffure % cheveux.length];
+  document.getElementById("couleurPeauInput").value =
+    couleurPeau[iCouleurPeau % couleurPeau.length];
+  document.getElementById("couleurCheveuxInput").value =
+    couleurCheveux[iCouleurCheveux % couleurCheveux.length];
+  document.getElementById("coiffureInput").value =
+    cheveux[iCoiffure % cheveux.length];
   document.getElementById("yeuxInput").value = yeux[iYeux % yeux.length];
-  document.getElementById("accessoireInput").value = accessoires[iAccessoire % accessoires.length];
-  document.getElementById("pilositeInput").value = pilosite[iPilosite % pilosite.length];
-  document.getElementById("boucheInput").value = bouche[iBouche % bouche.length];
-  
+  document.getElementById("accessoireInput").value =
+    accessoires[iAccessoire % accessoires.length];
+  document.getElementById("pilositeInput").value =
+    pilosite[iPilosite % pilosite.length];
+  document.getElementById("boucheInput").value =
+    bouche[iBouche % bouche.length];
+
   // Soumettre le formulaire
   document.getElementById("avatar-form").submit();
 }
 
-
-console.log('Couleur de peau:', couleurPeauInput);
-console.log('Couleur de cheveux:', couleurCheveuxInput);
-console.log('Coiffure:', coiffureInput);
-console.log('Yeux:', yeuxInput);
-console.log('Accessoire:', accessoireInput);
-console.log('Pilositée:', pilositeInput);
-console.log('Bouche:', boucheInput);
+// console.log("Couleur de peau:", couleurPeauInput);
+// console.log("Couleur de cheveux:", couleurCheveuxInput);
+// console.log("Coiffure:", coiffureInput);
+// console.log("Yeux:", yeuxInput);
+// console.log("Accessoire:", accessoireInput);
+// console.log("Pilositée:", pilositeInput);
+// console.log("Bouche:", boucheInput);
