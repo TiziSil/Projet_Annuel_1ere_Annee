@@ -867,6 +867,7 @@ footer {
 
 .colonne-footer * {
   display: block;
+  margin-bottom: 1px;
 }
 
 footer * a {
@@ -889,6 +890,13 @@ footer * a {
 .lien-reseaux-sociaux a {
   padding-right: 15px;
   line-height: 0px;
+}
+
+.qrCodeMakisine {
+  height: auto;
+  width: 80px;
+  margin-left: 260px;
+  margin-top: -109px;
 }
 
 /* FIL D'ARIANE */
@@ -1225,13 +1233,13 @@ footer * a {
 }
 
 .coordonnees-tel {
-margin-top: 20px;
-margin-left: -41px;
+  margin-top: 20px;
+  margin-left: -41px;
 }
 
 .coordonnees-mail {
   margin-top: 20px;
-margin-left: -41px;
+  margin-left: -41px;
 }
 
 .coordonnees-tel a {
