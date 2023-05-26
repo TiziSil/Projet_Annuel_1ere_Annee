@@ -43,7 +43,7 @@
                     <a class="button2" onclick="fermerSeConnecteEtOuvrirInscription()"> S'inscrire </a>
                 </div>
                 
-                <a class="button3">Mot de passe oublié</a>
+                <a href="./mot-de-passe-oublie" class="button3">Mot de passe oublié</a>
             </form>
         </div>
     </div>

@@ -116,7 +116,6 @@ function validerCoordonnees() {
   const firstname = formulaire.querySelector("input[name='firstname']").value;
   const email = formulaire.querySelector("input[name='email']").value;
   const birthday = formulaire.querySelector("input[name='birthday']").value;
-  const birthdayParDefaut = "1971-r01-01";
   const pwd = formulaire.querySelector("input[name='pwd']").value;
   const pwdConfirm = formulaire.querySelector("input[name='pwdConfirm']").value;
 
@@ -143,6 +142,7 @@ function validerCoordonnees() {
     alert(
       "Le mod de passe doit contenir 12 caractères avec une lettre majuscule, un caractère spécial et un chiffre"
     );
+    return false;
   }
 
   if (pwd !== pwdConfirm) {
@@ -150,23 +150,6 @@ function validerCoordonnees() {
       "Le mot de passe de confirmation ne correspond pas au mot de passe indiqué, veuillez "
     );
     return false;
-  }
-
-  if (birthday.value === birthdayParDefaut) {
-    const confirmation = confirm(
-      "La date de naissance indiquée est la date par défaut. Est-ce bien votre date de naissance ?"
-    );
-
-    if (confirmation) {
-      // La date de naissance est correcte (selon l'utilisateur)
-      alert("La date de naissance est correcte !");
-    } else {
-      // La date de naissance n'est pas correcte (selon l'utilisateur)
-      alert("La date de naissance n'est pas correcte !");
-
-      // Recharger la page
-      window.location.reload();
-    }
   }
 
   return true;
