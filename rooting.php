@@ -55,6 +55,10 @@ switch ($page) {
     case $fichier . '/contact':
         require './pages/contact.php';
         break;
+    
+    case $fichier . '/mot-de-passe-oublie':
+        require './pages/mot-de-passe-oublie.php';
+        break;
 
     default:
         http_response_code(404);
