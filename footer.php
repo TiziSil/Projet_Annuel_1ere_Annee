@@ -26,8 +26,8 @@
                 </div>
                 <div class="col colonne-footer">
                     <h5>Télécharger notre app</h5>
-                    <p>Gérer vos livraisons depuis votre mobile, à tout moment.</p>
-                    <img height="150px" width="150px" src="assets\images\Qrcode.webp" alt="Qrcode">
+                    <p>Consultez et gérez vos recettes</p><p>depuis votre mobile, à tout</p><p>moment!</p>
+                    <img class="qrCodeMakisine" src="assets/images/QrcodeMakisine.png" alt="Qrcode">
                 </div>
             </div>
             <div class="row footer-bas">
