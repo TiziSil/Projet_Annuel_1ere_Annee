@@ -29,7 +29,6 @@ require "core/functions.php";
         <div class="">
             <div class="">
                 <table class="table">
-                    <caption></caption>
                     <thead>
                         <tr>
                             <th>Référence</th>
