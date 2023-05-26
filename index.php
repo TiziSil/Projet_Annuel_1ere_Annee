@@ -11,6 +11,9 @@ include "head.php"; ?>
 ?>
 
 <body>
+    <div id="bouton-remonter">
+        <a href="#top"><img src="assets/images/fleche-haut.png" alt="Remonter"></a>
+    </div>
     <?php include "header.php"; ?>
     <?php include "rooting.php"; ?>
     <?php include "footer.php"; ?>

@@ -19,26 +19,21 @@
                 $queryPrepared->execute(["email" => $email]);
                 $results = $queryPrepared->fetch();
 
-                    if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
-                        $_SESSION['email'] = $email;
-                        $_SESSION['login'] = true;
-                        header("Location: ../");
-                    }else{
-                        echo "Identifiants incorrects";
-                    }
+                if (!empty($results) && password_verify($pwd, $results["pwd"])) {
+                    $_SESSION['email'] = $email;
+                    $_SESSION['login'] = true;
+                    header("Location: ../");
+                } else {
+                    echo "Identifiants incorrects";
                 }
-
+            }
             ?>
-        </div> 
+        </div>
         <div>
             <form class="form-connexion" method="POST">
                 <div class="champ">
-                    <input autocomplete="off" placeholder="Veuillez entrer votre adresse email" class="input-champ" type= "email" name="email"
-<<<<<<< HEAD
-                    value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
-=======
-                    value ="<?= (!empty($_SESSION['data']))?$_SESSION["data"]["email"]:"";?>">
->>>>>>> d394435e60549148e9371bda54171452b77e5d9e
+                    <input autocomplete="off" placeholder="Veuillez entrer votre adresse email" class="input-champ" type="email" name="email" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["email"] : ""; ?>">
+
                 </div>
                 <div class="champ">
                     <input placeholder="Et votre mot de passe" class="input-champ" type="password">
@@ -47,7 +42,7 @@
                     <button class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se connecter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     <a class="button2" onclick="fermerSeConnecteEtOuvrirInscription()"> S'inscrire </a>
                 </div>
-                
+
                 <a href="./mot-de-passe-oublie" class="button3">Mot de passe oublié</a>
             </form>
         </div>

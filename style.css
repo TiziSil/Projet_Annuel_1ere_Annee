@@ -1360,3 +1360,18 @@ font-size: smaller;
   margin-top: 63px;
   color: #ffffff;
 }
+
+
+/* BOUTON REMONTER EN HAUT */
+
+#bouton-remonter {
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  bottom: 50px;
+  right: 30px;
+}
+#bouton-remonter img {
+  width: 50px;
+  margin-right: 30px;
+}

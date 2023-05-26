@@ -342,3 +342,5 @@ function verificationsAdd() {
 // console.log("Accessoire:", accessoireInput);
 // console.log("Pilositée:", pilositeInput);
 // console.log("Bouche:", boucheInput);
+
+
