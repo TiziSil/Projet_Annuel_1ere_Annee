@@ -1268,6 +1268,9 @@ footer * a {
   margin-left: 50%;
 }
 
+
+
+
 /* MOT DE PASSE OUBLIE */
 
 .image-mdp-oublie {
@@ -1331,4 +1334,29 @@ top: 82%;
 left: 25%;
 transform: translateX(-50%);
 font-size: smaller;
+}
+
+
+/* ATTENTE DE VALIDATION */
+
+#attente-validation {
+  background: url("assets/images/photo-attente-de-validation.avif");
+  background-size: cover;
+  width: 100%;
+  height: 90vh;
+  background-position: center left;
+  background-repeat: no-repeat;
+  margin: auto;
+  padding: 0;
+}
+
+.image-attente-validation {
+  position: relative;
+}
+
+.h1-attente-validation {
+  position: absolute;
+  margin-left: 585px;
+  margin-top: 63px;
+  color: #ffffff;
 }
