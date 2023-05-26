@@ -1,4 +1,4 @@
-/* CONNEXIONS ENTRE PAGE */
+/* CONNEXIONS ENTRE PAGES */
 document.querySelector("#button-enregistrer").disabled = true;
 
 function ouvrirModaleConnexion() {
@@ -26,8 +26,8 @@ function fermerModaleinscription() {
 }
 
 function fermerSeConnecteEtOuvrirInscription() {
-  fermerModaleConnexion()
-  ouvrirModaleInscription()
+  fermerModaleConnexion();
+  ouvrirModaleInscription();
 }
 
 /* FIL ARIANE */
@@ -39,6 +39,10 @@ const boutonFilAriane1 = document.querySelector("#inscription-value-1");
 const boutonFilAriane2 = document.querySelector("#inscription-value-2");
 const boutonFilAriane3 = document.querySelector("#inscription-value-3");
 const boutonFilAriane4 = document.querySelector("#inscription-value-4");
+
+let coordonneesRemplies = false;
+let avatarRempli = false;
+let verificationsRemplies = false;
 
 function afficherCoordonnees() {
   boutonFilAriane1.style.color = "#FFFFFF";
@@ -53,51 +57,119 @@ function afficherCoordonnees() {
 }
 
 function afficherAdressePostal() {
-  boutonFilAriane1.style.color = "inherit";
-  boutonFilAriane2.style.color = "#FFFFFF";
-  boutonFilAriane3.style.color = "inherit";
-  boutonFilAriane4.style.color = "inherit";
+  if (validerCoordonnees()) {
+    boutonFilAriane1.style.color = "inherit";
+    boutonFilAriane2.style.color = "#FFFFFF";
+    boutonFilAriane3.style.color = "inherit";
+    boutonFilAriane4.style.color = "inherit";
 
-  avatar.style.display = "none";
-  adresse.style.display = "flex";
-  coordonnees.style.display = "none";
-  verifications.style.display = "none";
+    avatar.style.display = "none";
+    adresse.style.display = "flex";
+    coordonnees.style.display = "none";
+    verifications.style.display = "none";
+  } else {
+    alert(
+      "Veuillez remplir tous les champs de coordonnées avant de passer à l'adresse postale."
+    );
+  }
 }
 
 function afficherAvatar() {
-  boutonFilAriane1.style.color = "inherit";
-  boutonFilAriane2.style.color = "inherit";
-  boutonFilAriane3.style.color = "#FFFFFF";
-  boutonFilAriane4.style.color = "inherit";
+  if (coordonneesRemplies && avatarRempli) {
+    boutonFilAriane1.style.color = "inherit";
+    boutonFilAriane2.style.color = "inherit";
+    boutonFilAriane3.style.color = "#FFFFFF";
+    boutonFilAriane4.style.color = "inherit";
 
-  coordonnees.style.display = "none";
-  adresse.style.display = "none";
-  avatar.style.display = "flex";
-  verifications.style.display = "none";
+    coordonnees.style.display = "none";
+    adresse.style.display = "none";
+    avatar.style.display = "flex";
+    verifications.style.display = "none";
+  } else {
+    alert(
+      "Veuillez remplir tous les champs requis avant de passer à l'avatar."
+    );
+  }
 }
 
 function afficherVerifications() {
-  boutonFilAriane1.style.color = "inherit";
-  boutonFilAriane2.style.color = "inherit";
-  boutonFilAriane3.style.color = "inherit";
-  boutonFilAriane4.style.color = "#FFFFFF";
+  if (coordonneesRemplies && avatarRempli && verificationsRemplies) {
+    boutonFilAriane1.style.color = "inherit";
+    boutonFilAriane2.style.color = "inherit";
+    boutonFilAriane3.style.color = "inherit";
+    boutonFilAriane4.style.color = "#FFFFFF";
 
-  coordonnees.style.display = "none";
-  adresse.style.display = "none";
-  avatar.style.display = "none";
-  verifications.style.display = "flex";
+    coordonnees.style.display = "none";
+    adresse.style.display = "none";
+    avatar.style.display = "none";
+    verifications.style.display = "flex";
+  } else {
+    alert(
+      "Veuillez remplir tous les champs requis avant de passer aux vérifications."
+    );
+  }
 }
 
-// Liste pays INSCRIPTION
+function validerCoordonnees() {
+  const formulaire = document.querySelector("#inscriptions-coordonnees"); // On récupère le formulaire html
+  const lastname = formulaire.querySelector("input[name='lastname']").value; // dans le formulaire on récupère la valeur de la balise input qui correspond au "name", "lastname"
+  const firstname = formulaire.querySelector("input[name='firstname']").value;
+  const email = formulaire.querySelector("input[name='email']").value;
+  const birthday = formulaire.querySelector("input[name='birthday']").value;
+  const birthdayParDefaut = "1971-r01-01";
+  const pwd = formulaire.querySelector("input[name='pwd']").value;
+  const pwdConfirm = formulaire.querySelector("input[name='pwdConfirm']").value;
 
-function listePays() {
-  const autrePays = document.querySelector("#pays-inscription").value;
-  console.log(autrePays);
-  if (autrePays === "") {
-    document.getElementById("autre-pays").style.display = "block";
-  } else {
-    document.getElementById("autre-pays").style.display = "none";
+  if (lastname.length < 2 || /\d/.test(lastname)) {
+    alert(
+      "Le nom doit contenir au moins 2 lettres et ne peut pas contenir de chiffres."
+    );
+    return false;
   }
+
+  if (firstname.length < 2 || /\d/.test(firstname)) {
+    alert(
+      "Le prénom doit contenir au moins 2 lettres et ne peut pas contenir de chiffres."
+    );
+    return false;
+  }
+
+  if (email.length < 2) {
+    ///^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
+    alert("L'email doit contenir au moins deux caractères");
+  }
+
+  if (!/(?=.*[A-Z])(?=.*[<>!@#$%^&*\d])(?=.{12,})/.test(pwd)) {
+    alert(
+      "Le mod de passe doit contenir 12 caractères avec une lettre majuscule, un caractère spécial et un chiffre"
+    );
+  }
+
+  if (pwd !== pwdConfirm) {
+    alert(
+      "Le mot de passe de confirmation ne correspond pas au mot de passe indiqué, veuillez "
+    );
+    return false;
+  }
+
+  if (birthday.value === birthdayParDefaut) {
+    const confirmation = confirm(
+      "La date de naissance indiquée est la date par défaut. Est-ce bien votre date de naissance ?"
+    );
+
+    if (confirmation) {
+      // La date de naissance est correcte (selon l'utilisateur)
+      alert("La date de naissance est correcte !");
+    } else {
+      // La date de naissance n'est pas correcte (selon l'utilisateur)
+      alert("La date de naissance n'est pas correcte !");
+
+      // Recharger la page
+      window.location.reload();
+    }
+  }
+
+  return true;
 }
 
 //Puzzle
