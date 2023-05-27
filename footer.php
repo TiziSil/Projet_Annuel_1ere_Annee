@@ -39,7 +39,7 @@
                     <p>&copy; Makisine - 2023</p>
                 </div>
                 <div class="lien-reseaux-sociaux col d-flex justify-content-end">
-                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.facebook.com/BienvenueSurMakisine/"><i class="bi bi-facebook"></i></a>
                     <a href="#"><i class="bi bi-instagram"></i></a>
                 </div>
 
