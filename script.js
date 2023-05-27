@@ -335,6 +335,22 @@ function verificationsAdd() {
   document.getElementById("avatar-form").submit();
 }
 
+// Rajouter le s si plusieurs recettes en attente
+
+window.addEventListener("DOMContentLoaded", function () {
+  var h2Recette = document.querySelector(".h2-recette-validation-attente");
+  var nombreRecettes = 2;
+  var recetteElement = h2Recette.querySelector(".recette");
+  var pluralElement = h2Recette.querySelector(".plural");
+
+  if (nombreRecettes > 1) {
+    recetteElement.style.display = 'none';
+    pluralElement.style.display = 'inline';
+}
+});
+
+console.log(texteRecette);
+
 // console.log("Couleur de peau:", couleurPeauInput);
 // console.log("Couleur de cheveux:", couleurCheveuxInput);
 // console.log("Coiffure:", coiffureInput);
@@ -342,5 +358,3 @@ function verificationsAdd() {
 // console.log("Accessoire:", accessoireInput);
 // console.log("Pilositée:", pilositeInput);
 // console.log("Bouche:", boucheInput);
-
-
