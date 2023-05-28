@@ -6,12 +6,14 @@
 // ?>
 <div>
     <h1>Liste des utilisateurs</h1>
-
+    
 </div>
 <?php
 $connection = connectDB();
 $results = $connection->query("SELECT * FROM ".DB_PREFIX."UTILISATEUR");
 $results = $results -> fetchAll();
+echo var_dump($results);
+echo "<br>";
 ?>
 <div class = "row">
     <div class ="col-12">
@@ -42,6 +44,7 @@ $results = $results -> fetchAll();
             <tbody>
                 <?php
                 foreach ($results as $user){
+                    
                     echo "<tr>";
                     echo "<td>".$user["id_utilisateur"]."</td>";
                     echo "<td>".$user["nom_utilisateur"]."</td>";
@@ -62,9 +65,12 @@ $results = $results -> fetchAll();
                     echo  "<td>".$user["code_postal"]."</td>";
                     echo  "<td>".$user["ville"]."</td>";
                     echo "<td>
-                    <a href='../core/userDel.php?id=".$user["id_utilisateur"]."' class='btn btn-danger'>
-                    Suppression
-                    </a>
+                    <form action='/ProjetAnnuel/core/userDel.php' method='POST'>
+                    <input type='hidden' name='id' value='".$user["id_utilisateur"]."'>
+                    <button type='submit' class='btn btn-danger'>Supprimer</button>
+                    </form>
+                    </form>
+          
                     </td>";
                     echo "</tr>";
 

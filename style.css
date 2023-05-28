@@ -1268,3 +1268,23 @@ margin-left: -41px;
   transform: translateX(-50%);
   margin-left: 50%;
 }
+
+/*TABLEAU user*/
+.table th {
+  width: 100px; /* Définit la largeur des cellules d'en-tête de la table */
+}
+
+.table td {
+  width: 150px; /* Définit la largeur des cellules de données de la table */
+}
+.table {
+  width: 100%;
+  overflow-x: auto;
+}
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    width: auto;
+    display: block;
+  }
+}
