@@ -1424,3 +1424,31 @@ color: #f4e9e9;
   width: 50px;
   margin-right: 30px;
 }
+
+
+/* LES COOKIES */
+
+.cookies {
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  background-color: #f4e9e9;
+  font-size: 14px;
+  height: 230px;
+  position: fixed;
+  /* left: 10px;
+  width: 400px; */
+  border: 2px solid #897c7c;
+  padding: 10px;
+  border-radius: 50px 20px;
+}
+
+.h4-cookies {
+  text-align: center;
+}
+
+.button-cookies {
+  
+}
