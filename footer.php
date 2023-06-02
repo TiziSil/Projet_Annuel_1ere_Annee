@@ -40,7 +40,7 @@
                 </div>
                 <div class="lien-reseaux-sociaux col d-flex justify-content-end">
                     <a href="https://www.facebook.com/BienvenueSurMakisine/"><i class="bi bi-facebook"></i></a>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/bienvenuesurmakisine/"><i class="bi bi-instagram"></i></a>
                 </div>
 
             </div>
