@@ -21,6 +21,7 @@
     </div>
     <div class="champ">
         <select id="pays-inscription" onchange="listePays()" name="country" class="form-select-makisine">
+            <option disabled selected="selected" value=""></option>
             <option value="fr" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "fr") ? "selected" : ""; ?>>France</option>
             <option value="it" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "it") ? "selected" : ""; ?>>Italie</option>
             <option value="pt" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "pt") ? "selected" : ""; ?>>Portugal</option>

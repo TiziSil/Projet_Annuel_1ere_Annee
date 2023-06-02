@@ -75,7 +75,7 @@ function afficherAdressePostal() {
 }
 
 function afficherAvatar() {
-  if (coordonneesRemplies && avatarRempli) {
+  if (validerAdressePostale()) {
     boutonFilAriane1.style.color = "inherit";
     boutonFilAriane2.style.color = "inherit";
     boutonFilAriane3.style.color = "#FFFFFF";
@@ -93,21 +93,15 @@ function afficherAvatar() {
 }
 
 function afficherVerifications() {
-  if (coordonneesRemplies && avatarRempli && verificationsRemplies) {
-    boutonFilAriane1.style.color = "inherit";
-    boutonFilAriane2.style.color = "inherit";
-    boutonFilAriane3.style.color = "inherit";
-    boutonFilAriane4.style.color = "#FFFFFF";
+  boutonFilAriane1.style.color = "inherit";
+  boutonFilAriane2.style.color = "inherit";
+  boutonFilAriane3.style.color = "inherit";
+  boutonFilAriane4.style.color = "#FFFFFF";
 
-    coordonnees.style.display = "none";
-    adresse.style.display = "none";
-    avatar.style.display = "none";
-    verifications.style.display = "flex";
-  } else {
-    alert(
-      "Veuillez remplir tous les champs requis avant de passer aux vérifications."
-    );
-  }
+  coordonnees.style.display = "none";
+  adresse.style.display = "none";
+  avatar.style.display = "none";
+  verifications.style.display = "flex";
 }
 
 function validerCoordonnees() {
@@ -138,9 +132,9 @@ function validerCoordonnees() {
     alert("L'email doit contenir au moins deux caractères");
   }
 
-  if (!/(?=.*[A-Z])(?=.*[<>!@#$%^&*\d])(?=.{12,})/.test(pwd)) {
+  if (!/(?=.*[A-Z])(?=.*[<>!@#$%^&*\d])(?=.{8,})/.test(pwd)) {
     alert(
-      "Le mod de passe doit contenir 12 caractères avec une lettre majuscule, un caractère spécial et un chiffre"
+      "Le mot de passe doit contenir 8 caractères avec une lettre majuscule, un caractère spécial et un chiffre"
     );
     return false;
   }
@@ -155,6 +149,48 @@ function validerCoordonnees() {
   return true;
 }
 
+function validerAdressePostale() {
+  const formulaire = document.querySelector("#inscriptions-adresse"); // On récupère le formulaire html
+  const pseudo = formulaire.querySelector("input[name='pseudo']").value; // dans le formulaire on récupère la valeur de la balise input qui correspond au "name", "lastname"
+  const telephone = formulaire.querySelector("input[name='telephone']").value;
+  const adresse = formulaire.querySelector("input[name='address']").value;
+  const codePostal = formulaire.querySelector("input[name='codepostal']").value;
+  const ville = formulaire.querySelector("input[name='ville']").value;
+  const pays = formulaire.querySelector("#pays-inscription").value;
+
+  if (pseudo.length < 2) {
+    alert("Le pseudo doit contenir au moins 2 lettres");
+    return false;
+  }
+
+  if (/^(0|\+33)[1-9](\d{2}){4}$/.test(telephone)) {
+    alert("Le téléphone doit être au format +33 ou 00-00-00-00-00");
+    return false;
+  }
+
+  if (adresse.length < 2) {
+    alert("L'adresse doit contenir au moins 2 lettres.");
+    return false;
+  }
+
+  if (codePostal.length !== 5) {
+    alert("Le code postal doit être composé de 5 chiffres");
+    return false;
+  }
+
+  if (ville.length < 2 || /\d/.test(ville)) {
+    alert(
+      "La ville doit contenir au moins 2 lettres et ne peut pas contenir de chiffres."
+    );
+    return false;
+  }
+
+  if (pays === "") {
+    alert("Le pays doit être selectionné");
+    return false;
+  }
+  return true;
+}
 //Puzzle
 
 let puzzleEstCorrect = false;
@@ -314,7 +350,9 @@ changerAccessoire();
 changerPilosite();
 changerBouche();
 changerCouleurCheveux();
+
 //enregistrement avatar
+
 function verificationsAdd() {
   // Mettre à jour les valeurs des champs cachés avec les valeurs actuelles de l'avatar
   document.getElementById("couleurPeauInput").value =
@@ -337,19 +375,17 @@ function verificationsAdd() {
 
 // Rajouter le s si plusieurs recettes en attente
 
-window.addEventListener("DOMContentLoaded", function () {
-  var h2Recette = document.querySelector(".h2-recette-validation-attente");
-  var nombreRecettes = 2;
-  var recetteElement = h2Recette.querySelector(".recette");
-  var pluralElement = h2Recette.querySelector(".plural");
+// window.addEventListener("DOMContentLoaded", function () {
+//   var h2Recette = document.querySelector(".h2-recette-validation-attente");
+//   var nombreRecettes = 2;
+//   var recetteElement = h2Recette.querySelector(".recette");
+//   var pluralElement = h2Recette.querySelector(".plural");
 
-  if (nombreRecettes > 1) {
-    recetteElement.style.display = 'none';
-    pluralElement.style.display = 'inline';
-}
-});
-
-console.log(texteRecette);
+//   if (nombreRecettes > 1) {
+//     recetteElement.style.display = "none";
+//     pluralElement.style.display = "inline";
+//   }
+// });
 
 // console.log("Couleur de peau:", couleurPeauInput);
 // console.log("Couleur de cheveux:", couleurCheveuxInput);
