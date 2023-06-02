@@ -1,5 +1,10 @@
 <?php
 
+
+function Hello() {
+	return "Hello";
+}
+
 function cleanFirstname($firstName){
 	return ucwords(strtolower(trim($firstName)));
 }

@@ -51,6 +51,9 @@ switch ($page) {
     case $fichier . '/attente-validation':
         require './pages/attente-validation.php';
         break;
+    case $fichier . '/test':
+        require './pages/test.php';
+        break;
 
     default:
         http_response_code(404);

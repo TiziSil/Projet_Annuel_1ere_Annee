@@ -19,8 +19,8 @@ $isCategoryDeleted = false;
 $listCategory = [];
 
 $connection = connectDB();
-$results2 = $connection->query("SELECT id_categorie FROM MAKISINE_CATEGORIE WHERE id_categorie NOT IN 
-(SELECT categorie FROM MAKISINE_APPARTENIR)");
+$results2 = $connection->query("SELECT id_categorie FROM ".DB_PREFIX."CATEGORIE WHERE id_categorie NOT IN 
+(SELECT categorie FROM ".DB_PREFIX."APPARTENIR)");
 $results2 = $results2->fetchAll();
 
 foreach ($results2 as $categorie) {

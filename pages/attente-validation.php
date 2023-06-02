@@ -1,6 +1,4 @@
 <?php
-require "conf.inc.php";
-require "core/functions.php";
 //redirectIfNotConnected(); 
 ?>
 

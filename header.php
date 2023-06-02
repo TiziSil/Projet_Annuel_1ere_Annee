@@ -31,7 +31,7 @@
 
 
         <div class="col logo">
-          <img src="assets\images\Logo_light.png" alt="Makisine">
+          <a href="index.php"><img src="assets\images\Logo_light.png" alt="Makisine"></a>
         </div>
 
         <div class="col">

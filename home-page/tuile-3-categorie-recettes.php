@@ -13,55 +13,20 @@
                 <div class="d-flex py-5">
                     <div class="col">
                         <ul class="tableau">
-                            <a href="#">
-                                <li href="#">Recettes de petit-déjeuner</li>
-                            </a>
-                            <a href="#">
-                                <li href="#">Recettes de déjeuner</li>
-                            </a>
-                            <a href="#">
-                                <li href="#">Recettes de dîner</li>
-                            </a>
-                            <a href="#">
-                                <li href="#">Recettes végétariennes</li>
-                            </a>
-                            <a href="#">
-                                <li href="#">Recettes véganes</li>
-                            </a>
-                            <a href="#">
-                                <li href="#">Recettes de viande</li>
-                            </a>
-                            <a href="#">
-                                <li href="#">Recettes de poisson</li>
-                            </a>
+
+                		<?php
+                            // Affichage des catégories
+                            $connection = connectDB();
+                        	$results = $connection->query("SELECT nom_categorie FROM ".DB_PREFIX."CATEGORIE");
+                        	$results = $results->fetchAll();
+
+                            foreach ($results as $category) {
+                                echo "<button type='button' class='button1'>".$category["nom_categorie"]."</button>";
+                            }
+                		?>
+
                         </ul>
-                    </div>
-                    <div class="col">
-                        <ul class="tableau">
-                            <a href="#">
-                                <li>Recettes de salades</li>
-                            </a>
-                            <a href="#">
-                                <li>Recettes de pâtes</li>
-                            </a>
-                            <a href="#">
-                                <li>Recettes de soupes et de potages</li>
-                            </a>
-                            <a href="#">
-                                <li>Recettes de sandwiches</li>
-                            </a>
-                            <a href="#">
-                                <li>Recettes de desserts</li>
-                            </a>
-                            <a href="#">
-                                <li>Recettes de cuisine du monde</li>
-                            </a>
-                            <a href="#">
-                                <li>Recettes pour les occasions spéciales (Noël,...)</li>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
         </div>
 </section>

@@ -22,8 +22,8 @@
             <label>Email</label>
         </div>
         <div class="champ">
-            <input autocomplete="off" type="date" value="" name="birthday" required="required"
-            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["birthday"]:""; ?>">
+            <input autocomplete="off" type="date" name="birthday" required="required"
+            value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["birthday"]:"01/01/2005"; ?>">
             <label>Date de naissance</label>
         </div>
         <div class="champ">

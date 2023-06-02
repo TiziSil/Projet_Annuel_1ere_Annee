@@ -262,3 +262,45 @@ function verificationsAdd() {
 // console.log("Accessoire:", accessoireInput);
 // console.log("Pilositée:", pilositeInput);
 // console.log("Bouche:", boucheInput);
+
+
+// Affichage liste des catégories
+let btn_affichagecategorie = document.getElementById("btn_affichagecategorie");
+let d1 = document.getElementById("d1");
+btn_affichagecategorie.addEventListener("click", () => {
+  if(getComputedStyle(d1).display != "none"){
+    d1.style.display = "none";
+  } else {
+    d1.style.display = "block";
+  }
+})
+
+
+// Ajout champs ajout d'ingrédient pour création recette
+
+var btn_ajout_ingredient = document.getElementById('btn-ajout-ingredient');
+var conteneur = document.getElementById('conteneur');
+var champs_ingredient = document.getElementById('champs_ingredient');
+
+function ajoutIngredient() {
+  var nouvelIngredient = champs_ingredient.cloneNode(true);
+  nouvelIngredient.style.display = "";
+
+  var boutonSupprimer = document.createElement('button');
+  boutonSupprimer.classList = 'btn btn-link';
+  
+  var imgSupprimer = document.createElement('img');
+  imgSupprimer.src = 'assets/bouton-retrait.png';
+  imgSupprimer.width = 20;
+  imgSupprimer.alt = 'Supprimer';
+  boutonSupprimer.appendChild(imgSupprimer);
+
+  boutonSupprimer.addEventListener('click', function() {
+    conteneur.removeChild(nouvelIngredient);
+  });
+  
+  nouvelIngredient.appendChild(boutonSupprimer);
+  conteneur.appendChild(nouvelIngredient);
+}
+
+btn_ajout_ingredient.addEventListener('click', ajoutIngredient);
