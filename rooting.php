@@ -55,7 +55,7 @@ switch ($page) {
     case $fichier . '/contact':
         require './pages/contact.php';
         break;
-    
+
     case $fichier . '/mot-de-passe-oublie':
         require './pages/mot-de-passe-oublie.php';
         break;
@@ -64,7 +64,9 @@ switch ($page) {
         require './pages/cookies.php';
         break;
 
-    
+    case $fichier . '/mon-compte':
+        require './pages/mon-compte.php';
+        break;
 
     default:
         http_response_code(404);
