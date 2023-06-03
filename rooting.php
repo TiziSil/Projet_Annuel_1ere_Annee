@@ -60,6 +60,12 @@ switch ($page) {
         require './pages/mot-de-passe-oublie.php';
         break;
 
+    case $fichier . '/cookies':
+        require './pages/cookies.php';
+        break;
+
+    
+
     default:
         http_response_code(404);
         break;
