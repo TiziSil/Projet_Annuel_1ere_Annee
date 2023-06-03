@@ -1134,7 +1134,6 @@ footer * a {
   background: url("assets/images/contact2.jpg");
   background-size: cover;
   width: 100%;
-  height: 80vh;
   background-position: center left;
   background-repeat: no-repeat;
   margin: auto;
@@ -1144,7 +1143,6 @@ footer * a {
   background: url("assets/images/contact-3.jpg");
   background-size: cover;
   width: 100%;
-  height: 80vh;
   background-position: center left;
   background-repeat: no-repeat;
   margin: auto;
@@ -1170,6 +1168,7 @@ footer * a {
   width: 500px;
   padding: 80px;
   background-color: #897c7c;
+  max-width: 100%;
   border-radius: 100%;
   color: #f4e9e9;
 }
@@ -1199,18 +1198,7 @@ footer * a {
 
 .contact-adresse {
   text-align: center;
-  width: 50%;
-  height: 100% !important;
 }
-
-.adresse-postale h3 {
-  margin-top: -50px;
-}
-
-.adresse-postale .coordonnees-contact {
-  margin-top: 50px;
-}
-
 .right {
   text-align: center;
 }
@@ -1221,14 +1209,8 @@ footer * a {
 
 .formulaire {
   border-radius: 11px;
-  padding: 31px;
-  position: absolute;
-  right: 25%;
-  top: 50%;
-  height: 70vh;
-  width: 400px;
+  padding: 30px;
   background-color: #f4e9e9;
-  transform: translate(50%, -50%);
 }
 .formulaire h3 {
   margin-bottom: 31px;
@@ -1237,13 +1219,12 @@ footer * a {
 }
 
 .adresse-postale {
-  transform: translate(72%, -7%);
-  margin-top: 41px;
-  height: 328px;
-  width: 338px;
-  padding: 92px;
+  height: 300px;
+  width: 300px;
+  padding: 20px;
   background-color: #897c7c;
   border-radius: 100%;
+  text-align: center;
 }
 
 .coordonnees-tel {
@@ -1265,22 +1246,12 @@ footer * a {
 }
 
 .horaire-contact {
-  transform: translate(70%, 6%);
-  margin-top: 3px;
-  height: 328px;
-  width: 338px;
-  padding: 92px;
+  height: 300px;
+  width: 300px;
+  padding: 20px;
   background-color: #897c7c;
   border-radius: 100%;
   text-align: center;
-}
-
-.horaire-contact h3 {
-  margin-top: -50px;
-}
-
-.horaire-contact p {
-  margin-top: 39px;
 }
 
 .input-contact {
