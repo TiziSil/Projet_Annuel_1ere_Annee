@@ -1380,9 +1380,7 @@ footer * a {
 
 .table-en-attente-validation {
   height: calc(100% - 30px);
-  display: inline-block;
   overflow: auto;
-  border-collapse: collapse;
 }
 
 .table-en-attente-validation thead {
@@ -1390,6 +1388,18 @@ footer * a {
   background: #897c7c;
   top: 0;
   border-radius: 17px;
+}
+.tableau-tr {
+  flex-direction: row !important;
+  display: flex !important;
+}
+
+.tableau-tr td {
+  width: 14%;
+}
+
+.table-en-attente-validation td {
+  width: calc(100% / 7);
 }
 
 .tr-td-attente-validation {
@@ -1497,4 +1507,35 @@ footer * a {
   background-repeat: no-repeat;
   margin: auto;
   padding: 0;
+}
+
+#afficher-recette {
+  display: none;
+  transition: all 0.5s;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.contenu-afficher-recette {
+  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: #f4e9e9;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 17px;
+  width: 600px;
+}
+
+.fermer-modal {
+  position: absolute;
+  top: 5px;
+  right: 20px;
 }

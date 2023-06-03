@@ -447,3 +447,31 @@ function refuserCookie() {
 }
 
 afficherBanniereCookie();
+
+// afficher recette
+
+function ouvrirModaleAfficherRecette(idRecette) {
+  fetch("./core/recetteGet.php?id_recette=" + idRecette)
+    .then((reponsePHP) => {
+      if (reponsePHP.ok) {
+        return reponsePHP.json();
+      } else {
+        console.log("Erreur : " + reponsePHP.statusText);
+      }
+      return reponsePHP.json();
+    })
+    .then((recette) => {
+      const recette2 = recette[0];
+      const modale = document.querySelector("#afficher-recette");
+      modale.style.display = "block";
+      modale.querySelector("#afficher-recette-titre").textContent =
+        recette2.nom_recette;
+      modale.querySelector("#afficher-recette-description").textContent =
+        recette2.description_recette;
+    });
+}
+
+function fermerModalAfficheRecette() {
+  const modale = document.querySelector("#afficher-recette");
+  modale.style.display = "none";
+}
