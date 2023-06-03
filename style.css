@@ -1295,26 +1295,20 @@ footer * a {
 /* MOT DE PASSE OUBLIE */
 
 .image-mdp-oublie {
-  position: relative;
+  /* position: relative; */
 }
 
 .h1-mdp-oublie {
-  position: absolute;
+  /* position: absolute;
   margin-left: 585px;
-  margin-top: 63px;
+  margin-top: 63px; */
   color: #ffffff;
 }
 
 .form-mdp-oublie {
   border-radius: 11px;
-  padding: 31px;
-  position: absolute;
-  right: 75%;
-  top: 60%;
-  height: 41vh;
-  width: 400px;
+  padding: 30px;
   background-color: #f4e9e9;
-  transform: translate(50%, -50%);
 }
 
 .taille-contact-mdp-oublie {
@@ -1336,7 +1330,6 @@ footer * a {
   background: url("assets/images/photo-mdp-oublie.avif");
   background-size: cover;
   width: 100%;
-  height: 90vh;
   background-position: center left;
   background-repeat: no-repeat;
   margin: auto;
@@ -1350,10 +1343,6 @@ footer * a {
 }
 
 .p-mdp-oublie {
-  position: absolute;
-  top: 82%;
-  left: 25%;
-  transform: translateX(-50%);
   font-size: smaller;
 }
 
