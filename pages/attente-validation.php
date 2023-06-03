@@ -18,36 +18,40 @@ $results = $results->fetchAll()
         </div>
         <div class="bloc-en-attente-validation">
             <div>
-                <h2 class="h2-recette-validation-attente"><span class="recette">Recette</span><span class="plural">Recettes</span> en attente de validation</h2>
+                <h2 class="h2-recette-validation-attente">Recettes en attente de validation</h2>
             </div>
-            <table class="table table-en-attente-validation">
-                <thead>
-                    <tr class="tr-td-attente-validation">
-                        <th>Référence</th>
-                        <th>Catégorie</th>
-                        <th>Difficulté</th>
-                        <th>Durée</th>
-                        <th>Recette</th>
-                        <th>Ingredients</th>
-                        <th>Action</th>
+            <div class="table-en-attente-validation">
+                <table class="table ">
+                    <thead>
+                        <tr class="tr-td-attente-validation">
+                            <th>Référence</th>
+                            <th>Nom</th>
+                            <th>Catégorie</th>
+                            <th>Difficulté</th>
+                            <th>Durée</th>
+                            <th>Recette</th>
+                            <th>Ingredients</th>
+                            <th>Action</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($results as $recipe) {
-                        echo "<tr>";
-                        echo "<td>" . $recipe["id_recette"] . "</td>";
-                        echo "<td>" . $recipe["nom_categorie"] . "</td>";
-                        echo "<td>" . $recipe["difficulte"] . "</td>";
-                        echo "<td>" . $recipe["temps_preparation"] . "</td>";
-                        echo "<td>" . $recipe["nom_recette"] . "<br><br>" . $recipe["description_recette"] . "</td>";
-                        echo "<td></td>";
-                        echo "<td><a href='core/recipeValidation.php?id_recette=" . $recipe["id_recette"] . "' class='btn button4'>Valider</a><br><br><a href='core/recipeReject.php?id_recette=" . $recipe["id_recette"] . "' class='btn btn-danger'>Refuser</a></td>";
-                        echo "</tr>";
-                    } ?>
-                </tbody>
-            </table>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($results as $recipe) {
+                            echo "<tr>";
+                            echo "<td>" . $recipe["id_recette"] . "</td>";
+                            echo "<td>" . $recipe["nom_recette"] . "</td>";
+                            echo "<td>" . $recipe["nom_categorie"] . "</td>";
+                            echo "<td>" . $recipe["difficulte"] . "</td>";
+                            echo "<td>" . $recipe["temps_preparation"] . "</td>";
+                            echo "<td><button class='button2' onclick='ouvrirModaleAfficherRecette(" . $recipe["id_recette"] . ")'>Recette</button></td>";
+                            echo "<td></td>";
+                            echo "<td><a href='core/recipeValidation.php?id_recette=" . $recipe["id_recette"] . "' class='btn button4'>Valider</a><a href='core/recipeReject.php?id_recette=" . $recipe["id_recette"] . "' class='btn btn-danger'>Refuser</a></td>";
+                            echo "</tr>";
+                        } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>
