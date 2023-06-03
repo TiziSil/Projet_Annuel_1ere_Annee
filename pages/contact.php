@@ -7,7 +7,7 @@
     </div>
 </section>
 
-<section id="section-radis" class="col">
+<section class="section-radis" class="col">
     <img src="assets/images/separateur.png" class="separateur-de-texte-contact">
 </section>
 
@@ -30,9 +30,9 @@
                     <label>Sujet</label>
                 </div>
                 <div class="champ">
-                <label for="commentaire">Votre message</label>
+                    <label for="commentaire">Votre message</label>
                     <textarea class="input-champ" cols="43" rows="10" name="commentaire" required></textarea>
-                    
+
                 </div>
                 <input class="button2" type="submit" value="Envoyer">
             </form>
@@ -41,7 +41,7 @@
 
 </section>
 
-<section id="section-radis" class="col">
+<section class="section-radis" class="col">
     <img src="assets/images/separateur.png" class="separateur-de-texte-contact">
 </section>
 
@@ -53,8 +53,8 @@
                     <h3>Contact</h3>
                     <span class="coordonnees-contact">123, avenue du Paradis</span>
                     <span class="coordonnees-contact">75012 Paris</span>
-                    
-                    <div class="coordonnees-tel"><strong>Téléphone : </strong><a href="tel:01 00 01 02 03" >01 00 01 02 03</a></div>
+
+                    <div class="coordonnees-tel"><strong>Téléphone : </strong><a href="tel:01 00 01 02 03">01 00 01 02 03</a></div>
                     <div class="coordonnees-mail"><strong>Mail : </strong><a href="mailto:contact@Makisine.fr">contact@Makisine.fr</a></div>
                 </div>
                 <div class="horaire-contact"><br>

@@ -1151,7 +1151,7 @@ footer * a {
   padding: 0;
 }
 
-#section-radis {
+.section-radis {
   background-color: #897c7c;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -1538,4 +1538,63 @@ footer * a {
   position: absolute;
   top: 5px;
   right: 20px;
+}
+
+/** backoffice **/
+#backoffice {
+  background: url("assets/images/backoffice-background.jpg");
+  background-size: cover;
+  width: 100%;
+  background-position: center left;
+  background-repeat: no-repeat;
+  margin: auto;
+  padding: 0;
+}
+
+#backoffice .container {
+  padding: 100px 0 100px 0;
+}
+
+.categorie-boite {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 17px;
+  padding: 20px;
+  width: 100%;
+  margin: 20px;
+}
+
+.boite {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 17px;
+  padding: 20px;
+  width: 100%;
+}
+
+.titre-backoffice {
+  text-align: center;
+}
+
+#backoffice-recette {
+  background: url("assets/images/backoffice-recette-background.jpg");
+  background-size: cover;
+  width: 100%;
+  background-position: center left;
+  background-repeat: no-repeat;
+  margin: auto;
+  padding: 0;
+}
+
+#backoffice-supression {
+  background: url("assets/images/backoffice-supression-background.jpg");
+  background-size: cover;
+  width: 100%;
+  background-position: center left;
+  background-repeat: no-repeat;
+  margin: auto;
+  padding: 0;
+}
+
+.form-check-input:checked {
+  background-color: #897c7c !important;
+  border-color: #897c7c !important;
 }
