@@ -394,3 +394,56 @@ function verificationsAdd() {
 // console.log("Accessoire:", accessoireInput);
 // console.log("Pilositée:", pilositeInput);
 // console.log("Bouche:", boucheInput);
+
+// Cookie
+function boutonCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function accepterCookie() {
+  const d = new Date();
+  const expiration = 30;
+  d.setTime(d.getTime() + expiration * 24 * 60 * 60 * 1000);
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = "banniere_cookie=true; " + expires;
+  afficherBanniereCookie();
+}
+
+function showCookie() {
+  document.write(document.cookie);
+}
+
+function obtenirCookieBanniere() {
+  const name = "banniere_cookie=";
+  const ca = document.cookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length) === "true";
+    }
+  }
+  return false;
+}
+
+function afficherBanniereCookie() {
+  const banniereCookie = document.querySelector("#banniere-cookies");
+  const cookie = obtenirCookieBanniere();
+  if (cookie) {
+    banniereCookie.style.display = "none";
+  } else {
+    banniereCookie.style.display = "block";
+  }
+}
+
+function refuserCookie() {
+  const banniereCookie = document.querySelector("#banniere-cookies");
+  banniereCookie.style.display = "none";
+}
+
+afficherBanniereCookie();
