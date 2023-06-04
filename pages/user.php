@@ -6,13 +6,12 @@
 // ?>
 <div>
     <h1>Liste des utilisateurs</h1>
-    
 </div>
 <?php
 $connection = connectDB();
 $results = $connection->query("SELECT * FROM ".DB_PREFIX."UTILISATEUR");
 $results = $results -> fetchAll();
-echo var_dump($results);
+
 echo "<br>";
 ?>
 <div class = "row">
@@ -38,6 +37,7 @@ echo "<br>";
                     <th>Adresse</th>
                     <th>Code postal</th>
                     <th>Ville</th>
+                    <th>Actions</th>
                     
                 </tr>
             </thead>
@@ -65,12 +65,11 @@ echo "<br>";
                     echo  "<td>".$user["code_postal"]."</td>";
                     echo  "<td>".$user["ville"]."</td>";
                     echo "<td>
-                    <form action='/ProjetAnnuel/core/userDel.php' method='POST'>
+                    <form id='deleteForm' action='core/userDel.php' method='POST'>
                     <input type='hidden' name='id' value='".$user["id_utilisateur"]."'>
-                    <button type='submit' class='btn btn-danger'>Supprimer</button>
+                    <button type='submit' class='btn btn-danger' onclick='confirmDelete()'>Supprimer</button>
                     </form>
-                    </form>
-          
+                
                     </td>";
                     echo "</tr>";
 
@@ -81,3 +80,13 @@ echo "<br>";
     </div>
 </div>
 
+<script>
+    function confirmDelete() {
+        if (confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
+            // L'utilisateur a confirmé la suppression, soumettez le formulaire
+            document.getElementById("deleteForm").submit();
+        } else {
+            // L'utilisateur a annulé la suppression, rien ne se passe
+        }
+    }
+</script>

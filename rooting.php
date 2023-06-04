@@ -53,8 +53,8 @@ switch ($page) {
         break;
 
     case $fichier . '/contact':
-            require './pages/contact.php';
-            break;
+        require './pages/contact.php';
+        break;
     case $fichier . '/user':
         require './pages/user.php';
         break;

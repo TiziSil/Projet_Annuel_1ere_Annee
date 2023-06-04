@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 function cleanFirstname($firstName){
 	return ucwords(strtolower(trim($firstName)));
@@ -49,4 +49,4 @@ function redirectIfNotConnected(){
 	if(!isConnected()){
 		header("Location: index.php");
 	}
-}
+} 
