@@ -1094,7 +1094,24 @@ footer * a {
 
 /* AVATAR */
 
+.rond-avatar {
+  width: 62px;
+  height: 62px;
+  border-radius: 100%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  border: solid #897c7c 4px;
+  position: relative;
+  display: block;
+}
 
+.rond-avatar a {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #000000;
+  text-decoration: none;
+}
 
 /* Contact */
 .contact {
