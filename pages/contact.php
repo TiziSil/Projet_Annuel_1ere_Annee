@@ -1,3 +1,17 @@
+<?php
+
+//php mailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+//!!!!!!!!!!!!!!
+require 'C:\xampp/vendor/autoload.php'; //mettre le chemin pour le serveur
+//!!!!!!!!!!!!!!
+?>
+
 <section id="contact" class="col">
     <div class="container">
         <div class="gros-cercle-2">
@@ -16,7 +30,7 @@
     <div class="filtre-gris">
         <div class="formulaire d-flex flex-column">
             <h3>Formulaire de contact </h3>
-            <form method="post" class="taille-contact d-flex flex-column justify-content-between">
+            <form method="POST" class="taille-contact d-flex flex-column justify-content-between">
                 <div class="champ">
                     <input class="input-champ" size="40" type="text" name="nom" required>
                     <label>Votre nom</label>
@@ -30,7 +44,7 @@
                     <label>Sujet</label>
                 </div>
                 <div class="champ">
-                <label for="commentaire">Votre message</label>
+                <label class = 'input-champ' for="commentaire">Votre message</label>
                     <textarea class="input-champ" cols="43" rows="10" name="commentaire" required></textarea>
                     
                 </div>
@@ -65,3 +79,39 @@
         </div>
     </div>
 </section>
+<?php
+
+$email = cleanEmail($_POST['email']);
+$nom = cleanLastname($_POST['nom']);
+$texte = $_POST['commentaire'];
+	//Server settings
+	//$mail->SMTPDebug =2;                      //Enable verbose debug output
+	$mail->isSMTP();                                            //Send using SMTP
+	$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+	$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+	$mail->Username   = 'pamakisine@gmail.com';                     //SMTP username
+	$mail->Password   = 'ngjzeprsrycjzbzx';                               //SMTP password
+	$mail->SMTPSecure = 'TLS';            //Enable implicit TLS encryption
+	$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+	//Recipients
+	$mail->setFrom('ne-pas-repondre@makisine.com');
+	$mail->addAddress('pamakisine@gmail.com' );     //Add a recipient
+	// $mail->addAddress('ellen@example.com');               //Name is optional
+	$mail->addReplyTo($email);
+	// $mail->addCC('cc@example.com');
+	// $mail->addBCC('bcc@example.com');
+
+	//Attachments
+	// $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+	// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+	//Content
+	$mail->isHTML(true);                                  //Set email format to HTML
+	$mail->Subject = 'Message de' .$nom;
+	$mail->Body    = $texte;
+
+
+	$mail->send();
+header('Location: contact');
+?>
