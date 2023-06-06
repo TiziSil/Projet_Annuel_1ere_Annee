@@ -2,14 +2,17 @@
 <html lang="fr">
 <?php session_start();
 //session_destroy();
-include "head.php"; ?>
+include "head.php";
+require "core/functions.php"; ?>
 <?php
-// if(isset($_SESSION)) {
-//     echo "session started <br>";
-//     echo var_dump($_SESSION);
-// }
-?>
 
+if (isconnected()){
+    echo "vous êtes connecté";
+    echo "<button><a class='nav-link' href='logout.php'>Se déconnecter</a></button>";
+    }else{
+        echo "vous n'êtes pas connecté";
+    }
+?>
 <body>
 
     <div id="bouton-remonter">

@@ -55,6 +55,9 @@ switch ($page) {
     case $fichier . '/contact':
         require './pages/contact.php';
         break;
+    case $fichier . '/user':
+        require './pages/user.php';
+        break;
 
     case $fichier . '/mot-de-passe-oublie':
         require './pages/mot-de-passe-oublie.php';
