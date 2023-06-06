@@ -193,18 +193,18 @@ function validerAdressePostale() {
 }
 //Puzzle
 
-let puzzleEstCorrect = false;
-const pieces = document.querySelectorAll(".puzzle-piece");
-const puzzle = document.querySelector("#puzzle");
-let pieceAttrapee, pieceRelachee;
-const images = Array.from(pieces);
-images.sort(() => Math.random() - 0.5);
-images.forEach((image) => {
-  image.parentNode.insertBefore(image, image.parentNode.firstChild);
+let puzzleEstCorrect = false;   // On l'initialise à faux
+const pieces = document.querySelectorAll(".puzzle-piece");  //Selectionne toutes les pièces du puzzle 
+const puzzle = document.querySelector("#puzzle");  // Selectionne le conteneur du puzzle
+let pieceAttrapee, pieceRelachee;         // Variables utilisées plus tard pour stocker les pièces attrapées et relâchées
+const images = Array.from(pieces);        // Création d'un tableau pour une meilleure utilisation
+images.sort(() => Math.random() - 0.5);   // permet de mélanger les pièces aléatoirement
+images.forEach((image) => {               
+  image.parentNode.insertBefore(image, image.parentNode.firstChild);  
 });
 
 pieces.forEach((p) => {
-  p.addEventListener("dragstart", (evenement) => {
+  p.addEventListener("dragstart", (evenement) => {  // Ce qui permet de conserver la place de l'image que l'utilisateur à bougé
     pieceAttrapee = evenement;
   });
 
@@ -216,7 +216,7 @@ pieces.forEach((p) => {
       const div1 = pieceRelachee.target;
       const div2 = pieceAttrapee.target;
       let div3 = div2.nextSibling;
-      const pieceDePuzzle = puzzle.querySelectorAll(".puzzle-piece");
+      const pieceDePuzzle = puzzle.querySelectorAll(".puzzle-piece");   
 
       const dernier = pieceDePuzzle[pieceDePuzzle.length - 1];
       if (div1 === div3) {
@@ -255,7 +255,7 @@ let couleurPeau = [
   "#ffdbb4",
   "#edb98a",
   "#fd9841",
-  "#fcee93",
+  "#fcee93",        // Les différentes couleurs possible
   "#d08b5b",
   "#ae5d29",
   "#614335",
@@ -271,14 +271,14 @@ let couleurCheveux = [
 ];
 let peau = ["#peau-1", "#peau-2"];
 let cheveux = ["#cheveux-1", "#cheveux-2"];
-let yeux = ["#yeux-1", "#yeux-2"];
+let yeux = ["#yeux-1", "#yeux-2"];          // Tableaux représentant diffétentes options possibles
 let accessoires = ["#none", "#lunettes"];
 let pilosite = ["#none", "#pilosite-1", "#pilosite-2"];
 let bouche = ["#none", "#bouche-1", "#bouche-2", "#bouche-4"];
 
 let iCouleurPeau = 0;
 let iCouleurCheveux = 0;
-let iYeux = 0;
+let iYeux = 0;              // Définies à 0 pour indiquer par la première option par défault 
 let iAccessoire = 0;
 let iCoiffure = 0;
 let iPilosite = 0;
@@ -286,13 +286,9 @@ let iBouche = 0;
 
 function changerCouleurPeau() {
   iCouleurPeau++;
-  const cheveux =
-    "--couleur-cheveux: " +
-    couleurCheveux[iCouleurCheveux % couleurCheveux.length] +
-    ";";
-  const peau =
-    "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
-  document.querySelector("body").style = cheveux + peau;
+  const cheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";";  // Récupère la couleur de cheveux dans le tableau 'couleurCheveux' en revenant à la première couleur lorsque toutes les options ont été parcourues.
+  const peau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";"; 
+  document.querySelector("body").style = cheveux + peau;  //MAJ la couleur des cheveux et de la peau de l'avatar en temps réel.
   console.log(couleurPeau, "couleurPeau");
 }
 
@@ -316,8 +312,7 @@ function changerCoiffure() {
 }
 
 function changerYeux() {
-  document.querySelector("#yeuxSelectionne").href.baseVal =
-    yeux[iYeux % yeux.length];
+  document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux % yeux.length];
   iYeux++;
   console.log(yeux);
 }
@@ -346,7 +341,7 @@ function changerBouche() {
 changerCouleurPeau();
 changerCoiffure();
 changerYeux();
-changerAccessoire();
+changerAccessoire(); // Fonctions appelées pour changer la couleur de peau/coiffure/couleur yeux etc
 changerPilosite();
 changerBouche();
 changerCouleurCheveux();
@@ -354,9 +349,8 @@ changerCouleurCheveux();
 //enregistrement avatar
 
 function verificationsAdd() {
-  // Mettre à jour les valeurs des champs cachés avec les valeurs actuelles de l'avatar
-  document.getElementById("couleurPeauInput").value =
-    couleurPeau[iCouleurPeau % couleurPeau.length];
+
+  document.getElementById("couleurPeauInput").value = couleurPeau[iCouleurPeau % couleurPeau.length];   // Mettre à jour les valeurs des champs cachés avec les valeurs actuelles de l'avatar
   document.getElementById("couleurCheveuxInput").value =
     couleurCheveux[iCouleurCheveux % couleurCheveux.length];
   document.getElementById("coiffureInput").value =
@@ -370,7 +364,7 @@ function verificationsAdd() {
     bouche[iBouche % bouche.length];
 
   // Soumettre le formulaire
-  document.getElementById("avatar-form").submit();
+  document.getElementById("avatar-form").submit();   // Soumettre le formulaire avec l'id "avatar-form" pour ê envoyé au serveur 
 }
 
 // Rajouter le s si plusieurs recettes en attente
