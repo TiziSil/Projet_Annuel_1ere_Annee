@@ -61,9 +61,18 @@ switch ($page) {
         break;
 
     case $fichier . '/mon-compte':
-            require './pages/mon-compte.php';
-            break;
-
+        require './pages/mon-compte.php';
+        break;
+        
+    case $fichier . '/modifier-profil':
+        require './pages/modifier-profil.php';
+        break;
+    case $fichier .'/sucess':
+        require './pages/public/success.html';
+        break;
+    case $fichier . '/checkout':
+        require './pages/Abonnement/checkout.php';
+        break;
     default:
         http_response_code(404);
         break;

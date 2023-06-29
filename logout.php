@@ -1,7 +1,8 @@
 
 <?php
-	//session_start();
-	require "conf.inc.php";
+	// session_start();
+	// require "conf.inc.php";
+	echo "session started <br>";
 	unset($_SESSION['email']);
 	unset($_SESSION['login']);
-	header("Location: pages/modale-connexion.php");
+	header("Location: index.php");

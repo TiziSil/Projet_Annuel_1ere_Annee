@@ -47,6 +47,6 @@ function isConnected(){
 
 function redirectIfNotConnected(){
 	if(!isConnected()){
-		header("Location: index.php");
+		exit;
 	}
 }

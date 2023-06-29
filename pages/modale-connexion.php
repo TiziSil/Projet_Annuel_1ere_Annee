@@ -5,6 +5,7 @@
         </div>
         <div>
             <?php
+            
             //On va vérifier que l'on a quelque chose dans $_POST
             //Ce qui signifie que le formulaire a été validé
             if (!empty($_POST['email']) &&  !empty($_POST['pwd'])) {
@@ -19,27 +20,28 @@
                 $queryPrepared->execute(["email" => $email]);
                 $results = $queryPrepared->fetch();
 
-                if (!empty($results) && password_verify($pwd, $results["pwd"])) {
-                    $_SESSION['email'] = $email;
-                    $_SESSION['login'] = true;
-                    header("Location: ../");
-                } else {
-                    echo "Identifiants incorrects";
+                    if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
+                        $_SESSION['email'] = $email;
+                        $_SESSION['login'] = true;
+                        exit;
+                    }else{
+                        echo "Identifiants incorrects";
+                    }
                 }
-            }
+
             ?>
         </div>
         <div>
-            <form class="form-connexion" method="POST">
+            <form class="form-connexion" action ="core/connexion.php" method="POST">
                 <div class="champ">
-                    <input autocomplete="off" placeholder="Veuillez entrer votre adresse email" class="input-champ" type="email" name="email" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["email"] : ""; ?>">
-
+                    <input autocomplete="off" placeholder="Veuillez entrer votre adresse email" class="input-champ" type= "email" name="email"
+                    value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
                 </div>
                 <div class="champ">
-                    <input placeholder="Et votre mot de passe" class="input-champ" type="password">
+                    <input placeholder="Et votre mot de passe" class="input-champ" type="password" name = "pwd">
                 </div>
                 <div class="btn">
-                    <a href="./mon-compte"><button class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se connecter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
+                    <button type = "submit" class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se connecter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     <a class="button2" onclick="fermerSeConnecteEtOuvrirInscription()"> S'inscrire </a>
                 </div>
 

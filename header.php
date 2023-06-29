@@ -16,6 +16,13 @@
       <a href="index.php#boutique">Notre boutique</a>
       <a href="index.php#pub">Promotions</a>
       <a href="./contact">Nous contacter</a>
+      <?php if (isConnected()) { ?>
+        <a href="logout.php">Déconnexion</a>
+      <a href="mon-compte">Mon compte</a>
+      <?php }else{ 
+
+      } 
+      ?>
     </div>
   </div>
   <div class="py-2 text-bg">

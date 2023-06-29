@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <?php session_start();
+require "core/functions.php";
+
 //session_destroy();
 include "head.php"; ?>
 <?php
@@ -8,6 +10,7 @@ include "head.php"; ?>
 //     echo "session started <br>";
 //     echo var_dump($_SESSION);
 // }
+
 ?>
 
 <body>
