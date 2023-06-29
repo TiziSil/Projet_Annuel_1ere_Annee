@@ -66,11 +66,27 @@ switch ($page) {
     case $fichier . '/cookies':
         require './pages/cookies.php';
         break;
-
-    case $fichier . '/mon-compte':
-        require './pages/mon-compte.php';
+    
+    //Profil
+    case $fichier . '/mon-abonnement':
+        require './pages/Profil/mon-abonnement.php';
         break;
 
+    case $fichier . '/mon-compte':
+        require './pages/Profil/mon-compte.php';
+        break;
+    
+    case $fichier . '/modifier-profil':
+        require './pages/Profil/modifier-profil.php';
+        break;
+
+    //Abonnement
+    // case $fichier .'/sucess':
+    //     require './pages/public/success.html';
+    //     break;
+    case $fichier . '/checkout':
+        require './pages/Abonnement/checkout.php';
+        break;
     default:
         http_response_code(404);
         break;

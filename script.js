@@ -163,10 +163,10 @@ function validerAdressePostale() {
     return false;
   }
 
-  if (/^(0|\+33)[1-9](\d{2}){4}$/.test(telephone)) {
-    alert("Le téléphone doit être au format +33 ou 00-00-00-00-00");
-    return false;
-  }
+  // if (/^(0|\+33)[1-9](\d{2}){4}$/.test(telephone)) {
+  //   alert("Le téléphone doit être au format +33 ou 00-00-00-00-00");
+  //   return false;
+  // }
 
   if (adresse.length < 2) {
     alert("L'adresse doit contenir au moins 2 lettres.");

@@ -8,7 +8,7 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 //!!!!!!!!!!!!!!
-require 'C:\xampp/vendor/autoload.php'; //mettre le chemin pour le serveur
+require 'C:\xampp/vendor/autoload.php'; // ../vendor/autoload.php //mettre le chemin pour le serveur
 //!!!!!!!!!!!!!!
 ?>
 
@@ -92,7 +92,7 @@ $texte = $_POST['commentaire'];
 	$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 	$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
 	$mail->Username   = 'pamakisine@gmail.com';                     //SMTP username
-	$mail->Password   = 'ngjzeprsrycjzbzx';                               //SMTP password
+	$mail->Password   = 'ngjzeprsrycjzbzx';  //eonrxdnodvegnjrp                             //SMTP password
 	$mail->SMTPSecure = 'TLS';            //Enable implicit TLS encryption
 	$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -111,7 +111,7 @@ $texte = $_POST['commentaire'];
 	//Content
 	$mail->isHTML(true);                                  //Set email format to HTML
 	$mail->Subject = 'Message de' .$nom;
-	$mail->Body    = $texte;
+	$mail->Body    = 'email :' .$email .'<br>' .$texte;
 
 
 	$mail->send();

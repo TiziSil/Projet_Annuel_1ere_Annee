@@ -10,7 +10,7 @@ require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 //!!!!!!!!!!!!!!
-require 'C:\xampp/vendor/autoload.php'; //mettre le chemin pour le serveur
+require 'C:\xampp/vendor/autoload.php'; //../vendor/autoload.php; //mettre le chemin pour le serveur 
 //!!!!!!!!!!!!!!
 //recuperer donnée
 //genre
@@ -24,8 +24,8 @@ require 'C:\xampp/vendor/autoload.php'; //mettre le chemin pour le serveur
 
 
 //vérification des données
-if (
-	 empty ($_POST["firstname"])
+if ( count($_POST) > 13
+	|| empty ($_POST["firstname"])
 	|| empty ($_POST["lastname"])
 	|| empty ($_POST['pseudo'])
 	|| empty ($_POST["email"])
@@ -154,13 +154,13 @@ if( !in_array($country, $listCountries) ){
 	
 //ajout avatar
 //fonctionne PAS
-$couleurPeau = $_POST['couleurPeau'];
-$couleurCheveux = $_POST['couleurCheveux'];
-$coiffure = $_POST['coiffure'];
-$yeux = $_POST['yeux'];
-$accessoire = $_POST['accessoire'];
-$pilosite = $_POST['pilosite'];
-$bouche = $_POST['bouche'];
+// $couleurPeau = $_POST['couleurPeau'];
+// $couleurCheveux = $_POST['couleurCheveux'];
+// $coiffure = $_POST['coiffure'];
+// $yeux = $_POST['yeux'];
+// $accessoire = $_POST['accessoire'];
+// $pilosite = $_POST['pilosite'];
+// $bouche = $_POST['bouche'];
 
 if(empty($listOfErrors)){
 	//Insertion en BDD
@@ -220,7 +220,7 @@ if(empty($listOfErrors)){
 	$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 	$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
 	$mail->Username   = 'pamakisine@gmail.com';                     //SMTP username
-	$mail->Password   = 'ngjzeprsrycjzbzx';                               //SMTP password
+	$mail->Password   = 'ngjzeprsrycjzbzx';      //eonrxdnodvegnjrp                         //SMTP password
 	$mail->SMTPSecure = 'TLS';            //Enable implicit TLS encryption
 	$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -245,7 +245,7 @@ if(empty($listOfErrors)){
 	$mail->send();
 
 	//Redirection sur la page de connexion
-	header('location: ../');
+	header('location: index.php');
 }else{
 
 	//Si NOK
