@@ -1,5 +1,30 @@
 /* Tuile n°1 Accueil */
 
+body {
+  background-color: var(--couleur-quaternaire) !important;
+}
+
+input {
+  color: var(--couleur-tertiaire) !important;
+}
+
+label {
+  color: var(--couleur-tertiaire) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--couleur-tertiaire) !important;
+}
+
+p {
+  color: var(--couleur-tertiaire);
+}
+
 .logo img {
   object-fit: cover;
   height: 70px;
@@ -17,7 +42,7 @@
   height: 500px;
   width: 500px;
   padding: 80px;
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
   border-radius: 100%;
 }
 
@@ -34,13 +59,13 @@
   text-decoration: none;
   transition: all 0.25s ease-in-out;
   transform: translate(0px);
-  color: #000000;
+  color: var(--couleur-tertiaire);
   margin-bottom: 20px;
 }
 
 .gros-cercle .contenu-cercle a:hover {
   text-decoration: none;
-  color: #897c7c;
+  color: var(--couleur-secondaire);
   transition: all 0.25s ease-in-out;
   transform: translate(+5px);
   margin-bottom: 20px;
@@ -55,7 +80,7 @@
   width: 32px;
   height: 32px;
   display: inline-block;
-  color: #ffffff;
+  color: var(--couleur-quaternaire);
   float: right;
   transition: all 0.25s ease-in-out;
 }
@@ -67,7 +92,7 @@
 
 .menu-burger a {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--couleur-quaternaire);
   margin-top: 25px;
   transition: all 0.25s ease-in-out;
 }
@@ -102,7 +127,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
   padding: 20px;
   border: 1px solid #888;
   border-radius: 17px;
@@ -132,8 +157,8 @@
 }
 
 .text-bg {
-  background-color: #897c7c !important;
-  color: #ffffff;
+  background-color: var(--couleur-secondaire) !important;
+  color: var(--couleur-quaternaire);
 }
 
 .burger {
@@ -162,10 +187,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--couleur-quaternaire);
 }
 
 /* Tuile n°2 Ques-ce que Makisine ? */
+
+.titre-tuile-2 * {
+  color: white !important;
+}
 
 .titre-tuile-2 svg {
   margin-right: 25px;
@@ -176,7 +205,7 @@
 }
 
 .tuile-2 {
-  border: solid 1px #897c7c;
+  border: solid 1px var(--couleur-secondaire);
   border-radius: 71px;
   text-align: center;
   padding: 30px;
@@ -203,7 +232,7 @@
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  border: solid 1px #897c7c;
+  border: solid 1px var(--couleur-secondaire);
   border-radius: 71px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -216,7 +245,7 @@
 }
 
 .tableau a {
-  color: #000000;
+  color: var(--couleur-tertiaire);
   text-decoration: none;
   transition: all 0.25s ease-in-out;
   transform: translate(0px);
@@ -225,7 +254,7 @@
 
 .tableau a :hover {
   text-decoration: none;
-  color: #897c7c;
+  color: var(--couleur-secondaire);
   transition: all 0.25s ease-in-out;
   transform: translate(+5px);
 }
@@ -249,7 +278,7 @@
   height: 100%;
   border-radius: 71px;
   padding: 30px;
-  border: solid 1px #897c7c;
+  border: solid 1px var(--couleur-secondaire);
   border-radius: 71px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -259,7 +288,7 @@
 
 .liste-recette div {
   border-radius: 16px;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   margin: auto;
   margin-bottom: 30px;
   width: 500px;
@@ -300,7 +329,7 @@
   height: 100%;
   border-radius: 71px;
   padding: 30px;
-  border: solid 1px #897c7c;
+  border: solid 1px var(--couleur-secondaire);
   border-radius: 71px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -310,7 +339,7 @@
 
 .liste-recette div {
   border-radius: 16px;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   margin: auto;
   margin-bottom: 30px;
   width: 500px;
@@ -372,7 +401,7 @@
 
 .splash-interieur .box-button a {
   text-decoration: none;
-  color: #897c7c;
+  color: var(--couleur-secondaire);
   font-weight: bold;
   font-style: italic;
   font-size: 24px;
@@ -392,7 +421,7 @@
 /* tuile 6 Publiciité */
 
 #pub {
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   width: 100%;
 }
 
@@ -412,7 +441,7 @@
 
 .carousel-item div {
   position: absolute;
-  color: #000000;
+  color: var(--couleur-tertiaire);
   z-index: 15;
   font-weight: bold;
   top: 15px;
@@ -429,7 +458,7 @@
 
 .h1-connexion {
   text-align: center;
-  color: #897c7c;
+  color: var(--couleur-secondaire);
   margin-bottom: 50px;
 }
 
@@ -440,7 +469,7 @@
   padding-left: 2em;
   padding-right: 2em;
   padding-bottom: 0.4em;
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
 }
 
 .form-connexion .btn {
@@ -459,13 +488,13 @@
   border: none;
   outline: none;
   transition: 0.4s ease-in-out;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   color: white;
 }
 
 .button1:hover {
-  background-color: #000000;
-  color: #f4e9e9;
+  background-color: var(--couleur-tertiaire);
+  color: var(--couleur-primaire);
 }
 
 .button2 {
@@ -476,13 +505,13 @@
   border: none;
   outline: none;
   transition: 0.4s ease-in-out;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   color: white;
 }
 
 .button2:hover {
-  background-color: #000000;
-  color: #f4e9e9;
+  background-color: var(--couleur-tertiaire);
+  color: var(--couleur-primaire);
 }
 
 .button3 {
@@ -499,7 +528,7 @@
   border: none;
   outline: none;
   transition: 0.4s ease-in-out;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   color: white;
 }
 
@@ -512,38 +541,38 @@
   border: none;
   outline: none;
   transition: 0.4s ease-in-out;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   color: white;
   filter: contrast(0.4);
 }
 
 .button3:hover {
-  background-color: #000000;
-  color: #f4e9e9;
+  background-color: var(--couleur-tertiaire);
+  color: var(--couleur-primaire);
 }
 
 .button4 {
   color: white !important;
   --bs-btn-color: #fff;
-  --bs-btn-bg: #897c7c !important;
-  --bs-btn-border-color: #897c7c !important;
+  --bs-btn-bg: var(--couleur-secondaire) !important;
+  --bs-btn-border-color: var(--couleur-secondaire) !important;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #897c7c;
-  --bs-btn-hover-border-color: #897c7c;
+  --bs-btn-hover-bg: var(--couleur-secondaire);
+  --bs-btn-hover-border-color: var(--couleur-secondaire);
   --bs-btn-focus-shadow-rgb: 60, 153, 110;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #897c7c;
-  --bs-btn-active-border-color: #897c7c;
+  --bs-btn-active-bg: var(--couleur-secondaire);
+  --bs-btn-active-border-color: var(--couleur-secondaire);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #897c7c !important;
-  --bs-btn-disabled-border-color: #897c7c !important;
+  --bs-btn-disabled-bg: var(--couleur-secondaire) !important;
+  --bs-btn-disabled-border-color: var(--couleur-secondaire) !important;
 }
 
 .button4:hover {
-  border-color: #000000 !important;
-  background-color: #000000 !important;
-  color: #f4e9e9 !important;
+  border-color: var(--couleur-tertiaire) !important;
+  background-color: var(--couleur-tertiaire) !important;
+  color: var(--couleur-primaire) !important;
 }
 
 .modale-connexion {
@@ -565,9 +594,9 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid var(--couleur-primaire);
   border-radius: 17px;
   width: 600px;
 }
@@ -590,7 +619,7 @@
 .champ input:valid ~ label {
   transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(-100%) scale(0.8);
-  background-color: rgba(244, 233, 233, 1);
+  background-color: var(--couleur-primaire);
   border: 1px solid rgba(137, 124, 124, 0.3);
   border-radius: 17px;
   padding: 2px 7px 2px 7px;
@@ -605,8 +634,19 @@
   padding: 0.6em;
   border: none;
   outline: none;
-  color: white;
+  color: var(--couleur-quaternaire);
   box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+.champ div.error {
+  position: absolute;
+  z-index: 30;
+  color: red;
+  left: 14px;
+  font-style: italic;
+  top: 26px;
+  font-size: x-small;
+  display: none;
 }
 
 .champ input {
@@ -615,7 +655,7 @@
   border: none;
   outline: none;
   width: 100%;
-  /* color: #897c7c; */
+  /* color: var(--couleur-secondaire); */
 }
 
 .champ textarea {
@@ -624,14 +664,14 @@
   border: none;
   outline: none;
   width: 100%;
-  /* color: #897c7c; */
+  /* color: var(--couleur-secondaire); */
 }
 
 /* MODALE DE CONNEXION INSCRIPTION*/
 
 .h1-inscription {
   text-align: center;
-  color: #897c7c;
+  color: var(--couleur-secondaire);
   margin-bottom: 20px;
 }
 
@@ -644,7 +684,7 @@
   padding-left: 2em;
   padding-right: 2em;
   padding-bottom: 0.4em;
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
 }
 
 .form-inscription .btn {
@@ -663,13 +703,13 @@
   border: none;
   outline: none;
   transition: 0.4s ease-in-out;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   color: white;
 }
 
 .button1:hover {
-  background-color: #000000;
-  color: #f4e9e9;
+  background-color: var(--couleur-tertiaire);
+  color: var(--couleur-primaire);
 }
 
 .button2 {
@@ -680,13 +720,13 @@
   border: none;
   outline: none;
   transition: 0.4s ease-in-out;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   color: white;
 }
 
 .button2:hover {
-  background-color: #000000;
-  color: #f4e9e9;
+  background-color: var(--couleur-tertiaire);
+  color: var(--couleur-primaire);
 }
 
 .modale-inscription {
@@ -708,9 +748,9 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid var(--couleur-primaire);
   border-radius: 17px;
   width: 600px;
 }
@@ -764,7 +804,7 @@
   border: none;
   outline: none;
   width: 100%;
-  color: #897c7c;
+  color: var(--couleur-secondaire);
   resize: none;
 }
 
@@ -781,14 +821,14 @@
 .fleche-droite {
   width: 20px;
   height: 32px;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   clip-path: polygon(0 0, 0 100%, 100% 50%);
 }
 
 .fleche-gauche {
   width: 20px;
   height: 32px;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   clip-path: polygon(100% 100%, 100% 0, 0 50%);
 }
 
@@ -838,10 +878,10 @@
   width: 1.4em;
   left: 0em;
   bottom: 0em;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   transition: 0.4s;
   border-radius: 0.8rem 0rem 0.8rem;
-  border: 4px solid #897c7c;
+  border: 4px solid var(--couleur-secondaire);
 }
 
 input:checked + .slider {
@@ -849,19 +889,19 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 2px #897c7c;
+  box-shadow: 0 0 2px var(--couleur-secondaire);
 }
 
 input:checked + .slider:before {
   transform: translateX(2.2em);
   background-color: green;
   box-shadow: 0px 0px 40px 5px #72eb67;
-  border: 1.9px solid #897c7c;
+  border: 1.9px solid var(--couleur-secondaire);
 }
 
 input:checked + .slider::after {
   content: "|";
-  color: #f4e9e9;
+  color: var(--couleur-primaire);
   position: absolute;
   bottom: 2px;
   top: -7px;
@@ -882,7 +922,7 @@ input:checked + .slider::after {
 
 footer {
   padding-top: 70px;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
 }
 
 .trait {
@@ -895,7 +935,7 @@ footer {
 }
 
 footer * a {
-  color: #000000;
+  color: var(--couleur-tertiaire);
 }
 
 .footer-haut {
@@ -926,7 +966,7 @@ footer * a {
 /* FIL D'ARIANE */
 
 #inscription-value-1 {
-  color: #ffffff;
+  color: var(--couleur-quaternaire);
 }
 
 .radio-input {
@@ -936,11 +976,11 @@ footer * a {
   display: flex;
   align-items: center;
   border-radius: 17px;
-  background-color: #897c7c;
-  color: #000000;
+  background-color: var(--couleur-secondaire);
+  color: var(--couleur-tertiaire);
   width: 100%;
   overflow: hidden;
-  border: 1px solid #897c7c;
+  border: 1px solid var(--couleur-secondaire);
 }
 
 .fil-ariane li:not(:last-child) {
@@ -1094,8 +1134,6 @@ footer * a {
 
 /* AVATAR */
 
-
-
 /* Contact */
 .contact {
   height: 100%;
@@ -1133,7 +1171,7 @@ footer * a {
 }
 
 .section-radis {
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -1150,14 +1188,14 @@ footer * a {
   height: 500px;
   width: 500px;
   padding: 80px;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   max-width: 100%;
   border-radius: 100%;
-  color: #f4e9e9;
+  color: var(--couleur-primaire);
 }
 
 #contact h1 {
-  color: #f4e9e9;
+  color: var(--couleur-primaire);
   text-align: center;
   margin-bottom: 40px;
 }
@@ -1193,7 +1231,7 @@ footer * a {
 .formulaire {
   border-radius: 11px;
   padding: 30px;
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
 }
 .formulaire h3 {
   margin-bottom: 31px;
@@ -1205,7 +1243,7 @@ footer * a {
   height: 300px;
   width: 300px;
   padding: 20px;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   border-radius: 100%;
   text-align: center;
 }
@@ -1221,24 +1259,24 @@ footer * a {
 }
 
 .coordonnees-tel a {
-  color: #000000;
+  color: var(--couleur-tertiaire);
 }
 
 .coordonnees-mail a {
-  color: #000000;
+  color: var(--couleur-tertiaire);
 }
 
 .horaire-contact {
   height: 300px;
   width: 300px;
   padding: 20px;
-  background-color: #897c7c;
+  background-color: var(--couleur-secondaire);
   border-radius: 100%;
   text-align: center;
 }
 
 .input-contact {
-  color: #897c7c;
+  color: var(--couleur-secondaire);
 }
 
 .contact-logo {
@@ -1256,13 +1294,13 @@ footer * a {
   /* position: absolute;
   margin-left: 585px;
   margin-top: 63px; */
-  color: #ffffff;
+  color: var(--couleur-quaternaire);
 }
 
 .form-mdp-oublie {
   border-radius: 11px;
   padding: 30px;
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
 }
 
 .taille-contact-mdp-oublie {
@@ -1314,7 +1352,7 @@ footer * a {
 }
 
 .bloc-en-attente-validation {
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
   padding: 24px;
   border-radius: 17px;
   height: 600px;
@@ -1328,7 +1366,7 @@ footer * a {
 
 .table-en-attente-validation thead {
   position: sticky;
-  background: #897c7c;
+  background: var(--couleur-secondaire);
   top: 0;
   border-radius: 17px;
 }
@@ -1346,12 +1384,12 @@ footer * a {
 }
 
 .tr-td-attente-validation {
-  color: #f4e9e9;
+  color: var(--couleur-primaire);
 }
 
 .h1-attente-validation {
   text-align: center;
-  color: #897c7c;
+  color: var(--couleur-secondaire);
 }
 
 .h2-recette-validation-attente {
@@ -1359,7 +1397,7 @@ footer * a {
   text-align: center;
   margin-top: -10px;
   margin-bottom: 15px;
-  color: #897c7c;
+  color: var(--couleur-secondaire);
 }
 
 /* BOUTON REMONTER EN HAUT */
@@ -1385,11 +1423,11 @@ footer * a {
   left: 0;
   right: 0;
   box-sizing: border-box;
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
   font-size: 14px;
   height: 230px;
   position: fixed;
-  border: 2px solid #897c7c;
+  border: 2px solid var(--couleur-secondaire);
   padding: 10px;
   border-radius: 50px 20px;
 }
@@ -1421,7 +1459,7 @@ footer * a {
 .h2-page-cookies {
   padding-top: 15px;
   margin-bottom: 30px;
-  color: #897c7c;
+  color: var(--couleur-secondaire);
 }
 
 .p-page-cookies {
@@ -1430,7 +1468,7 @@ footer * a {
   text-align: center;
   box-sizing: border-box;
   font-size: 15px;
-  border: 2px solid #897c7c;
+  border: 2px solid var(--couleur-secondaire);
   border-radius: 50px 20px;
   text-align: justify;
 }
@@ -1470,7 +1508,7 @@ footer * a {
   position: fixed;
   top: 50%;
   left: 50%;
-  background-color: #f4e9e9;
+  background-color: var(--couleur-primaire);
   padding: 20px;
   border: 1px solid #888;
   border-radius: 17px;
@@ -1538,6 +1576,12 @@ footer * a {
 }
 
 .form-check-input:checked {
-  background-color: #897c7c !important;
-  border-color: #897c7c !important;
+  background-color: var(--couleur-secondaire) !important;
+  border-color: var(--couleur-secondaire) !important;
+}
+
+/* BOUTON Darkmode */
+
+#button-dark-mode {
+  background-color: red;
 }
