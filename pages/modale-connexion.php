@@ -4,16 +4,15 @@
             <h1 class="h1-connexion">Me connecter</h1><span class="close" id="close-modale-connexion" onclick="fermerModaleConnexion()">&times;</span>
         </div>
         <div>
-            <form class="form-connexion" action ="core/connexion.php" method="POST">
+            <form class="form-connexion" action="core/connexion.php" method="POST">
                 <div class="champ">
-                    <input autocomplete="off" placeholder="Veuillez entrer votre adresse email" class="input-champ" type= "email" name="email"
-                    value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
+                    <input autocomplete="off" placeholder="Veuillez entrer votre adresse email" class="input-champ" type= "email" name="email" value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["email"]:""; ?>">
                 </div>
                 <div class="champ">
                     <input placeholder="Et votre mot de passe" class="input-champ" type="password" name = "pwd">
                 </div>
                 <div class="btn">
-                    <button type = "submit" class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se connecter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button class="button1">Se connecter</button>
                     <a class="button2" onclick="fermerSeConnecteEtOuvrirInscription()"> S'inscrire </a>
                 </div>
 

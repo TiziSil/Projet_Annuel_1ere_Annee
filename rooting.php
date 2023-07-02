@@ -1,6 +1,7 @@
 <?php
 
 $page = $_SERVER['REQUEST_URI'];
+$page = explode('?', $page)[0];
 $fichier = substr(dirname(__FILE__), strrpos(str_replace('\\', '/', dirname(__FILE__)), '/') + 1);
 if ($fichier === 'htdocs' || $fichier === 'www') {
     $fichier = '';
@@ -96,6 +97,14 @@ switch ($page) {
     case $fichier . '/userEdit':
         require './pages/Admin/userEdit.php';
         break;
+    case $fichier . '/forum':
+        require './pages/forum.php';
+        break;
+
+    case $fichier . '/forum-article':
+        require './pages/forum-afficher-article.php';
+        break;
+
     default:
         http_response_code(404);
         break;

@@ -1,8 +1,11 @@
-<!DOCTYPE html>
+<?php
+ session_start();
+ ?>
+ <!DOCTYPE html>
 <html lang="fr">
-<?php session_start();
+<?php
 require "core/functions.php";
-
+require "conf.inc.php";
 //session_destroy();
 include "head.php"; ?>
 <?php

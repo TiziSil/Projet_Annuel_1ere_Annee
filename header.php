@@ -1,6 +1,5 @@
 <?php include "pages/modale-connexion.php"; ?>
 <?php include "pages/modale-inscription.php"; ?>
-<?php include "conf.inc.php" ?>
 
 <header>
   <div style="z-index:15;position: absolute;" class="collapse" id="navbarToggleExternalContent">
@@ -15,6 +14,7 @@
       <a href="index.php#recettes">Recettes</a>
       <a href="index.php#boutique">Notre boutique</a>
       <a href="index.php#pub">Promotions</a>
+      <a href="./forum">Forum</a>
       <a href="./contact">Nous contacter</a>
       <?php if (isConnected()) { ?>
         <a href="logout.php">Déconnexion</a>
@@ -42,17 +42,40 @@
         </div>
 
         <div class="col">
-          <a href="#" onclick="ouvrirModaleConnexion()" class="mon-compte-button px-2" title="Mode sombre">
-            <svg fill="white" class="d-block" width="32px" height="32px">
-              <use href="#people-circle" />
-            </svg>
-          </a>
-          
-          <a href="#" onclick="activerDesactiveDarkMode()" class="mon-compte-button" title="Mon compte">
-            <svg fill="white" class="d-block" width="32px" height="32px">
-              <image height="32px" fill="#FFFFFF" width="32px"href="./assets/images/moon-solid.svg" />
-            </svg>
-          </a>
+          <div class="header-droite d-flex flex-row">
+            
+            <a href="#" onclick="activerDesactiveDarkMode()"class="header-droite-margin" style="margin-right: -4px;" title="Mode sombre">
+              <svg fill="white" class="d-block" width="32px" height="32px">
+                <image height="32px" fill="#FFFFFF" width="32px"href="./assets/images/moon-solid.svg" />
+              </svg>
+            </a>
+            <?php
+              if (isconnected()) {
+                  
+                  echo '<a href="./mon-compte" class="header-droite-margin" title="Mon compte">';
+                  echo  '<svg fill="white" class="d-block" width="32px" height="32px">';
+                  echo    '<use href="#people-circle" />';
+                  echo  '</svg>';
+                  echo '</a>';
+
+                  
+                  echo '<a href="logout.php" class="header-droite-margin"  title="Se déconnecter">';
+                  echo  '<svg fill="white" class="d-block" width="32px" height="32px">';
+                  echo    '<image height="32px" width="32px" href="assets/images/right-from-bracket-solid.svg" />';
+                  echo  '</svg>';
+                  echo '</a>';
+
+              } else {
+                  echo '<a href="#" onclick="ouvrirModaleConnexion()" class="header-droite-margin"  title="Se connecter">';
+                  echo  '<svg fill="white" class="d-block" width="32px" height="32px">';
+                  echo    '<use href="#people-circle" />';
+                  echo  '</svg>';
+                  echo '</a>';
+              }
+            ?>
+
+            
+          </div>
         </div>
 
       </div>

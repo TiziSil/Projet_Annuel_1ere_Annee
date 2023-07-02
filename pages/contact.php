@@ -8,7 +8,7 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 //!!!!!!!!!!!!!!
-require 'C:\xampp/vendor/autoload.php'; // ../vendor/autoload.php //mettre le chemin pour le serveur
+require '../vendor/autoload.php'; //mettre le chemin pour le serveur
 //!!!!!!!!!!!!!!
 ?>
 
@@ -26,30 +26,33 @@ require 'C:\xampp/vendor/autoload.php'; // ../vendor/autoload.php //mettre le ch
 </section>
 
 
-<section id="contact-2" class="col">
-    <div class="filtre-gris">
-        <div class="formulaire d-flex flex-column">
-            <h3>Formulaire de contact </h3>
-            <form method="POST" class="taille-contact d-flex flex-column justify-content-between">
-                <div class="champ">
-                    <input class="input-champ" size="40" type="text" name="nom" required>
-                    <label>Votre nom</label>
-                </div>
-                <div class="champ">
-                    <input class="input-champ" size="40" type="email" name="email" required>
-                    <label>Votre e-mail</label>
-                </div>
-                <div class="champ">
-                    <input class="input-champ" size="40" type="text" name="sujet" required>
-                    <label>Sujet</label>
-                </div>
-                <div class="champ">
-                <label for="commentaire">Votre message</label>
-                    <textarea class="input-champ" cols="43" rows="10" name="commentaire" required></textarea>
-                    
-                </div>
+<section id="contact-2" class="d-flex flex-column">
+    <div class="d-flex filtre-gris py-5">
+        <div class="container py-3 d-flex flex-row justify-content-end">
+            <div class="formulaire col-md-4 col-9 d-flex flex-column mx-5 ">
+                <h3>Formulaire de contact </h3>
+                <form method="POST" class="d-flex flex-column">
+                    <div class="champ my-2">
+                        <input class="input-champ" size="40" type="text" name="nom" required>
+                        <label>Votre nom</label>
+                    </div>
+                    <div class="champ my-2">
+                        <input class="input-champ" size="40" type="email" name="email" required>
+                        <label>Votre e-mail</label>
+                    </div>
+                    <div class="champ my-2">
+                        <input class="input-champ" size="40" type="text" name="sujet" required>
+                        <label>Sujet</label>
+                    </div>
+                    <div class="champ my-2">
+                        <label for="commentaire">Votre message</label>
+                        <textarea class="input-champ" cols="43" rows="10" name="commentaire" required></textarea>
+                    </div>
+                    <button class="button2 mt-2">Envoyer</button>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 
 </section>
@@ -82,38 +85,39 @@ require 'C:\xampp/vendor/autoload.php'; // ../vendor/autoload.php //mettre le ch
     </div>
 </section>
 <?php
-
-$email = cleanEmail($_POST['email']);
-$nom = cleanLastname($_POST['nom']);
-$texte = $_POST['commentaire'];
+if (isset($_POST['email']) and isset($_POST['nom']) and !empty($_POST['nom']) and !empty($_POST['email'])) {
+    $email = cleanEmail($_POST['email']);
+    $nom = cleanLastname($_POST['nom']);
+    $texte = $_POST['commentaire'];
 	//Server settings
 	//$mail->SMTPDebug =2;                      //Enable verbose debug output
 	$mail->isSMTP();                                            //Send using SMTP
 	$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 	$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
 	$mail->Username   = 'pamakisine@gmail.com';                     //SMTP username
-	$mail->Password   = 'ngjzeprsrycjzbzx';  //eonrxdnodvegnjrp                             //SMTP password
+	$mail->Password   = 'ngjzeprsrycjzbzx';                               //SMTP password
 	$mail->SMTPSecure = 'TLS';            //Enable implicit TLS encryption
 	$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-	//Recipients
-	$mail->setFrom('ne-pas-repondre@makisine.com');
-	$mail->addAddress('pamakisine@gmail.com' );     //Add a recipient
-	// $mail->addAddress('ellen@example.com');               //Name is optional
-	$mail->addReplyTo($email);
-	// $mail->addCC('cc@example.com');
-	// $mail->addBCC('bcc@example.com');
+    //Recipients
+    $mail->setFrom('ne-pas-repondre@makisine.com');
+    $mail->addAddress('pamakisine@gmail.com');     //Add a recipient
+    // $mail->addAddress('ellen@example.com');               //Name is optional
+    $mail->addReplyTo($email);
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
 
-	//Attachments
-	// $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-	// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+    //Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
 	//Content
 	$mail->isHTML(true);                                  //Set email format to HTML
 	$mail->Subject = 'Message de' .$nom;
-	$mail->Body    = 'email :' .$email .'<br>' .$texte;
+	$mail->Body    = $texte;
 
 
 	$mail->send();
-header('Location: contact');
+    header('Location: contact');
+}
 ?>
