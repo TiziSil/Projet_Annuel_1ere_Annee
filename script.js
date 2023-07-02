@@ -68,9 +68,7 @@ function afficherAdressePostal() {
     coordonnees.style.display = "none";
     verifications.style.display = "none";
   } else {
-    alert(
-      "Veuillez remplir tous les champs de coordonnées avant de passer à l'adresse postale."
-    );
+    alert("Veuillez remplir tous les champs de coordonnées avant de passer à l'adresse postale.");
   }
 }
 
@@ -86,9 +84,7 @@ function afficherAvatar() {
     avatar.style.display = "flex";
     verifications.style.display = "none";
   } else {
-    alert(
-      "Veuillez remplir tous les champs requis avant de passer à l'avatar."
-    );
+    alert("Veuillez remplir tous les champs requis avant de passer à l'avatar.");
   }
 }
 
@@ -103,108 +99,152 @@ function afficherVerifications() {
   avatar.style.display = "none";
   verifications.style.display = "flex";
 }
+// function d'erreurs de champs
+function champInvalide(champ, message) {
+  champ.parentElement.querySelector(".error").innerText = message;
+  champ.parentElement.querySelector(".error").style = "display:block";
+  champ.parentElement.style = "box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.7)";
+}
 
-function validerCoordonnees() {
-  const formulaire = document.querySelector("#inscriptions-coordonnees"); // On récupère le formulaire html
-  const lastname = formulaire.querySelector("input[name='lastname']").value; // dans le formulaire on récupère la valeur de la balise input qui correspond au "name", "lastname"
-  const firstname = formulaire.querySelector("input[name='firstname']").value;
-  const email = formulaire.querySelector("input[name='email']").value;
-  const birthday = formulaire.querySelector("input[name='birthday']").value;
-  const pwd = formulaire.querySelector("input[name='pwd']").value;
-  const pwdConfirm = formulaire.querySelector("input[name='pwdConfirm']").value;
+function champValide(champ) {
+  champ.parentElement.querySelector(".error").innerText = "";
+  champ.parentElement.querySelector(".error").style = "display:none";
+  champ.parentElement.style = "box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.7), 0px 0px 8px rgba(67, 160, 71, 1)";
+}
 
-  if (lastname.length < 2 || /\d/.test(lastname)) {
-    alert(
-      "Le nom doit contenir au moins 2 lettres et ne peut pas contenir de chiffres."
-    );
+// Valider fil d'ariane coordoonées
+const formulaire = document.querySelector("#inscriptions-coordonnees"); // On récupère le formulaire html
+function validerLastName() {
+  const lastname = formulaire.querySelector("input[name='lastname']"); // dans le formulaire on récupère la valeur de la balise input qui correspond au "name", "lastname"
+  if (lastname.value.length < 2 || /\d/.test(lastname.value)) {
+    champInvalide(lastname, "Le nom doit contenir au moins 2 lettres et ne peut pas contenir de chiffres.");
     return false;
   }
-
-  if (firstname.length < 2 || /\d/.test(firstname)) {
-    alert(
-      "Le prénom doit contenir au moins 2 lettres et ne peut pas contenir de chiffres."
-    );
+  champValide(lastname);
+  return true;
+}
+function validerFirstname() {
+  const firstname = formulaire.querySelector("input[name='firstname']");
+  if (firstname.value.length < 2 || /\d/.test(firstname.value)) {
+    champInvalide(firstname, "Le prénom doit contenir au moins 2 lettres et ne peut pas contenir de chiffres.");
     return false;
   }
-
-  if (email.length < 2) {
-    ///^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
-    alert("L'email doit contenir au moins deux caractères");
+  champValide(firstname);
+  return true;
+}
+function validerMail() {
+  const email = formulaire.querySelector("input[name='email']");
+  if (email.value.length < 2) {
+    champInvalide(email, "L'email doit contenir au moins deux caractères");
+    return false;
   }
-
-  if (!/(?=.*[A-Z])(?=.*[<>!@#$%^&*\d])(?=.{8,})/.test(pwd)) {
-    alert(
+  champValide(email);
+  return true;
+}
+function validerMotDePasse() {
+  const pwd = formulaire.querySelector("input[name='pwd']");
+  if (!/(?=.*[A-Z])(?=.*[<>!@#$%^&*\d])(?=.{8,})/.test(pwd.value)) {
+    champInvalide(
+      pwd,
       "Le mot de passe doit contenir 8 caractères avec une lettre majuscule, un caractère spécial et un chiffre"
     );
     return false;
   }
-
-  if (pwd !== pwdConfirm) {
-    alert(
-      "Le mot de passe de confirmation ne correspond pas au mot de passe indiqué, veuillez "
-    );
+  champValide(pwd);
+  return true;
+}
+function validerMotDePasseConfirmation() {
+  const pwd = formulaire.querySelector("input[name='pwd']");
+  const pwdConfirm = formulaire.querySelector("input[name='pwdConfirm']");
+  if (pwd.value !== pwdConfirm.value) {
+    champInvalide(pwdConfirm, "Le mot de passe de confirmation ne correspond pas au mot de passe indiqué, veuillez ");
     return false;
   }
-
+  champValide(pwdConfirm);
   return true;
 }
 
-function validerAdressePostale() {
-  const formulaire = document.querySelector("#inscriptions-adresse"); // On récupère le formulaire html
-  const pseudo = formulaire.querySelector("input[name='pseudo']").value; // dans le formulaire on récupère la valeur de la balise input qui correspond au "name", "lastname"
-  const telephone = formulaire.querySelector("input[name='telephone']").value;
-  const adresse = formulaire.querySelector("input[name='address']").value;
-  const codePostal = formulaire.querySelector("input[name='codepostal']").value;
-  const ville = formulaire.querySelector("input[name='ville']").value;
-  const pays = formulaire.querySelector("#pays-inscription").value;
+function validerCoordonnees() {
+  return (
+    validerLastName() && validerFirstname() && validerMail() && validerMotDePasse() && validerMotDePasseConfirmation()
+  );
+}
 
-  if (pseudo.length < 2) {
-    alert("Le pseudo doit contenir au moins 2 lettres");
+// Validation fil d'ariane inscriptions-adresse
+const formulaireAdresse = document.querySelector("#inscriptions-adresse"); // On récupère le formulaire function html
+function validerPseudo() {
+  const pseudo = formulaireAdresse.querySelector("input[name='pseudo']"); // dans le formulaireAdresse on récupère la valeur de la balise input qui correspond au "name", "lastname"
+  if (pseudo.value.length < 2) {
+    champInvalide(pseudo, "Le pseudo doit contenir au moins 2 lettres");
     return false;
   }
-
-  // if (/^(0|\+33)[1-9](\d{2}){4}$/.test(telephone)) {
-  //   alert("Le téléphone doit être au format +33 ou 00-00-00-00-00");
-  //   return false;
-  // }
-
-  if (adresse.length < 2) {
-    alert("L'adresse doit contenir au moins 2 lettres.");
-    return false;
-  }
-
-  if (codePostal.length !== 5) {
-    alert("Le code postal doit être composé de 5 chiffres");
-    return false;
-  }
-
-  if (ville.length < 2 || /\d/.test(ville)) {
-    alert(
-      "La ville doit contenir au moins 2 lettres et ne peut pas contenir de chiffres."
-    );
-    return false;
-  }
-
-  if (pays === "") {
-    alert("Le pays doit être selectionné");
-    return false;
-  }
+  champValide(pseudo);
   return true;
+}
+function validerTelephone() {
+  const telephone = formulaireAdresse.querySelector("input[name='telephone']");
+  if (!/^(0|\+33)[1-9](\d{2}){4}$/.test(telephone.value)) {
+    champInvalide(telephone, "Le téléphone doit être au format +33123456789 ou 0123456789");
+    return false;
+  }
+  champValide(telephone);
+  return true;
+}
+function validerAdressePostaleInput() {
+  const adressePostal = formulaireAdresse.querySelector("input[name='address']");
+  if (adressePostal.value.length < 2) {
+    champInvalide(adressePostal, "L'adresse doit contenir au moins 2 lettres.");
+    return false;
+  }
+  champValide(adressePostal);
+  return true;
+}
+function validerCodePostal() {
+  const codePostal = formulaireAdresse.querySelector("input[name='codepostal']");
+  if (codePostal.value.length !== 5) {
+    champInvalide(codePostal, "Le code postal doit être composé de 5 chiffres");
+    return false;
+  }
+  champValide(codePostal);
+  return true;
+}
+function validerVille() {
+  const ville = formulaireAdresse.querySelector("input[name='ville']");
+  if (ville.value.length < 2 || /\d/.test(ville)) {
+    champInvalide(ville, "La ville doit contenir au moins 2 lettres et ne peut pas contenir de chiffres.");
+    return false;
+  }
+  champValide(ville);
+  return true;
+}
+function validerPays() {
+  const pays = formulaireAdresse.querySelector("#pays-inscription");
+  if (pays.value === "") {
+    champInvalide(pays, "Le pays doit être selectionné");
+    return false;
+  }
+  champValide(pays);
+  return true;
+}
+// Valider Fil d'ariane adresse postale
+function validerAdressePostale() {
+  return validerPseudo() && validerTelephone() && validerAdressePostaleInput() && validerCodePostal() && validerVille() && validerPays()
 }
 //Puzzle
 
-let puzzleEstCorrect = false;   // On l'initialise à faux
-const pieces = document.querySelectorAll(".puzzle-piece");  //Selectionne toutes les pièces du puzzle 
-const puzzle = document.querySelector("#puzzle");  // Selectionne le conteneur du puzzle
-let pieceAttrapee, pieceRelachee;         // Variables utilisées plus tard pour stocker les pièces attrapées et relâchées
-const images = Array.from(pieces);        // Création d'un tableau pour une meilleure utilisation
-images.sort(() => Math.random() - 0.5);   // permet de mélanger les pièces aléatoirement
-images.forEach((image) => {               
-  image.parentNode.insertBefore(image, image.parentNode.firstChild);  
+let puzzleEstCorrect = false; // On l'initialise à faux
+const pieces = document.querySelectorAll(".puzzle-piece"); //Selectionne toutes les pièces du puzzle
+const puzzle = document.querySelector("#puzzle"); // Selectionne le conteneur du puzzle
+let pieceAttrapee, pieceRelachee; // Variables utilisées plus tard pour stocker les pièces attrapées et relâchées
+const images = Array.from(pieces); // Création d'un tableau pour une meilleure utilisation
+images.sort(() => Math.random() - 0.5); // permet de mélanger les pièces aléatoirement
+images.forEach((image) => {
+  image.parentNode.insertBefore(image, image.parentNode.firstChild);
 });
 
 pieces.forEach((p) => {
-  p.addEventListener("dragstart", (evenement) => {  // Ce qui permet de conserver la place de l'image que l'utilisateur à bougé
+  p.addEventListener("dragstart", (evenement) => {
+    // Ce qui permet de conserver la place de l'image que l'utilisateur à bougé
     pieceAttrapee = evenement;
   });
 
@@ -216,7 +256,7 @@ pieces.forEach((p) => {
       const div1 = pieceRelachee.target;
       const div2 = pieceAttrapee.target;
       let div3 = div2.nextSibling;
-      const pieceDePuzzle = puzzle.querySelectorAll(".puzzle-piece");   
+      const pieceDePuzzle = puzzle.querySelectorAll(".puzzle-piece");
 
       const dernier = pieceDePuzzle[pieceDePuzzle.length - 1];
       if (div1 === div3) {
@@ -255,30 +295,22 @@ let couleurPeau = [
   "#ffdbb4",
   "#edb98a",
   "#fd9841",
-  "#fcee93",        // Les différentes couleurs possible
+  "#fcee93", // Les différentes couleurs possible
   "#d08b5b",
   "#ae5d29",
   "#614335",
 ];
-let couleurCheveux = [
-  "#fd9841",
-  "#d08b5b",
-  "#ffdbb4",
-  "#edb98a",
-  "#fcee93",
-  "#ae5d29",
-  "#614335",
-];
+let couleurCheveux = ["#fd9841", "#d08b5b", "#ffdbb4", "#edb98a", "#fcee93", "#ae5d29", "#614335"];
 let peau = ["#peau-1", "#peau-2"];
 let cheveux = ["#cheveux-1", "#cheveux-2"];
-let yeux = ["#yeux-1", "#yeux-2"];          // Tableaux représentant diffétentes options possibles
+let yeux = ["#yeux-1", "#yeux-2"]; // Tableaux représentant diffétentes options possibles
 let accessoires = ["#none", "#lunettes"];
 let pilosite = ["#none", "#pilosite-1", "#pilosite-2"];
 let bouche = ["#none", "#bouche-1", "#bouche-2", "#bouche-4"];
 
 let iCouleurPeau = 0;
 let iCouleurCheveux = 0;
-let iYeux = 0;              // Définies à 0 pour indiquer par la première option par défault 
+let iYeux = 0; // Définies à 0 pour indiquer par la première option par défault
 let iAccessoire = 0;
 let iCoiffure = 0;
 let iPilosite = 0;
@@ -286,27 +318,22 @@ let iBouche = 0;
 
 function changerCouleurPeau() {
   iCouleurPeau++;
-  const cheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";";  // Récupère la couleur de cheveux dans le tableau 'couleurCheveux' en revenant à la première couleur lorsque toutes les options ont été parcourues.
-  const peau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";"; 
-  document.querySelector("body").style = cheveux + peau;  //MAJ la couleur des cheveux et de la peau de l'avatar en temps réel.
+  const cheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";"; // Récupère la couleur de cheveux dans le tableau 'couleurCheveux' en revenant à la première couleur lorsque toutes les options ont été parcourues.
+  const peau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
+  document.querySelector("body").style = cheveux + peau; //MAJ la couleur des cheveux et de la peau de l'avatar en temps réel.
   console.log(couleurPeau, "couleurPeau");
 }
 
 function changerCouleurCheveux() {
   iCouleurCheveux++;
-  const cheveux =
-    "--couleur-cheveux: " +
-    couleurCheveux[iCouleurCheveux % couleurCheveux.length] +
-    ";";
-  const peau =
-    "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
+  const cheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";";
+  const peau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
   document.querySelector("body").style = cheveux + peau;
   console.log(couleurCheveux);
 }
 
 function changerCoiffure() {
-  document.querySelector("#cheveuxSelectionne").href.baseVal =
-    cheveux[iCoiffure % cheveux.length];
+  document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure % cheveux.length];
   iCoiffure++;
   console.log(cheveux);
 }
@@ -318,22 +345,19 @@ function changerYeux() {
 }
 
 function changerAccessoire() {
-  document.querySelector("#accesoireSelectionne").href.baseVal =
-    accessoires[iAccessoire % accessoires.length];
+  document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire % accessoires.length];
   iAccessoire++;
   console.log(accessoires);
 }
 
 function changerPilosite() {
-  document.querySelector("#pilositeSelectionne").href.baseVal =
-    pilosite[iPilosite % pilosite.length];
+  document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite % pilosite.length];
   iPilosite++;
   console.log(pilosite);
 }
 
 function changerBouche() {
-  document.querySelector("#boucheSelectionne").href.baseVal =
-    bouche[iBouche % bouche.length];
+  document.querySelector("#boucheSelectionne").href.baseVal = bouche[iBouche % bouche.length];
   iBouche++;
   console.log(bouche);
 }
@@ -349,45 +373,17 @@ changerCouleurCheveux();
 //enregistrement avatar
 
 function verificationsAdd() {
-
-  document.getElementById("couleurPeauInput").value = couleurPeau[iCouleurPeau % couleurPeau.length];   // Mettre à jour les valeurs des champs cachés avec les valeurs actuelles de l'avatar
-  document.getElementById("couleurCheveuxInput").value =
-    couleurCheveux[iCouleurCheveux % couleurCheveux.length];
-  document.getElementById("coiffureInput").value =
-    cheveux[iCoiffure % cheveux.length];
+  document.getElementById("couleurPeauInput").value = couleurPeau[iCouleurPeau % couleurPeau.length]; // Mettre à jour les valeurs des champs cachés avec les valeurs actuelles de l'avatar
+  document.getElementById("couleurCheveuxInput").value = couleurCheveux[iCouleurCheveux % couleurCheveux.length];
+  document.getElementById("coiffureInput").value = cheveux[iCoiffure % cheveux.length];
   document.getElementById("yeuxInput").value = yeux[iYeux % yeux.length];
-  document.getElementById("accessoireInput").value =
-    accessoires[iAccessoire % accessoires.length];
-  document.getElementById("pilositeInput").value =
-    pilosite[iPilosite % pilosite.length];
-  document.getElementById("boucheInput").value =
-    bouche[iBouche % bouche.length];
+  document.getElementById("accessoireInput").value = accessoires[iAccessoire % accessoires.length];
+  document.getElementById("pilositeInput").value = pilosite[iPilosite % pilosite.length];
+  document.getElementById("boucheInput").value = bouche[iBouche % bouche.length];
 
   // Soumettre le formulaire
-  document.getElementById("avatar-form").submit();   // Soumettre le formulaire avec l'id "avatar-form" pour ê envoyé au serveur 
+  document.getElementById("avatar-form").submit(); // Soumettre le formulaire avec l'id "avatar-form" pour ê envoyé au serveur
 }
-
-// Rajouter le s si plusieurs recettes en attente
-
-// window.addEventListener("DOMContentLoaded", function () {
-//   var h2Recette = document.querySelector(".h2-recette-validation-attente");
-//   var nombreRecettes = 2;
-//   var recetteElement = h2Recette.querySelector(".recette");
-//   var pluralElement = h2Recette.querySelector(".plural");
-
-//   if (nombreRecettes > 1) {
-//     recetteElement.style.display = "none";
-//     pluralElement.style.display = "inline";
-//   }
-// });
-
-// console.log("Couleur de peau:", couleurPeauInput);
-// console.log("Couleur de cheveux:", couleurCheveuxInput);
-// console.log("Coiffure:", coiffureInput);
-// console.log("Yeux:", yeuxInput);
-// console.log("Accessoire:", accessoireInput);
-// console.log("Pilositée:", pilositeInput);
-// console.log("Bouche:", boucheInput);
 
 // Cookie
 function boutonCookie(cname, cvalue, exdays) {
@@ -458,10 +454,8 @@ function ouvrirModaleAfficherRecette(idRecette) {
       const recette2 = recette[0];
       const modale = document.querySelector("#afficher-recette");
       modale.style.display = "block";
-      modale.querySelector("#afficher-recette-titre").textContent =
-        recette2.nom_recette;
-      modale.querySelector("#afficher-recette-description").textContent =
-        recette2.description_recette;
+      modale.querySelector("#afficher-recette-titre").textContent = recette2.nom_recette;
+      modale.querySelector("#afficher-recette-description").textContent = recette2.description_recette;
     });
 }
 
@@ -469,3 +463,51 @@ function fermerModalAfficheRecette() {
   const modale = document.querySelector("#afficher-recette");
   modale.style.display = "none";
 }
+
+//DarkMode
+function obtenirCookieDarkMode() {
+  const name = "darkmode=";
+  const ca = document.cookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length) === "true";
+    }
+  }
+  return false;
+}
+
+function cookieDarkMode(activer) {
+  const d = new Date();
+  const expiration = 30;
+  d.setTime(d.getTime() + expiration * 24 * 60 * 60 * 1000);
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = `darkmode=${activer}; ${expires}`;
+  afficherBanniereCookie();
+}
+
+function afficherDarkMode() {
+  const darkMode = obtenirCookieDarkMode();
+  if (darkMode) {
+    document.documentElement.style.setProperty("--couleur-primaire", "#2f1818");
+    document.documentElement.style.setProperty("--couleur-secondaire", "rgb(94, 102, 106)");
+    document.documentElement.style.setProperty("--couleur-tertiaire", "#d1cdc7");
+    document.documentElement.style.setProperty("--couleur-quaternaire", "#181a1b");
+  } else {
+    document.documentElement.style.setProperty("--couleur-primaire", "#F4E9E9");
+    document.documentElement.style.setProperty("--couleur-secondaire", "#897c7c");
+    document.documentElement.style.setProperty("--couleur-tertiaire", "#000000");
+    document.documentElement.style.setProperty("--couleur-quaternaire", "#FFFFFF");
+  }
+}
+
+function activerDesactiveDarkMode() {
+  let darkmodeActiver = !obtenirCookieDarkMode();
+  cookieDarkMode(darkmodeActiver);
+  afficherDarkMode();
+}
+
+afficherDarkMode();
