@@ -415,6 +415,21 @@ if( isset($_SESSION['isIngredientCreated']) ) { ?>
 		</div>
 	</div>
 
+</section>
+
+<section class="section-radis" class="col">
+	<img src="assets/images/separateur.png" class="separateur-de-texte-contact">
+</section>
+
+<section id="backoffice-recette">
+	<div class="py-4 d-flex flex-column">
+		<div class="container py-4">
+			<div class="boite">
+
+				<div class="row text-center">
+					<h2>Créez votre propre recette !</h2>
+				</div>
+				<div class="d-flex flex-column">
 
 	<!-- Alerte erreur création recette -->
 	<?php if(isset($_SESSION['listOfErrorsRecipe'])) {?>

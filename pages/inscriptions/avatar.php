@@ -1,5 +1,5 @@
 <div id="inscriptions-avatar">
-    <form class="form-inscription">
+    <div class="form-inscription">
         <div id="column_gap">
             <div class="rond-avatar"><a href="#" onclick="changerCouleurCheveux()">Couleur cheveux</a></div>
             <div class="rond-avatar"><a href="#" onclick="changerCoiffure()">Coiffure</a></div>
@@ -29,5 +29,5 @@
         <div class="cgu-et-bouton d-flex flex-column">
             <a onclick="afficherVerifications()" class="button3">Suivant</a>
         </div>
-    </form>
+</div>
 </div>

@@ -16,7 +16,7 @@
                 <p>Vous êtes peut-être souvent confrontés à la question : "Qu'est-ce que je vais cuisiner ce soir ?" Et si vous pouviez simplement utiliser les ingrédients que vous avez déjà dans votre réfrigérateur ? C'est là que nous intervenons !</p>
             </div>
             <div>
-                <p> site de cuisine vous permet de trouver facilement des recettes en fonction des ingrédients que vous avez sous la main. Il vous suffit de saisir les ingrédients que vous avez dans votre réfrigérateur ou votre garde-manger, et notre site vous suggérera des recettes délicieuses et faciles à préparer en utilisant ces ingrédients.</p>
+                <p> Ce site de cuisine vous permet de trouver facilement des recettes en fonction des ingrédients que vous avez sous la main. Il vous suffit de saisir les ingrédients que vous avez dans votre réfrigérateur ou votre garde-manger, et notre site vous suggérera des recettes délicieuses et faciles à préparer en utilisant ces ingrédients.</p>
             </div>
             <div>
                 <p>Nous avons une grande variété de recettes pour tous les goûts et toutes les occasions, allant des plats végétariens et sans gluten aux plats riches en protéines et en saveurs. De plus, nous mettons régulièrement à jour notre site avec de nouvelles recettes pour que vous puissiez toujours découvrir de nouvelles idées de cuisine.</p>

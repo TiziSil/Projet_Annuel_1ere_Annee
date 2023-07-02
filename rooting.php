@@ -47,12 +47,32 @@ switch ($page) {
     case $fichier . '/backoffice':
         require './pages/backoffice.php';
         break;
-    
+
     case $fichier . '/attente-validation':
         require './pages/attente-validation.php';
         break;
-    case $fichier . '/test':
-        require './pages/test.php';
+
+    case $fichier . '/paiement':
+        require './pages/paiement/paiement.php';
+        break;
+
+    case $fichier . '/contact':
+        require './pages/contact.php';
+        break;
+    case $fichier . '/user':
+        require './pages/user.php';
+        break;
+
+    case $fichier . '/mot-de-passe-oublie':
+        require './pages/mot-de-passe-oublie.php';
+        break;
+
+    case $fichier . '/cookies':
+        require './pages/cookies.php';
+        break;
+
+    case $fichier . '/mon-compte':
+        require './pages/mon-compte.php';
         break;
 
     default:

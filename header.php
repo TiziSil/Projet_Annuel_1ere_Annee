@@ -15,7 +15,7 @@
       <a href="index.php#recettes">Recettes</a>
       <a href="index.php#boutique">Notre boutique</a>
       <a href="index.php#pub">Promotions</a>
-      <a href="index.php#footer">Nous contacter</a>
+      <a href="./contact">Nous contacter</a>
     </div>
   </div>
   <div class="py-2 text-bg">
@@ -35,9 +35,15 @@
         </div>
 
         <div class="col">
-          <a href="#" onclick="ouvrirModaleConnexion()" class="mon-compte-button" title="Mon compte">
+          <a href="#" onclick="ouvrirModaleConnexion()" class="mon-compte-button px-2" title="Mode sombre">
             <svg fill="white" class="d-block" width="32px" height="32px">
               <use href="#people-circle" />
+            </svg>
+          </a>
+          
+          <a href="#" onclick="activerDesactiveDarkMode()" class="mon-compte-button" title="Mon compte">
+            <svg fill="white" class="d-block" width="32px" height="32px">
+              <image height="32px" fill="#FFFFFF" width="32px"href="./assets/images/moon-solid.svg" />
             </svg>
           </a>
         </div>

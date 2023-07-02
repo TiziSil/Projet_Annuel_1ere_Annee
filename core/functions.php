@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 
 function Hello() {
@@ -58,4 +58,4 @@ function redirectIfNotConnected(){
 	if(!isConnected()){
 		header("Location: index.php");
 	}
-}
+} 
