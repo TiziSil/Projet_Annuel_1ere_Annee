@@ -20,7 +20,7 @@ if (!empty($_POST['email']) &&  !empty($_POST['pwd'])) {
     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
         $_SESSION['email'] = $email;
         $_SESSION['login'] = true;
-        header("Location: ../");
+        header("Location: ../mon-compte"); // On redirige vers la page "Mon compte"
     }else{
         echo "Identifiants incorrects";
     }
