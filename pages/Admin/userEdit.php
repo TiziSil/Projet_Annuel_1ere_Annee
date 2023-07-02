@@ -1,15 +1,15 @@
 <?php
 redirectIfNotConnected();
-
 $connexion = connectDB();
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+if(isset($_POST['id']) AND isset($_POST['id'])){
+    // On récupère l'id de l'utilisateur
     $userId = $_POST['id'];
     $queryPrepared = $connexion->prepare("SELECT * FROM " . DB_PREFIX . "UTILISATEUR WHERE id_utilisateur = :id ");
     $queryPrepared->bindParam(':id', $userId); // Lie la valeur de $userId au paramètre :id
     $queryPrepared->execute();
     $results = $queryPrepared->fetchAll(PDO::FETCH_ASSOC); // Affiche les résultats sous forme de tableau associatif
-} else {
-    echo '<script>window.location.href = "user";</script>';
+}else{
+    echo "<script>window.location.href = 'userEdit';</script>";
 }
 foreach ($results as $row) {
     // Accédez aux colonnes par leur nom
@@ -134,16 +134,17 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
 </div>
 <div>
     <form method = "POST">
-      <input type="text" class="form-control" name = "newLastname" placeholder="Nom" value = '<?= $nom;?>'>
-      <input type="text" class="form-control" name = "newFirstName" placeholder="Prénom" value ='<?= $prenom?>'>
-      <input type="text" class="form-control" name = "newPseudo" placeholder="Pseudo" value ='<?= $pseudo ?>'>
-      <input type="email" class="form-control" name = "newEmail" placeholder="E-mail" value ='<?= $email ?>'>
-      <input type="text" class="form-control" name = "newTelephone" placeholder="Téléphone"  value ='<?= $telephone?>'>
-      <input type="date" class="form-control" name = "newDateNaissance" placeholder="Date de naissance"  value ='<?= $dateNaissance?>'>
-      <input type="number" class="form-control" name = "point_utilisateur" placeholder="Points de fidélité"  value ='<?= $pointsFidelite?>'>
-      <input type="number" class="form-control" name = "role_utilisateur" placeholder="Role utilisateur"  value ='<?= $role?>'>
-        <input type="number" class="form-control" name = "statut" placeholder="Statut"  value ='<?= $statut?>'>
-        <input type="number" class="form-control" name = "type_compte" placeholder="Type de compte"  value ='<?= $typeCompte?>'>
+        <input type="text" name="id" value="<?= $idUtilisateur;?>">
+        <input type="text" class="form-control" name = "newLastname" placeholder="Nom" value = '<?= $nom;?>'>
+        <input type="text" class="form-control" name = "newFirstName" placeholder="Prénom" value ='<?= $prenom?>'>
+        <input type="text" class="form-control" name = "newPseudo" placeholder="Pseudo" value ='<?= $pseudo ?>'>
+        <input type="email" class="form-control" name = "newEmail" placeholder="E-mail" value ='<?= $email ?>'>
+        <input type="text" class="form-control" name = "newTelephone" placeholder="Téléphone"  value ='<?= $telephone?>'>
+        <input type="date" class="form-control" name = "newDateNaissance" placeholder="Date de naissance"  value ='<?= $dateNaissance?>'>
+        <input type="number" class="form-control" name = "newPointsFidelite" placeholder="Points de fidélité"  value ='<?= $pointsFidelite?>'>
+        <input type="number" class="form-control" name = "newRole" placeholder="Role utilisateur"  value ='<?= $role?>'>
+        <input type="number" class="form-control" name = "newStatut" placeholder="Statut"  value ='<?= $statut?>'>
+        <input type="number" class="form-control" name = "newTypeCompte" placeholder="Type de compte"  value ='<?= $typeCompte?>'>
 
       <select id = "pays-inscription" onchange ='listePays()' class="form-control" name = "newPays" placeholder="Pays"  value ='<?= $pays?>'>
           <option value="fr" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "fr") ? "selected" : ""; ?>>France</option>

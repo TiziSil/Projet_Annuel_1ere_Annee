@@ -17,11 +17,10 @@ if (isset($_POST['email']) &&  isset($_POST['pwd'])) {
 
     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
         $_SESSION['email'] = $email;
-        $_SESSION['pseudo'] = $pseudo;
         $_SESSION['login'] = true;
-        header("Location: ../index.php");
+        echo '<script>window.location.href = "../index.php";</script>';
     }else{
-        echo "Identifiants incorrects";
+        echo '<script>window.location.href = "../erreur.php";</script>';
     }
 
     }

@@ -5,4 +5,4 @@
 	echo "session started <br>";
 	unset($_SESSION['email']);
 	unset($_SESSION['login']);
-	header("Location: index.php");
+	echo '<script>window.location.href = "index.php";</script>';
