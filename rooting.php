@@ -79,11 +79,15 @@ switch ($page) {
     case $fichier . '/modifier-profil':
         require './pages/Profil/modifier-profil.php';
         break;
-
-    //Abonnement
-    // case $fichier .'/sucess':
-    //     require './pages/public/success.html';
-    //     break;
+    
+    case $fichier . '/mes-recettes':
+        require './pages/Profil/mes-recettes.php';
+        break;
+    
+    case $fichier . '/mon-compte-admin':
+        require './pages/Profil/mon-compte-admin.php';
+        break;
+    //abonnement
     case $fichier . '/checkout':
         require './pages/Abonnement/checkout.php';
         break;

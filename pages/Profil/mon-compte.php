@@ -37,6 +37,7 @@ foreach ($results as $row) {
     $adresse = $row['adresse'];
     $codePostal = $row['code_postal'];
     $ville = $row['ville'];
+}
 ?>
 
 
@@ -53,32 +54,15 @@ foreach ($results as $row) {
 <a class="nav-link active" href="modifier-profil">Modifier mon profil</a>
 <a class="nav-link" href="mon-abonnement">Mon abonnement</a>
 <a class="nav-link" href="#">Mes recettes</a>
+<?php
+if ($typeCompte == 1){
+
+    echo '<a class="nav-link" href="backoffice">Mon espace administrateur</a>';
+    echo '<a class="nav-link" href="user">Liste des utilisateur</a>';
+    echo '<a class="nav-link" href="attente-validation">Valider des recettes</a>';
+}
+?>
 </nav>
 </div>
 
-<?php
-    // ... et ainsi de suite pour les autres colonnes
-
-    // Faites quelque chose avec les données récupérées
-    echo "ID : " . $idUtilisateur . "<br>";
-    echo "Nom : " . $nom . "<br>";
-    echo "Prénom : " . $prenom . "<br>";
-    echo "Pseudo : " . $pseudo . "<br>";
-    echo "E-mail : " . $email . "<br>";
-    echo "Téléphone : " . $telephone . "<br>";
-    echo "Date de naissance : " . $dateNaissance . "<br>";
-    echo "Points de fidélité : " . $pointsFidelite . "<br>";
-    echo "Role : " . $role . "<br>";
-    echo "Type de compte : " . $typeCompte . "<br>";
-    echo "Statut : " . $statut . "<br>";
-    echo "Date d'inscription : " . $dateInserted . "<br>";
-    echo "Date de mise à jour : " . $dateUpdated . "<br>";
-    echo "Pays : " . $pays . "<br>";
-    echo "Adresse : " . $adresse . "<br>";
-    echo "Code postal : " . $codePostal . "<br>";
-    echo "Ville : " . $ville . "<br>";
-
-}
-
-?>
 <div>

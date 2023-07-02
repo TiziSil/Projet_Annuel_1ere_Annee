@@ -7,6 +7,9 @@ redirectIfNotConnected();
 <div>
     <h1>Liste des utilisateurs</h1>
 </div>
+<nav class="nav flex-column">
+<a class="nav-link active" href="mon-compte">Retour à mon compte</a>
+</nav>
 <?php
 $connection = connectDB();
 $results = $connection->query("SELECT * FROM ".DB_PREFIX."UTILISATEUR");

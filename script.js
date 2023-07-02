@@ -511,3 +511,9 @@ function activerDesactiveDarkMode() {
 }
 
 afficherDarkMode();
+
+
+//ouverture mon compte si connecté
+function ouvrirMonCompte() {
+  window.location.href = "mon-compte";
+}
