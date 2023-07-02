@@ -21,6 +21,10 @@ function cleanPhone($telephone){
 	return str_replace('#[ -.]#','',$telephone);
 }
 
+function cleanName($name) {
+	return ucfirst(strtolower(trim($name)));
+}
+
 
 function connectDB(){
 

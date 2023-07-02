@@ -267,6 +267,7 @@ function verificationsAdd() {
 // Affichage liste des catégories
 let btn_affichagecategorie = document.getElementById("btn_affichagecategorie");
 let d1 = document.getElementById("d1");
+d1.style.display = "none";
 btn_affichagecategorie.addEventListener("click", () => {
   if(getComputedStyle(d1).display != "none"){
     d1.style.display = "none";
@@ -276,15 +277,28 @@ btn_affichagecategorie.addEventListener("click", () => {
 })
 
 
-// Ajout champs ajout d'ingrédient pour création recette
+// Affichage liste des ingrédients
+let btn_affichageingredient = document.getElementById("btn_affichageingredient");
+let d2 = document.getElementById("d2");
+d2.style.display = "none";
+btn_affichageingredient.addEventListener("click", () => {
+  if(getComputedStyle(d2).display != "none"){
+    d2.style.display = "none";
+  } else {
+    d2.style.display = "block";
+  }
+})
 
-var btn_ajout_ingredient = document.getElementById('btn-ajout-ingredient');
-var conteneur = document.getElementById('conteneur');
-var champs_ingredient = document.getElementById('champs_ingredient');
 
-function ajoutIngredient() {
-  var nouvelIngredient = champs_ingredient.cloneNode(true);
-  nouvelIngredient.style.display = "";
+/*Ajout champs ajout allergène pour création ingrédient
+
+var btn_ajout_allergene = document.getElementById('btn-ajout-allergene');
+var conteneur_allergene = document.getElementById('conteneur_allergene');
+var champs_allergene = document.getElementById('champs_allergene');
+
+function ajoutAllergene() {
+  var nouvelAllergene = champs_allergene.cloneNode(true);
+  nouvelAllergene.style.display = "";
 
   var boutonSupprimer = document.createElement('button');
   boutonSupprimer.classList = 'btn btn-link';
@@ -296,11 +310,62 @@ function ajoutIngredient() {
   boutonSupprimer.appendChild(imgSupprimer);
 
   boutonSupprimer.addEventListener('click', function() {
-    conteneur.removeChild(nouvelIngredient);
+    conteneur_allergene.removeChild(nouvelAllergene);
+  });
+  
+  nouvelAllergene.appendChild(boutonSupprimer);
+  conteneur_allergene.appendChild(nouvelAllergene);
+}
+
+btn_ajout_allergene.addEventListener('click', ajoutAllergene);*/
+
+//Ajout champs ajout allergène pour création ingrédient
+
+var btn_ajout_allergene = document.getElementById('btn-ajout-allergene');
+var conteneur_allergene = document.getElementById('conteneur_allergene');
+var champs_allergene = document.getElementById('champs_allergene');
+
+function ajoutAllergene(event) {
+  event.preventDefault();
+  var nouvelAllergene = champs_allergene.cloneNode(true);
+  nouvelAllergene.style.display = "";
+
+  var boutonSupprimer = document.createElement('a');
+  boutonSupprimer.textContent = 'Supprimer';
+  boutonSupprimer.classList = 'lien-supprimer';
+
+  boutonSupprimer.addEventListener('click', function() {
+    conteneur_allergene.removeChild(nouvelAllergene);
+  });
+  
+  nouvelAllergene.appendChild(boutonSupprimer);
+  conteneur_allergene.appendChild(nouvelAllergene);
+}
+
+btn_ajout_allergene.addEventListener('click', ajoutAllergene);
+
+
+// Ajout champs ajout d'ingrédient pour création recette
+
+var btn_ajout_ingredient = document.getElementById('btn-ajout-ingredient');
+var conteneur_ingredient = document.getElementById('conteneur_ingredient');
+var champs_ingredient = document.getElementById('champs_ingredient');
+
+function ajoutIngredient(event) {
+  event.preventDefault();
+  var nouvelIngredient = champs_ingredient.cloneNode(true);
+  nouvelIngredient.style.display = "";
+
+  var boutonSupprimer = document.createElement('a');
+  boutonSupprimer.textContent = 'Supprimer';
+  boutonSupprimer.classList = 'lien-supprimer';
+
+  boutonSupprimer.addEventListener('click', function() {
+    conteneur_ingredient.removeChild(nouvelIngredient);
   });
   
   nouvelIngredient.appendChild(boutonSupprimer);
-  conteneur.appendChild(nouvelIngredient);
+  conteneur_ingredient.appendChild(nouvelIngredient);
 }
 
 btn_ajout_ingredient.addEventListener('click', ajoutIngredient);

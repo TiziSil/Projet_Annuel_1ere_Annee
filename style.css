@@ -1079,3 +1079,14 @@ footer * a {
   padding-top: 50px;
   padding-bottom: 20px;
 }
+
+.lien-supprimer {
+  font-style: italic;
+  text-decoration: unset;
+  color: #897c7c;
+}
+
+.lien-supprimer:hover {
+  cursor:pointer;
+  color: #000000;
+}

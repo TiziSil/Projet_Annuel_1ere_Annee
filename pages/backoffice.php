@@ -12,20 +12,6 @@
 	<!----------------------------------------------------------------------------------------------------------------->
 
 
-
-
-
-
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------------------------------------------->
-
-
 	<section>
 
 		<div class="row">
@@ -42,7 +28,7 @@
 		<div class="row mt-3">
 			<div class="col-12">
 				<div class="form-check form-switch">
-  					<input id="btn_affichagecategorie" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+  					<input id="btn_affichagecategorie" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
  					<label class="form-check-label" for="flexSwitchCheckChecked">Visualiser toutes les catégories</label>
 				</div>
 			</div>
@@ -177,14 +163,14 @@
 		<form action="core/categoryDel.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
 			<div class="row mt-3 mb-3">
 				<div class="col-8 col-sm-6 col-lg-4">
-					<select class="form-select" name="id_categorieDel" required="required" value="<?= ( !empty($_SESSION["data"]))
+					<select class="form-select" name="id_categorieDel" required="required" value="<?= ( !isset($_SESSION["data"]))
 					?$_SESSION["data"]["id_categorieDel"]:""; ?>">
 						<option selected>Choisissez une catégorie</option>
 
 						<?php
 							$connection = connectDB();
-							$results = $connection->query("SELECT id_categorie, nom_categorie FROM MAKISINE_CATEGORIE WHERE id_categorie NOT IN 
-							(SELECT categorie FROM MAKISINE_APPARTENIR)");
+							$results = $connection->query("SELECT id_categorie, nom_categorie FROM ".DB_PREFIX."CATEGORIE WHERE id_categorie NOT IN 
+							(SELECT categorie FROM ".DB_PREFIX."APPARTENIR)");
 							$results = $results->fetchAll();
 						
 							foreach ($results as $categorie) {
@@ -217,103 +203,59 @@
 <!----------------------------------------------------------------------------------------------------------------->
 
 
-<!-- Affichage des catégories -->
+<!-- Affichage des ingrédients -->
 
 	<div class="row mt-3">
 		<div class="col-12">
 			<div class="form-check form-switch">
-  				<input id="btn_affichagecategorie" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+  				<input id="btn_affichageingredient" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
  				<label class="form-check-label" for="flexSwitchCheckChecked">Visualiser toutes les ingrédients</label>
 			</div>
 		</div>
 	</div>
 
 		<div class="row mt-3">
-			<div class="col-12">
-				<div id= "d1">
-					<ol class="col-6 col-lg-6 col-sm-10 list-group">
+			<div class="col-8 col-sm-6 col-lg-4">
+				<div id= "d2">
+					<table class="table table-hover table-striped">
+						<thead>
+							<tr>
+								<th>Ingrédients</th>
+								<th>Allergène(s)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+								$connection = connectDB();
+								$results = $connection->query("SELECT * FROM ".DB_PREFIX."INGREDIENT");
+								$results = $results->fetchAll();
 
-						<?php
-							$connection = connectDB();
-							$results = $connection->query("SELECT * FROM ".DB_PREFIX."INGREDIENT");
-							$results = $results->fetchAll();
+								foreach ($results as $ingredient) {
+									$results2 = $connection->query("SELECT nom_allergene FROM ".DB_PREFIX."ALLERGENE, ".DB_PREFIX."CONTENIR WHERE id_allergene = allergene and produit=".$ingredient["id_ingredient"]);
+									$results2 = $results2->fetchAll();
 
-							foreach ($results as $ingredient) {
-						?>
+									echo "<tr>";
+									echo "<td><b>".$ingredient["nom_ingredient"]."</b></td>";
+							?>
+									<td>
+							<?php
+									$allergeneArray = [];
+									foreach ($results2 as $allergene) {
+										$allergeneArray[] = $allergene["nom_allergene"];
+									}
+									echo implode(", ", $allergeneArray)
+							?>
+									</td>
+									</tr>
+							<?php	} ?>
 							
-						<li class="list-group-item d-flex justify-content-between align-items-start">
-							<div class="ms-2 me-auto">
-								<div class="fw-bold"><?= $ingredient["nom_ingredient"];?></div>
-							</div>
-						
-						<?php
-							$results2 = $connection->query("SELECT COUNT(*) FROM ".DB_PREFIX."CONTENIR WHERE produit=".$ingredient["id_ingredient"]);
-							$results2 = $results2->fetch();
-								echo "<span class='badge bg-primary rounded-pill'>".$results2[0]." recettes</span></li>";
-							}
-						?>
-
-					</ol>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
 
 		
-
-<!----------------------------------------------------------------------------------------------------------------->
-
-
-<!-- Création d'un ingrédient -->
-
-<!-- Alerte erreur nouvel ingrédient -->
-<?php if(isset($_SESSION['listOfErrorsIngredient'])) {?>
-<div class="row mt-3">
-	<div class="col-8 col-sm-6 col-lg-4">
-		<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			<?php
-				echo "Ingrédient invalide : ";
-				foreach ($_SESSION['listOfErrorsIngredient'] as $error)
-				{
-					echo $error;
-				}
-				unset($_SESSION['listOfErrorsIngredient']);
-			?>
-		</div>
-	</div>
-</div>
-<?php }
-
-
-// Alerte confirmation création
-if( isset($_SESSION['isIngredientCreated']) ) { ?>
-<div class="row mt-3">
-	<div class="col-8 col-sm-6 col-lg-4">
-		<div class="alert alert-success" role="alert">
-			<p>Le nouvel ingrédient a bien été créé !</p>
-		</div>
-		<?php
-			unset($_SESSION['isIngredientCreated']);
-		?>
-	</div>
-</div>
-<?php } ?>
-
-
-<!-- Formulaire -->
-<form action="core/ingredientAdd.php" method="POST">
-	<div class="row mt-3 mb-3">
-		<div class="col-8 col-sm-6 col-lg-4">
-			<input type="text" class="form-control" name="nom_categorie" placeholder="Nom de l'ingrédient" required="required" 
-			value="">
-			<input type="text" class="form-control" name="nom_allergene" placeholder="Allergène" 
-			value="">
-		</div>
-		<div class="col-2">
-			<input type="submit" value="Créer la catégorie" class="button1">
-		</div>
-	</div>
-</form>
-
 
 <!----------------------------------------------------------------------------------------------------------------->
 
@@ -364,8 +306,8 @@ if( isset($_SESSION['isIngredientDeleted']) ) { ?>
 
 				<?php
 					$connection = connectDB();
-					$results = $connection->query("SELECT id_ingredient, nom_ingredient FROM MAKISINE_INGREDIENT WHERE id_ingredient NOT IN 
-					(SELECT ingredient FROM MAKISINE_CONSTITUER)");
+					$results = $connection->query("SELECT id_ingredient, nom_ingredient FROM ".DB_PREFIX."INGREDIENT WHERE id_ingredient NOT IN 
+					(SELECT ingredient FROM ".DB_PREFIX."CONSTITUER)");
 					$results = $results->fetchAll();
 				
 					foreach ($results as $ingredient) {
@@ -379,9 +321,77 @@ if( isset($_SESSION['isIngredientDeleted']) ) { ?>
 	</div>
 </form>
 
-<p>&nbsp;Attention : seules les ingrédients non utilisés dans les recettes peuvent être supprimées.</p>
-</section>
+<p>&nbsp;Attention : seuls les ingrédients non utilisés dans les recettes peuvent être supprimés.</p>
 
+
+
+<!----------------------------------------------------------------------------------------------------------------->
+
+
+<!-- Création d'un ingrédient -->
+<div class="row mt-3 mb-3">
+	<div class="col-12">
+		<h3>Ajouter un ingrédient</h3>
+	</div>
+</div>
+
+<!-- Alerte erreur nouvel ingrédient -->
+<?php if(isset($_SESSION['listOfErrorsIngredient'])) {?>
+<div class="row mt-3">
+	<div class="col-8 col-sm-6 col-lg-4">
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<?php
+				echo "Ingrédient invalide : ";
+				foreach ($_SESSION['listOfErrorsIngredient'] as $error)
+				{
+					echo $error;
+				}
+				unset($_SESSION['listOfErrorsIngredient']);
+			?>
+		</div>
+	</div>
+</div>
+<?php }
+
+
+// Alerte confirmation création
+if( isset($_SESSION['isIngredientCreated']) ) { ?>
+<div class="row mt-3">
+	<div class="col-8 col-sm-6 col-lg-4">
+		<div class="alert alert-success" role="alert">
+			<p>Le nouvel ingrédient a bien été créé !</p>
+		</div>
+		<?php
+			unset($_SESSION['isIngredientCreated']);
+		?>
+	</div>
+</div>
+<?php } ?>
+
+
+<!-- Formulaire -->
+<form action="core/ingredientAdd.php" method="POST">
+	<div class="row mt-3 mb-3">
+		<div class="col-8 col-sm-6 col-lg-4">
+			<input type="text" class="form-control" name="nom_ingredient" placeholder="Nom de l'ingrédient" required="required" 
+			value="<?= (!isset($_SESSION['data']))?$_SESSION['data']['nom_ingredient'][0]:""; ?>">
+		</div>
+
+		<div class="col-8 col-sm-6 col-lg-4">
+			<div id="conteneur_allergene"></div>
+			<div class="col" id="champs_allergene">
+				<input type="text" class="form-control" name="nom_allergene[]" placeholder="Allergène" value="">
+  			</div>
+		</div>
+		<div class="col-1">
+			<button class='btn btn-link' id="btn-ajout-allergene"><img src="assets/bouton-ajout.png" width='20px' title="Ajouter un allergène" alt="Ajouter un allergène"></button>
+		</div>
+		<div class="col-1">
+			<input type="submit" value="Ajouter l'ingrédient" class="button1">
+		</div>
+	</div>
+</form>
+</section>
 
 
 <!----------------------------------------------------------------------------------------------------------------->
@@ -397,70 +407,64 @@ if( isset($_SESSION['isIngredientDeleted']) ) { ?>
 
 
 
-		<!-- Création d'une recette -->
+	<!-- Création d'une recette -->
 
-		<div class="row mt-3">
-			<div class="col-12">
+	<div class="row mt-3">
+		<div class="col-12">
 			<h3>Créez votre propre recette !</h3>
+		</div>
+	</div>
+
+
+	<!-- Alerte erreur création recette -->
+	<?php if(isset($_SESSION['listOfErrorsRecipe'])) {?>
+	<div class="row mt-3">
+		<div class="col-8 col-sm-6 col-lg-4">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<?php
+
+				foreach ($_SESSION['listOfErrorsRecipe'] as $error)
+				{
+					echo "<li>".$error."</li>";
+				}
+					unset($_SESSION['listOfErrorsRecipe']);
+			?>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		</div>
+	</div>
+	<?php }
 
 
-		<!-- Alerte erreur création recette -->
-		<?php if(isset($_SESSION['listOfErrorsRecipe'])) {?>
-			<div class="row mt-3">
-				<div class="col-8 col-sm-6 col-lg-4">
-					<div class="alert alert-danger alert-dismissible fade show" role="alert">
-					<?php
-
-						foreach ($_SESSION['listOfErrorsRecipe'] as $error)
-						{
-							echo "<li>".$error."</li>";
-						}
-						unset($_SESSION['listOfErrorsRecipe']);
-					?>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					</div>
+	// Alerte confirmation création 
+	if( isset($_SESSION['isRecipeCreated']) ) { ?>
+		<div class="row mt-3">
+			<div class="col-8 col-sm-6 col-lg-4">
+				<div class="alert alert-success" role="alert">
+					<p>La nouvelle recette a bien été créée !</p>
 				</div>
 			</div>
-		<?php }
-
-
-		// Alerte confirmation création 
-		if( isset($_SESSION['isRecipeCreated']) ) { ?>
-			<div class="row mt-3">
-				<div class="col-8 col-sm-6 col-lg-4">
-					<div class="alert alert-success" role="alert">
-						<p>La nouvelle recette a bien été créée !</p>
-					</div>
-				</div>
-			</div>
-			<?php
+		</div>
+		<?php
 			unset($_SESSION['isRecipeCreated']);
 		} ?>
 
 
-		<!-- Formulaire -->
-
-<?php
-		$_SESSION['data']['email'] = 'test@test.fr'; ?>
-
-
-
-		<form action="core/testing.php" method="POST">
+	<!-- Formulaire -->
+		<form action="core/recipeAdd.php" method="POST">
 
 			<div class="mb-3 row">
 				<label for="nom_recette" class="col-sm-2 col-form-label">Nom de la recette</label>
 				<div class="col-10 col-sm-8 col-lg-6">
 					<input type="text" class="form-control" name="nom_recette" placeholder="Nom de la recette" required="required" 
-					value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["nom_recette"]:""; ?>">
+					value="<?= ( !isset($_SESSION["data"]))?$_SESSION["data"]["nom_recette"]:""; ?>">
 				</div>
 			</div>
 
 			<div class="mb-3 row">
 				<label for="id_categorie" class="col-sm-2 col-form-label">Catégorie</label>
 				<div class="col-10 col-sm-8 col-lg-6">
-					<select class="form-select" name="id_categorie" required="required" value="<?= ( !empty($_SESSION["data"]))
+					<select class="form-select" name="id_categorie" required="required" value="<?= ( !isset($_SESSION["data"]))
 					?$_SESSION["data"]["id_categorie"]:""; ?>">
 						<option selected>Choisissez une catégorie</option>
 
@@ -479,15 +483,15 @@ if( isset($_SESSION['isIngredientDeleted']) ) { ?>
 			<div class="mb-3 row">
 				<label for="difficulte" class="col-sm-2 col-form-label">Niveau de difficulté</label>
 				<div class="col-10 col-sm-8 col-lg-6">
-					<input type="radio" class="form-check-input" value="0" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["difficulte"]==0)
+					<input type="radio" class="form-check-input" value="0" <?= ( !isset($_SESSION["data"]) && $_SESSION["data"]["difficulte"]==0)
 					?"checked":""; ?> checked = "checked" name="difficulte" id="easy">
 					<label for="easy" class="form-label"> Facile </label> 
 			
-					<input type="radio" class="form-check-input" value="1" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["difficulte"]==1)
+					<input type="radio" class="form-check-input" value="1" <?= ( !isset($_SESSION["data"]) && $_SESSION["data"]["difficulte"]==1)
 					?"checked":""; ?> name="difficulte" id="medium">
 					<label for="medium" class="form-label"> Moyen </label> 
 
-					<input type="radio" class="form-check-input" value="2" <?= ( !empty($_SESSION["data"]) && $_SESSION["data"]["difficulte"]==2)
+					<input type="radio" class="form-check-input" value="2" <?= ( !isset($_SESSION["data"]) && $_SESSION["data"]["difficulte"]==2)
 					?"checked":""; ?> name="difficulte" id="hard">
 					<label for="hard" class="form-label"> Difficile </label> 
 				</div>
@@ -497,7 +501,7 @@ if( isset($_SESSION['isIngredientDeleted']) ) { ?>
 				<label for="temps_preparation" class="col-sm-2 col-form-label">Temps de préparation (min)</label>
 				<div class="col-10 col-sm-8 col-lg-6">
 					<input type="text" class="form-control" name="temps_preparation" placeholder="Temps de préparation" required="required" value="<?= 
-					( !empty($_SESSION["data"]))?$_SESSION["data"]["temps_preparation"]:""; ?>">
+					( !isset($_SESSION["data"]))?$_SESSION["data"]["temps_preparation"]:""; ?>">
 				</div>
 			</div>
 
@@ -505,43 +509,39 @@ if( isset($_SESSION['isIngredientDeleted']) ) { ?>
 				<label for="description_recette" class="col-sm-2 col-form-label">Étapes de préparation</label>
 				<div class="col-10 col-sm-8 col-lg-6">
 					<textarea class="form-control" name="description_recette" placeholder="Décrivez les étapes de préparation" required="required" 
-					value="<?= ( !empty($_SESSION["data"]))?$_SESSION["data"]["description_recette"]:""; ?>" rows="7"></textarea>
+					value="<?= ( !isset($_SESSION["data"]))?$_SESSION["data"]["description_recette"]:""; ?>" rows="7"></textarea>
 				</div>
 			</div>
 
-
-
-<!----------------->
-
-<button id="btn-ajout-ingredient" class="button1">Ajouter un ingrédient</button>
-
-  
-  <div id="conteneur"></div>
-
-  <!-- Modèle de div préexistant avec un ID -->
-  <div id="champs_ingredient" class="mb-3 row" style="display: none;">
-    <div class="col-9 col-sm-7 col-lg-5">
-      <select class="form-select" name="id_ingredient[]" required="required" value="">
-        <option selected>Choisissez un ingrédient</option>
-
-        <?php
-          $connection = connectDB();
-          $results = $connection->query("SELECT * FROM ".DB_PREFIX."INGREDIENT");
-          $results = $results->fetchAll();
-        
-          foreach ($results as $ingredient) {
-            echo "<option value='".$ingredient["id_ingredient"]."'>".$ingredient["nom_ingredient"]."</option>";
-          } ?>
-      </select>
-    </div>
-
-    <div class="col-1">
-      <input type="number" class="form-control" name="quantite_ingredient[]" placeholder="Quantité" required="required" value="">
-    </div>
-  </div>
-
-<!-------------------->
-
+			<div class="mb-3 row">
+				<label for="id_ingredient" class="col-sm-2 col-form-label">Ingrédient(s)</label>
+				<div id="conteneur_ingredient"></div>
+				<div id="champs_ingredient">
+					<div class="row">
+						<div class="col-2">
+							<input type="text" class="form-control" name="quantite_ingredient" placeholder="Quantité" required="required" value="<?= 
+							( !isset($_SESSION["data"]))?$_SESSION["data"]["quantite_ingredient"]:""; ?>">
+						</div>
+						<div class="col-8 col-sm-6 col-lg-4">
+							<select class="form-select" name="id_ingredient" required="required" value="">
+								<option selected>Choisissez un ingrédient</option>
+								<?php
+									$connection = connectDB();
+									$results = $connection->query("SELECT id_ingredient, nom_ingredient FROM ".DB_PREFIX."INGREDIENT");
+									$results = $results->fetchAll();
+										
+									foreach ($results as $ingredient) {
+										echo "<option value='".$ingredient["id_ingredient"]."'>".$ingredient["nom_ingredient"]."</option>";
+									} ?>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="col-1">
+					<button class='btn btn-link' id="btn-ajout-ingredient"><img src="assets/bouton-ajout.png" width='20px' title="Ajouter un ingrédient" alt="Ajouter un ingrédient"></button>
+				</div>
+			</div>
 
 			<div class="mb-3 row">
 				<div class="col-12">
@@ -603,13 +603,13 @@ if( isset($_SESSION['isIngredientDeleted']) ) { ?>
 		<form action="core/recipeDel.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
 			<div class="row mt-3 mb-3">
 				<div class="col-8 col-sm-6 col-lg-4">
-					<select class="form-select" name="id_recipeDel" required="required" value="<?= ( !empty($_SESSION["data"]))
+					<select class="form-select" name="id_recipeDel" required="required" value="<?= ( !isset($_SESSION["data"]))
 					?$_SESSION["data"]["id_recipeDel"]:""; ?>">
 						<option selected>Choisissez une recette</option>
 
 						<?php
 							$connection = connectDB();
-							$results = $connection->query("SELECT id_recette, nom_recette FROM MAKISINE_RECETTE WHERE statut_publication = 1");
+							$results = $connection->query("SELECT id_recette, nom_recette FROM ".DB_PREFIX."RECETTE WHERE statut_publication = 1");
 							$results = $results->fetchAll();
 						
 							foreach ($results as $recette) {
