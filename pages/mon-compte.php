@@ -2,7 +2,7 @@
     <div class="py-4 d-flex flex-column">
         <div class="container py-4">
             <div class="search-bar">
-                <h1>Bienvenue {{name}}</h1>
+                <h1>Bienvenue <?php echo $_SESSION['pseudo']?> !</h1>
                 <form id="" class="d-flex row">
                     <div class="col-10 input-form-mon-compte d-flex">
                         <svg width="16px" height="16px">
