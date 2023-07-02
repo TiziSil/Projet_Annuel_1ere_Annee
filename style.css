@@ -147,6 +147,14 @@ p {
   display: block;
 }
 
+.header-droite {
+  float:right;
+}
+
+.header-droite-margin {
+  margin-left: 8px;
+}
+
 .text-bg {
   background-color: var(--couleur-secondaire) !important;
   color: var(--couleur-quaternaire);
