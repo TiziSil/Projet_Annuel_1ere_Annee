@@ -14,6 +14,7 @@
       <a href="index.php#recettes">Recettes</a>
       <a href="index.php#boutique">Notre boutique</a>
       <a href="index.php#pub">Promotions</a>
+      <a href="./forum">Forum</a>
       <a href="./contact">Nous contacter</a>
     </div>
   </div>

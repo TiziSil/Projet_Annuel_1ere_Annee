@@ -1704,3 +1704,6 @@ border-radius: 17px;
   max-width: 300px;
 }
 
+.error-non-connecter {
+  font-style: italic;
+}

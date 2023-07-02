@@ -3,6 +3,10 @@ session_start();
 require "../conf.inc.php";
 require "functions.php";
 
+if(!isset($_SESSION['id'])) {
+    header('location: .');
+}
+
 if (isset($_POST['validate'])) {
     echo $_POST['title'];
     echo $_POST['content'];
