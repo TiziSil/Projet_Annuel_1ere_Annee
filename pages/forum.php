@@ -40,7 +40,7 @@
             $connection = connectDB();
 
             if(isset($_POST['recherche'])) {
-                $getAllMyQuestions = $connection->prepare('SELECT question_id, question_title, question_text, question_id_authorFROM MAKISINE_FORUM WHERE question_title LIKE ? ORDER BY question_id DESC');
+                $getAllMyQuestions = $connection->prepare('SELECT question_id, question_title, question_text, question_id_author FROM MAKISINE_FORUM WHERE question_title LIKE ? ORDER BY question_id DESC');
                 $getAllMyQuestions->execute(array($_POST['recherche']));
             } else {
                 $getAllMyQuestions = $connection->prepare('SELECT question_id, question_title, question_text, question_id_author FROM MAKISINE_FORUM ORDER BY question_id DESC');
@@ -59,7 +59,7 @@
                         </p>
 
                         <div class="buttons-liste-forum">
-                            <a href="#" class="button3">Accéder à l'article</a>
+                            <?php echo '<a href="./forum-article?id=' . $question['question_id'] . '" class="button3">Accéder à l\'article</a>'; ?>
                             <?php if($_SESSION['id'] === $question['question_id_author']) {?>
                                 <a href="#" class="button3">Modifier l'article</a>
                                 <a href="#" class="button3">Supprimer mon article</a>
