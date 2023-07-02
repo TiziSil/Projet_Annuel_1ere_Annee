@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <?php session_start();
 //session_destroy();
+require "conf.inc.php";
 include "head.php";
 require "core/functions.php"; ?>
+
 <?php
 
-if (isconnected()){
+if (isconnected()) {
     echo "vous êtes connecté";
     echo "<button><a class='nav-link' href='logout.php'>Se déconnecter</a></button>";
-    }else{
-        echo "vous n'êtes pas connecté";
-    }
+} else {
+    echo "vous n'êtes pas connecté";
+}
 ?>
+
+
 <body>
 
     <div id="bouton-remonter">

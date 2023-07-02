@@ -76,15 +76,6 @@ p {
   height: 32px;
 }
 
-.mon-compte-button {
-  width: 32px;
-  height: 32px;
-  display: inline-block;
-  color: var(--couleur-quaternaire);
-  float: right;
-  transition: all 0.25s ease-in-out;
-}
-
 .menu-burger {
   display: grid;
   border-bottom-right-radius: 17px;
@@ -1286,9 +1277,6 @@ footer * a {
 
 /* MOT DE PASSE OUBLIE */
 
-.image-mdp-oublie {
-  /* position: relative; */
-}
 
 .h1-mdp-oublie {
   /* position: absolute;
@@ -1440,8 +1428,6 @@ footer * a {
   text-align: center;
 }
 
-.button-cookies {
-}
 
 #page-cookies {
   background: url("assets/images/cookies-background.jpg");
@@ -1490,6 +1476,15 @@ footer * a {
   padding: 0;
 }
 
+.mon-compte-button {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  color: var(--couleur-quaternaire);
+  float: right;
+  transition: all 0.25s ease-in-out;
+}
+
 #afficher-recette {
   display: none;
   transition: all 0.5s;
@@ -1521,6 +1516,7 @@ footer * a {
   right: 20px;
 }
 
+
 /** backoffice **/
 #backoffice {
   background: url("assets/images/backoffice-background.jpg");
@@ -1543,6 +1539,7 @@ footer * a {
   width: 100%;
   margin: 20px;
 }
+
 
 .boite {
   background-color: rgba(255, 255, 255, 0.8);
@@ -1585,3 +1582,85 @@ footer * a {
 #button-dark-mode {
   background-color: red;
 }
+
+
+/* FORMULAIRE DE RECHERCHE DANS MON-COMPTE */
+
+.form-mon-compte{
+  border-radius:  17px;
+  color: var(--couleur-tertiaire) !important;
+  background-color: var(--couleur-primaire);
+  border: 1px solid rgba(137, 124, 124, 0.3);
+  padding: 5px 250px 10px 10px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.input-form-mon-compte{
+  color: var(--couleur-tertiaire) !important;
+  background-color: var(--couleur-primaire);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.flav-research {
+  position: relative;
+  z-index: 120;
+  top: 0;
+}
+
+.button-research {
+  background-color: var(--couleur-primaire);
+  border-radius:  17px;
+  border: none;
+  outline: none;
+}
+
+.search-bar {
+  margin: 25px
+}
+
+.tr-td-research-recette {
+  color: var(--couleur-secondaire);
+}
+
+.input-form-mon-compte svg {
+  margin-top: 12px;
+  margin-right: 12px;
+  
+}
+
+/* FORUM */
+
+.forum {
+  background: url("assets/images/photo-forum.avif");
+  background-size: cover;
+  width: 100%;
+  height: 95vh;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  margin: auto;
+  padding: 0;
+}
+
+
+.h1-forum {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.forum-input {
+margin-top: 75px;
+border-style: groove;
+border-radius: 17px;
+}
+
+.forum-input h4 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+

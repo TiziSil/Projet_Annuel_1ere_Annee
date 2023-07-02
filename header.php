@@ -1,6 +1,5 @@
 <?php include "pages/modale-connexion.php"; ?>
 <?php include "pages/modale-inscription.php"; ?>
-<?php include "conf.inc.php" ?>
 
 <header>
   <div style="z-index:15;position: absolute;" class="collapse" id="navbarToggleExternalContent">
@@ -35,13 +34,13 @@
         </div>
 
         <div class="col">
-          <a href="#" onclick="ouvrirModaleConnexion()" class="mon-compte-button px-2" title="Mode sombre">
+          <a href="#" onclick="ouvrirModaleConnexion()" class="mon-compte-button px-2" title="Mon compte">
             <svg fill="white" class="d-block" width="32px" height="32px">
               <use href="#people-circle" />
             </svg>
           </a>
           
-          <a href="#" onclick="activerDesactiveDarkMode()" class="mon-compte-button" title="Mon compte">
+          <a href="#" onclick="activerDesactiveDarkMode()" class="mon-compte-button" title="Mode sombre">
             <svg fill="white" class="d-block" width="32px" height="32px">
               <image height="32px" fill="#FFFFFF" width="32px"href="./assets/images/moon-solid.svg" />
             </svg>

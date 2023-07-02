@@ -71,6 +71,10 @@ switch ($page) {
         require './pages/mon-compte.php';
         break;
 
+        case $fichier . '/forum':
+            require './pages/forum.php';
+            break;
+
     default:
         http_response_code(404);
         break;
