@@ -55,10 +55,10 @@ foreach ($results as $row) {
 <a class="nav-link" href="mon-abonnement">Mon abonnement</a>
 <a class="nav-link" href="#">Mes recettes</a>
 <?php
-if ($typeCompte == 1){
+if ($role == 1){
 
     echo '<a class="nav-link" href="backoffice">Mon espace administrateur</a>';
-    echo '<a class="nav-link" href="user">Liste des utilisateur</a>';
+    echo '<a class="nav-link" href="user">Liste des utilisateurs</a>';
     echo '<a class="nav-link" href="attente-validation">Valider des recettes</a>';
 }
 ?>

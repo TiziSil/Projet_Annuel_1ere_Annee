@@ -91,6 +91,11 @@ switch ($page) {
     case $fichier . '/checkout':
         require './pages/Abonnement/checkout.php';
         break;
+    
+    //admin
+    case $fichier . '/userEdit':
+        require './pages/Admin/userEdit.php';
+        break;
     default:
         http_response_code(404);
         break;

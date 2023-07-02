@@ -72,6 +72,10 @@ echo "<br>";
                     <input type='hidden' name='id' value='".$user["id_utilisateur"]."'>
                     <button type='submit' class='btn btn-danger' onclick='confirmDelete()'>Supprimer</button>
                     </form>
+                    <form action='userEdit' method='POST'>
+                    <input type='hidden' name='id' value='".$user["id_utilisateur"]."'>
+                    <button type='submit' class='btn btn-primary'>Modifier</button>
+                    </form>
                 
                     </td>";
                     echo "</tr>";
