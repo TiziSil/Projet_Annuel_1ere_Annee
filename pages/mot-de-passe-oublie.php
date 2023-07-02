@@ -8,7 +8,7 @@
                 <div class="d-flex flex-column col-lg-3 col-md-6 col-sm-12 py-5">
                     <div class="d-flex flex-column form-mdp-oublie">
                         <h4>Nouveau mot de passe</h4>
-                        <form method="post" class="taille-contact-mdp-oublie d-flex flex-column justify-content-between">
+                        <form method="post" action="./core/mdpOublie.php" class="taille-contact-mdp-oublie d-flex flex-column justify-content-between">
                             <div class="champ my-1">
                                 <input class="input-champ" size="40" type="text" name="nom" required>
                                 <label>Votre nom</label>
@@ -21,7 +21,7 @@
                                 <input class="input-champ" size="40" type="text" name="tel" required>
                                 <label>Votre téléphone</label>
                             </div>
-                            <input class="button2" type="submit" value="Envoyer">
+                            <button class="button2" type="submit">Envoyer</button>
                         </form>
                     </div>
                     <div class="p-mdp-oublie d-flex flex-row justify-content-center text-center">
