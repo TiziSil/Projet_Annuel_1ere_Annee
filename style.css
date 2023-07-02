@@ -501,6 +501,7 @@ p {
   padding-left: 2.3em;
   padding-right: 2.3em;
   border-radius: 5px;
+  text-decoration: none;
   border: none;
   outline: none;
   transition: 0.4s ease-in-out;
@@ -1647,7 +1648,7 @@ footer * a {
   background: url("assets/images/photo-forum.avif");
   background-size: cover;
   width: 100%;
-  height: 95vh;
+  /* height: 95vh; */
   background-position: bottom left;
   background-repeat: no-repeat;
   margin: auto;
@@ -1658,10 +1659,11 @@ footer * a {
 .h1-forum {
   text-align: center;
   margin-bottom: 50px;
+  color: var(--couleur-tertiaire);
 }
 
 .forum-input {
-margin-top: 75px;
+margin-top: 40px;
 border-style: groove;
 border-radius: 17px;
 }
@@ -1670,5 +1672,35 @@ border-radius: 17px;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 50px;
+}
+
+.buttons-liste-forum {
+  margin-top: 5px;
+}
+
+.forum-section-2 {
+  background-color: var(--couleur-primaire) !important;
+}
+
+.barre-de-recherche-topic {
+  color: var(--couleur-tertiaire) !important;
+  background-color: var(--couleur-quaternaire);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.barre-de-recherche-topic svg {
+  margin-top: 12px;
+  margin-right: 12px;
+  
+}
+
+.liste-text-forum {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
 }
 
