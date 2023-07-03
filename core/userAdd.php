@@ -10,8 +10,8 @@ require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 //!!!!!!!!!!!!!!
-
-require '../vendor/autoload.php'; //mettre le chemin pour le serveur
+require 'C:\Users\Mathis\vendor\autoload.php';
+//require '../vendor/autoload.php'; //mettre le chemin pour le serveur
 //!!!!!!!!!!!!!!
 //recuperer donnée
 //genre
@@ -246,7 +246,7 @@ if(empty($listOfErrors)){
 	$mail->send();
 
 	//Redirection sur la page de connexion
-	header('location: index.php');
+	header('location: ../index.php');
 }else{
 
 	//Si NOK

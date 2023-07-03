@@ -135,7 +135,7 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
 </div>
 <div>
     <form method = "POST">
-        <input type="text" name="id" value="<?= $idUtilisateur;?>">
+
         <input type="text" class="form-control" name = "newLastname" placeholder="Nom" value = '<?= $nom;?>'>
         <input type="text" class="form-control" name = "newFirstName" placeholder="Prénom" value ='<?= $prenom?>'>
         <input type="text" class="form-control" name = "newPseudo" placeholder="Pseudo" value ='<?= $pseudo ?>'>

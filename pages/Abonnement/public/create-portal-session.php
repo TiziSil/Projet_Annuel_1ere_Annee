@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:\xampp\vendor\autoload.php';//../../vendor/autoload.php
+require_once 'C:\Users\Mathis\vendor\autoload.php';//../../vendor/autoload.php
 require_once '../secrets.php';
 
 \Stripe\Stripe::setApiKey($stripeSecretKey);

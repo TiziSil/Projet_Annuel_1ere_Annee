@@ -3,6 +3,8 @@
 // require "core/functions.php";
 //redirectIfNotConnected(); 
 //session_destroy();
+redirectIfNotConnected();
+redirectIfNotAdmin();
 ?>
 <section id="backoffice">
 	<div class="container">
