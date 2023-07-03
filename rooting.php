@@ -104,10 +104,14 @@ switch ($page) {
     case $fichier . '/forum-article':
         require './pages/forum-afficher-article.php';
         break;
-
-    default:
-        http_response_code(404);
+        
+    case $fichier . '/afficher-recette':
+        require './pages/recettes/afficher-recette.php';
         break;
+    
+    default:
+    http_response_code(404);
+    break;
 }
 ?>
 <!-- Home page  -->

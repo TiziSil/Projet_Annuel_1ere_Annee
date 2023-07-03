@@ -378,7 +378,7 @@ if( isset($_SESSION['isIngredientCreated']) ) { ?>
 	<div class="row mt-3 mb-3">
 		<div class="col-8 col-sm-6 col-lg-4">
 			<input type="text" class="form-control" name="nom_ingredient" placeholder="Nom de l'ingrédient" required="required" 
-			value="<?= (!isset($_SESSION['data']))?$_SESSION['data']['nom_ingredient'][0]:""; ?>">
+			value="">
 		</div>
 
 		<div class="col-8 col-sm-6 col-lg-4">
@@ -476,15 +476,14 @@ if( isset($_SESSION['isIngredientCreated']) ) { ?>
 				<label for="nom_recette" class="col-sm-2 col-form-label">Nom de la recette</label>
 				<div class="col-10 col-sm-8 col-lg-6">
 					<input type="text" class="form-control" name="nom_recette" placeholder="Nom de la recette" required="required" 
-					value="<?= ( !isset($_SESSION["data"]))?$_SESSION["data"]["nom_recette"]:""; ?>">
+					value="">
 				</div>
 			</div>
 
 			<div class="mb-3 row">
 				<label for="id_categorie" class="col-sm-2 col-form-label">Catégorie</label>
 				<div class="col-10 col-sm-8 col-lg-6">
-					<select class="form-select" name="id_categorie" required="required" value="<?= ( !isset($_SESSION["data"]))
-					?$_SESSION["data"]["id_categorie"]:""; ?>">
+					<select class="form-select" name="id_categorie" required="required" value="">
 						<option selected>Choisissez une catégorie</option>
 
 						<?php
@@ -502,16 +501,13 @@ if( isset($_SESSION['isIngredientCreated']) ) { ?>
 			<div class="mb-3 row">
 				<label for="difficulte" class="col-sm-2 col-form-label">Niveau de difficulté</label>
 				<div class="col-10 col-sm-8 col-lg-6">
-					<input type="radio" class="form-check-input" value="0" <?= ( !isset($_SESSION["data"]) && $_SESSION["data"]["difficulte"]==0)
-					?"checked":""; ?> checked = "checked" name="difficulte" id="easy">
+					<input type="radio" class="form-check-input" value="0" checked = "checked" name="difficulte" id="easy">
 					<label for="easy" class="form-label"> Facile </label> 
 			
-					<input type="radio" class="form-check-input" value="1" <?= ( !isset($_SESSION["data"]) && $_SESSION["data"]["difficulte"]==1)
-					?"checked":""; ?> name="difficulte" id="medium">
+					<input type="radio" class="form-check-input" value="1" name="difficulte" id="medium">
 					<label for="medium" class="form-label"> Moyen </label> 
 
-					<input type="radio" class="form-check-input" value="2" <?= ( !isset($_SESSION["data"]) && $_SESSION["data"]["difficulte"]==2)
-					?"checked":""; ?> name="difficulte" id="hard">
+					<input type="radio" class="form-check-input" value="2" name="difficulte" id="hard">
 					<label for="hard" class="form-label"> Difficile </label> 
 				</div>
 			</div>
@@ -519,8 +515,7 @@ if( isset($_SESSION['isIngredientCreated']) ) { ?>
 			<div class="mb-3 row">
 				<label for="temps_preparation" class="col-sm-2 col-form-label">Temps de préparation (min)</label>
 				<div class="col-10 col-sm-8 col-lg-6">
-					<input type="text" class="form-control" name="temps_preparation" placeholder="Temps de préparation" required="required" value="<?= 
-					( !isset($_SESSION["data"]))?$_SESSION["data"]["temps_preparation"]:""; ?>">
+					<input type="text" class="form-control" name="temps_preparation" placeholder="Temps de préparation" required="required" value="">
 				</div>
 			</div>
 
@@ -528,7 +523,7 @@ if( isset($_SESSION['isIngredientCreated']) ) { ?>
 				<label for="description_recette" class="col-sm-2 col-form-label">Étapes de préparation</label>
 				<div class="col-10 col-sm-8 col-lg-6">
 					<textarea class="form-control" name="description_recette" placeholder="Décrivez les étapes de préparation" required="required" 
-					value="<?= ( !isset($_SESSION["data"]))?$_SESSION["data"]["description_recette"]:""; ?>" rows="7"></textarea>
+					value="" rows="7"></textarea>
 				</div>
 			</div>
 
@@ -538,8 +533,7 @@ if( isset($_SESSION['isIngredientCreated']) ) { ?>
 				<div id="champs_ingredient">
 					<div class="row">
 						<div class="col-2">
-							<input type="text" class="form-control" name="quantite_ingredient" placeholder="Quantité" required="required" value="<?= 
-							( !isset($_SESSION["data"]))?$_SESSION["data"]["quantite_ingredient"]:""; ?>">
+							<input type="text" class="form-control" name="quantite_ingredient" placeholder="Quantité" required="required" value="">
 						</div>
 						<div class="col-8 col-sm-6 col-lg-4">
 							<select class="form-select" name="id_ingredient" required="required" value="">

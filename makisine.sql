@@ -1,172 +1,296 @@
-CREATE TABLE MAKISINE_AVATAR (
-    id_avatar INTEGER PRIMARY KEY AUTO_INCREMENT,
-    forme_visage TINYINT,
-    couleur_visage TINYINT,
-    couleur_yeux TINYINT,
-    couleur_vetement TINYINT,
-    image_avatar VARCHAR(255)
+create table Makisine.MAKISINE_ALLERGENE
+(
+    id_allergene  int auto_increment
+        primary key,
+    nom_allergene varchar(200) not null
 );
 
-CREATE TABLE MAKISINE_UTILISATEUR (
-    id_utilisateur INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nom_utilisateur VARCHAR(120) NOT NULL,
-    prenom_utilisateur VARCHAR(120) NOT NULL,
-    pseudo VARCHAR(30) NOT NULL,
-    email VARCHAR(320) NOT NULL,
-    telephone VARCHAR(10) NOT NULL,
-    date_de_naissance DATE NOT NULL,
-    point_utilisateur INTEGER NOT NULL,
-    role_utilisateur TINYINT NOT NULL,
-    type_compte TINYINT NOT NULL,
-    statut TINYINT NOT NULL DEFAULT -1,
-    date_inserted TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
-    date_updated TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(),
-    avatar_utilisateur INTEGER REFERENCES MAKISINE_AVATAR(id_avatar)
+create table Makisine.MAKISINE_AVATAR
+(
+    id_avatar      int auto_increment
+        primary key,
+    image_avatar   varchar(255) null,
+    couleurPeau    varchar(60)  null,
+    couleurCheveux varchar(60)  null,
+    yeux           varchar(60)  null,
+    coiffure       varchar(60)  null,
+    accessoire     varchar(60)  null,
+    pilosite       varchar(60)  null,
+    bouche         varchar(60)  null
 );
 
-CREATE TABLE MAKISINE_NEWSLETTER (
-    id_modele INTEGER PRIMARY KEY AUTO_INCREMENT,
-    texte_newsletter TEXT NOT NULL,
-    statut_newsletter TINYINT NOT NULL,
-    frequence INTEGER NOT NULL
+create table Makisine.MAKISINE_CATEGORIE
+(
+    id_categorie  int auto_increment
+        primary key,
+    nom_categorie varchar(200) not null
 );
 
-CREATE TABLE MAKISINE_EVENEMENT (
-    id_evenement INTEGER PRIMARY KEY AUTO_INCREMENT,
-    organisateur VARCHAR(120) NOT NULL,
-    date_evenement DATE NOT NULL,
-    lieu_evenement VARCHAR(255) NOT NULL,
-    prix_evenement FLOAT NOT NULL,
-    nombremax_participant INTEGER NOT NULL
+create table Makisine.MAKISINE_EVENEMENT
+(
+    id_evenement          int auto_increment
+        primary key,
+    organisateur          varchar(120) not null,
+    date_evenement        date         not null,
+    lieu_evenement        varchar(255) not null,
+    prix_evenement        float        not null,
+    nombremax_participant int          not null
 );
 
-CREATE TABLE MAKISINE_RECEVOIR (
-    newsletter INTEGER NOT NULL,
-    utilisateur INTEGER NOT NULL,
-    PRIMARY KEY (newsletter,utilisateur),
-    FOREIGN KEY (newsletter) REFERENCES MAKISINE_NEWSLETTER(id_modele),
-    FOREIGN KEY (utilisateur) REFERENCES MAKISINE_UTILISATEUR(id_utilisateur)
+create table Makisine.MAKISINE_INGREDIENT
+(
+    id_ingredient  int auto_increment
+        primary key,
+    nom_ingredient varchar(200) not null
 );
 
-CREATE TABLE MAKISINE_COMMANDE (
-    id_commande INTEGER PRIMARY KEY AUTO_INCREMENT,
-    client_commande INTEGER REFERENCES MAKISINE_UTILISATEUR(id_utilisateur),
-    date_commande DATE NOT NULL
+create table Makisine.MAKISINE_CONTENIR
+(
+    produit   int not null,
+    allergene int not null,
+    primary key (produit, allergene),
+    constraint MAKISINE_CONTENIR_ibfk_1
+        foreign key (produit) references Makisine.MAKISINE_INGREDIENT (id_ingredient),
+    constraint MAKISINE_CONTENIR_ibfk_2
+        foreign key (allergene) references Makisine.MAKISINE_ALLERGENE (id_allergene)
 );
 
-CREATE TABLE MAKISINE_PARTICIPER (
-    evenement INTEGER NOT NULL,
-    participant INTEGER NOT NULL,
-    PRIMARY KEY (evenement,participant),
-    FOREIGN KEY (evenement) REFERENCES MAKISINE_EVENEMENT(id_evenement),
-    FOREIGN KEY (participant) REFERENCES MAKISINE_UTILISATEUR(id_utilisateur)
+create index allergene
+    on Makisine.MAKISINE_CONTENIR (allergene);
 
+create table Makisine.MAKISINE_NEWSLETTER
+(
+    id_modele         int auto_increment
+        primary key,
+    texte_newsletter  text    not null,
+    statut_newsletter tinyint not null,
+    frequence         int     not null
 );
 
-CREATE TABLE MAKISINE_USTENSILE (
-    id_ustensile INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nom_ustensile VARCHAR(120) NOT NULL,
-    prix_ustensile FLOAT NOT NULL,
-    stock INTEGER NOT NULL
+create table Makisine.MAKISINE_USTENSILE
+(
+    id_ustensile   int auto_increment
+        primary key,
+    nom_ustensile  varchar(120) not null,
+    prix_ustensile float        not null,
+    stock          int          not null
 );
 
-CREATE TABLE MAKISINE_COMPOSER (
-    reference_commande INTEGER NOT NULL,
-    produit INTEGER NOT NULL,
-    PRIMARY KEY (reference_commande, produit),
-    FOREIGN KEY (reference_commande) REFERENCES MAKISINE_COMMANDE(id_commande),
-    FOREIGN KEY (produit) REFERENCES MAKISINE_USTENSILE(id_ustensile),
-    quantité_produit INTEGER NOT NULL
+create table Makisine.MAKISINE_UTILISATEUR
+(
+    id_utilisateur     int auto_increment
+        primary key,
+    nom_utilisateur    varchar(120)                          not null,
+    prenom_utilisateur varchar(120)                          not null,
+    pseudo             varchar(30)                           not null,
+    email              varchar(320)                          not null,
+    telephone          varchar(10)                           not null,
+    date_de_naissance  date                                  not null,
+    point_utilisateur  int                                   null,
+    role_utilisateur   tinyint   default -1                  not null,
+    type_compte        tinyint   default -1                  not null,
+    statut             tinyint   default 1                   not null,
+    date_inserted      timestamp default current_timestamp() not null,
+    date_updated       timestamp                             null on update current_timestamp(),
+    avatar_utilisateur int                                   null,
+    country            char(2)                               null,
+    adresse            varchar(100)                          null,
+    code_postal        varchar(10)                           null,
+    ville              varchar(30)                           null,
+    pwd                varchar(64)                           not null,
+    n_password         char                                  null,
+    constraint MAKISINE_UTILISATEUR_ibfk_1
+        foreign key (avatar_utilisateur) references Makisine.MAKISINE_AVATAR (id_avatar)
 );
 
-CREATE TABLE MAKISINE_MESSAGE_FORUM (
-    id_msg_forum INTEGER PRIMARY KEY AUTO_INCREMENT,
-    texte_msg_forum TEXT NOT NULL,
-    image_msg_forum VARCHAR(255),
-    emetteur_msg_forum INTEGER REFERENCES MAKISINE_UTILISATEUR(id_utilisateur),
-    date_msg_forum DATE NOT NULL
+create table Makisine.MAKISINE_COMMANDE
+(
+    id_commande     int auto_increment
+        primary key,
+    client_commande int  null,
+    date_commande   date not null,
+    constraint MAKISINE_COMMANDE_ibfk_1
+        foreign key (client_commande) references Makisine.MAKISINE_UTILISATEUR (id_utilisateur)
 );
 
-CREATE TABLE MAKISINE_MESSAGE (
-    expediteur INTEGER NOT NULL,
-    destinaire INTEGER NOT NULL,
-    PRIMARY KEY (expediteur, destinaire),
-    FOREIGN KEY (expediteur) REFERENCES MAKISINE_UTILISATEUR(id_utilisateur),
-    FOREIGN KEY (destinataire) REFERENCES MAKISINE_UTILISATEUR(id_utilisateur),
-    date_message DATE NOT NULL,
-    texte_message TEXT NOT NULL
+create index client_commande
+    on Makisine.MAKISINE_COMMANDE (client_commande);
+
+create table Makisine.MAKISINE_COMPOSER
+(
+    reference_commande int not null,
+    produit            int not null,
+    quantité_produit   int not null,
+    primary key (reference_commande, produit),
+    constraint MAKISINE_COMPOSER_ibfk_1
+        foreign key (reference_commande) references Makisine.MAKISINE_COMMANDE (id_commande),
+    constraint MAKISINE_COMPOSER_ibfk_2
+        foreign key (produit) references Makisine.MAKISINE_USTENSILE (id_ustensile)
 );
 
-CREATE TABLE MAKISINE_RECETTE (
-    id_recette INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nom_recette VARCHAR(255) NOT NULL,
-    difficulte TINYINT NOT NULL,
-    statut_publication TINYINT NOT NULL DEFAULT -1,
-    temps_preparation INTEGER NOT NULL,
-    description_recette TEXT NOT NULL,
-    auteur_recette INTEGER REFERENCES MAKISINE_UTILISATEUR(id_utilisateur)
+create index produit
+    on Makisine.MAKISINE_COMPOSER (produit);
+
+create table Makisine.MAKISINE_MESSAGE
+(
+    expediteur    int  not null,
+    destinaire    int  not null,
+    date_message  date not null,
+    texte_message text not null,
+    primary key (expediteur, destinaire),
+    constraint MAKISINE_MESSAGE_ibfk_1
+        foreign key (expediteur) references Makisine.MAKISINE_UTILISATEUR (id_utilisateur),
+    constraint MAKISINE_MESSAGE_ibfk_2
+        foreign key (destinaire) references Makisine.MAKISINE_UTILISATEUR (id_utilisateur)
 );
 
-CREATE TABLE MAKISINE_NECESSITER (
-    ustensile_necessaire INTEGER NOT NULL,
-    recette INTEGER NOT NULL,
-    PRIMARY KEY (ustensile_necessaire, recette),
-    FOREIGN KEY (ustensile_necessaire) REFERENCES MAKISINE_USTENSILE(id_ustensile),
-    FOREIGN KEY (recette) REFERENCES MAKISINE_RECETTE(id_recette)
+create index destinaire
+    on Makisine.MAKISINE_MESSAGE (destinaire);
+
+create table Makisine.MAKISINE_MESSAGE_FORUM
+(
+    id_msg_forum       int auto_increment
+        primary key,
+    texte_msg_forum    text         not null,
+    image_msg_forum    varchar(255) null,
+    emetteur_msg_forum int          null,
+    date_msg_forum     date         not null,
+    constraint MAKISINE_MESSAGE_FORUM_ibfk_1
+        foreign key (emetteur_msg_forum) references Makisine.MAKISINE_UTILISATEUR (id_utilisateur)
 );
 
-CREATE TABLE MAKISINE_COMMENTAIRE (
-    id_commentaire INTEGER PRIMARY KEY AUTO_INCREMENT,
-    avis TEXT NOT NULL,
-    image VARCHAR(255),
-    recette_commentaire INTEGER REFERENCES MAKISINE_RECETTE(id_recette),
-    auteur_commentaire INTEGER REFERENCES MAKISINE_UTILISATEUR(id_utilisateur),
-    date_commentaire DATE NOT NULL
+create index emetteur_msg_forum
+    on Makisine.MAKISINE_MESSAGE_FORUM (emetteur_msg_forum);
+
+create table Makisine.MAKISINE_PARTICIPER
+(
+    evenement   int not null,
+    participant int not null,
+    primary key (evenement, participant),
+    constraint MAKISINE_PARTICIPER_ibfk_1
+        foreign key (evenement) references Makisine.MAKISINE_EVENEMENT (id_evenement),
+    constraint MAKISINE_PARTICIPER_ibfk_2
+        foreign key (participant) references Makisine.MAKISINE_UTILISATEUR (id_utilisateur)
 );
 
-CREATE TABLE MAKISINE_INGREDIENT (
-    id_ingredient INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nom_ingredient VARCHAR(200) NOT NULL
+create index participant
+    on Makisine.MAKISINE_PARTICIPER (participant);
+
+create table Makisine.MAKISINE_RECETTE
+(
+    id_recette          int auto_increment
+        primary key,
+    nom_recette         varchar(255)       not null,
+    difficulte          tinyint            not null,
+    statut_publication  tinyint default -1 not null,
+    temps_preparation   int                not null,
+    description_recette text               not null,
+    auteur_recette      int                null,
+    constraint MAKISINE_RECETTE_ibfk_1
+        foreign key (auteur_recette) references Makisine.MAKISINE_UTILISATEUR (id_utilisateur)
 );
 
-CREATE TABLE MAKISINE_CONSTITUER (
-    ingredient INTEGER NOT NULL,
-    preparation INTEGER NOT NULL,
-    PRIMARY KEY (ingredient, preparation),
-    FOREIGN KEY (ingredient) REFERENCES MAKISINE_INGREDIENT(id_ingredient),
-    FOREIGN KEY (preparation) REFERENCES MAKISINE_RECETTE(id_recette),
-    quantite_ingredient INTEGER NOT NULL
+create table Makisine.MAKISINE_APPARTENIR
+(
+    recette_categorie int not null,
+    categorie         int not null,
+    primary key (recette_categorie, categorie),
+    constraint MAKISINE_APPARTENIR_ibfk_1
+        foreign key (recette_categorie) references Makisine.MAKISINE_RECETTE (id_recette),
+    constraint MAKISINE_APPARTENIR_ibfk_2
+        foreign key (categorie) references Makisine.MAKISINE_CATEGORIE (id_categorie)
 );
 
-CREATE TABLE MAKISINE_ALLERGENE (
-    id_allergene INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nom_allergene VARCHAR(200) NOT NULL
+create index categorie
+    on Makisine.MAKISINE_APPARTENIR (categorie);
+
+create table Makisine.MAKISINE_COMMENTAIRE
+(
+    id_commentaire      int auto_increment
+        primary key,
+    avis                text         not null,
+    image               varchar(255) null,
+    recette_commentaire int          null,
+    auteur_commentaire  int          null,
+    date_commentaire    date         not null,
+    constraint MAKISINE_COMMENTAIRE_ibfk_1
+        foreign key (recette_commentaire) references Makisine.MAKISINE_RECETTE (id_recette),
+    constraint MAKISINE_COMMENTAIRE_ibfk_2
+        foreign key (auteur_commentaire) references Makisine.MAKISINE_UTILISATEUR (id_utilisateur)
 );
 
-CREATE TABLE MAKISINE_CATEGORIE (
-    id_categorie INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nom_categorie VARCHAR(200) NOT NULL
+create index auteur_commentaire
+    on Makisine.MAKISINE_COMMENTAIRE (auteur_commentaire);
+
+create index recette_commentaire
+    on Makisine.MAKISINE_COMMENTAIRE (recette_commentaire);
+
+create table Makisine.MAKISINE_CONSTITUER
+(
+    ingredient          int not null,
+    preparation         int not null,
+    quantite_ingredient int not null,
+    primary key (ingredient, preparation),
+    constraint MAKISINE_CONSTITUER_ibfk_1
+        foreign key (ingredient) references Makisine.MAKISINE_INGREDIENT (id_ingredient),
+    constraint MAKISINE_CONSTITUER_ibfk_2
+        foreign key (preparation) references Makisine.MAKISINE_RECETTE (id_recette)
 );
 
-CREATE TABLE MAKISINE_CONTENIR (
-    produit INTEGER NOT NULL,
-    allergene INTEGER NOT NULL,
-    PRIMARY KEY (produit, allergene),
-    FOREIGN KEY (produit) REFERENCES MAKISINE_INGREDIENT(id_ingredient),
-    FOREIGN KEY (allergene) REFERENCES MAKISINE_ALLERGENE(id_allergene)
+create index preparation
+    on Makisine.MAKISINE_CONSTITUER (preparation);
+
+create table Makisine.MAKISINE_NECESSITER
+(
+    ustensile_necessaire int not null,
+    recette              int not null,
+    primary key (ustensile_necessaire, recette),
+    constraint MAKISINE_NECESSITER_ibfk_1
+        foreign key (ustensile_necessaire) references Makisine.MAKISINE_USTENSILE (id_ustensile),
+    constraint MAKISINE_NECESSITER_ibfk_2
+        foreign key (recette) references Makisine.MAKISINE_RECETTE (id_recette)
 );
 
-CREATE TABLE MAKISINE_APPARTENIR (
-    recette_categorie INTEGER NOT NULL,
-    categorie INTEGER NOT NULL,
-    PRIMARY KEY (recette_categorie, categorie),
-    FOREIGN KEY (recette_categorie) REFERENCES MAKISINE_RECETTE(id_recette),
-    FOREIGN KEY (categorie) REFERENCES MAKISINE_CATEGORIE(id_categorie)
+create index recette
+    on Makisine.MAKISINE_NECESSITER (recette);
+
+create table Makisine.MAKISINE_NOTE
+(
+    id_note      int auto_increment
+        primary key,
+    point_note   int not null,
+    recette_note int null,
+    auteur_note  int null,
+    constraint MAKISINE_NOTE_ibfk_1
+        foreign key (recette_note) references Makisine.MAKISINE_RECETTE (id_recette),
+    constraint MAKISINE_NOTE_ibfk_2
+        foreign key (auteur_note) references Makisine.MAKISINE_UTILISATEUR (id_utilisateur)
 );
 
-CREATE TABLE MAKISINE_NOTE (
-    id_note INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    point_note INTEGER NOT NULL,
-    recette_note INTEGER REFERENCES MAKISINE_RECETTE(id_recette),
-    auteur_note INTEGER REFERENCES MAKISINE_UTILISATEUR(id_utilisateur)
+create index auteur_note
+    on Makisine.MAKISINE_NOTE (auteur_note);
+
+create index recette_note
+    on Makisine.MAKISINE_NOTE (recette_note);
+
+create index auteur_recette
+    on Makisine.MAKISINE_RECETTE (auteur_recette);
+
+create table Makisine.MAKISINE_RECEVOIR
+(
+    newsletter  int not null,
+    utilisateur int not null,
+    primary key (newsletter, utilisateur),
+    constraint MAKISINE_RECEVOIR_ibfk_1
+        foreign key (newsletter) references Makisine.MAKISINE_NEWSLETTER (id_modele),
+    constraint MAKISINE_RECEVOIR_ibfk_2
+        foreign key (utilisateur) references Makisine.MAKISINE_UTILISATEUR (id_utilisateur)
 );
+
+create index utilisateur
+    on Makisine.MAKISINE_RECEVOIR (utilisateur);
+
+create index avatar_utilisateur
+    on Makisine.MAKISINE_UTILISATEUR (avatar_utilisateur);
+
+

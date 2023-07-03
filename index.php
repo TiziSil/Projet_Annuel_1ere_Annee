@@ -33,6 +33,6 @@ include "head.php"; ?>
 
     <?php include "rooting.php"; ?>
     <?php include "footer.php"; ?>
-    <?php include "pages/recette/afficher-recette.php" ?>
+
 </body>
 <html>

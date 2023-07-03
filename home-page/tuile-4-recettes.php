@@ -4,7 +4,9 @@
             <svg width="48px" height="48px">
                 <image height="48px" width="48px" href="assets/images/open-book.svg" />
             </svg>
+            <a href = "afficher-recette">
             <h2 class="align-items-center titre-tuile-4">Recettes</h2>
+            </a>
         </div>
     </div>
     <div class="container">
