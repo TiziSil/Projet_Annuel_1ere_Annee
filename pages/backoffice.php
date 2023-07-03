@@ -1,6 +1,5 @@
 <?php
-//redirectIfNotConnected(); 
-//session_destroy();
+redirectIfNotConnected();
 ?>
 
 		<div class="row mt-1">

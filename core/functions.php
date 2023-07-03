@@ -56,6 +56,6 @@ function isConnected(){
 
 function redirectIfNotConnected(){
 	if(!isConnected()){
-		header("Location: index.php");
+		header("Location: /index.php");
 	}
 } 
