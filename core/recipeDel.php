@@ -19,7 +19,7 @@ $isRecipeDeleted = false;
 $listRecipe = [];
 
 $connection = connectDB();
-$results2 = $connection->query("SELECT id_recette FROM MAKISINE_RECETTE");
+$results2 = $connection->query("SELECT id_recette FROM ".DB_PREFIX."RECETTE");
 $results2 = $results2->fetchAll();
 
 foreach ($results2 as $recette) {

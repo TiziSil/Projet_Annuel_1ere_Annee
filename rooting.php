@@ -29,6 +29,10 @@ switch ($page) {
         include "./home-page/tuile-6-pub.php";
         break;
 
+    case $fichier . '/mon-compte':
+        require './pages/mon-compte.php';
+        break;
+
     case $fichier . '/boutique':
         require './pages/boutique.php';
         break;

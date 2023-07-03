@@ -220,7 +220,7 @@ p {
   margin-bottom: 20px;
 }
 
-/* Tuile n°3 Catégrorie de recette */
+/* Tuile n°3 Catégorie de recette */
 
 .titre-tuile-3 svg {
   margin-right: 25px;
@@ -998,6 +998,7 @@ footer * a {
   font-weight: 600;
   letter-spacing: -1px;
   font-size: 14px;
+  list-style-type: none;
 }
 
 .selection {
@@ -1705,4 +1706,25 @@ border-radius: 17px;
 
 .error-non-connecter {
   font-style: italic;
+}
+/* Pages Backoffice */
+
+.titre-principal {
+  padding-top: 50px;
+}
+
+.titre-secondaire {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.lien-supprimer {
+  font-style: italic;
+  text-decoration: unset;
+  color: #897c7c;
+}
+
+.lien-supprimer:hover {
+  cursor:pointer;
+  color: #000000;
 }

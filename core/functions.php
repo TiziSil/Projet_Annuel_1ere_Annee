@@ -1,5 +1,10 @@
  <?php
 
+
+function Hello() {
+	return "Hello";
+}
+
 function cleanFirstname($firstName){
 	return ucwords(strtolower(trim($firstName)));
 }
@@ -14,6 +19,10 @@ function cleanEmail($email){
 
 function cleanPhone($telephone){
 	return str_replace('#[ -.]#','',$telephone);
+}
+
+function cleanName($name) {
+	return ucfirst(strtolower(trim($name)));
 }
 
 
@@ -47,7 +56,7 @@ function isConnected(){
 
 function redirectIfNotConnected(){
 	if(!isConnected()){
-		header("Location: index.php");
+		header("Location: /index.php");
 	}
 } 
 
