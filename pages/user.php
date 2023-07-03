@@ -3,6 +3,7 @@
 // require "../conf.inc.php";
 // require "../core/functions.php";
 redirectIfNotConnected();
+redirectIfNotAdmin();
 // ?>
 <div>
     <h1>Liste des utilisateurs</h1>

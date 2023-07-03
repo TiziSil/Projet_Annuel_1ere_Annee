@@ -117,6 +117,9 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
 <div>
   <h1>Modifier mon profil</h1>
 </div>
+<nav class="nav flex-column">
+<a class="nav-link active" href="mon-compte">Retour à mon compte</a>
+</nav>
 <section class="forum">
     <div class="py-5 d-flex flex-column">
         <div class="container py-5">
@@ -173,7 +176,7 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                            <label class="d-flex col-6">Ville</label>
+                            <label class="d-flex col-6">Pays</label>
                             <select id = "pays-inscription" onchange ='listePays()' class="form-control" name = "newPays" placeholder="Pays"  value ='<?= $pays?>'>
                             <option value="fr" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "fr") ? "selected" : ""; ?>>France</option>
                             <option value="it" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "it") ? "selected" : ""; ?>>Italie</option>
@@ -187,13 +190,13 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                            <label class="d-flex col-6">Ville</label>
+                            <label class="d-flex col-6">Adresse</label>
                             <input type="text" class="form-control" name = "newAdresse" placeholder="Adresse"  value ='<?=$adresse ?>'>
                         </div>
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                            <label class="d-flex col-6">Ville</label>
+                            <label class="d-flex col-6">Code postal</label>
                             <input type="text" class="form-control" name = "newCodePostal" placeholder="Code postal"  value ='<?=$codePostal ?>'>
                         </div>
                     </div>

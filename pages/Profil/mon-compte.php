@@ -43,9 +43,9 @@ foreach ($results as $row) {
     <div class="py-5 d-flex flex-column">
         <div class="container py-5">
             <div class="search-bar">
-                <h1>Bienvenue <?php echo $_SESSION['pseudo'] ?> !</h1>
+                <h1>Bienvenue <?= $pseudo ?> !</h1>
                 <form id="" class="d-flex row">
-                    <div class="col-10 input-form-mon-compte d-flex">
+                    <!-- <div class="col-10 input-form-mon-compte d-flex"> -->
                         <svg width="16px" height="16px">
                             <!-- <image height="16px" fill="#DEC7B1" width="16px" href="./assets/images/loupe.svg" /> -->
                         </svg>
@@ -56,8 +56,8 @@ foreach ($results as $row) {
             </div>
 
             <div class="container py-4">
-                <div class="boite">
-                    <!-- <table class="table">
+                <!-- <div class="boite">
+                     <table class="table">
                         <thead>
                             <tr class="tr-td-research-recette">
                                 <th>Référence</th>
@@ -83,8 +83,8 @@ foreach ($results as $row) {
                                 <td>test</td>
                             </tr>
                         </tbody>
-                    </table> -->
-                </div>
+                    </table> 
+                </div>-->
             </div>
 
 
@@ -97,24 +97,16 @@ foreach ($results as $row) {
 </section>
 
 
-<section class="mon-compte">
-    <div class="container">
-        <div class="">
-            <h1>Bienvenue <?= $pseudo?> !</h1>
-        </div>
-    </div>
-</section>
 <div>
     <h1>Mon compte</h1>
 <nav class="nav flex-column">
 <a class="nav-link active" href="modifier-profil">Modifier mon profil</a>
 <a class="nav-link" href="mon-abonnement">Mon abonnement</a>
-<a class="nav-link" href="#">Mes recettes</a>
 <?php
 if ($role == 1){
 
     echo '<a class="nav-link" href="backoffice">Mon espace administrateur</a>';
-    echo '<a class="nav-link" href="user">Liste des utilisateur</a>';
+    echo '<a class="nav-link" href="user">Liste des utilisateurs</a>';
     echo '<a class="nav-link" href="attente-validation">Valider des recettes</a>';
 }
 ?>

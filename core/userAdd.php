@@ -10,6 +10,7 @@ require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 //!!!!!!!!!!!!!!
+
 require '../vendor/autoload.php'; //mettre le chemin pour le serveur
 //!!!!!!!!!!!!!!
 //recuperer donnée
@@ -255,7 +256,7 @@ if(empty($listOfErrors)){
 	unset($_POST["pwdConfirm"]);
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
-	header('location: ../erreur.php/');
+	header('location: ../erreur_inscription.php/');
 }	
 
 

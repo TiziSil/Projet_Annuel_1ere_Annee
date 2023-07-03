@@ -1,5 +1,6 @@
 <?php
 redirectIfNotConnected();
+redirectIfNotAdmin();
 $connexion = connectDB();
 if(isset($_POST['id']) AND isset($_POST['id'])){
     // On récupère l'id de l'utilisateur
