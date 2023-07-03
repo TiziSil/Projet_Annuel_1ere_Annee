@@ -56,9 +56,23 @@ function isConnected(){
 
 function redirectIfNotConnected(){
 	if(!isConnected()){
-		header("Location: /index.php");
+		echo '<script>window.location.href = "mon-compte";</script>';
 	}
 } 
+
+function redirectIfNotAdmin(){
+	if (!isConnected()){
+		echo '<script>window.location.href = "mon-compte";</script>';
+	}else{
+		$connection = connectDB();
+		$queryPrepared = $connection->prepare("SELECT role_utilisateur FROM ".DB_PREFIX."UTILISATEUR where email=:email");
+		$queryPrepared->execute(["email"=>$_SESSION['email']]);
+		$result = $queryPrepared->fetch();
+		if($result['role_utilisateur'] != 1){
+			echo '<script>window.location.href = "mon-compte";</script>';
+		}
+	}
+}
 
 function randomPassword() {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';

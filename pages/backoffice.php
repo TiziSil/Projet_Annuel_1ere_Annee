@@ -1,5 +1,10 @@
 <?php
+// require "conf.inc.php";
+// require "core/functions.php";
+//redirectIfNotConnected(); 
+//session_destroy();
 redirectIfNotConnected();
+redirectIfNotAdmin();
 ?>
 
 		<div class="row mt-1">

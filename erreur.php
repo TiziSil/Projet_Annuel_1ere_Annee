@@ -1,24 +1,13 @@
-<?php
-session_start();
-if(isset($_SESSION['listOfErrors'])) {?>
-	<div class="row">
-		<div class="col-12">
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			  
-			  <?php
+<DOCTYPE !html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Erreur</title>
+</head>
+<body>
+	<h1>Erreur</h1>
+<p>Identifiants incorrects</p>
+<a href= "index.php">Cliquez ici pour revenir à l'accueil</a>
 
-			  foreach ($_SESSION['listOfErrors'] as $error)
-			  {
-			  	echo "<li>".$error."</li>";
-			  }
-			  unset($_SESSION['listOfErrors']);
-			  ?>
-
-
-
-			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-		</div>
-	</div>
-<?php } ?> 
-
+</body>
+</html> 

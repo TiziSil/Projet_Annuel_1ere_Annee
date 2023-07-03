@@ -8,7 +8,7 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 //!!!!!!!!!!!!!!
-require './vendor/autoload.php'; //mettre le chemin pour le serveur
+require '../vendor/autoload.php'; //mettre le chemin pour le serveur
 //!!!!!!!!!!!!!!
 ?>
 
@@ -88,18 +88,16 @@ require './vendor/autoload.php'; //mettre le chemin pour le serveur
 if (isset($_POST['email']) and isset($_POST['nom']) and !empty($_POST['nom']) and !empty($_POST['email'])) {
     $email = cleanEmail($_POST['email']);
     $nom = cleanLastname($_POST['nom']);
-
     $texte = $_POST['commentaire'];
-    //Server settings
-    //$mail->SMTPDebug =2;                      //Enable verbose debug output
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'pamakisine@gmail.com';                     //SMTP username
-    $mail->Password   = 'ngjzeprsrycjzbzx';                               //SMTP password
-    $mail->SMTPSecure = 'TLS';            //Enable implicit TLS encryption
-    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+	//Server settings
+	//$mail->SMTPDebug =2;                      //Enable verbose debug output
+	$mail->isSMTP();                                            //Send using SMTP
+	$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+	$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+	$mail->Username   = 'pamakisine@gmail.com';                     //SMTP username
+	$mail->Password   = 'ngjzeprsrycjzbzx';                               //SMTP password
+	$mail->SMTPSecure = 'TLS';            //Enable implicit TLS encryption
+	$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
     $mail->setFrom('ne-pas-repondre@makisine.com');
@@ -113,11 +111,13 @@ if (isset($_POST['email']) and isset($_POST['nom']) and !empty($_POST['nom']) an
     // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
-    //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Message de' . $nom;
-    $mail->Body    = $texte;
-    $mail->send();
-    unset($_POST);
+	//Content
+	$mail->isHTML(true);                                  //Set email format to HTML
+	$mail->Subject = 'Message de' .$nom;
+	$mail->Body    = $texte;
+
+
+	$mail->send();
+    header('Location: contact');
 }
 ?>

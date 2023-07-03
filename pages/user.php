@@ -2,11 +2,15 @@
 // session_start();
 // require "../conf.inc.php";
 // require "../core/functions.php";
-
+redirectIfNotConnected();
+redirectIfNotAdmin();
 // ?>
 <div>
     <h1>Liste des utilisateurs</h1>
 </div>
+<nav class="nav flex-column">
+<a class="nav-link active" href="mon-compte">Retour à mon compte</a>
+</nav>
 <?php
 $connection = connectDB();
 $results = $connection->query("SELECT * FROM ".DB_PREFIX."UTILISATEUR");
@@ -68,6 +72,10 @@ echo "<br>";
                     <form id='deleteForm' action='core/userDel.php' method='POST'>
                     <input type='hidden' name='id' value='".$user["id_utilisateur"]."'>
                     <button type='submit' class='btn btn-danger' onclick='confirmDelete()'>Supprimer</button>
+                    </form>
+                    <form action='userEdit' method='POST'>
+                    <input type='hidden' name='id' value='".$user["id_utilisateur"]."'>
+                    <button type='submit' class='btn btn-primary'>Modifier</button>
                     </form>
                 
                     </td>";

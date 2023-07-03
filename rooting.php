@@ -29,10 +29,6 @@ switch ($page) {
         include "./home-page/tuile-6-pub.php";
         break;
 
-    case $fichier . '/mon-compte':
-        require './pages/mon-compte.php';
-        break;
-
     case $fichier . '/boutique':
         require './pages/boutique.php';
         break;
@@ -71,11 +67,36 @@ switch ($page) {
     case $fichier . '/cookies':
         require './pages/cookies.php';
         break;
-
-    case $fichier . '/mon-compte':
-        require './pages/mon-compte.php';
+    
+    //Profil
+    case $fichier . '/mon-abonnement':
+        require './pages/Profil/mon-abonnement.php';
         break;
 
+    case $fichier . '/mon-compte':
+        require './pages/Profil/mon-compte.php';
+        break;
+    
+    case $fichier . '/modifier-profil':
+        require './pages/Profil/modifier-profil.php';
+        break;
+    
+    case $fichier . '/mes-recettes':
+        require './pages/Profil/mes-recettes.php';
+        break;
+    
+    case $fichier . '/mon-compte-admin':
+        require './pages/Profil/mon-compte-admin.php';
+        break;
+    //abonnement
+    case $fichier . '/checkout':
+        require './pages/Abonnement/checkout.php';
+        break;
+    
+    //admin
+    case $fichier . '/userEdit':
+        require './pages/Admin/userEdit.php';
+        break;
     case $fichier . '/forum':
         require './pages/forum.php';
         break;

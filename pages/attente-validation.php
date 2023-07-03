@@ -3,6 +3,7 @@
 // require "core/functions.php";
 //redirectIfNotConnected(); 
 ?>
+
 <?php
 $connection = connectDB();
 $results = $connection->query("SELECT id_recette, nom_recette, difficulte, temps_preparation, description_recette, nom_categorie FROM " . DB_PREFIX .
@@ -55,3 +56,6 @@ $results = $results->fetchAll()
         </div>
     </div>
 </section>
+<nav class="nav flex-column">
+<a class="nav-link active" href="mon-compte">Retour à mon compte</a>
+</nav>
