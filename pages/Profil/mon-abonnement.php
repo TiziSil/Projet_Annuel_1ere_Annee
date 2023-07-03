@@ -13,6 +13,9 @@ foreach ($results as $row) {
         echo "Vous êtes déjà abonné !";
         ?>
         <br>
+        <nav class="nav flex-column">
+        <a class="nav-link active" href="mon-compte">Retour à mon compte</a>
+        </nav>
         <form action="core/unsubscribe.php" method="POST">
     <button type="submit" class="button3" onclick="confirmUnsubscribe()">Se désabonner</button>
 </form>

@@ -10,8 +10,8 @@ require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 //!!!!!!!!!!!!!!
-require 'C:\Users\Mathis\vendor\autoload.php';
-//require '../vendor/autoload.php'; //mettre le chemin pour le serveur
+//require 'C:\Users\Mathis\vendor\autoload.php';
+require '../vendor/autoload.php'; //mettre le chemin pour le serveur
 //!!!!!!!!!!!!!!
 //recuperer donnée
 //genre
@@ -191,23 +191,23 @@ if(empty($listOfErrors)){
 			
 	]);	
 	//fonctionne PAS						
-	$queryPrepared = $connection -> prepare("INSERT INTO ".DB_PREFIX."AVATAR
-															(couleurPeau,couleurCheveux,coiffure,yeux,accessoire,pilosite,bouche )
-											VALUES				
-															(:couleurPeau, :couleurCheveux, :coiffure, :yeux, :accessoire, :pilosite, :bouche )") ;
-	$queryPrepared -> execute([									
+	// $queryPrepared = $connection -> prepare("INSERT INTO ".DB_PREFIX."AVATAR
+	// 														(couleurPeau,couleurCheveux,coiffure,yeux,accessoire,pilosite,bouche )
+	// 										VALUES				
+	// 														(:couleurPeau, :couleurCheveux, :coiffure, :yeux, :accessoire, :pilosite, :bouche )") ;
+	// $queryPrepared -> execute([									
 								
-								"couleurPeau" => $couleurPeau,
-								"couleurCheveux" => $couleurCheveux,
-								"coiffure" => $coiffure,
-								"yeux" => $yeux,
-								"accessoire" => $accessoire,
-								"pilosite" => $pilosite,
-								"bouche" => $bouche,
+	// 							"couleurPeau" => $couleurPeau,
+	// 							"couleurCheveux" => $couleurCheveux,
+	// 							"coiffure" => $coiffure,
+	// 							"yeux" => $yeux,
+	// 							"accessoire" => $accessoire,
+	// 							"pilosite" => $pilosite,
+	// 							"bouche" => $bouche,
 
 
 			
-	]);							
+	// ]);							
 	
 
 
