@@ -2,10 +2,11 @@
     $id_recipe = $_GET['id'];
 
     $connection = connectDB();
-    $results = $connection->query("SELECT id_recette, nom_recette, difficulte, temps_preparation, description_recette, nom_categorie, auteur_recette
-                            FROM " . DB_PREFIX . "APPARTENIR, " . DB_PREFIX . "CATEGORIE, " . DB_PREFIX . "RECETTE
+    $results = $connection->query("SELECT id_recette, nom_recette, difficulte, temps_preparation, description_recette, nom_categorie, pseudo
+                            FROM " . DB_PREFIX . "APPARTENIR, " . DB_PREFIX . "CATEGORIE, " . DB_PREFIX . "RECETTE, " . DB_PREFIX . "UTILISATEUR
                             WHERE statut_publication = 1 AND recette_categorie = id_recette
-                            AND categorie = id_categorie AND id_recette = '" . $id_recipe . "'");
+                            AND categorie = id_categorie AND auteur_recette = id_utilisateur AND id_recette = '" . $id_recipe . "'");
+
     $results = $results->fetchAll();
 
     $recipe_name = $connection->query("SELECT nom_recette FROM ".DB_PREFIX."RECETTE WHERE id_recette = '" . $id_recipe . "'");
@@ -17,7 +18,7 @@
         <h1><?= $recipe_name['nom_recette'] ?></h1>
     </div>
     <div class="contenu-milieu">
-        <div class="row">
+        <div class="row bloc-ferme">
             <div class="col-6">
                 <?php 
                     foreach ($results as $recipe) {
@@ -25,9 +26,9 @@
                         echo "<br><br><b>Temps de préparation</b><br>".$recipe["temps_preparation"]." minutes";
                         echo "<br><br><b>Difficulte</b><br>";
                         for ($i = 0; $i <= $recipe["difficulte"]; $i++) {
-                            echo "<img src='assets/difficulte.png' alt='Image' width='40px'>";
+                            echo "<img src='assets/difficulte.png' alt='Image' width='60px'>";
                         }
-                        echo "<br><br><b>Auteur</b><br>".$recipe["auteur_recette"];
+                        echo "<br><br><b>Auteur</b><br>".$recipe["pseudo"];
                         echo "<br><br><b>Ingrédients</b><br>"; }
                 ?>
             </div>
@@ -35,5 +36,21 @@
                 <img src="assets/images/backoffice-background.jpg" width="600px">
             </div>
         </div>
+
+        <?php
+        if(isConnected()) {
+            $email = $_SESSION['email'];
+            $queryPrepared = $connection->prepare("SELECT role_utilisateur FROM ".DB_PREFIX."UTILISATEUR WHERE email=:email");
+            $queryPrepared->execute([ "email" => $_SESSION["email"] ]);
+            $role= $queryPrepared->fetch();
+
+            if ($role['role_utilisateur'] == 1) {
+            ?>
+            <form action="core/recipeDel.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
+                <input type="text" name="id_recipeDel" value="<?= $id_recipe?>" style="display: none;">
+                <input type="submit" value="Supprimer la recette" class="btn btn-danger" style="color: white !important; margin-top: 50px;">
+            </form>
+            <?php }} ?>
+        
     </div>
 </section>
