@@ -140,7 +140,7 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                            <label class="d-flex col-6">Nom</label>
+                            <label class="d-flex col-6">Pseudo</label>
                             <input type="text" class="form-control" name = "newPseudo" placeholder="Pseudo" value ='<?= $pseudo ?>'>
                         </div>
                     </div>
@@ -152,25 +152,25 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                            <label class="d-flex col-6">Téléphone</label>
+                            <label class="d-flex col-6">Nouveau mot de passe</label>
                             <input type="password" class="form-control" name = "newPassword" placeholder="Mot de passe">
                         </div>
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                            <label class="d-flex col-6">Date de naissance</label>
+                            <label class="d-flex col-6">Confirmation nouveau mot de passe</label>
                             <input type="password" class="form-control" name = "newPasswordConfirm" placeholder="Confirmer le mot de passe">
                         </div>
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                            <label class="d-flex col-6">Adresse postale</label>
+                            <label class="d-flex col-6">Téléphone</label>
                             <input type="text" class="form-control" name = "newTelephone" placeholder="Téléphone"  value ='<?= $telephone?>'>
                         </div>
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                            <label class="d-flex col-6">Code postal</label>
+                            <label class="d-flex col-6">Date de naissance</label>
                             <input type="date" class="form-control" name = "newDateNaissance" placeholder="Date de naissance"  value ='<?= $dateNaissance?>'>
                         </div>
                     </div>

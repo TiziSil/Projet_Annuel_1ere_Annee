@@ -88,6 +88,11 @@ switch ($page) {
     case $fichier . '/mon-compte-admin':
         require './pages/Profil/mon-compte-admin.php';
         break;
+
+    case $fichier . '/error404':
+        require 'error404.php';
+        break;        
+
     //abonnement
     case $fichier . '/checkout':
         require './pages/Abonnement/checkout.php';
@@ -108,9 +113,15 @@ switch ($page) {
     case $fichier . '/afficher-recette':
         require './pages/recettes/afficher-recette.php';
         break;
-    
+        
+
+        
+
     default:
-    http_response_code(404);
+
+    require 'error404.php';
+    // header('Location: ./error404');
+    // http_response_code(404);
     break;
 }
 ?>
