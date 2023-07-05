@@ -1771,12 +1771,15 @@ border-radius: 17px;
 }
 
 .contenu-milieu {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+
+.bloc-ferme {
+  word-wrap: break-word;
 }
 
 .forum-edition-cacher {
