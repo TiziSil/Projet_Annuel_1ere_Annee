@@ -99,6 +99,8 @@ function afficherVerifications() {
   avatar.style.display = "none";
   verifications.style.display = "flex";
 }
+
+
 // function d'erreurs de champs
 function champInvalide(champ, message) {
   champ.parentElement.querySelector(".error").innerText = message;
@@ -226,6 +228,8 @@ function validerPays() {
   champValide(pays);
   return true;
 }
+
+
 // Valider Fil d'ariane adresse postale
 function validerAdressePostale() {
   return validerPseudo() && validerTelephone() && validerAdressePostaleInput() && validerCodePostal() && validerVille() && validerPays()
@@ -369,6 +373,7 @@ changerAccessoire(); // Fonctions appelées pour changer la couleur de peau/coif
 changerPilosite();
 changerBouche();
 changerCouleurCheveux();
+
 
 //enregistrement avatar
 
@@ -618,3 +623,12 @@ function ajoutIngredient(event) {
 }
 
 btn_ajout_ingredient.addEventListener('click', ajoutIngredient);
+
+
+// Burger 
+document.addEventListener('drag', () => {
+  console.log('test');
+  const classBurger = document.querySelector('#navbarToggleExternalContent');
+  console.log(classBurger);
+})
+

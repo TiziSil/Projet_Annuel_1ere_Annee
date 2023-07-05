@@ -1,8 +1,9 @@
 
 <div id="modale-connexion" class="modale-connexion">
     <div class="modale-content-connexion">
+        <span class="close" id="close-modale-connexion" onclick="fermerModaleConnexion()">&times;</span>
         <div>
-            <h1 class="h1-connexion">Me connecter</h1><span class="close" id="close-modale-connexion" onclick="fermerModaleConnexion()">&times;</span>
+            <h1 class="h1-connexion">Me connecter</h1>
         </div>
         <div>
             <form class="form-connexion" action="core/connexion.php" method="POST">

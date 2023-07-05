@@ -20,9 +20,7 @@ if (isset($_POST['validate'])) {
 
         $connection = connectDB();
         $insertQuestionWebsite = $connection->prepare('INSERT INTO MAKISINE_FORUM(question_title, question_text, question_date, question_id_author, question_pseudo_author)VALUES(?,?,?,?,?)');
-        $insertQuestionWebsite->execute(
-            array($question_title,  $question_text,  $question_date,  $question_id_author,  $question_pseudo_author)
-        );
+        $insertQuestionWebsite->execute(array($question_title,  $question_text,  $question_date,  $question_id_author,  $question_pseudo_author));
         header('location:../forum');
     } else {
         header('location:../forum');
