@@ -632,3 +632,18 @@ document.addEventListener('drag', () => {
   console.log(classBurger);
 })
 
+// Forum
+function activerModeEditionReponseForum(idReponseForum) {
+  const reponseTopicForum = document.querySelector('#'+ idReponseForum);
+
+  const cacherElement = reponseTopicForum.querySelector('.forum-edition-cacher');
+  const afficherElement = reponseTopicForum.querySelector('.forum-edition-afficher');
+
+  cacherElement.classList.remove('forum-edition-cacher');
+  cacherElement.classList.add('forum-edition-afficher');
+
+  afficherElement.classList.remove('forum-edition-afficher');
+  afficherElement.classList.add('forum-edition-cacher');
+
+  console.log(reponseTopicForum);
+}

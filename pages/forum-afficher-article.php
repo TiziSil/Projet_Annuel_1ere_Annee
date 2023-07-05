@@ -6,7 +6,7 @@
     $getQuestion->execute(array($_GET['id']));
     $question = $getQuestion->fetch();
 
-    $getReponses = $connection->prepare('SELECT reponse_id_author, reponse_id_question, reponse_date, reponse_pseudo_author, reponse_text FROM MAKISINE_FORUM_REPONSE WHERE reponse_id_question = ? ORDER BY reponse_id ASC');
+    $getReponses = $connection->prepare('SELECT reponse_id, reponse_id_author, reponse_id_question, reponse_date, reponse_pseudo_author, reponse_text FROM MAKISINE_FORUM_REPONSE WHERE reponse_id_question = ? ORDER BY reponse_id ASC');
     $getReponses->execute(array($_GET['id']));
 
     ?>
@@ -19,7 +19,7 @@
                         <?php echo $question['question_title']; ?> -
                         <?php echo $question['question_pseudo_author']; ?>
                     </h4>
-                    <div  class="d-flex flex-row">
+                    <div class="d-flex flex-row">
                         <p>
                             <?php echo $question['question_date'] ?>
                         </p>
@@ -38,7 +38,7 @@
             </div>
 
             <?php while ($reponse = $getReponses->fetch()) { ?>
-                <div class="boite py-2 my-2">
+                <form  action="core/forumModifierReponse.php" method="POST" class="boite py-2 my-2" id="<?php echo 'forum-reponse-' . $reponse['reponse_id'] ?>">
                     <div class="d-flex flex-row justify-content-between">
                         <h4>
                             <?php echo $reponse['reponse_pseudo_author']; ?>
@@ -48,7 +48,8 @@
                                 <?php echo $reponse['reponse_date'] ?>
                             </p>
                             <?php if (isset($_SESSION['id_utilisateur']) and $_SESSION['id_utilisateur'] === $reponse['reponse_id_author']) { ?>
-                                <a href="#">
+                                <a
+                                    onclick="activerModeEditionReponseForum('<?php echo 'forum-reponse-' . $reponse['reponse_id'] ?>')">
                                     <svg class="d-block my-1 mx-1" width="16px" height="16px">
                                         <image height="16px" width="16px" href="./assets/images/edit-solid.svg" />
                                     </svg>
@@ -56,10 +57,17 @@
                             <?php } ?>
                         </div>
                     </div>
-                    <p>
-                        <?php echo $reponse['reponse_text']; ?>
-                    </p>
-                </div>
+                    <div class="forum-edition-cacher flex-column">
+                        <input style="display: none" name="idReponse" value="<?php echo $reponse['reponse_id']; ?>"/>
+                        <textarea name="reponse_text" class="d-flex my-1"><?php echo $reponse['reponse_text']; ?></textarea>
+                        <button class="button2">Enregistrer</button>
+                    </div>
+                    <div class="forum-edition-afficher">
+                        <p>
+                            <?php echo $reponse['reponse_text']; ?>
+                        </p>
+                    </div>
+                </form>
             <?php } ?>
         </div>
     </section>
