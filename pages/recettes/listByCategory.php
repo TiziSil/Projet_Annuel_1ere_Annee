@@ -1,6 +1,4 @@
 <?php
-    redirectIfNotConnected(); 
-
     $id_category = $_GET['id'];
 
     $connection = connectDB();
@@ -34,10 +32,14 @@
                     foreach ($results as $recipe) {
                         echo "<tr>";
                         echo "<td>" . $recipe["nom_recette"] . "</td>";
-                        echo "<td>" . $recipe["difficulte"] . "</td>";
-                        echo "<td>" . $recipe["temps_preparation"] . "</td>";
+                        echo "<td>";
+                        for ($i = 0; $i <= $recipe["difficulte"]; $i++) {
+                            echo "<img src='assets/difficulte.png' alt='Image' width='30px'> ";
+                        }
+                        echo "</td>";
+                        echo "<td>" . $recipe["temps_preparation"] . " minutes</td>";
                         echo "<td>
-                        <a href='...?id=".$recipe["id_recette"]."' class='btn btn-dark'>
+                        <a href='../ProjetAnnuel/recette?id=".$recipe["id_recette"]."' class='btn btn-dark'>
                         Voir la recette
                         </a>
                         </td>";

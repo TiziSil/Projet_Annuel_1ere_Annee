@@ -118,6 +118,10 @@ switch ($page) {
         require './pages/recettes/listByCategory.php';
         break;
 
+    case $fichier . '/recette':
+        require './pages/recettes/recipe.php';
+        break;
+
     default:
 
     require 'error404.php';

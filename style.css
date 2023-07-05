@@ -1738,14 +1738,14 @@ border-radius: 17px;
   color: #000000;
 }
 
-<<<<<<< HEAD
 .contenu-milieu {
   margin-top: 50px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-=======
+}
 
 .forum-edition-cacher {
   display: none;
@@ -1771,5 +1771,4 @@ border-radius: 17px;
 
 .h1error404 {
   margin-top: 20px;
->>>>>>> e72be445657b2a6cedb8f7e46056ec5e46fe8786
 }
