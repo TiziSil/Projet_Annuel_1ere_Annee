@@ -644,6 +644,46 @@ function activerModeEditionReponseForum(idReponseForum) {
 
   afficherElement.classList.remove('forum-edition-afficher');
   afficherElement.classList.add('forum-edition-cacher');
-
-  console.log(reponseTopicForum);
 }
+
+function activerModeEditionQuestionForum(idQuestionForum) {
+  const reponseTopicForum = document.querySelector('#'+ idReponseForum);
+
+  const cacherElement = reponseTopicForum.querySelector('.forum-edition-cacher');
+  const afficherElement = reponseTopicForum.querySelector('.forum-edition-afficher');
+
+  cacherElement.classList.remove('forum-edition-cacher');
+  cacherElement.classList.add('forum-edition-afficher');
+
+  afficherElement.classList.remove('forum-edition-afficher');
+  afficherElement.classList.add('forum-edition-cacher');
+}
+
+var idReponse = undefined;
+function suppresionMessage(idReponse2) {
+  document.querySelector('#modale-suppression').style="display: block";
+  idReponse = idReponse2;
+}
+
+function confirmerSuppressionMessage() {
+  console.log(idReponse);
+  var formData = new FormData();
+  formData.append('idReponse', idReponse);
+
+  fetch("core/forumSupprimerReponse.php", {
+    method: 'POST',
+    body: formData,
+  }).then((res) => {
+    return res.text()
+  }).then((e) => {
+    console.log(e);
+  })
+  idReponse = null;
+  document.querySelector('#modale-suppression').style="display: none";
+}
+
+function fermerModaleSuppresion() {
+  document.querySelector('#modale-suppression').style="display: none";
+  idReponse = null;
+}
+
