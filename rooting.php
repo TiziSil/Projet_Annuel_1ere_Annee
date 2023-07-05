@@ -131,6 +131,10 @@ switch ($page) {
         require './pages/recettes/recipe.php';
         break;
 
+    case $fichier . '/creation-recette':
+        require './pages/recipeCreation.php';
+        break;
+
     default:
         require 'error404.php';
         break;

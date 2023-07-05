@@ -75,12 +75,13 @@ foreach ($results as $row) {
 <nav class="nav flex-column">
 <a class="nav-link active" href="modifier-profil">Modifier mon profil</a>
 <a class="nav-link" href="mon-abonnement">Mon abonnement</a>
+<a class="nav-link" href="creation-recette">Créer des recettes</a>
 <?php
 if ($role == 1){
 
     echo '<a class="nav-link" href="user">Liste des utilisateurs</a>';
     echo '<a class="nav-link" href="attente-validation">Valider des recettes</a>';
-    echo '<a class="nav-link" href="backoffice">Gestion des recettes</a>';
+    echo '<a class="nav-link" href="backoffice">Gestion des recettes et autres éléments</a>';
     echo '<a class="nav-link" href="core/inactivityAlert.php">Envoyer un mail aux utilisateurs inactifs</a>';
 }
 ?>

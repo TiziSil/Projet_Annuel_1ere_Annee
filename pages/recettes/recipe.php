@@ -2,15 +2,17 @@
     $id_recipe = $_GET['id'];
 
     $connection = connectDB();
-    $results = $connection->query("SELECT id_recette, nom_recette, difficulte, temps_preparation, description_recette, nom_categorie, pseudo
+    $queryPrepared = $connection->prepare("SELECT id_recette, nom_recette, difficulte, temps_preparation, description_recette, nom_categorie, pseudo
                             FROM " . DB_PREFIX . "APPARTENIR, " . DB_PREFIX . "CATEGORIE, " . DB_PREFIX . "RECETTE, " . DB_PREFIX . "UTILISATEUR
                             WHERE statut_publication = 1 AND recette_categorie = id_recette
-                            AND categorie = id_categorie AND auteur_recette = id_utilisateur AND id_recette = '" . $id_recipe . "'");
+                            AND categorie = id_categorie AND auteur_recette = id_utilisateur AND id_recette =:id_recipe");
+    $queryPrepared->execute([ "id_recipe" => $id_recipe ]);
+    $results = $queryPrepared->fetchAll();
 
-    $results = $results->fetchAll();
+    $queryPrepared2 = $connection->prepare("SELECT nom_recette FROM ".DB_PREFIX."RECETTE WHERE id_recette =:id_recipe");
+    $queryPrepared2->execute([ "id_recipe" => $id_recipe ]);
+    $recipe_name = $queryPrepared2->fetch();
 
-    $recipe_name = $connection->query("SELECT nom_recette FROM ".DB_PREFIX."RECETTE WHERE id_recette = '" . $id_recipe . "'");
-    $recipe_name = $recipe_name->fetch();
     
 ?>
 <section class="recipe">
