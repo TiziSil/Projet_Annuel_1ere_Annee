@@ -7,8 +7,7 @@ if (!IsConnected()) {
     header('location: .');
 }
 
-if (isset($_POST['idReponse']) && isset($_POST['reponse_text']) && !empty($_POST['reponse_text'])) {
-    $reponse_text = nl2br(htmlspecialchars($_POST['reponse_text']));
+if (isset($_POST['idReponse']) && !empty($_POST['idReponse'])) {
     $reponse_id = $_POST['idReponse'];
     $reponse_id_author = $_SESSION['id_utilisateur'];
 
@@ -18,8 +17,8 @@ if (isset($_POST['idReponse']) && isset($_POST['reponse_text']) && !empty($_POST
     $result = $updateReponseQuery->fetch();
 
     if ($result['reponse_id_author'] === $reponse_id_author) { // Si l'utilisateur est propriétaire de sa réponse il peu modifié en base
-        $updateReponseQuery = $connection->prepare('UPDATE MAKISINE_FORUM_REPONSE SET reponse_text = ? WHERE reponse_id = ?');
-        $updateReponseQuery->execute(array($reponse_text, $reponse_id));
+        $updateReponseQuery = $connection->prepare('UPDATE MAKISINE_FORUM_REPONSE SET reponse_supprimer = ? WHERE reponse_id = ?');
+        $updateReponseQuery->execute(array(true, $reponse_id));
     }
     header('Location: ../forum-article?id=' . $result['reponse_id_question']);
 } else {
