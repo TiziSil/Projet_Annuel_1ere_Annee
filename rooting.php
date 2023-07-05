@@ -108,7 +108,11 @@ switch ($page) {
     case $fichier . '/afficher-recette':
         require './pages/recettes/afficher-recette.php';
         break;
-    
+
+    case $fichier . '/categorie-recette':
+        require './pages/recettes/listByCategory.php';
+        break;
+
     default:
     http_response_code(404);
     break;

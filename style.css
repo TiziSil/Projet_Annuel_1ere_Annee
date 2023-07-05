@@ -1728,3 +1728,11 @@ border-radius: 17px;
   cursor:pointer;
   color: #000000;
 }
+
+.contenu-milieu {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}

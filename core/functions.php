@@ -84,3 +84,7 @@ function randomPassword() {
     }
     return implode($pass); //turn the array into a string
 }
+
+function redirection($url){
+    echo '<script>window.location.href = "'.$url.'";</script>';
+}
