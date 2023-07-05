@@ -7,10 +7,10 @@
             </div>
             <div class="radio-input fil-ariane">
                 <li onclick="afficherCoordonnees()">
-                    <a id="inscription-value-1" name="value-radio" value="value-1">Coordonnées</a>
+                    <a id="inscription-value-1" name="value-radio" value="value-1">Infos Persos</a>
                 </li>
                 <li onclick="afficherAdressePostal()">
-                    <a id="inscription-value-2" name="value-radio" value="value-2">Adresse postale</a>
+                    <a id="inscription-value-2" name="value-radio" value="value-2">Coordonnées</a>
                 </li>
                 <li onclick="afficherAvatar()">
                     <a id="inscription-value-3" name="value-radio" value="value-3">Avatar</a>

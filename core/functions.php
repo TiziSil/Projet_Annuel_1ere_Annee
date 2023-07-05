@@ -1,4 +1,4 @@
- <?php
+<?php
 
 
 function Hello() {
@@ -56,7 +56,7 @@ function isConnected(){
 
 function redirectIfNotConnected(){
 	if(!isConnected()){
-		echo '<script>window.location.href = "mon-compte";</script>';
+		echo '<script>window.location.href = "./index.php";</script>';
 	}
 } 
 
@@ -83,4 +83,8 @@ function randomPassword() {
         $pass[] = $alphabet[$n];
     }
     return implode($pass); //turn the array into a string
+}
+
+function redirection($url){
+    echo '<script>window.location.href = "'.$url.'";</script>';
 }

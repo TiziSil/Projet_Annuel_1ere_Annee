@@ -121,16 +121,19 @@ switch ($page) {
     case $fichier . '/afficher-recette':
         require './pages/recettes/afficher-recette.php';
         break;
-        
 
 
+    case $fichier . '/categorie-recette':
+        require './pages/recettes/listByCategory.php';
+        break;
+
+    case $fichier . '/recette':
+        require './pages/recettes/recipe.php';
+        break;
 
     default:
-
-    require 'error404.php';
-    // header('Location: ./error404');
-    // http_response_code(404);
-    break;
+        require 'error404.php';
+        break;
 }
 ?>
 <!-- Home page  -->
