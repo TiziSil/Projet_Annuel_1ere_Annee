@@ -15,7 +15,7 @@ if (isset($_POST['validate'])) {
         $question_title = htmlspecialchars($_POST['title']);
         $question_text = nl2br(htmlspecialchars($_POST['content']));      // DataGrip -> MAKASINE_FORUM
         $question_date = date('Y/m/d');
-        $question_id_author = $_SESSION['id'];
+        $question_id_author = $_SESSION['id']; 
         $question_pseudo_author = $_SESSION['pseudo'];
 
         $connection = connectDB();

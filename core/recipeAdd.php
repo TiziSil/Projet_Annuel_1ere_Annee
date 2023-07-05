@@ -152,4 +152,4 @@ if(empty($listOfErrorsRecipe)) {
 }
 
 // Redirection backoffice
-header('location:../backoffice');*
+header('location:../backoffice');

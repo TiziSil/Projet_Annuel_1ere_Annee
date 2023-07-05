@@ -9,6 +9,7 @@
           <image height="32px" fill="#DEC7B1" width="32px" href="assets\images\burger-solid.svg" />
         </svg>
       </button>
+      
       <a href="index.php#about-makisine">Qu'est ce que Makisine ?</a>
       <a href="index.php#categorie-recettes">Catégorie de recettes</a>
       <a href="index.php#recettes">Recettes</a>
@@ -19,10 +20,7 @@
       <?php if (isConnected()) { ?>
         <a href="logout.php">Déconnexion</a>
       <a href="mon-compte">Mon compte</a>
-      <?php }else{ 
-
-      } 
-      ?>
+      <?php }else{ } ?>
     </div>
   </div>
   <div class="py-2 text-bg">
