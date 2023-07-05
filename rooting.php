@@ -90,8 +90,16 @@ switch ($page) {
         break;
 
     case $fichier . '/error404':
-        require 'error404.php';
+        require '/error404.php';
         break;        
+
+
+
+    case $fichier . '/erreur':
+        require '/erreur.php';
+        break;
+
+    
 
     //abonnement
     case $fichier . '/checkout':
@@ -115,7 +123,7 @@ switch ($page) {
         break;
         
 
-        
+
 
     default:
 

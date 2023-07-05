@@ -403,13 +403,14 @@ text-decoration: none;
   height: 100px;
   width: 400px;
   border-radius: 17px;
-  border: solid 2px rgba(255, 255, 255, 0.8);
-  background-color: rgba(255, 255, 255, 0.7);
+  border: solid 2px var(--couleur-transparente);
+  background-color: var(--couleur-transparente);
+  color: var(--couleur-constraste) !important;
 }
 
 .splash-interieur .box-button a {
   text-decoration: none;
-  color: var(--couleur-secondaire);
+  color: var(--couleur-constraste) !important;
   font-weight: bold;
   font-style: italic;
   font-size: 24px;
@@ -459,7 +460,7 @@ text-decoration: none;
   border-radius: 17px;
   padding: 15px 30px 0 30px;
   border: solid 2px rgba(137, 124, 124, 0.8);
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: var(--couleur-transparente);;
 }
 
 /* MODALE DE CONNEXION*/
@@ -524,6 +525,7 @@ text-decoration: none;
 }
 
 .button3 {
+  color: var(--couleur-constraste);
   margin: 0;
   font-family: inherit;
   font-size: inherit;
@@ -1469,7 +1471,7 @@ footer * a {
 
 .p-page-cookies {
   padding: 50px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--couleur-transparente);
   text-align: center;
   box-sizing: border-box;
   font-size: 15px;
@@ -1551,7 +1553,7 @@ footer * a {
 }
 
 .categorie-boite {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--couleur-transparente);
   border-radius: 17px;
   padding: 20px;
   width: 100%;
@@ -1560,7 +1562,7 @@ footer * a {
 
 
 .boite {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--couleur-transparente);
   border-radius: 17px;
   padding: 20px;
   width: 100%;
@@ -1638,8 +1640,33 @@ footer * a {
 }
 
 .search-bar {
-  margin: 25px
+  margin: 10%;
+  text-align: center;
 }
+
+.h1-moncompte {
+  margin-bottom: 9%;
+  
+}
+
+.partie-selection {
+  background-image: url("assets/images/backoffice-recette-background.jpg");
+  background-size: cover;
+  width: 100%;
+  /* height: 95vh; */
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  margin: auto;
+  padding: 0;
+}
+
+.moncompte {
+text-align: center;
+}
+
+/* .button-moncompte {
+margin: 20%;
+} */
 
 .tr-td-research-recette {
   color: var(--couleur-secondaire);
@@ -1652,6 +1679,11 @@ footer * a {
 }
 
 /* FORUM */
+
+
+.card {
+  background-color: var(--couleur-quaternaire) !important;
+}
 
 .forum {
   background: url("assets/images/photo-forum.avif");
@@ -1673,7 +1705,7 @@ footer * a {
 
 .forum-input {
 margin-top: 40px;
-border-style: groove;
+/* border-style: groove; */
 border-radius: 17px;
 }
 
@@ -1785,9 +1817,8 @@ border-radius: 17px;
 
 /* Modifier profil */
 
-.modif-profil h1 {
-  text-align: center;
-  
+.modifh1 {
+text-align: center;
 }
 
 .retour-modif {

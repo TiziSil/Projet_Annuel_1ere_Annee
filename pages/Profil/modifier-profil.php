@@ -118,7 +118,7 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
 <section class="forum">
     <div class=" d-flex flex-column">
         <div class="modif-profil py-5">
-            <h1 class="">Modifier mon profil</h1>
+            <h1 class="modifh1">Modifier mon profil</h1>
             <nav class="nav">
                 <a href="mon-compte" class="nav-link active retour-modif button3">Retour à mon compte</a>
             </nav>
