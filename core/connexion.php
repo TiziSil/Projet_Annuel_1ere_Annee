@@ -11,12 +11,14 @@ if (isset($_POST['email']) &&  isset($_POST['pwd'])) {
     //Récupérer en bdd le mot de passe hashé pour l'email
     //provenant du formulaire
     $connect = connectDB();
-    $queryPrepared = $connect->prepare("SELECT pwd FROM " . DB_PREFIX . "UTILISATEUR WHERE email=:email");
+    $queryPrepared = $connect->prepare("SELECT id_utilisateur, pseudo, pwd FROM " . DB_PREFIX . "UTILISATEUR WHERE email=:email");
     $queryPrepared->execute(["email" => $email]);
     $results = $queryPrepared->fetch();
 
     if(!empty($results) && password_verify($pwd, $results["pwd"]) ){
         $_SESSION['email'] = $email;
+        $_SESSION['id_utilisateur'] = $results['id_utilisateur'];
+        $_SESSION['pseudo'] = $results['pseudo'];
         $_SESSION['login'] = true;
         echo '<script>window.location.href = "../index.php";</script>';
     }else{

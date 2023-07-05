@@ -25,6 +25,15 @@ p {
   color: var(--couleur-tertiaire);
 }
 
+a {
+  text-decoration: none !important;
+}
+
+.h2-homepage{
+text-decoration: none;
+
+}
+
 .logo img {
   object-fit: cover;
   height: 70px;
