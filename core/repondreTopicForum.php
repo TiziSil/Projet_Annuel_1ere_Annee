@@ -10,7 +10,7 @@ if (isset($_POST['id']) and isset($_POST['id']) and !empty($_POST['reponse']) an
     
     $reponse_text = nl2br(htmlspecialchars($_POST['reponse']));      // DataGrip -> MAKASINE_FORUM
     $reponse_date = date('Y/m/d');
-    $reponse_id_author = $_SESSION['id'];
+    $reponse_id_author = $_SESSION['id_utilisateur'];
     $reponse_pseudo_author = $_SESSION['pseudo'];
 
     $connection = connectDB();

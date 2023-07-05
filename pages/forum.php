@@ -13,8 +13,8 @@
                 <div class="d-flex mb-3">
                     <textarea class="form-control" placeholder="Veuillez écrire ici" name="content"></textarea>
                 </div>
-                <button type="submit" <?php if(!isset($_SESSION['id'])) {echo 'disabled';} ?> name="validate"  class="button2 button-form-forum">Enregister</button>
-                <p class="error-non-connecter"><?php if(!isset($_SESSION['id'])) {echo 'Merci de vous connecter pour créer un Topic !';} ?> </p>
+                <button type="submit" <?php if(!isConnected()) {echo 'disabled';} ?> name="validate"  class="button2 button-form-forum">Enregister</button>
+                <p class="error-non-connecter"><?php if(!isConnected()) {echo 'Merci de vous connecter pour créer un Topic !';} ?> </p>
             </form>
         </div>
 
@@ -61,7 +61,7 @@
 
                         <div class="buttons-liste-forum">
                             <?php echo '<a href="./forum-article?id=' . $question['question_id'] . '" class="button3">Accéder à l\'article</a>'; ?>
-                            <?php if(isset($_SESSION['id']) and $_SESSION['id'] === $question['question_id_author']) {?>
+                            <?php if(isset($_SESSION['id_utilisateur']) and $_SESSION['id_utilisateur'] === $question['question_id_author']) {?>
                                 <a href="#" class="button3">Modifier l'article</a>
                                 <a href="#" class="button3">Supprimer mon article</a>
                             <?php } ?>
