@@ -103,6 +103,7 @@ foreach ($results as $row) {
 <a class="nav-link active" href="modifier-profil">Modifier mon profil</a>
 <a class="nav-link" href="mon-abonnement">Mon abonnement</a>
 <a class="nav-link" href="backoffice">Créer des recettes</a>
+<a class = "nav-link" href= "core/exportPdf.php" target = "_blank">Exporter mes données en PDF</a>
 <?php
 if ($role == 1){
 

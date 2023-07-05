@@ -216,4 +216,3 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
     </div>
     </div>
 </section>
-<a class = "nav-link" href= "core/exportPdf.php" target = "_blank">Exporter en PDF</a>

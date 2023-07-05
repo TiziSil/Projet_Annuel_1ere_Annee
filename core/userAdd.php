@@ -10,8 +10,8 @@ require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 //!!!!!!!!!!!!!!
-//require 'C:\Users\Mathis\vendor\autoload.php';
-require '../vendor/autoload.php'; //mettre le chemin pour le serveur
+require 'C:\Users\Mathis\vendor\autoload.php';
+//require '../vendor/autoload.php'; //mettre le chemin pour le serveur
 //!!!!!!!!!!!!!!
 //recuperer donnée
 //genre
@@ -38,11 +38,9 @@ if ( count($_POST) > 13
 	|| empty ($_POST["ville"])
 	|| empty($_POST['country'])
 	|| empty ($_POST["cgu"])
-	/*valider avatar et captcha plus tard"*/
-	//|| empty ($_POST["avatar"])
-	//|| empty ($_POST["captcha"])
-
+	
 ){
+
     die ("Tentative de HACK");
 }
 
@@ -246,7 +244,11 @@ if(empty($listOfErrors)){
 	$mail->send();
 
 	//Redirection sur la page de connexion
-	header('location: ../index.php');
+	//header('location: ../index.php');
+	echo'<pre>';
+	print_r($_POST);
+	var_dump($_POST);
+	echo'</pre>';
 }else{
 
 	//Si NOK
@@ -256,7 +258,7 @@ if(empty($listOfErrors)){
 	unset($_POST["pwdConfirm"]);
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
-	header('location: ../erreur_inscription.php/');
+	//header('location: ../erreur_inscription.php/');
 }	
 
 
