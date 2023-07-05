@@ -1770,3 +1770,33 @@ border-radius: 17px;
   z-index: 1000;
   display: none;
 }
+
+#modale-suppression-topic {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: none;
+}
+
+
+/* Modifier profil */
+
+.modif-profil h1 {
+  text-align: center;
+  
+}
+
+.retour-modif {
+  color: #FFFFFF !important ;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.donnees-perso-modif {
+  text-align: center;
+  margin-bottom: 30px;
+}

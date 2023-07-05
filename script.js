@@ -679,11 +679,42 @@ function confirmerSuppressionMessage() {
     console.log(e);
   })
   idReponse = null;
-  document.querySelector('#modale-suppression').style="display: none";
+  location.reload();
+  // document.querySelector('#modale-suppression').style="display: none";
 }
 
 function fermerModaleSuppresion() {
   document.querySelector('#modale-suppression').style="display: none";
   idReponse = null;
 }
+
+// Suppresion question forum
+var idQuestion = undefined;
+function suppressionQuestion(idQuestion2) {
+  document.querySelector('#modale-suppression-topic').style="display: block";
+  idQuestion = idQuestion2;
+}
+
+function confirmerSuppressionQuestion() {
+  var formData = new FormData();
+  formData.append('idQuestion', idQuestion);
+
+  fetch("core/forumSupprimerTopic.php", {
+    method: 'POST',
+    body: formData,
+  }).then((res) => {
+    return res.text()
+  }).then((e) => {
+    console.log(e);
+  })
+  idQuestion = null;
+  location.reload();
+  // document.querySelector('#modale-suppression-topic').style="display: none";
+}
+
+function fermerModaleSuppresionQuestion() {
+  document.querySelector('#modale-suppression-topic').style="display: none";
+  idQuestion = null;
+}
+
 
