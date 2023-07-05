@@ -5,7 +5,7 @@ require "functions.php";
 // redirectIfNotConnected(); 
 
 // Vérification si tous les champs sont remplis
-if( count($_POST)!=6 
+if( count($_POST)!=7 
 	|| empty($_POST['nom_recette'])
 	|| !isset($_POST['id_categorie'])
 	|| !isset($_POST['difficulte'])
@@ -14,6 +14,7 @@ if( count($_POST)!=6
 	|| empty($_POST['id_ingredient'][0])
 	|| empty($_POST['id_ingredient'][0][0])
 ) {
+
 	die ("ERREUR - La saisie est incorrecte.");
 }
 
@@ -152,4 +153,4 @@ if(empty($listOfErrorsRecipe)) {
 }
 
 // Redirection backoffice
-header('location:../backoffice');*
+redirection('../backoffice');

@@ -1,13 +1,13 @@
 <?php
 
-require_once 'C:\Users\Mathis\vendor\autoload.php'; //../../../vendor/autoload.php
+require_once '../../../vendor/autoload.php';
 require_once '../secrets.php';
 
 \Stripe\Stripe::setApiKey($stripeSecretKey);
 
 header('Content-Type: application/json');
 
-$YOUR_DOMAIN = 'http://localhost/ProjetAnnuel/pages/Abonnement/public'; //https://makisine.fr/pages/Abonnement/public
+$YOUR_DOMAIN = 'https://makisine.fr/pages/Abonnement/public';
 
 try {
   $prices = \Stripe\Price::all([
