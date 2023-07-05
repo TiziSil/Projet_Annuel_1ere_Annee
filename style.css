@@ -1566,11 +1566,29 @@ footer * a {
   width: 100%;
 }
 
+.gestion-bloc {
+  border-radius: 17px;
+  padding: 20px;
+  width: 100%;
+  margin: 20px;
+}
+
+
 .titre-backoffice {
   text-align: center;
 }
 
 #backoffice-recette {
+  background: url("assets/images/backoffice-recette-background.jpg");
+  background-size: cover;
+  width: 100%;
+  background-position: center left;
+  background-repeat: no-repeat;
+  margin: auto;
+  padding: 0;
+}
+
+#backoffice-categorie {
   background: url("assets/images/backoffice-recette-background.jpg");
   background-size: cover;
   width: 100%;
@@ -1780,4 +1798,13 @@ border-radius: 17px;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
   display: none;
+}
+
+.bloc-gestion {
+  display: flex;
+  justify-content: center;
+}
+
+.badge {
+  background: #897c7c !important;
 }

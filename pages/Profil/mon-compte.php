@@ -107,7 +107,7 @@ if ($role == 1){
 
     echo '<a class="nav-link" href="user">Liste des utilisateurs</a>';
     echo '<a class="nav-link" href="attente-validation">Valider des recettes</a>';
-    echo '<a class="nav-link" href="backoffice">Créer des recettes</a>';
+    echo '<a class="nav-link" href="backoffice">Gestion des recettes</a>';
     echo '<a class="nav-link" href="core/inactivityAlert.php">Envoyer un mail aux utilisateurs inactifs</a>';
 }
 ?>

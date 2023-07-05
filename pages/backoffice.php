@@ -9,14 +9,14 @@ redirectIfNotAdmin();
 
 		<div class="row mt-1">
 			<div class=" titre-principal d-flex justify-content-center align-items-center">
-				<h1>Bienvenue dans votre espace personnel</h1>
+				<h1>Gestion des recettes</h1>
 			</div>
 		</div>
 
 	<!----------------------------------------------------------------------------------------------------------------->
 
 
-	<section>
+	<section class="gestion-bloc">
 
 		<div class="row">
 			<div class=" titre-secondaire col-12">
@@ -59,7 +59,7 @@ redirectIfNotAdmin();
 						<?php
 							$results2 = $connection->query("SELECT COUNT(*) FROM ".DB_PREFIX."APPARTENIR WHERE categorie=".$category["id_categorie"]);
 							$results2 = $results2->fetch();
-								echo "<span class='badge bg-primary rounded-pill'>".$results2[0]." recettes</span></li>";
+								echo "<span class='badge rounded-pill'>".$results2[0]." recettes</span></li>";
 							}
 						?>
 
@@ -189,6 +189,7 @@ redirectIfNotAdmin();
 		</form>
 
 		<p>&nbsp;Attention : seules les catégories vides peuvent être supprimées.</p>
+		<hr class="border-bottom">
 	</section>
 
 
@@ -196,7 +197,7 @@ redirectIfNotAdmin();
 <!----------------------------------------------------------------------------------------------------------------->
 
 
-<section>
+<section class="gestion-bloc">
 
 	<div class="row">
 		<div class=" titre-secondaire col-12">
@@ -231,7 +232,7 @@ redirectIfNotAdmin();
 						<tbody>
 							<?php
 								$connection = connectDB();
-								$results = $connection->query("SELECT * FROM ".DB_PREFIX."INGREDIENT");
+								$results = $connection->query("SELECT * FROM ".DB_PREFIX."INGREDIENT ORDER BY nom_ingredient");
 								$results = $results->fetchAll();
 
 								foreach ($results as $ingredient) {
@@ -395,36 +396,95 @@ if( isset($_SESSION['isIngredientCreated']) ) { ?>
 		</div>
 	</div>
 </form>
+<hr class="border-bottom">
 </section>
+
 
 
 <!----------------------------------------------------------------------------------------------------------------->
 
-<section>
-<div class="row mt-3">
-	<div class="titre-secondaire col-12">
-		<h2>Gestion des recettes</h2>
+
+	<!-- Suppression d'une recette  -->
+
+	<section class="gestion-bloc">
+	<div class="row">
+		<div class="col-12">
+		<h2>Supprimer une recette</h2>
+		</div>
 	</div>
-</div>
+
+
+	<!-- Alerte erreur supression recette -->
+	<?php if(isset($_SESSION['listOfErrorsRecipeDel'])) {?>
+		<div class="row mt-3">
+			<div class="col-8 col-sm-6 col-lg-4">
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<?php
+
+					foreach ($_SESSION['listOfErrorsRecipeDel'] as $error)
+					{
+						echo "<li>".$error."</li>";
+					}
+					unset($_SESSION['listOfErrorsRecipeDel']);
+				?>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			</div>
+		</div>
+	<?php }
+
+
+	// Alerte confirmation suppression
+	if( isset($_SESSION['isRecipeDeleted']) ) { ?>
+	<div class="row mt-3">
+			<div class="col-8 col-sm-6 col-lg-4">
+			<div class="alert alert-success" role="alert">
+				<p>La recette a bien été supprimée !</p>
+			</div>
+			<?php 
+				unset($_SESSION['isRecipeDeleted']);
+			?>
+		</div>
+	</div>
+	<?php } ?>
+
+
+	<!-- Formulaire -->
+	<form action="core/recipeDel.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
+		<div class="row mt-3 mb-3">
+			<div class="col-8 col-sm-6 col-lg-4">
+				<select class="form-select" name="id_recipeDel" required="required" value="<?= ( !isset($_SESSION["data"]))
+				?$_SESSION["data"]["id_recipeDel"]:""; ?>">
+					<option selected>Choisissez une recette</option>
+
+					<?php
+						$connection = connectDB();
+						$results = $connection->query("SELECT id_recette, nom_recette FROM ".DB_PREFIX."RECETTE WHERE statut_publication = 1");
+						$results = $results->fetchAll();
+					
+						foreach ($results as $recette) {
+							echo "<option value='".$recette["id_recette"]."'>".$recette["nom_recette"]."</option>";
+						} ?>
+				</select> 
+			</div>
+			<div class="col-2">
+				<input type="submit" value="Supprimer la recette" class="button1">
+			</div>
+		</div>
+	</form>
+</section>
+
+
+<!----------------------------------------------------------------------------------------------------------------->
+<section class="section-radis" class="col">
+	<img src="assets/images/separateur.png" class="separateur-de-texte-contact">
+</section>
 
 <!----------------------------------------------------------------------------------------------------------------->
 
 
 
 	<!-- Création d'une recette -->
-
-	<div class="row mt-3">
-		<div class="col-12">
-			<h3>Créez votre propre recette !</h3>
-		</div>
-	</div>
-
-</section>
-
-<section class="section-radis" class="col">
-	<img src="assets/images/separateur.png" class="separateur-de-texte-contact">
-</section>
-
 <section id="backoffice-recette">
 	<div class="py-4 d-flex flex-column">
 		<div class="container py-4">
@@ -563,76 +623,4 @@ if( isset($_SESSION['isIngredientCreated']) ) { ?>
 			</div>
 
 		</form>
-
-
-	<!----------------------------------------------------------------------------------------------------------------->
-
-
-		<!-- Suppression d'une recette  -->
-
-		<div class="row">
-			<div class="col-12">
-			<h2>Supprimer une recette</h2>
-			</div>
-		</div>
-
-
-		<!-- Alerte erreur supression recette -->
-		<?php if(isset($_SESSION['listOfErrorsRecipeDel'])) {?>
-			<div class="row mt-3">
-				<div class="col-8 col-sm-6 col-lg-4">
-					<div class="alert alert-danger alert-dismissible fade show" role="alert">
-					<?php
-
-						foreach ($_SESSION['listOfErrorsRecipeDel'] as $error)
-						{
-							echo "<li>".$error."</li>";
-						}
-						unset($_SESSION['listOfErrorsRecipeDel']);
-					?>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					</div>
-				</div>
-			</div>
-		<?php }
-
-
-		// Alerte confirmation suppression
-		if( isset($_SESSION['isRecipeDeleted']) ) { ?>
-		<div class="row mt-3">
-				<div class="col-8 col-sm-6 col-lg-4">
-				<div class="alert alert-success" role="alert">
-					<p>La recette a bien été supprimée !</p>
-				</div>
-				<?php 
-					unset($_SESSION['isRecipeDeleted']);
-				?>
-			</div>
-		</div>
-		<?php } ?>
-
-
-		<!-- Formulaire -->
-		<form action="core/recipeDel.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
-			<div class="row mt-3 mb-3">
-				<div class="col-8 col-sm-6 col-lg-4">
-					<select class="form-select" name="id_recipeDel" required="required" value="<?= ( !isset($_SESSION["data"]))
-					?$_SESSION["data"]["id_recipeDel"]:""; ?>">
-						<option selected>Choisissez une recette</option>
-
-						<?php
-							$connection = connectDB();
-							$results = $connection->query("SELECT id_recette, nom_recette FROM ".DB_PREFIX."RECETTE WHERE statut_publication = 1");
-							$results = $results->fetchAll();
-						
-							foreach ($results as $recette) {
-								echo "<option value='".$recette["id_recette"]."'>".$recette["nom_recette"]."</option>";
-							} ?>
-					</select> 
-				</div>
-				<div class="col-2">
-					<input type="submit" value="Supprimer la recette" class="button1">
-				</div>
-			</div>
-		</form>
-	</section>
+</section>
