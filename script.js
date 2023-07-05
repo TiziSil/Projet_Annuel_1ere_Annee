@@ -501,11 +501,15 @@ function afficherDarkMode() {
     document.documentElement.style.setProperty("--couleur-secondaire", "rgb(94, 102, 106)");
     document.documentElement.style.setProperty("--couleur-tertiaire", "#d1cdc7");
     document.documentElement.style.setProperty("--couleur-quaternaire", "#181a1b");
+    document.documentElement.style.setProperty("--couleur-transparente", "rgba(26, 29, 30, 0.7)");
+    document.documentElement.style.setProperty("--couleur-constraste", "#F4E9E9");
   } else {
     document.documentElement.style.setProperty("--couleur-primaire", "#F4E9E9");
     document.documentElement.style.setProperty("--couleur-secondaire", "#897c7c");
     document.documentElement.style.setProperty("--couleur-tertiaire", "#000000");
     document.documentElement.style.setProperty("--couleur-quaternaire", "#FFFFFF");
+    document.documentElement.style.setProperty("--couleur-transparente", "rgba(255, 255, 255, 0.8)");
+    document.documentElement.style.setProperty("--couleur-constraste", "#2f1818");
   }
 }
 
@@ -679,11 +683,42 @@ function confirmerSuppressionMessage() {
     console.log(e);
   })
   idReponse = null;
-  document.querySelector('#modale-suppression').style="display: none";
+  location.reload();
+  // document.querySelector('#modale-suppression').style="display: none";
 }
 
 function fermerModaleSuppresion() {
   document.querySelector('#modale-suppression').style="display: none";
   idReponse = null;
 }
+
+// Suppresion question forum
+var idQuestion = undefined;
+function suppressionQuestion(idQuestion2) {
+  document.querySelector('#modale-suppression-topic').style="display: block";
+  idQuestion = idQuestion2;
+}
+
+function confirmerSuppressionQuestion() {
+  var formData = new FormData();
+  formData.append('idQuestion', idQuestion);
+
+  fetch("core/forumSupprimerTopic.php", {
+    method: 'POST',
+    body: formData,
+  }).then((res) => {
+    return res.text()
+  }).then((e) => {
+    console.log(e);
+  })
+  idQuestion = null;
+  location.reload();
+  // document.querySelector('#modale-suppression-topic').style="display: none";
+}
+
+function fermerModaleSuppresionQuestion() {
+  document.querySelector('#modale-suppression-topic').style="display: none";
+  idQuestion = null;
+}
+
 

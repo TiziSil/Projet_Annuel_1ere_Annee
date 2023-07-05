@@ -90,8 +90,16 @@ switch ($page) {
         break;
 
     case $fichier . '/error404':
-        require 'error404.php';
+        require '/error404.php';
         break;        
+
+
+
+    case $fichier . '/erreur':
+        require '/erreur.php';
+        break;
+
+    
 
     //abonnement
     case $fichier . '/checkout':
@@ -114,6 +122,7 @@ switch ($page) {
         require './pages/recettes/afficher-recette.php';
         break;
 
+
     case $fichier . '/categorie-recette':
         require './pages/recettes/listByCategory.php';
         break;
@@ -123,11 +132,8 @@ switch ($page) {
         break;
 
     default:
-
-    require 'error404.php';
-    // header('Location: ./error404');
-    // http_response_code(404);
-    break;
+        require 'error404.php';
+        break;
 }
 ?>
 <!-- Home page  -->
