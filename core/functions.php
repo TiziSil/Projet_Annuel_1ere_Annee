@@ -88,3 +88,13 @@ function randomPassword() {
 function redirection($url){
     echo '<script>window.location.href = "'.$url.'";</script>';
 }
+
+function cleanCodePostal($codePostal) {
+    // Expression régulière pour valider le format du code postal
+    $regex = '/^[0-9]{5}$/';
+
+    // Vérifier si le code postal correspond au format attendu
+    return preg_match($regex, $codePostal);
+}
+
+

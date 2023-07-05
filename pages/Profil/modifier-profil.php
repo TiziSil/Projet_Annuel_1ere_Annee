@@ -33,85 +33,9 @@ foreach ($results as $row) {
     $adresse = $row['adresse'];
     $codePostal = $row['code_postal'];
     $ville = $row['ville'];
+    $pwd = $row['pwd'];
 
 }
-
-//conditions pour modifier le profil
-//modification du nom
-if(isset($_POST['newLastname']) AND !empty($_POST['newLastname']) AND $_POST['newLastname'] != $nom) {
-    $newLastname = htmlspecialchars(cleanLastname($_POST['newLastname']));
-    $insertLastname = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET nom_utilisateur = ? WHERE id_utilisateur = ?");
-    $insertLastname->execute(array($newLastname, $idUtilisateur));
-    echo '<script>window.location.href = "mon-compte";</script>';
-
-}
-if (isset($_POST['newFirstName']) AND !empty($_POST['newFirstName']) AND $_POST['newFirstName'] != $prenom) {
-    $newFirstName = htmlspecialchars(cleanFirstname($_POST['newFirstName']));
-    $insertFirstName = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET prenom_utilisateur = ? WHERE id_utilisateur = ?");
-    $insertFirstName->execute(array($newFirstName, $idUtilisateur));
-    echo '<script>window.location.href = "mon-compte";</script>';
-}
-if (isset($_POST['newPseudo']) AND !empty($_POST['newPseudo']) AND $_POST['newPseudo'] != $pseudo) {
-    $newPseudo = htmlspecialchars(cleanFirstname($_POST['newPseudo']));
-    $insertPseudo = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET pseudo = ? WHERE id_utilisateur = ?");
-    $insertPseudo->execute(array($newPseudo, $idUtilisateur));
-    echo '<script>window.location.href = "mon-compte";</script>';
-}
-if (isset($_POST['newEmail']) AND !empty($_POST['newEmail']) AND $_POST['newEmail'] != $email) {
-    $newEmail = htmlspecialchars(cleanEmail($_POST['newEmail']));
-    $insertEmail = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET email = ? WHERE id_utilisateur = ?");
-    $insertEmail->execute(array($newEmail, $idUtilisateur));
-    echo '<script>window.location.href = "mon-compte";</script>';
-}
-if (isset($_POST['newPassword']) AND !empty($_POST['newPassword']) AND isset($_POST['newPasswordConfirm']) AND !empty($_POST['newPasswordConfirm'])) {
-    $newPassword = htmlspecialchars($_POST['newPassword']);
-    $newPasswordConfirm = htmlspecialchars($_POST['newPasswordConfirm']);
-    if ($newPassword == $newPasswordConfirm) {
-        $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-        $insertPassword = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET pwd = ? WHERE id_utilisateur = ?");
-        $insertPassword->execute(array($newPassword, $idUtilisateur));
-        echo '<script>window.location.href = "mon-compte";</script>';
-    } else {
-        echo "Les mots de passe ne correspondent pas";
-    }
-}
-if (isset($_POST['newTelephone']) AND !empty($_POST['newTelephone']) AND $_POST['newTelephone'] != $telephone) {
-    $newTelephone = htmlspecialchars(cleanPhone($_POST['newTelephone']));
-    $insertTelephone = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET telephone = ? WHERE id_utilisateur = ?");
-    $insertTelephone->execute(array($newTelephone, $idUtilisateur));
-    echo '<script>window.location.href = "mon-compte";</script>';
-}
-if (isset($_POST['newDateNaissance']) AND !empty($_POST['newDateNaissance']) AND $_POST['newDateNaissance'] != $dateNaissance) {
-    $newDateNaissance = htmlspecialchars($_POST['newDateNaissance']);
-    $insertDateNaissance = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET date_de_naissance = ? WHERE id_utilisateur = ?");
-    $insertDateNaissance->execute(array($newDateNaissance, $idUtilisateur));
-    echo '<script>window.location.href = "mon-compte";</script>';
-}
-if (isset($_POST['newPays']) AND !empty($_POST['newPays']) AND $_POST['newPays'] != $pays) {
-    $newPays = htmlspecialchars($_POST['newPays']);
-    $insertPays = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET country = ? WHERE id_utilisateur = ?");
-    $insertPays->execute(array($newPays, $idUtilisateur));
-    echo '<script>window.location.href = "mon-compte";</script>';
-}
-if (isset($_POST['newAdresse']) AND !empty($_POST['newAdresse']) AND $_POST['newAdresse'] != $adresse) {
-    $newAdresse = htmlspecialchars($_POST['newAdresse']);
-    $insertAdresse = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET adresse = ? WHERE id_utilisateur = ?");
-    $insertAdresse->execute(array($newAdresse, $idUtilisateur));
-    echo '<script>window.location.href = "mon-compte";</script>';
-}
-if (isset($_POST['newCodePostal']) AND !empty($_POST['newCodePostal']) AND $_POST['newCodePostal'] != $codePostal) {
-    $newCodePostal = htmlspecialchars($_POST['newCodePostal']);
-    $insertCodePostal = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET code_postal = ? WHERE id_utilisateur = ?");
-    $insertCodePostal->execute(array($newCodePostal, $idUtilisateur));
-    echo '<script>window.location.href = "mon-compte";</script>';
-}
-if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVille'] != $ville) {
-    $newVille = htmlspecialchars($_POST['newVille']);
-    $insertVille = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET ville = ? WHERE id_utilisateur = ?");
-    $insertVille->execute(array($newVille, $idUtilisateur));
-    echo '<script>window.location.href = "mon-compte";</script>';
-}
-
 
 ?>
 <div>
@@ -125,7 +49,41 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
         <div class="container py-5">
             <div class="boite d-flex flex-column">
                 <h1>Vos données personnelles</h1>
-                <form method="POST" class="d-flex flex-column">
+                <?php if(isset($_SESSION['listoferrorsProfileEdit'])) {?>
+                <div class="row mt-3">
+                    <div class="col-8 col-sm-6 col-lg-4">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?php
+
+                            foreach ($_SESSION['listoferrorsProfileEdit'] as $error)
+                            {
+                                echo "<li>".$error."</li>";
+                            }
+                                unset($_SESSION['listoferrorsProfileEdit']);
+                        ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+                <?php if(isset($_SESSION['successProfileEdit'])) {?>
+                <div class="row mt-3">
+                    <div class="col-8 col-sm-6 col-lg-4">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php
+
+                            foreach ($_SESSION['successProfileEdit'] as $error)
+                            {
+                                echo "<li>".$error."</li>";
+                            }
+                                unset($_SESSION['successProfileEdit']);
+                        ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+                <form method="POST" action = "core/profileEdit.php" class="d-flex flex-column">
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
                             <label class="d-flex col-6">Nom</label>
@@ -153,7 +111,13 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
                             <label class="d-flex col-6">Nouveau mot de passe</label>
-                            <input type="password" class="form-control" name = "newPassword" placeholder="Mot de passe">
+                            <input type="password" class="form-control" name = "password" placeholder="Votre mot de passe">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column my-2">
+                        <div class="d-flex flex-row">
+                            <label class="d-flex col-6">Nouveau mot de passe</label>
+                            <input type="password" class="form-control" name = "newPassword" placeholder="Nouveau mot de passe">
                         </div>
                     </div>
                     <div class="d-flex flex-column my-2">
@@ -178,13 +142,13 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
                         <div class="d-flex flex-row">
                             <label class="d-flex col-6">Pays</label>
                             <select id = "pays-inscription" onchange ='listePays()' class="form-control" name = "newPays" placeholder="Pays"  value ='<?= $pays?>'>
-                            <option value="fr" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "fr") ? "selected" : ""; ?>>France</option>
-                            <option value="it" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "it") ? "selected" : ""; ?>>Italie</option>
-                            <option value="pt" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "pt") ? "selected" : ""; ?>>Portugal</option>
-                            <option value="pl" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "pl") ? "selected" : ""; ?>>Pologne</option>
-                            <option value="es" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "es") ? "selected" : ""; ?>>Espagne</option>
-                            <option value="be" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "be") ? "selected" : ""; ?>>Belgique</option>
-                            <option value="xx" <?= (!empty($_SESSION["data"]) && $_SESSION["data"]["country"] == "xx") ? "selected" : ""; ?>>Autre</option>
+                            <option value="fr">France</option>
+                            <option value="it">Italie</option>
+                            <option value="pt">Portugal</option>
+                            <option value="pl">Pologne</option>
+                            <option value="es">Espagne</option>
+                            <option value="be">Belgique</option>
+                            <option value="xx">Autre</option>
                         </select>
                         </div>
                     </div>

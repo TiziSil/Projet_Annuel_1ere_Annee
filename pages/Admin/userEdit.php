@@ -149,9 +149,7 @@ if (isset($_POST['newVille']) AND !empty($_POST['newVille']) AND $_POST['newVill
   <h1>Modifier le profil de <?= $prenom ." " .$nom?></h1>
 </div>
 
-<div>
-<h1>Modifier le profil de <?= $prenom ." " .$nom?></h1>
-</div>
+
 <nav class="nav flex-column">
 <a class="nav-link active" href="user">Retour à la liste des utilisateurs</a>
 </nav>

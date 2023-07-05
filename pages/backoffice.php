@@ -4,7 +4,7 @@
 //redirectIfNotConnected(); 
 //session_destroy();
 redirectIfNotConnected();
-redirectIfNotAdmin();
+
 ?>
 
 		<div class="row mt-1">
