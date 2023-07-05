@@ -1760,15 +1760,11 @@ border-radius: 17px;
 
 #error404 {
   background-image: url("assets/images/photoErreur404.avif");
-  padding: 21%;
+  /* padding: 21%; */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   text-align: center;
 
-  /* padding: 0; */
 }
 
-.h1error404 {
-  margin-top: 20px;
-}
