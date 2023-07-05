@@ -10,7 +10,8 @@ require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 //!!!!!!!!!!!!!!
-require 'C:\Users\Mathis\vendor\autoload.php';
+//require 'C:\Users\Mathis\vendor\autoload.php';
+require 'C:\Users\kirti\phpmailer\vendor\autoload.php';
 //require '../vendor/autoload.php'; //mettre le chemin pour le serveur
 //!!!!!!!!!!!!!!
 //recuperer donnée

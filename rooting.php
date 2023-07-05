@@ -113,9 +113,14 @@ switch ($page) {
     case $fichier . '/afficher-recette':
         require './pages/recettes/afficher-recette.php';
         break;
-        
 
-        
+    case $fichier . '/categorie-recette':
+        require './pages/recettes/listByCategory.php';
+        break;
+
+    case $fichier . '/recette':
+        require './pages/recettes/recipe.php';
+        break;
 
     default:
 

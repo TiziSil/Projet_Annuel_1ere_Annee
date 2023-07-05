@@ -86,5 +86,5 @@ function randomPassword() {
 }
 
 function redirection($url){
-	echo '<script>window.location.href = "'.$url.'";</script>';
+    echo '<script>window.location.href = "'.$url.'";</script>';
 }

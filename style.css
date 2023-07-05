@@ -1738,6 +1738,14 @@ border-radius: 17px;
   color: #000000;
 }
 
+.contenu-milieu {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
 
 .forum-edition-cacher {
   display: none;
