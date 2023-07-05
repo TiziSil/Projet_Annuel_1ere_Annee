@@ -1,13 +1,13 @@
 <?php
 
-require_once 'C:\Users\Mathis\vendor\autoload.php';//../../vendor/autoload.php
+require_once '../../vendor/autoload.php';
 require_once '../secrets.php';
 
 \Stripe\Stripe::setApiKey($stripeSecretKey);
 
 header('Content-Type: application/json');
 
-$YOUR_DOMAIN = 'http://localhost/public/success.php'; //http://makisine.fr/public/success.php
+$YOUR_DOMAIN = 'http://makisine.fr/public/success.php';
 
 try {
   $checkout_session = \Stripe\Checkout\Session::retrieve($_POST['session_id']);

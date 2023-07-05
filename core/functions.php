@@ -1,4 +1,4 @@
- <?php
+<?php
 
 
 function Hello() {
@@ -56,7 +56,7 @@ function isConnected(){
 
 function redirectIfNotConnected(){
 	if(!isConnected()){
-		echo '<script>window.location.href = "mon-compte";</script>';
+		echo '<script>window.location.href = "./index.php";</script>';
 	}
 } 
 

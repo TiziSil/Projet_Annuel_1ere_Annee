@@ -5,7 +5,7 @@
         <div class="error"></div>
     </div>
     <div class="champ">
-        <input onkeyup="validerTelephone()" autocomplete="off" type="tel" name="telephone" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["lastname"] : ""; ?>">
+        <input onkeyup="validerTelephone()" autocomplete="off" type="tel" name="telephone" required="required" value="<?= (!empty($_SESSION["data"])) ? $_SESSION["data"]["telephone"] : ""; ?>">
         <label>Téléphone</label>
         <div class="error"></div>
     </div>

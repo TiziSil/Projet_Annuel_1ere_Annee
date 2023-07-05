@@ -12,7 +12,15 @@ $results = $results->fetchAll()
 ?>
 
 <section id="attente-validation">
-    <div class="container">
+    <div class="container ">
+        
+    <div id="afficher-recette" class="modal py-5">
+        <div class="modal-content">
+            <span class="close" onclick="fermerModalAfficheRecette()">&times;</span>
+                <h2 id="afficher-recette-titre"></h2>
+            <p id="afficher-recette-description"></p>
+        </div>
+    </div>
 
         <div class="image-attente-validation">
             <h1 class="h1-attente-validation">Gestion des validations en attente</h1>
