@@ -1,3 +1,4 @@
+@@ -1,94 +1,94 @@
 <?php
 
 // require 'core/functions.php';
@@ -70,19 +71,24 @@ foreach ($results as $row) {
 </section>
 
 
-<div>
-    <h1>Mon compte</h1>
-<nav class="nav flex-column">
-<a class="nav-link active" href="modifier-profil">Modifier mon profil</a>
-<a class="nav-link" href="mon-abonnement">Mon abonnement</a>
-<?php
-if ($role == 1){
-
-    echo '<a class="nav-link" href="user">Liste des utilisateurs</a>';
-    echo '<a class="nav-link" href="attente-validation">Valider des recettes</a>';
-    echo '<a class="nav-link" href="backoffice">Gestion des recettes</a>';
-    echo '<a class="nav-link" href="core/inactivityAlert.php">Envoyer un mail aux utilisateurs inactifs</a>';
-}
-?>
-</nav>
-</div>
+<section class="partie-selection">
+    <div class="container py-5">
+        <div class="py-5 my-5">
+            <div class="boite my-5">
+                <h1>Mon compte</h1>
+                <div class="d-flex flex-row justify-content-between">
+                    <a class="flex-fill button3 btnmoncompte mx-1" href="./modifier-profil">Modifier mon profil</a>
+                    <a class="flex-fill button3 btnmoncompte mx-1" href="./mon-abonnement">Mon abonnement</a>
+                   <?php if ($role == 1) { ?>
+                        <a class="flex-fill button3 mx-1" href="./user">Liste des utilisateurs</a>
+                        <a class="flex-fill button3 mx-1" href="./attente-validation">Valider des recettes</a>
+                        <a class="flex-fill button3 btnmoncompte mx-1" href="./user">Liste des utilisateurs</a>
+                        <a class="flex-fill button3 btnmoncompte mx-1" href="./attente-validation">Valider des recettes</a>
+                        <a class="flex-fill button3 btnmoncompte mx-1" href="./backoffice">Créer des recettes</a>
+                        <a class="flex-fill button3 btnmoncompte mx-1" href="./core/inactivityAlert.php">Envoyer un mail aux utilisateurs inactifs</a>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
