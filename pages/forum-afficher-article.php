@@ -102,7 +102,7 @@
                         </form>
                     <?php } else { ?>
                         <div class="boite py-2 my-2">
-                            Ce message a été supprimer
+                            Ce message a été supprimé
                         </div>
                     <?php }
                 }
