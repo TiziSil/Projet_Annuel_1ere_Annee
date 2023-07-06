@@ -60,6 +60,9 @@ foreach ($results as $row) {
         <div class="container py-5">
             <div class="boite d-flex flex-column">
                 <h1>Données personnelles</h1>
+                <div>
+                    
+                </div>
                 <?php if(isset($_SESSION['listoferrorsUsersEdit'])) {?>
                 <div class="row mt-3">
                     <div class="col-8 col-sm-6 col-lg-4">

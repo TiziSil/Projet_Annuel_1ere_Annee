@@ -4,6 +4,7 @@
 // require "../core/functions.php";
 redirectIfNotConnected();
 redirectIfNotAdmin();
+logUserAcitivty("../log.txt");
 // ?>
 <div>
     <h1>Liste des utilisateurs</h1>
@@ -36,12 +37,12 @@ echo "<br>";
                     <th>Statut</th>
                     <th>Ajouté</th>
                     <th>Modifié</th>
-                    <th>id_Avatar</th>
                     <th>Pays</th>
                     <th>Adresse</th>
                     <th>Code postal</th>
                     <th>Ville</th>
                     <th>Actions</th>
+                    <th>Banissement</th>
                     
                 </tr>
             </thead>
@@ -63,7 +64,6 @@ echo "<br>";
                     echo "<td>".$user["statut"]."</td>";    
                     echo  "<td>".$user["date_inserted"]."</td>";
                     echo  "<td>".$user["date_updated"]."</td>";
-                    echo  "<td>".$user["avatar_utilisateur"]."</td>";
                     echo  "<td>".$user["country"]."</td>";
                     echo  "<td>".$user["adresse"]."</td>";
                     echo  "<td>".$user["code_postal"]."</td>";
@@ -79,6 +79,16 @@ echo "<br>";
                     </form>
                 
                     </td>";
+                        echo "<td>";
+                        echo "<form id='banForm' action='core/banUser.php' method='POST' style='display:inline;'>";
+                        echo "<input type='hidden' name='id' value='" . $user["id_utilisateur"] . "'>";
+                        if ($user["statut"] == 2) {
+                            echo "<button type='submit' name='unban' class='btn btn-success' onclick='confirmUnban()'>Débannir</button>";
+                        } else {
+                            echo "<button type='submit' name='ban' class='btn btn-danger' onclick='confirmBan()'>Bannir</button>";
+                        }
+                        echo "</form>";
+                        echo "</td>";
                     echo "</tr>";
 
                 }
