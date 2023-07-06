@@ -4,8 +4,7 @@ require "../conf.inc.php";
 require "functions.php";
 redirectIfNotConnected(); 
 
-print_r($_POST);
-/*
+
 // Vérification si tous les champs sont remplis
 if( count($_POST)!=7 
 	|| empty($_POST['nom_recette'])
@@ -13,14 +12,15 @@ if( count($_POST)!=7
 	|| !isset($_POST['difficulte'])
 	|| empty($_POST['temps_preparation'])
 	|| empty($_POST['description_recette'])
+	|| empty($_POST['quantite_ingredient'][0])
 	|| empty($_POST['id_ingredient'][0])
-	|| empty($_POST['id_ingredient'][0][0])
 ) {
 
 	die ("ERREUR - La saisie est incorrecte.");
 }
 
-
+print_r($_POST);
+/*
 $nom_recette = trim($_POST['nom_recette']);
 $id_categorie = $_POST['id_categorie'];
 $difficulte = $_POST['difficulte'];
