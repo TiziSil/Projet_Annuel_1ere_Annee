@@ -320,6 +320,9 @@ function changerCouleurPeau() {
   iCouleurPeau++;
   const cheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";"; // Récupère la couleur de cheveux dans le tableau 'couleurCheveux' en revenant à la première couleur lorsque toutes les options ont été parcourues.
   const peau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
+  if(document.querySelector("#inputCouleurVisage")) {
+    document.querySelector("#inputCouleurVisage").value = iCouleurPeau;
+  } 
   document.querySelector("body").style = cheveux + peau; //MAJ la couleur des cheveux et de la peau de l'avatar en temps réel.
 }
 
@@ -327,74 +330,98 @@ function changerCouleurCheveux() {
   iCouleurCheveux++;
   const cheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";";
   const peau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
+  if(document.querySelector("#inputCouleurCheveux")) {
+    document.querySelector("#inputCouleurCheveux").value = iCouleurCheveux;
+  } 
   document.querySelector("body").style = cheveux + peau;
 }
 
 function changerCoiffure() {
   if(document.querySelector("#cheveuxSelectionne")) {
-    document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure % cheveux.length];
     iCoiffure++;
+    if(document.querySelector("#inputCheveuxSelectionne")) {
+      document.querySelector("#inputCheveuxSelectionne").value = iCoiffure;
+    } 
+    document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure % cheveux.length];
   }
 }
 
 function changerYeux() {
   if(document.querySelector("#yeuxSelectionne")) {
-    document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux % yeux.length];
     iYeux++;
+    if(document.querySelector("#inputYeuxSelectionne")) {
+      document.querySelector("#inputYeuxSelectionne").value = iYeux;
+    } 
+    document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux % yeux.length];
   }
 }
 
 function changerAccessoire() {
   if(document.querySelector("#accesoireSelectionne")) {
-    document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire % accessoires.length];
     iAccessoire++;
+    if(document.querySelector("#inputAccesoireSelectionne")) {
+      document.querySelector("#inputAccesoireSelectionne").value = iAccessoire;
+    } 
+    document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire % accessoires.length];
   }
 }
 
 function changerPilosite() {
   if(document.querySelector("#pilositeSelectionne")) {
-    document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite % pilosite.length];
     iPilosite++;
+    if(document.querySelector("#inputPilositeSelectionne")) {
+      document.querySelector("#inputPilositeSelectionne").value = iPilosite;
+    } 
+    document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite % pilosite.length];
   }
 }
 
 function changerBouche() {
   if(document.querySelector("#boucheSelectionne")) {
-    document.querySelector("#boucheSelectionne").href.baseVal = bouche[iBouche % bouche.length];
     iBouche++;
-  }
-}
-
-changerCouleurPeau();
-changerCoiffure();
-changerYeux();
-changerAccessoire(); // Fonctions appelées pour changer la couleur de peau/coiffure/couleur yeux etc
-changerPilosite();
-changerBouche();
-changerCouleurCheveux();
-
-function afficherVisioneuseAvatar() {
-  // fetch()
-  if(document.querySelector("#cheveuxSelectionne") && document.querySelector("#yeuxSelectionne") && document.querySelector("#accesoireSelectionne") &&  document.querySelector("#pilositeSelectionne")&& document.querySelector("#boucheSelectionne")) {
-    const iCouleurCheveux = 1; 
-    const iCouleurPeau = 1; 
-    const iCoiffure = 2; 
-    const iYeux = 1; 
-    const iAccessoire = 1; 
-    const iPilosite = 1; 
-    const iBouche = 1; 
-    const cssCouleurCheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";"; 
-    const cssCouleurPeau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
-    document.querySelector("body").style = cssCouleurCheveux + cssCouleurPeau; 
-    document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure % cheveux.length];
-    document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux % yeux.length];
-    document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire % accessoires.length];
-    document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite % pilosite.length];
+    if(document.querySelector("#inputBoucheSelectionne")) {
+      document.querySelector("#inputBoucheSelectionne").value = iBouche;
+    } 
     document.querySelector("#boucheSelectionne").href.baseVal = bouche[iBouche % bouche.length];
   }
 }
-// afficherVisioneuseAvatar();
 
+function getAvatarUtilisateurConnecter() {
+  fetch('./core/getAvatarUtilisateur.php').then((res) => {
+    return res.json();
+  }).then((json) => {
+    iCouleurPeau = json.couleurPeau % couleurPeau.length;
+    iCouleurCheveux = json.couleurCheveux % couleurCheveux.length;
+    iYeux = json.yeux % yeux.length;
+    iAccessoire = json.accessoire % accessoires.length;
+    iCoiffure = json.coiffure % cheveux.length;
+    iPilosite = json.pilosite % pilosite.length;
+    iBouche = json.bouche % bouche.length;
+
+    // On met a jours le générateur d'avatar
+    const cssCouleurCheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux] + ";";
+    const cssCouleurPeau = "--couleur-peau: " + couleurPeau[iCouleurPeau] + ";";
+    document.querySelector("body").style = cssCouleurCheveux + cssCouleurPeau;
+    document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure];
+    document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux];
+    document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire];
+    document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite];
+    document.querySelector("#boucheSelectionne").href.baseVal = bouche[iBouche];
+
+    // On met a jours les input de modifications
+    if(document.querySelector("#inputCouleurVisage") && document.querySelector("#inputCouleurCheveux") && document.querySelector("#inputCheveuxSelectionne") && document.querySelector("#inputYeuxSelectionne") && document.querySelector("#inputBoucheSelectionne") && document.querySelector("#inputPilositeSelectionne") && document.querySelector("#inputAccesoireSelectionne") && document.querySelector("#inputYeuxSelectionne")) {
+      document.querySelector("#inputBoucheSelectionne").value = iBouche;
+      document.querySelector("#inputPilositeSelectionne").value = iPilosite;
+      document.querySelector("#inputAccesoireSelectionne").value = iAccessoire;
+      document.querySelector("#inputYeuxSelectionne").value = iYeux;
+      document.querySelector("#inputCheveuxSelectionne").value = iCoiffure;
+      document.querySelector("#inputCouleurCheveux").value = iCouleurCheveux;
+      document.querySelector("#inputCouleurVisage").value = iCouleurPeau;
+    } 
+  })
+} 
+
+getAvatarUtilisateurConnecter();
 
 
 //enregistrement avatar
