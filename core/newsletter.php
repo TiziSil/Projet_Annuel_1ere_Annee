@@ -69,3 +69,5 @@ foreach ($utilisateurs as $utilisateur) {
     $mail->AltBody = $html;
     $mail->send();
 }
+
+header('Location: ../Profil/mon-compte');
