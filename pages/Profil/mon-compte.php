@@ -1,4 +1,4 @@
-@@ -1,94 +1,94 @@
+
 <?php
 
 // require 'core/functions.php';
@@ -80,7 +80,7 @@ foreach ($results as $row) {
                     <a class="flex-fill button3 btnmoncompte mx-1" href="./modifier-profil">Modifier mon profil</a>
                     <a class="flex-fill button3 btnmoncompte mx-1" href="./mon-abonnement">Mon abonnement</a>
                     <a class="flex-fill button3 btnmoncompte mx-1" href="./creation-recette">Créer des recettes</a>
-<?php if ($role == 1) { ?>
+                    <?php if ($role == 1) { ?>
                         <a class="flex-fill button3 mx-1" href="./user">Liste des utilisateurs</a>
                         <a class="flex-fill button3 mx-1" href="./attente-validation">Valider des recettes</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./user">Liste des utilisateurs</a>

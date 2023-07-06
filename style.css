@@ -1727,6 +1727,10 @@ margin-top: 40px;
 border-radius: 17px;
 }
 
+.message-supprime {
+  font-style: italic;
+}
+
 .forum-input h4 {
   text-align: center;
   margin-top: 20px;

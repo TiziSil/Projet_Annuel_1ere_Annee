@@ -16,7 +16,7 @@ if (isset($_POST['idQuestion']) && !empty($_POST['idQuestion'])) {
     $updateQuestionQuery->execute(array($question_id));
     $result = $updateQuestionQuery->fetch();
 
-    if ($result['question_id_author'] === $question_id_author) { // Si l'utilisateur est propriétaire de sa réponse il peu modifié en base
+    if ($result['question_id_author'] === $question_id_author) { // Si l'utilisateur est propriétaire de sa réponse il peut modifier en base
         $updateQuestionQuery = $connection->prepare('UPDATE MAKISINE_FORUM SET question_supprimer = ? WHERE question_id = ?');
         $updateQuestionQuery->execute(array(true, $question_id));
     }
