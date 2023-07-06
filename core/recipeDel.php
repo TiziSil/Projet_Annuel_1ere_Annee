@@ -3,6 +3,7 @@ session_start();
 require "../conf.inc.php";
 require "functions.php";
 // redirectIfNotConnected(); 
+logUserActivity("../log.txt");
 
 // Vérification si tous les champs sont remplis
 if( count($_POST)!=1 
@@ -65,4 +66,4 @@ if ($isRecipeDeleted) {
 
 
 // Redirection backoffice
-header('location:../backoffice');
+redirection('../backoffice');

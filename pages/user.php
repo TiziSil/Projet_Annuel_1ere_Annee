@@ -4,7 +4,7 @@
 // require "../core/functions.php";
 redirectIfNotConnected();
 redirectIfNotAdmin();
-logUserAcitivty("../log.txt");
+logUserActivity("../log.txt");
 // ?>
 <div>
 <h2>Recherche d'utilisateurs</h2>

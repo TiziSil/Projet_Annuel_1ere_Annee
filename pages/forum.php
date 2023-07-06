@@ -1,6 +1,4 @@
-<?php
-logUserAcitivty("../log.txt");
-?>
+
 <section class="forum py-5 d-flex flex-column">
     <div class="container py-5">
         <h1 class="h1-forum">Forum de discussion</h1>
