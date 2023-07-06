@@ -26,14 +26,6 @@ if (
     $tableauPilosite = array("#none", "#pilosite-1", "#pilosite-2");
     $tableauBouche = array("#none", "#bouche-1", "#bouche-2", "#bouche-4");
 
-    echo $_POST['couleurVisage'] . '-';
-    echo $_POST['couleurCheveux'] . '-';
-    echo $_POST['yeuxSelectionne'] . '-';
-    echo $_POST['cheveuxSelectionne'] . '-';
-    echo $_POST['accesoireSelectionne'] . '-';
-    echo $_POST['pilositeSelectionne'] . '-';
-    echo $_POST['boucheSelectionne'];
-
     $couleurPeau = $_POST['couleurVisage'] % sizeof($tableauPeau);
     $couleurCheveux = $_POST['couleurCheveux'] % sizeof($tableauCouleurCheveux);
     $yeux = $_POST['yeuxSelectionne'] % sizeof($tableauYeux);

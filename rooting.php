@@ -23,22 +23,12 @@ switch ($page) {
         include "./home-page/tuile-3-categorie-recettes.php";
         // <!-- Tuile n°4 Recettes -->;
         include "./home-page/tuile-4-recettes.php";
-        // <!-- Tuile n°5 Boutique -->
-        include "./home-page/tuile-5-boutique.php";
-        // <!-- Tuile n°6 Publicités -->
-        include "./home-page/tuile-6-pub.php";
+      
         break;
 
-    case $fichier . '/boutique':
-        require './pages/boutique.php';
-        break;
 
     case $fichier . '/recettes':
         require './pages/recettes.php';
-        break;
-
-    case $fichier . '/promotions':
-        require './pages/promotions.php';
         break;
 
     case $fichier . '/backoffice':

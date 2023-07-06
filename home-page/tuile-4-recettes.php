@@ -13,7 +13,7 @@
         <div class="tuile-4">
             <div class="d-flex flex-wrap liste-recette">
                 <div>
-                    <H4>Recette 1</H4>
+                    <H4>Végétarienne</H4>
                     <img src="assets\images\recettes\plat-1.jpg">
                     <a href="#">
                         <svg width="48px" height="48px">
@@ -22,7 +22,7 @@
                     </a>
                 </div>
                 <div>
-                    <h4>Recette 2</h4>
+                    <h4>Américaine</h4>
                     <img src="assets\images\recettes\plat-2.jpg">
                     <a href="#">
                         <svg width="48px" height="48px">
@@ -31,7 +31,7 @@
                     </a>
                 </div>
                 <div>
-                    <h4>Recette 3</h4>
+                    <h4>Asiatique</h4>
                     <img src="assets\images\recettes\plat-3.jpg">
                     <a href="#">
                         <svg width="48px" height="48px">
@@ -40,7 +40,7 @@
                     </a>
                 </div>
                 <div>
-                    <h4>Recette 4</h4>
+                    <h4>Orientale</h4>
                     <img src="assets\images\recettes\plat-4.jpg">
                     <a href="#">
                         <svg width="48px" height="48px">
@@ -49,7 +49,7 @@
                     </a>
                 </div>
                 <div>
-                    <h4>Recette 5</h4>
+                    <h4>Italienne</h4>
                     <img src="assets\images\recettes\plat-5.jpg">
                     <a href="#">
                         <svg width="48px" height="48px">
