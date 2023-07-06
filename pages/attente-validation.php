@@ -31,9 +31,18 @@ $results = $results->fetchAll()
         </div>
     </div>
 
+    <div id="afficher-ingredient" class="modal py-5">
+        <div class="modal-content modale_ingredient">
+            <span class="close" onclick="fermerModalAfficheIngredient()">&times;</span>
+                <h2 id="afficher-ingredient-titre"></h2>
+            <div id="afficher-ingredient-description"></div>
+        </div>
+    </div>
+
         <div class="image-attente-validation">
             <h1 class="h1-attente-validation">Gestion des validations en attente</h1>
         </div>
+
         <div class="bloc-en-attente-validation">
             <div>
                 <h2 class="h2-recette-validation-attente">Recettes en attente de validation</h2>
@@ -63,16 +72,20 @@ $results = $results->fetchAll()
                             echo "<td>" . $recipe["difficulte"] . "</td>";
                             echo "<td>" . $recipe["temps_preparation"] . "</td>";
                             echo "<td><button class='button2' onclick='ouvrirModaleAfficherRecette(" . $recipe["id_recette"] . ")'>Recette</button></td>";
-                            echo "<td></td>";
+                            echo "<td><button class='button2' onclick='ouvrirModaleAfficherIngredient(" . $recipe["id_recette"] . ")'>Ingrédient(s)</button></td>";
                             echo "<td><a href='core/recipeValidation.php?id_recette=" . $recipe["id_recette"] . "' class='btn button4'>Valider</a><a href='core/recipeReject.php?id_recette=" . $recipe["id_recette"] . "' class='btn btn-danger'>Refuser</a></td>";
                             echo "</tr>";
                         } ?>
                     </tbody>
                 </table>
+                <div>
+            <nav class="nav flex-column">
+                <a class="nav-link active button3 retour-mon-compte" href="mon-compte">Retour à mon compte</a>
+            </nav>
+        </div>
             </div>
         </div>
+        
     </div>
+    
 </section>
-<nav class="nav flex-column">
-<a class="nav-link active" href="mon-compte">Retour à mon compte</a>
-</nav>

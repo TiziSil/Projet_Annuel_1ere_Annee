@@ -142,21 +142,22 @@ if(empty($listOfErrorsRecipe)) {
 
 
 	// Insertion en BDD des ingrédients
-	foreach($quantite_ingredient as $quantite) {
-		foreach($id_ingredient as $ingredient) {
-			$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."CONSTITUER
-													(ingredient, preparation, quantite_ingredient)
-													VALUES 
-													(:ingredient, :id_recette, :quantite_ingredient)");
+	for ($i = 0; $i < count($quantite_ingredient); $i++) {
+		$quantite = $quantite_ingredient[$i];
+		$ingredient = $id_ingredient[$i];
 
-			$queryPrepared->execute([
-										":ingredient"=>$ingredient,
-										":id_recette"=>$results3[0],
-										"quantite_ingredient"=>$quantite
-									]);
-		}
+		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."CONSTITUER
+												(ingredient, preparation, quantite_ingredient)
+												VALUES 
+												(:ingredient, :id_recette, :quantite_ingredient)");
+
+		$queryPrepared->execute([
+			":ingredient" => $ingredient,
+			":id_recette" => $results3[0],
+			"quantite_ingredient" => $quantite
+		]);
 	}
-							
+				
 	$isRecipeCreated = true;
 	$_SESSION['isRecipeCreated'] = $isRecipeCreated;
 

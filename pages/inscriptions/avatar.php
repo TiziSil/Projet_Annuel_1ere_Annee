@@ -29,5 +29,5 @@
         <div class="cgu-et-bouton d-flex flex-column">
             <a onclick="afficherVerifications()" class="button3">Suivant</a>
         </div>
-</div>
+    </div>
 </div>
