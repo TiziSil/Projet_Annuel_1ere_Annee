@@ -17,11 +17,11 @@
                 		<?php
                             // Affichage des catégories
                             $connection = connectDB();
-                        	$results = $connection->query("SELECT nom_categorie, categorie FROM ".DB_PREFIX."CATEGORIE, ".DB_PREFIX."APPARTENIR WHERE categorie=id_categorie");
+                        	$results = $connection->query("SELECT * FROM ".DB_PREFIX."CATEGORIE");
                         	$results = $results->fetchAll();
 
                             foreach ($results as $category) {
-                                echo "<a href='../ProjetAnnuel/categorie-recette?id=".$category["categorie"]."'><button type='button' class='button1'>".$category["nom_categorie"]."</button></a>";
+                                echo "<a href='../ProjetAnnuel/categorie-recette?id=".$category["id_categorie"]."'><button type='button' class='button1'>".$category["nom_categorie"]."</button></a>";
                             }
                 		?>
 

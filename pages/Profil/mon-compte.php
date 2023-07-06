@@ -83,7 +83,6 @@ foreach ($results as $row) {
                     <a class="flex-fill button3 btnmoncompte mx-1" href="./core/exportPdf.php">Exporter mes données</a>
 <?php if ($role == 1) { ?>
                         <a class="flex-fill button3 mx-1" href="./user">Liste des utilisateurs</a>
-                        <a class="flex-fill button3 mx-1" href="./attente-validation">Valider des recettes</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./user">Liste des utilisateurs</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./attente-validation">Valider des recettes</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./backoffice">Gestion des recettes et autres éléments</a>
