@@ -390,36 +390,50 @@ function getAvatarUtilisateurConnecter() {
   fetch('./core/getAvatarUtilisateur.php').then((res) => {
     return res.json();
   }).then((json) => {
-    iCouleurPeau = json.couleurPeau % couleurPeau.length;
-    iCouleurCheveux = json.couleurCheveux % couleurCheveux.length;
-    iYeux = json.yeux % yeux.length;
-    iAccessoire = json.accessoire % accessoires.length;
-    iCoiffure = json.coiffure % cheveux.length;
-    iPilosite = json.pilosite % pilosite.length;
-    iBouche = json.bouche % bouche.length;
-
-    // On met a jours le générateur d'avatar
-    const cssCouleurCheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux] + ";";
-    const cssCouleurPeau = "--couleur-peau: " + couleurPeau[iCouleurPeau] + ";";
-    document.querySelector("body").style = cssCouleurCheveux + cssCouleurPeau;
-    document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure];
-    document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux];
-    document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire];
-    document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite];
-    document.querySelector("#boucheSelectionne").href.baseVal = bouche[iBouche];
-
-    // On met a jours les input de modifications
-    if(document.querySelector("#inputCouleurVisage") && document.querySelector("#inputCouleurCheveux") && document.querySelector("#inputCheveuxSelectionne") && document.querySelector("#inputYeuxSelectionne") && document.querySelector("#inputBoucheSelectionne") && document.querySelector("#inputPilositeSelectionne") && document.querySelector("#inputAccesoireSelectionne") && document.querySelector("#inputYeuxSelectionne")) {
-      document.querySelector("#inputBoucheSelectionne").value = iBouche;
-      document.querySelector("#inputPilositeSelectionne").value = iPilosite;
-      document.querySelector("#inputAccesoireSelectionne").value = iAccessoire;
-      document.querySelector("#inputYeuxSelectionne").value = iYeux;
-      document.querySelector("#inputCheveuxSelectionne").value = iCoiffure;
-      document.querySelector("#inputCouleurCheveux").value = iCouleurCheveux;
-      document.querySelector("#inputCouleurVisage").value = iCouleurPeau;
-    } 
+    // si le retour du php est vide, alors on met les variable par défaut
+    if(!json?.couleurPeau) {
+      iCouleurPeau = 0;
+      iCouleurCheveux = 0;
+      iYeux = 0;
+      iAccessoire = 0;
+      iCoiffure = 0;
+      iPilosite = 0;
+      iBouche = 0;
+    } else {
+      iCouleurPeau = json.couleurPeau % couleurPeau.length;
+      iCouleurCheveux = json.couleurCheveux % couleurCheveux.length;
+      iYeux = json.yeux % yeux.length;
+      iAccessoire = json.accessoire % accessoires.length;
+      iCoiffure = json.coiffure % cheveux.length;
+      iPilosite = json.pilosite % pilosite.length;
+      iBouche = json.bouche % bouche.length;
+    }
+    miseAjourAvatar();
   })
 } 
+
+function miseAjourAvatar() {
+  // On met a jours le générateur d'avatar
+  const cssCouleurCheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux] + ";";
+  const cssCouleurPeau = "--couleur-peau: " + couleurPeau[iCouleurPeau] + ";";
+  document.querySelector("body").style = cssCouleurCheveux + cssCouleurPeau;
+  document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure];
+  document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux];
+  document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire];
+  document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite];
+  document.querySelector("#boucheSelectionne").href.baseVal = bouche[iBouche];
+
+  // On met a jours les input de modifications
+  if(document.querySelector("#inputCouleurVisage") && document.querySelector("#inputCouleurCheveux") && document.querySelector("#inputCheveuxSelectionne") && document.querySelector("#inputYeuxSelectionne") && document.querySelector("#inputBoucheSelectionne") && document.querySelector("#inputPilositeSelectionne") && document.querySelector("#inputAccesoireSelectionne") && document.querySelector("#inputYeuxSelectionne")) {
+    document.querySelector("#inputBoucheSelectionne").value = iBouche;
+    document.querySelector("#inputPilositeSelectionne").value = iPilosite;
+    document.querySelector("#inputAccesoireSelectionne").value = iAccessoire;
+    document.querySelector("#inputYeuxSelectionne").value = iYeux;
+    document.querySelector("#inputCheveuxSelectionne").value = iCoiffure;
+    document.querySelector("#inputCouleurCheveux").value = iCouleurCheveux;
+    document.querySelector("#inputCouleurVisage").value = iCouleurPeau;
+  } 
+}
 
 getAvatarUtilisateurConnecter();
 
@@ -692,19 +706,19 @@ if(btn_ajout_ingredient) {
 
 
 //fermerture burger
+// const burger = document.querySelector("#navbarToggleExternalContent");
+// const menu = document.querySelector(".menu-burger")
 
-const burger = document.querySelector(".collapse");
-const menu = document.querySelector(".menu-burger")
-
-burger.addEventListener("click", (e) => {
-    if(menu.style.visibility == "hidden") {
-        menu.style.visibility == "visible"
-        console.log(e)
-    } else {
-        menu.style.visibility == "hidden"
-        console.log(e)
-    } 
-})
+// burger.addEventListener("click", (e) => {
+//   burger.remove('show')
+//     // if(menu.style.visibility == "hidden") {
+//     //     menu.style.visibility == "visible"
+//     //     console.log(e)
+//     // } else {
+//     //     menu.style.visibility == "hidden"
+//     //     console.log(e)
+//     // } 
+// })
 
 
 // Forum
@@ -741,7 +755,6 @@ function suppresionMessage(idReponse2) {
 }
 
 function confirmerSuppressionMessage() {
-  console.log(idReponse);
   var formData = new FormData();
   formData.append('idReponse', idReponse);
 

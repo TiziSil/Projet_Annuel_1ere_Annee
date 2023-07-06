@@ -24,11 +24,8 @@ require '../vendor/autoload.php'; //mettre le chemin pour le serveur
 // Vérif données post
 
 //récupère la date en format [Y-m-d H:i:s]
-
-
-
 //vérification des données
-if ( count($_POST) > 13
+if ( count($_POST) > 20
 	|| empty ($_POST["firstname"])
 	|| empty ($_POST["lastname"])
 	|| empty ($_POST['pseudo'])
@@ -39,8 +36,15 @@ if ( count($_POST) > 13
 	|| empty ($_POST["address"])
 	|| empty ($_POST["codepostal"])
 	|| empty ($_POST["ville"])
-	|| empty($_POST['country'])
+	|| empty ($_POST['country'])
 	|| empty ($_POST["cgu"])
+	|| !isset ($_POST['couleurVisage'])
+	|| !isset ($_POST['couleurCheveux'])
+	|| !isset ($_POST['cheveuxSelectionne'])
+	|| !isset ($_POST['boucheSelectionne'])
+	|| !isset ($_POST['pilositeSelectionne'])
+	|| !isset ($_POST['yeuxSelectionne'])
+	|| !isset ($_POST['accesoireSelectionne'])
 	
 ){
 
@@ -48,8 +52,18 @@ if ( count($_POST) > 13
 }
 
 
+$tableauCouleurPeau = array("#ffdbb4","#edb98a","#fd9841","#fcee93","#d08b5b","#ae5d29","#614335");
+$tableauCouleurCheveux = array("#fd9841", "#d08b5b", "#ffdbb4", "#edb98a", "#fcee93", "#ae5d29", "#614335");
+$tableauPeau = array("#peau-1", "#peau-2");
+$tableauCheveux = array("#cheveux-1", "#cheveux-2", '#none');
+$tableauYeux = array("#yeux-1", "#yeux-2");
+$tableauAccessoires = array("#none", "#lunettes");
+$tableauPilosite = array("#none", "#pilosite-1", "#pilosite-2");
+$tableauBouche = array("#none", "#bouche-1", "#bouche-2", "#bouche-4");
 
 //$gender = $_POST['gender'];
+
+
 $firstname = cleanFirstname($_POST['firstname']);
 $lastname = cleanLastname($_POST['lastname']);
 $pseudo = cleanFirstname($_POST['pseudo']);
@@ -63,6 +77,13 @@ $postalcode = $_POST['codepostal'];
 $ville = cleanLastname($_POST['ville']);
 $country = $_POST['country'];
 $cgu = $_POST['cgu'];
+$couleurPeau = $_POST['couleurVisage'] % sizeof($tableauPeau);
+$couleurCheveux = $_POST['couleurCheveux'] % sizeof($tableauCouleurCheveux);
+$yeux = $_POST['yeuxSelectionne'] % sizeof($tableauYeux);
+$coiffure = $_POST['cheveuxSelectionne'] % sizeof($tableauCheveux);
+$accessoire = $_POST['accesoireSelectionne'] % sizeof($tableauAccessoires);
+$pilosite = $_POST['pilositeSelectionne'] % sizeof($tableauPilosite);
+$bouche = $_POST['boucheSelectionne'] % sizeof($tableauBouche);
 
 $listOfErrors = [];
 
@@ -168,13 +189,13 @@ if(empty($listOfErrors)){
 	//Insertion en BDD
 	// DSN permet une optimisation, USER, PWD
 	//pdo permet d'utiliser n'importe quel sgdb
-
-
-
+	$insertAvatar = $connection->prepare("INSERT INTO MAKISINE_AVATAR (couleurPeau, couleurCheveux, yeux, coiffure, accessoire, pilosite, bouche) VALUES (?, ?, ?, ?, ?, ?, ?)");
+	$insertAvatar->execute(array($couleurPeau, $couleurCheveux, $yeux, $coiffure, $accessoire, $pilosite, $bouche));
+	$avatarId = $connection->lastInsertId(); // récupère le dernier ID inséré
 	$queryPrepared = $connection -> prepare("INSERT INTO ".DB_PREFIX."UTILISATEUR
-															(prenom_utilisateur, nom_utilisateur, pseudo, email, telephone, pwd, date_de_naissance, adresse, code_postal, ville, country)
+															(prenom_utilisateur, nom_utilisateur, pseudo, email, telephone, pwd, date_de_naissance, adresse, code_postal, ville, country, avatar_utilisateur)
 											VALUES				
-															( :firstname,       :lastname,       :pseudo,  :email, :telephone, :pwd, :birthday, :address, :codepostal, :ville, :country)") ;
+															( :firstname,       :lastname,       :pseudo,  :email, :telephone, :pwd, :birthday, :address, :codepostal, :ville, :country, :avatar_id)") ;
 	$queryPrepared -> execute([													
 								
 								"firstname" => $firstname,
@@ -187,7 +208,8 @@ if(empty($listOfErrors)){
 								"address" => $address,
 								"codepostal" => $postalcode,
 								"ville" => $ville,
-								"country" => $country
+								"country" => $country,
+								"avatar_id" => $avatarId
 
 			
 	]);	

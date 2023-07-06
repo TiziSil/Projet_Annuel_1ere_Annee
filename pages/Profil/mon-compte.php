@@ -40,14 +40,12 @@ foreach ($results as $row) {
     $ville = $row['ville'];
 }
 ?>
-<section class="mon-compte">
+<section class="mon-compte py-5">
     <div class="py-5 d-flex flex-column">
-        <div class="container py-5">
+        <div class="container my-5 py-5">
             <div class="search-bar">
-                <h1 class="h1-moncompte">Bienvenue
-                    <?= $pseudo ?> !
-                </h1>
-                <form id="" class="d-flex row">
+                <h1 class="h1-moncompte">Bienvenue <?= $pseudo ?> !</h1>
+                <!-- <form id="" class="d-flex row">
                     <div class="col-10 input-form-mon-compte d-flex">
                         <svg width="16px" height="16px">
                             <image height="16px" fill="#DEC7B1" width="16px" href="./assets/images/loupe.svg" />
@@ -56,7 +54,7 @@ foreach ($results as $row) {
                             type="text">
                     </div>
                     <button class="button2  col-2">Recherchez</button>
-                </form>
+                </form> -->
             </div>
 
             <div class="container py-4"></div>
@@ -70,24 +68,25 @@ foreach ($results as $row) {
     <img src="assets/images/separateur.png" class="separateur-de-texte-contact">
 </section>
 
-
 <section class="partie-selection">
     <div class="container py-5">
         <div class="py-5 my-5">
             <div class="boite my-5">
-                <h1>Mon compte</h1>
-                <div class="d-flex flex-row justify-content-between">
-                    <a class="flex-fill button3 btnmoncompte mx-1" href="./modifier-profil">Modifier mon profil</a>
-                    <a class="flex-fill button3 btnmoncompte mx-1" href="./mon-abonnement">Mon abonnement</a>
-                    <a class="flex-fill button3 btnmoncompte mx-1" href="./creation-recette">Créer des recettes</a>
-                    <a class="flex-fill button3 btnmoncompte mx-1" href="./core/exportPdf.php" target = "_blank">Exporter mes données du site</a>
+                <div class="d-flex flex-row justify-content-center my-2">
+                    <h1>Mon compte</h1>
+                </div>
+                <div class="d-flex flex-wrap">
+                    <a class="flex-fill button2 my-1 mx-1" href="./modifier-profil">Modifier mon profil</a>
+                    <a class="flex-fill button2 my-1 mx-1" href="./mon-abonnement">Mon abonnement</a>
+                    <a class="flex-fill button2 my-1 mx-1" href="./creation-recette">Créer des recettes</a>
+                    <a class="flex-fill button2 my-1 mx-1" href="./core/exportPdf.php" target = "_blank">Exporter mes données du site</a>
                     <?php if ($role == 1) { ?>
-                        <a class="flex-fill button3 btnmoncompte mx-1" href="./user">Liste des utilisateurs</a>
-                        <a class="flex-fill button3 btnmoncompte mx-1" href="./core/extractlogtopdf.php" target ="_blank">Extraire les log de connexion</a>
-                        <a class="flex-fill button3 btnmoncompte mx-1" href="./attente-validation">Valider des recettes</a>
-                        <a class="flex-fill button3 btnmoncompte mx-1" href="./backoffice">Gestion des recettes et autres éléments</a>
-                        <a class="flex-fill button3 btnmoncompte mx-1" href="./core/inactivityAlert.php" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">Envoyer un mail aux utilisateurs inactifs</a>
-                        <a class="flex-fill button3 btnmoncompte mx-1" href="./core/newsletter.php">Envoi de la Newsletter</a>
+                        <a class="flex-fill button2 my-1 mx-1" href="./user">Liste des utilisateurs</a>
+                        <a class="flex-fill button2 my-1 mx-1" href="./core/extractlogtopdf.php" target ="_blank">Extraire les log de connexion</a>
+                        <a class="flex-fill button2 my-1 mx-1" href="./attente-validation">Valider des recettes</a>
+                        <a class="flex-fill button2 my-1 mx-1" href="./backoffice">Gestion des recettes et autres éléments</a>
+                        <a class="flex-fill button2 my-1 mx-1" href="./core/inactivityAlert.php" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">Envoyer un mail aux utilisateurs inactifs</a>
+                        <a class="flex-fill button2 my-1 mx-1" href="./core/newsletter.php">Envoi de la Newsletter</a>
                     <?php } ?>
                 </div>
             </div>

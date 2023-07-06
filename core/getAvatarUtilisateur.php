@@ -29,6 +29,11 @@ if (isConnected()) {
         isset($result['bouche'])
     ) {
         echo json_encode($result);
+    } else {
+        echo '{}';
     }
-    
+} else {
+    echo '{}';
 }
+
+
