@@ -44,18 +44,9 @@ $recipePrepared->execute([
     "id" => $id
 ]);
 $recipeResults = $recipePrepared->fetchAll(PDO::FETCH_ASSOC);
-//recettes de l'utilisateur
-// foreach ($recipeResults as $rowRecipe){
-//     $idRecette = $rowRecipe['id_recette'];
-//     $nomRecette = $rowRecipe['nom_recette'];
-//     $difficulte = $rowRecipe['difficulte'];
-//     $tempsPreparation = $rowRecipe['temps_preparation'];
-//     $description = $rowRecipe['description_recette'];
-// }
-//$liste = var_dump($recipeResults);
 
 $pdf = new FPDF();
-$pdf->AddPage();
+$pdf->AddPage("UTF-8");
 
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 10, 'Informations de '.$prenom ." " .$nom, 0, 1, 'C');
