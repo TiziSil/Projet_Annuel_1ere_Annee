@@ -2,14 +2,18 @@
     $id_category = $_GET['id'];
 
     $connection = connectDB();
-    $results = $connection->query("SELECT id_recette, nom_recette, difficulte, temps_preparation, description_recette, nom_categorie
+
+    $queryPrepared = $connection->prepare("SELECT id_recette, nom_recette, difficulte, temps_preparation, description_recette, nom_categorie
                             FROM " . DB_PREFIX . "APPARTENIR, " . DB_PREFIX . "CATEGORIE, " . DB_PREFIX . "RECETTE
                             WHERE statut_publication = 1 AND recette_categorie = id_recette
-                            AND categorie = id_categorie AND categorie = '" . $id_category . "'");
-    $results = $results->fetchAll();
+                            AND categorie = id_categorie AND categorie =:id_category");
+    $queryPrepared->execute([ "id_category" => $id_category ]);
+    $results = $queryPrepared->fetchAll();
 
-    $category_name = $connection->query("SELECT nom_categorie, categorie FROM ".DB_PREFIX."CATEGORIE, ".DB_PREFIX."APPARTENIR WHERE categorie=id_categorie && categorie = '" . $id_category . "'");
-    $category_name = $category_name->fetch();
+    $queryPrepared2 = $connection->prepare("SELECT nom_categorie, categorie FROM ".DB_PREFIX."CATEGORIE, ".DB_PREFIX."APPARTENIR WHERE categorie=id_categorie 
+                            && categorie =:id_category");
+    $queryPrepared2->execute([ "id_category" => $id_category ]);
+    $category_name = $queryPrepared2->fetch();
     
 ?>
 <section class="recipe-list">

@@ -2,8 +2,10 @@
 session_start();
 require "../conf.inc.php";
 require "functions.php";
-// redirectIfNotConnected(); 
+redirectIfNotConnected(); 
 
+print_r($_POST);
+/*
 // Vérification si tous les champs sont remplis
 if( count($_POST)!=7 
 	|| empty($_POST['nom_recette'])
@@ -154,3 +156,4 @@ if(empty($listOfErrorsRecipe)) {
 
 // Redirection backoffice
 redirection('../backoffice');
+*/

@@ -38,14 +38,16 @@ foreach ($results as $row) {
 }
 
 ?>
-<div>
-  <h1>Modifier mon profil</h1>
-</div>
-<nav class="nav flex-column">
-<a class="nav-link active" href="mon-compte">Retour à mon compte</a>
-</nav>
+
 <section class="forum">
-    <div class="py-5 d-flex flex-column">
+    <div class=" d-flex flex-column">
+        <div class="modif-profil py-5">
+            <h1 class="modifh1">Modifier mon profil</h1>
+            <nav class="nav">
+                <a href="mon-compte" class="nav-link active retour-modif button3">Retour à mon compte</a>
+            </nav>
+        </div>
+        
         <div class="container py-5">
             <div class="boite d-flex flex-column">
                 <h1>Vos données personnelles</h1>

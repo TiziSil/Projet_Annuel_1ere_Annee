@@ -62,7 +62,7 @@ if(empty($listOfErrorsIngredient)){
 
 	// Insertion en BDD de l'allergène
 	foreach ($nom_allergene as $allergene) {
-		if( !in_array($allergene, $listAllergene) ) {
+		if( !in_array($allergene, $listAllergene) && !empty($allergene)) {
 			$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."ALLERGENE (nom_allergene) VALUES (:nom_allergene)");
 			$queryPrepared->execute(["nom_allergene"=>$allergene]);
 		}
@@ -72,19 +72,21 @@ if(empty($listOfErrorsIngredient)){
 		$queryPrepared->execute(["nom_ingredient"=>$nom_ingredient]);
 		$results3 = $queryPrepared->fetch();
 
-		$queryPrepared = $connection->prepare("SELECT id_allergene FROM ".DB_PREFIX."ALLERGENE WHERE nom_allergene=:nom_allergene");
-		$queryPrepared->execute(["nom_allergene"=>$allergene]);
-		$results4 = $queryPrepared->fetch();
+		if (!empty($allergene)) {
+			$queryPrepared = $connection->prepare("SELECT id_allergene FROM ".DB_PREFIX."ALLERGENE WHERE nom_allergene=:nom_allergene");
+			$queryPrepared->execute(["nom_allergene"=>$allergene]);
+			$results4 = $queryPrepared->fetch();
 
-		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."CONTENIR
-												(produit, allergene)
-												VALUES 
-												(:id_ingredient, :id_allergene)");
+			$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."CONTENIR
+													(produit, allergene)
+													VALUES 
+													(:id_ingredient, :id_allergene)");
 
-		$queryPrepared->execute([
-									"id_ingredient"=>$results3[0],
-									"id_allergene"=>$results4[0]
-								]);
+			$queryPrepared->execute([
+										"id_ingredient"=>$results3[0],
+										"id_allergene"=>$results4[0]
+									]);
+		}
 	}
 
 	$isIngredientCreated = true;
