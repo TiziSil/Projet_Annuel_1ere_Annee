@@ -44,7 +44,7 @@ $statut = $row['statut'];
 //recupérations des données du formulaire
 $newLastname = htmlspecialchars(cleanLastname($_POST['newLastname']));
 $newFirstName = htmlspecialchars(cleanFirstname($_POST['newFirstName']));
-$newPseudo =htmlspecialchars(cleanFirstname($_POST['newPseudo']));
+$newPseudo =htmlspecialchars(cleanLastname($_POST['newPseudo']));
 $newEmail = htmlspecialchars(cleanEmail($_POST['newEmail']));
 $newTelephone = htmlspecialchars(cleanPhone($_POST['newTelephone']));
 $newDateNaissance = htmlspecialchars($_POST['newDateNaissance']);
@@ -93,7 +93,7 @@ if (isset($newLastname) && !empty($newLastname) && $newLastname != $nom) {
 
 }
 if (isset($newFirstName) && !empty($newFirstName) && $newFirstName != $prenom) {
-    if(strlen($firstname) < 2){
+    if(strlen($newFirstname) < 2){
         $listOfErrors[] = "Le prénom doit faire plus de 2 caractères";
     }else{
         $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET prenom_utilisateur=:prenom WHERE id_utilisateur=:id");
@@ -107,11 +107,11 @@ if (isset($newFirstName) && !empty($newFirstName) && $newFirstName != $prenom) {
 
 }
 if (isset($newPseudo) && !empty($newPseudo) && $newPseudo != $pseudo) {
-    $pseudoPrepared = $connexion -> prepare("SELECT pseudo FROM ".DB_PREFIX."UTILISATEUR WHERE pseudo = :pseudo");
-    $pseudoPrepared-> execute(["pseudo" => $pseudo]);
-    $results = $pseudoPrepared -> fetch();
-    if (!empty($results)){
-        $listOfErrorsUsersEdit[] = "Le pseudo est déjà utilisé";
+    $pseudoPrepared = $connexion->prepare("SELECT pseudo FROM " . DB_PREFIX . "UTILISATEUR WHERE pseudo = :newPseudo");
+    $pseudoPrepared->execute(["newPseudo" => $newPseudo]);
+    $count = $pseudoPrepared->rowCount();
+    if ($count > 0) {
+        $listOfErrorsProfileEdit[] = "Le pseudo est déjà utilisé";
     }else{
         $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET pseudo=:pseudo WHERE id_utilisateur=:id");
         $queryPrepared->execute([
@@ -119,7 +119,7 @@ if (isset($newPseudo) && !empty($newPseudo) && $newPseudo != $pseudo) {
             "id" => $idUtilisateur
         ]);
         $pseudo = $newPseudo;
-        $successProfileEdit[] = "Votre pseudo a bien été modifié";
+        $successUsersEdit[] = "Le pseudo a bien été modifié";
     }
 
 }
