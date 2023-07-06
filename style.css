@@ -735,6 +735,7 @@ text-decoration: none;
   transition: 0.4s ease-in-out;
   background-color: var(--couleur-secondaire);
   color: white;
+  text-align: center;
 }
 
 .button2:hover {
@@ -1605,10 +1606,31 @@ footer * a {
 }
 
 .gestion-bloc {
-  border-radius: 17px;
-  padding: 20px;
-  width: 100%;
-  margin: 20px;
+  background-image: url("assets/images/backoffice-recette-background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.gestion-bloc-2 {
+  background: url("assets/images/BocauxTuile3.png");
+  background-size: cover;
+  background-position: center left;
+  background-repeat: no-repeat;
+}
+
+.gestion-bloc-3 {
+  background: url("assets/images/backoffice-supression-background.jpg");
+  background-size: cover;
+  background-position: center left;
+  background-repeat: no-repeat;
+}
+
+.avantage-abonne {
+  background: url("assets/images/photo-forum.avif");
+  background-size: cover;
+  background-position: center left;
+  background-repeat: no-repeat;
 }
 
 
@@ -1935,4 +1957,26 @@ text-align: center;
 .tableau-moncompte {
   border-style: groove;
   border-radius: 17px;
+}
+
+/* ABONNEMENT */
+
+.deja-abonne {
+  background-image: url("assets/images/photo-deja-abonne.avif");
+}
+.h1-abonnement-ok {
+text-align: center;
+margin: 30px;
+}
+
+.retour-abon {
+  color: #FFFFFF !important;
+}
+
+/* .boite-deja-abon{
+  margin-bottom: 10%;
+  margin-top: 10%;
+} */
+.img-supprimer-fond-blanc {
+  mix-blend-mode: multiply;
 }

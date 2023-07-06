@@ -11,7 +11,6 @@
         </div>
 
         <div class="fleches d-flex flex-row justify-content-center">
-            <!-- <div class="fleche-gauche "></div> -->
             <div>
                 <svg height="256px" width="256px">
                     <use id="couleurVisage" href="#visage"></use>
@@ -22,8 +21,14 @@
                     <use id="yeuxSelectionne" href="#yeux"></use>
                     <use id="accesoireSelectionne" href="#none"></use>
                 </svg>
+                <input class="d-none" id="inputCouleurVisage" name="couleurVisage" />
+                <input class="d-none" id="inputCouleurCheveux" name="couleurCheveux" />
+                <input class="d-none" id="inputCheveuxSelectionne" name="cheveuxSelectionne" />
+                <input class="d-none" id="inputBoucheSelectionne" name="boucheSelectionne" />
+                <input class="d-none" id="inputPilositeSelectionne" name="pilositeSelectionne" />
+                <input class="d-none" id="inputYeuxSelectionne" name="yeuxSelectionne" />
+                <input class="d-none" id="inputAccesoireSelectionne" name="accesoireSelectionne" />
             </div>
-            <!-- <div class="fleche-droite"></div> -->
         </div>
 
         <div class="cgu-et-bouton d-flex flex-column">
