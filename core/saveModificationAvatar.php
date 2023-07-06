@@ -8,7 +8,7 @@ if (!isConnected()) {
 }
 
 if (
-    isset($_POST['couleurVisage']) and
+    isset($_POST['couleurVisage']) and 
     isset($_POST['couleurCheveux']) and
     isset($_POST['cheveuxSelectionne']) and
     isset($_POST['boucheSelectionne']) and
@@ -17,13 +17,31 @@ if (
     isset($_POST['accesoireSelectionne']) and
     isset($_SESSION['id_utilisateur'])
 ) {
-    $couleurPeau = $_POST['couleurVisage'];
-    $couleurCheveux = $_POST['couleurCheveux'];
-    $yeux = $_POST['yeuxSelectionne'];
-    $coiffure = $_POST['cheveuxSelectionne'];
-    $accessoire = $_POST['accesoireSelectionne'];
-    $pilosite = $_POST['pilositeSelectionne'];
-    $bouche = $_POST['boucheSelectionne'];
+    $tableauCouleurPeau = array("#ffdbb4","#edb98a","#fd9841","#fcee93","#d08b5b","#ae5d29","#614335");
+    $tableauCouleurCheveux = array("#fd9841", "#d08b5b", "#ffdbb4", "#edb98a", "#fcee93", "#ae5d29", "#614335");
+    $tableauPeau = array("#peau-1", "#peau-2");
+    $tableauCheveux = array("#cheveux-1", "#cheveux-2", '#none');
+    $tableauYeux = array("#yeux-1", "#yeux-2");
+    $tableauAccessoires = array("#none", "#lunettes");
+    $tableauPilosite = array("#none", "#pilosite-1", "#pilosite-2");
+    $tableauBouche = array("#none", "#bouche-1", "#bouche-2", "#bouche-4");
+
+    echo $_POST['couleurVisage'] . '-';
+    echo $_POST['couleurCheveux'] . '-';
+    echo $_POST['yeuxSelectionne'] . '-';
+    echo $_POST['cheveuxSelectionne'] . '-';
+    echo $_POST['accesoireSelectionne'] . '-';
+    echo $_POST['pilositeSelectionne'] . '-';
+    echo $_POST['boucheSelectionne'];
+
+    $couleurPeau = $_POST['couleurVisage'] % sizeof($tableauPeau);
+    $couleurCheveux = $_POST['couleurCheveux'] % sizeof($tableauCouleurCheveux);
+    $yeux = $_POST['yeuxSelectionne'] % sizeof($tableauYeux);
+    $coiffure = $_POST['cheveuxSelectionne'] % sizeof($tableauCheveux);
+    $accessoire = $_POST['accesoireSelectionne'] % sizeof($tableauAccessoires);
+    $pilosite = $_POST['pilositeSelectionne'] % sizeof($tableauPilosite);
+    $bouche = $_POST['boucheSelectionne'] % sizeof($tableauBouche);
+
 
     $connection = connectDB();
     $avatar = $connection->prepare("SELECT id_avatar, couleurPeau, couleurCheveux, yeux, coiffure, accessoire, pilosite, bouche FROM MAKISINE_UTILISATEUR u JOIN MAKISINE_AVATAR a ON u.avatar_utilisateur = a.id_avatar WHERE u.id_utilisateur = ?");
@@ -39,7 +57,5 @@ if (
         $updateUserAvatar = $connection->prepare("UPDATE MAKISINE_UTILISATEUR SET avatar_utilisateur = ? WHERE id_utilisateur = ?");
         $updateUserAvatar->execute(array($avatarId, $_SESSION['id_utilisateur']));
     }
-    header('Location: ../modifier-profil');
-} else {
-    header('Location: ../modifier-profil');
 }
+header('Location: ../modifier-profil');

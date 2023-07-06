@@ -247,13 +247,13 @@ foreach ($results as $row) {
                     </div>
                     <div class="my-5 d-flex flex-row justify-content-center">
                         <svg height="256px" width="256px">
-                            <use id="couleurVisage" style="--couleur-cheveux: <?php echo $couleurPeau[$result['couleurPeau'] % sizeof($couleurPeau)] ?>;" href="#visage"></use>
-                            <use id="couleurCheveux" style="--couleur-peau: <?php echo $couleurCheveux[$result['couleurCheveux']  % sizeof($couleurCheveux)] ?>;" href="#couleurCheveux"></use>
-                            <use id="cheveuxSelectionne" href="<?php echo $cheveux[$result['coiffure'] % sizeof($cheveux)] ?>"></use>
-                            <use id="boucheSelectionne" href="<?php echo $bouche[$result['bouche'] % sizeof($bouche)] ?>"></use>
-                            <use id="pilositeSelectionne" href="<?php echo $pilosite[$result['pilosite'] % sizeof($pilosite)] ?>"></use>
-                            <use id="yeuxSelectionne" href="<?php echo $yeux[$result['yeux'] % sizeof($yeux)] ?>"></use>
-                            <use id="accesoireSelectionne" href="<?php echo $accessoires[$result['accessoire'] % sizeof($accessoires)] ?>"></use>
+                            <use id="couleurVisage" href="#visage"></use>
+                            <use id="couleurCheveux" href="#couleurCheveux"></use>
+                            <use id="cheveuxSelectionne" href="#cheveux"></use>
+                            <use id="boucheSelectionne" href="#bouche"></use>
+                            <use id="pilositeSelectionne" href="#none"></use>
+                            <use id="yeuxSelectionne" href="#yeux"></use>
+                            <use id="accesoireSelectionne" href="#none"></use>
                         </svg>
                     </div>
                     <input class="d-none" id="inputCouleurVisage" name="couleurVisage" />
