@@ -46,3 +46,6 @@
 [2023-07-06 16:07:14] 127.0.0.1 connected to http://127.0.0.1/ProjetAnnuel/user
 [2023-07-06 16:19:53] 127.0.0.1 connected to http://127.0.0.1/ProjetAnnuel/user
 [2023-07-06 16:20:08] 127.0.0.1 connected to http://127.0.0.1/ProjetAnnuel/user
+[2023-07-06 16:35:43] 127.0.0.1 connected to http://127.0.0.1/ProjetAnnuel/user
+[2023-07-06 16:36:10] 127.0.0.1 connected to http://127.0.0.1/ProjetAnnuel/user
+[2023-07-06 16:36:19] 127.0.0.1 connected to http://127.0.0.1/ProjetAnnuel/user

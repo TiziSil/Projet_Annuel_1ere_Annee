@@ -27,6 +27,7 @@
                 <div class="col colonne-footer">
                     <h5>Télécharger notre app</h5>
                     <p>Consultez et gérez vos recettes</p><p>depuis votre mobile, à tout</p><p>moment!</p>
+                    <a href="easter-egg.php" target="_blank">
                     <img class="qrCodeMakisine" src="assets/images/QrcodeMakisine.png" alt="Qrcode">
                 </div>
             </div>
@@ -49,3 +50,6 @@
 </footer>
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+
+
