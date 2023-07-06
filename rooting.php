@@ -135,6 +135,8 @@ switch ($page) {
         require './pages/recipeCreation.php';
         break;
 
+    //logs
+    
     default:
         require 'error404.php';
         break;

@@ -1,6 +1,7 @@
 <?php
 redirectIfNotConnected();
 redirectIfNotAdmin();
+logUserAcitivty("../log.txt");
 ?>
 
 		<div class="row mt-1">
