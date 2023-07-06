@@ -91,3 +91,4 @@
 [2023-07-06 17:02:11] ::1 conect to localhost/ProjetAnnuel/index.php
 [2023-07-06 17:02:27] ::1 conect to localhost/ProjetAnnuel/index.php
 >>>>>>> e7b916ef52f059b50aa99a1f89075aa42d610be0
+[2023-07-06 20:23:38] ::1 connected to http://localhost/ProjetAnnuel/backoffice

@@ -4,7 +4,6 @@ require "../conf.inc.php";
 require "functions.php";
 redirectIfNotConnected(); 
 
-
 // Vérification si tous les champs sont remplis
 if( count($_POST)!=7 
 	|| empty($_POST['nom_recette'])
@@ -195,7 +194,7 @@ if(empty($listOfErrorsRecipe)) {
 	$queryPrepared = $connection->prepare("UPDATE ".DB_PREFIX."RECETTE SET image_recette=:image_recette WHERE id_recette=:id_recette");
 
 	$queryPrepared->execute([
-								"image_recette" => ($dossier_image.$photo_nom),
+								"image_recette" => ("pages/recettes/photo_recette/".$photo_nom),
 								"id_recette" => $results3[0]
 							]);
 

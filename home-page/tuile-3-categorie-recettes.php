@@ -21,7 +21,7 @@
                         	$results = $results->fetchAll();
 
                             foreach ($results as $category) {
-                                echo "<a href='../ProjetAnnuel/categorie-recette?id=".$category["id_categorie"]."'><button type='button' class='button1'>".$category["nom_categorie"]."</button></a>";
+                                echo "<a href='../categorie-recette?id=".$category["id_categorie"]."'><button type='button' class='button1'>".$category["nom_categorie"]."</button></a>";
                             }
                 		?>
 

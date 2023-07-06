@@ -41,7 +41,7 @@
                         echo "</td>";
                         echo "<td>" . $recipe["temps_preparation"] . " minutes</td>";
                         echo "<td>
-                        <a href='../ProjetAnnuel/recette?id=".$recipe["id_recette"]."' class='btn btn-dark'>
+                        <a href='../recette?id=".$recipe["id_recette"]."' class='btn btn-dark'>
                         Voir la recette
                         </a>
                         </td>";

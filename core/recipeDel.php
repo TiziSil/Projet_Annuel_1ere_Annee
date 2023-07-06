@@ -38,9 +38,6 @@ if(empty($listOfErrorsRecipeDel)){
     $queryPrepared = $connection->prepare("DELETE FROM ".DB_PREFIX."APPARTENIR WHERE recette_categorie=:recette_categorie");
     $queryPrepared->execute(["recette_categorie"=>$id_recipeDel]);
 
-    $queryPrepared = $connection->prepare("DELETE FROM ".DB_PREFIX."RECETTE WHERE id_recette=:id_recette");
-    $queryPrepared->execute(["id_recette"=>$id_recipeDel]);
-
     $isRecipeDeleted = true;
     $_SESSION['isRecipeDeleted'] = $isRecipeDeleted;
 
@@ -48,21 +45,25 @@ if(empty($listOfErrorsRecipeDel)){
 	$_SESSION['listOfErrorsRecipeDel'] = $listOfErrorsRecipeDel;
 }
 
-// Supression de l'image sur serveur et BDD
+// Supression de l'image sur serveur et BDD (+ recette)
 if ($isRecipeDeleted) {
     $queryPrepared = $connection->prepare("SELECT image_recette FROM ".DB_PREFIX."RECETTE WHERE id_recette=:id_recette");
     $queryPrepared->execute(["id_recette" => $id_recipeDel]);
-    $result = $queryPrepared->fetch;
-
+    $result = $queryPrepared->fetch();
+    
+    $dossier = "../";
     $image_recette = $result['image_recette'];
-    if (file_exists($image_recette)) {
-        unlink($image_recette);
+    $chemin_complet = $dossier . $image_recette;
+    
+    if (file_exists($chemin_complet)) {
+        unlink($chemin_complet);
     }
-        
-    $queryPrepared = $connection->prepare("DELETE FROM ".DB_PREFIX."RECETTE WHERE id_recette=:id_recette");
+
+
+    $queryPrepared = $connection->prepare("DELETE FROM ".DB_PREFIX."RECETTE         WHERE id_recette=:id_recette");
     $queryPrepared->execute(["id_recette" => $id_recipeDel]);
 }
 
 
 // Redirection backoffice
-header('location:../backoffice');
+redirection('../backoffice');
