@@ -85,7 +85,7 @@ foreach ($results as $row) {
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./user">Liste des utilisateurs</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./attente-validation">Valider des recettes</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./backoffice">Gestion des recettes et autres éléments</a>
-                        <a class="flex-fill button3 btnmoncompte mx-1" href="./core/inactivityAlert.php">Envoyer un mail aux utilisateurs inactifs</a>
+                        <a class="flex-fill button3 btnmoncompte mx-1" href="./core/inactivityAlert.php" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">Envoyer un mail aux utilisateurs inactifs</a>
                     <?php } ?>
                 </div>
             </div>
