@@ -1,13 +1,13 @@
 <?php
 //LOGS
-$date = "[".date("Y-m-d H:i:s")."]";
+$date = "[" . date("Y-m-d H:i:s") . "]";
 
-$url = $_SERVER['REMOTE_ADDR'].' conect to ' .$_SERVER['SERVER_NAME'] .$_SERVER['PHP_SELF'];
+$url = $_SERVER['REMOTE_ADDR'] . ' conect to ' . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
 
-echo $date." ".$url."\n";
+echo $date . " " . $url . "\n";
 
 $files = fopen("log.txt", "a+");
-fputs($files, $date." ".$url."\n");
+fputs($files, $date . " " . $url . "\n");
 fclose($files);
 
 //  session_start();
@@ -95,14 +95,6 @@ foreach ($results as $row) {
                     </div>
                 <?php } ?>
                 <form method="POST" action="core/profileEdit.php" class="d-flex flex-column">
-                    <div class="d-flex flex-column my-2">
-                        <div class="d-flex flex-row">
-                            <label class="d-flex col-6">Avatar</label>
-                            <div >
-                                <?php require 'pages/visionneuse-avatar.php'; ?>
-                            </div>
-                        </div>
-                    </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
                             <label class="d-flex col-6">Nom</label>
@@ -210,5 +202,70 @@ foreach ($results as $row) {
 
         </div>
     </div>
+</section>
+
+<?php 
+    $couleurPeau = array("#ffdbb4","#edb98a","#fd9841","#fcee93","#d08b5b","#ae5d29","#614335");
+    $couleurCheveux = array("#fd9841", "#d08b5b", "#ffdbb4", "#edb98a", "#fcee93", "#ae5d29", "#614335");
+    $peau = array("#peau-1", "#peau-2");
+    $cheveux = array("#cheveux-1", "#cheveux-2", '#none');
+    $yeux = array("#yeux-1", "#yeux-2");
+    $accessoires = array("#none", "#lunettes");
+    $pilosite = array("#none", "#pilosite-1", "#pilosite-2");
+    $bouche = array("#none", "#bouche-1", "#bouche-2", "#bouche-4");
+    
+    $connection = connectDB();
+    $avatar = $connection->prepare("SELECT couleurPeau, couleurCheveux, yeux, coiffure, accessoire, pilosite, bouche FROM MAKISINE_UTILISATEUR u JOIN MAKISINE_AVATAR a ON u.avatar_utilisateur = a.id_avatar WHERE u.id_utilisateur = ?");
+    $avatar->execute(array($_SESSION['id_utilisateur']));
+    $result = $avatar->fetch();
+    $avatarVisible = false;
+    if (isset($result['couleurPeau']) and 
+        isset($result['couleurCheveux']) and 
+        isset($result['yeux']) and 
+        isset($result['coiffure']) and 
+        isset($result['accessoire']) and 
+        isset($result['pilosite']) and 
+        isset($result['bouche'])) {
+            $avatarVisible = true;
+        }
+?>
+
+<section class="partie-selection">
+    <div class="container py-5">
+        <div class="py-5 my-5">
+            <div class="boite">
+                <form method="POST" action="core/saveModificationAvatar.php" class="d-flex flex-column">
+                    <h1>Modifier votre avatar</h1>
+                    <div class="d-flex flex-wrap">
+                        <a class="flex-fill button2 clickable mx-1 my-1" onclick="changerCouleurCheveux()">Couleur cheveux</a>
+                        <a class="flex-fill button2 clickable mx-1 my-1" onclick="changerCoiffure()">Coiffure</a>
+                        <a class="flex-fill button2 clickable mx-1 my-1" onclick="changerBouche()">Bouche</a>
+                        <a class="flex-fill button2 clickable mx-1 my-1" onclick="changerYeux()">Yeux</a>
+                        <a class="flex-fill button2 clickable mx-1 my-1" onclick="changerPilosite()">Pilosité</a>
+                        <a class="flex-fill button2 clickable mx-1 my-1" onclick="changerCouleurPeau()">Peau</a>
+                        <a class="flex-fill button2 clickable mx-1 my-1" onclick="changerAccessoire()">Lunettes</a>
+                    </div>
+                    <div class="my-5 d-flex flex-row justify-content-center">
+                        <svg height="256px" width="256px">
+                            <use id="couleurVisage" style="--couleur-cheveux: <?php echo $couleurPeau[$result['couleurPeau'] % sizeof($couleurPeau)] ?>;" href="#visage"></use>
+                            <use id="couleurCheveux" style="--couleur-peau: <?php echo $couleurCheveux[$result['couleurCheveux']  % sizeof($couleurCheveux)] ?>;" href="#couleurCheveux"></use>
+                            <use id="cheveuxSelectionne" href="<?php echo $cheveux[$result['coiffure'] % sizeof($cheveux)] ?>"></use>
+                            <use id="boucheSelectionne" href="<?php echo $bouche[$result['bouche'] % sizeof($bouche)] ?>"></use>
+                            <use id="pilositeSelectionne" href="<?php echo $pilosite[$result['pilosite'] % sizeof($pilosite)] ?>"></use>
+                            <use id="yeuxSelectionne" href="<?php echo $yeux[$result['yeux'] % sizeof($yeux)] ?>"></use>
+                            <use id="accesoireSelectionne" href="<?php echo $accessoires[$result['accessoire'] % sizeof($accessoires)] ?>"></use>
+                        </svg>
+                    </div>
+                    <input class="d-none" id="inputCouleurVisage" name="couleurVisage" />
+                    <input class="d-none" id="inputCouleurCheveux" name="couleurCheveux" />
+                    <input class="d-none" id="inputCheveuxSelectionne" name="cheveuxSelectionne" />
+                    <input class="d-none" id="inputBoucheSelectionne" name="boucheSelectionne" />
+                    <input class="d-none" id="inputPilositeSelectionne" name="pilositeSelectionne" />
+                    <input class="d-none" id="inputYeuxSelectionne" name="yeuxSelectionne" />
+                    <input class="d-none" id="inputAccesoireSelectionne" name="accesoireSelectionne" />
+                    <button type="submit" class="my-2 button2">Mettre à jour</button>
+                </form>
+            </div>
+        </div>
     </div>
 </section>

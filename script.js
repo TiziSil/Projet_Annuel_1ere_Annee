@@ -320,6 +320,9 @@ function changerCouleurPeau() {
   iCouleurPeau++;
   const cheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";"; // Récupère la couleur de cheveux dans le tableau 'couleurCheveux' en revenant à la première couleur lorsque toutes les options ont été parcourues.
   const peau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
+  if(document.querySelector("#inputCouleurVisage")) {
+    document.querySelector("#inputCouleurVisage").value = iCouleurPeau;
+  } 
   document.querySelector("body").style = cheveux + peau; //MAJ la couleur des cheveux et de la peau de l'avatar en temps réel.
 }
 
@@ -327,11 +330,17 @@ function changerCouleurCheveux() {
   iCouleurCheveux++;
   const cheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";";
   const peau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
+  if(document.querySelector("#inputCouleurCheveux")) {
+    document.querySelector("#inputCouleurCheveux").value = iCouleurCheveux;
+  } 
   document.querySelector("body").style = cheveux + peau;
 }
 
 function changerCoiffure() {
   if(document.querySelector("#cheveuxSelectionne")) {
+    if(document.querySelector("#inputCheveuxSelectionne")) {
+      document.querySelector("#inputCheveuxSelectionne").value = iCoiffure;
+    } 
     document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure % cheveux.length];
     iCoiffure++;
   }
@@ -339,6 +348,9 @@ function changerCoiffure() {
 
 function changerYeux() {
   if(document.querySelector("#yeuxSelectionne")) {
+    if(document.querySelector("#inputYeuxSelectionne")) {
+      document.querySelector("#inputYeuxSelectionne").value = iYeux;
+    } 
     document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux % yeux.length];
     iYeux++;
   }
@@ -346,6 +358,9 @@ function changerYeux() {
 
 function changerAccessoire() {
   if(document.querySelector("#accesoireSelectionne")) {
+    if(document.querySelector("#inputAccesoireSelectionne")) {
+      document.querySelector("#inputAccesoireSelectionne").value = iAccessoire;
+    } 
     document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire % accessoires.length];
     iAccessoire++;
   }
@@ -353,6 +368,9 @@ function changerAccessoire() {
 
 function changerPilosite() {
   if(document.querySelector("#pilositeSelectionne")) {
+    if(document.querySelector("#inputPilositeSelectionne")) {
+      document.querySelector("#inputPilositeSelectionne").value = iPilosite;
+    } 
     document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite % pilosite.length];
     iPilosite++;
   }
@@ -360,6 +378,9 @@ function changerPilosite() {
 
 function changerBouche() {
   if(document.querySelector("#boucheSelectionne")) {
+    if(document.querySelector("#inputBoucheSelectionne")) {
+      document.querySelector("#inputBoucheSelectionne").value = iBouche;
+    } 
     document.querySelector("#boucheSelectionne").href.baseVal = bouche[iBouche % bouche.length];
     iBouche++;
   }
