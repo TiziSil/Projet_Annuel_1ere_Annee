@@ -50,7 +50,7 @@ redirectIfNotConnected();
 
 
 	<!-- Formulaire -->
-		<form action="core/recipeAdd.php" method="POST">
+		<form action="core/recipeAdd.php" method="POST" enctype="multipart/form-data">
 
 			<div class="mb-3 row">
 				<label for="nom_recette" class="col-sm-2 col-form-label">Nom de la recette</label>
@@ -96,6 +96,13 @@ redirectIfNotConnected();
 				<label for="temps_preparation" class="col-sm-2 col-form-label">Temps de préparation (min)</label>
 				<div class="col-10 col-sm-8 col-lg-6">
 					<input type="text" id="temps_preparation" class="form-control" name="temps_preparation" placeholder="Temps de préparation" required="required" value="">
+				</div>
+			</div>
+
+			<div class="mb-3 row">
+				<label for="image_recette" class="col-sm-2 col-form-label">Photo (max 1 Go)</label>
+				<div class="col-10 col-sm-8 col-lg-6">
+					<input type="file" id="image_recette" name="image_recette" required="required" value="">
 				</div>
 			</div>
 

@@ -2,9 +2,9 @@
     $id_recipe = $_GET['id'];
 
     $connection = connectDB();
-    $queryPrepared = $connection->prepare("SELECT id_recette, nom_recette, difficulte, temps_preparation, description_recette, nom_categorie, pseudo
+    $queryPrepared = $connection->prepare("SELECT id_recette, nom_recette, difficulte, image_recette, temps_preparation, description_recette, nom_categorie, pseudo
                             FROM " . DB_PREFIX . "APPARTENIR, " . DB_PREFIX . "CATEGORIE, " . DB_PREFIX . "RECETTE, " . DB_PREFIX . "UTILISATEUR
-                            WHERE statut_publication = 1 AND recette_categorie = id_recette
+                            WHERE statut_publication = 1 AND recette_categorie = id_recette 
                             AND categorie = id_categorie AND auteur_recette = id_utilisateur AND id_recette =:id_recipe");
     $queryPrepared->execute([ "id_recipe" => $id_recipe ]);
     $results = $queryPrepared->fetchAll();
@@ -43,7 +43,7 @@
                 ?>
             </div>
             <div class="col-6">
-                <img src="assets/images/backoffice-background.jpg" width="600px">
+                <img src="<?= $recipe["image_recette"] ?>" width="600px">
             </div>
         </div>
 
