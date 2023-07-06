@@ -34,6 +34,7 @@ $results = $results->fetchAll()
         <div class="image-attente-validation">
             <h1 class="h1-attente-validation">Gestion des validations en attente</h1>
         </div>
+
         <div class="bloc-en-attente-validation">
             <div>
                 <h2 class="h2-recette-validation-attente">Recettes en attente de validation</h2>
@@ -69,10 +70,14 @@ $results = $results->fetchAll()
                         } ?>
                     </tbody>
                 </table>
+                <div>
+            <nav class="nav flex-column">
+                <a class="nav-link active button3 retour-mon-compte" href="mon-compte">Retour à mon compte</a>
+            </nav>
+        </div>
             </div>
         </div>
+        
     </div>
+    
 </section>
-<nav class="nav flex-column">
-<a class="nav-link active" href="mon-compte">Retour à mon compte</a>
-</nav>
