@@ -10,11 +10,9 @@
     $queryPrepared->execute([ "id_category" => $id_category ]);
     $results = $queryPrepared->fetchAll();
 
-    $queryPrepared2 = $connection->prepare("SELECT nom_categorie, categorie FROM ".DB_PREFIX."CATEGORIE, ".DB_PREFIX."APPARTENIR WHERE categorie=id_categorie 
-                            && categorie =:id_category");
+    $queryPrepared2 = $connection->prepare("SELECT nom_categorie FROM ".DB_PREFIX."CATEGORIE WHERE id_categorie=:id_category");
     $queryPrepared2->execute([ "id_category" => $id_category ]);
     $category_name = $queryPrepared2->fetch();
-    
 ?>
 <section class="recipe-list">
     <div class=" titre-principal d-flex justify-content-center align-items-center">

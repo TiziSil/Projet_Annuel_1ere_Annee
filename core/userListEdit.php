@@ -15,10 +15,7 @@ $queryPrepared->execute([
     "userId" => $idUtilisateur
 ]);
 $row = $queryPrepared->fetch();
-echo '<pre>';
-//print_r($row);
-var_dump($row);
-echo'</pre>';
+
 // Accédez aux colonnes par leur nom
 
 $nom = $row['nom_utilisateur'];
