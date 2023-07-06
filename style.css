@@ -1191,6 +1191,13 @@ footer * a {
   padding-bottom: 5px;
 }
 
+.section-liste-user {
+  background: url("assets/images/photo-attente-de-validation.avif");
+  background-size: cover;
+  background-position: center left;
+  background-repeat: no-repeat;
+}
+
 #contact-2 .container {
   /* height: 80vh !important; */
 }
@@ -1952,6 +1959,12 @@ text-align: center;
   color: #FFFFFF !important;
   margin: 80px;
 
+}
+
+.table {
+  max-width: none;
+  table-layout: fixed;
+  word-wrap: break-word;
 }
 
 .tableau-moncompte {
