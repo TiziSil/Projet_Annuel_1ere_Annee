@@ -4,17 +4,23 @@ require "../conf.inc.php";
 require 'functions.php';
 
 
+$idUtilisateur = $_POST['id']; // Récupère l'id
+print_r($idUtilisateur);
 $connexion = connectDB();
-$queryPrepared = $connexion->prepare("SELECT * FROM " . DB_PREFIX . "UTILISATEUR WHERE email=:email");
-$queryPrepared->execute([
-    "email" => $_SESSION["email"]
+$queryPrepared = $connexion->prepare("SELECT * FROM " . DB_PREFIX . "UTILISATEUR WHERE id_utilisateur = :userId ");
+$queryPrepared->bindParam(':userId', $idUtilisateur);
+
+
+$queryPrepared->execute([  
+    "userId" => $idUtilisateur
 ]);
 $row = $queryPrepared->fetch();
-echo'<pre>';
+echo '<pre>';
+//print_r($row);
 var_dump($row);
 echo'</pre>';
 // Accédez aux colonnes par leur nom
-$idUtilisateur = $row['id_utilisateur'];
+
 $nom = $row['nom_utilisateur'];
 $prenom = $row['prenom_utilisateur'];
 $pseudo = $row['pseudo'];
@@ -49,9 +55,9 @@ $newPays = htmlspecialchars($_POST['newPays']);
 $newAdresse = htmlspecialchars($_POST['newAdresse']);
 $newCodePostal = htmlspecialchars($_POST['newCodePostal']);
 $newVille = htmlspecialchars(trim($_POST['newVille']));
-$oldPwd = $_POST['password'];
-$newPwd = $_POST['newPassword'];
-$newPwd2 = $_POST['newPasswordConfirm'];
+$newPointsFidelite = htmlspecialchars($_POST['newPointsFidelite']);
+$newRole = htmlspecialchars($_POST['newRole']);
+$newTypeCompte = htmlspecialchars($_POST['newTypeCompte']);
 
 
 //vérification des données du formulaire
@@ -67,13 +73,12 @@ if (
     && ($newAdresse == $adresse)
     && ($newCodePostal == $codePostal)
     && ($newVille == $ville)
-    
-    && (
-        (empty($newPwd) && empty($newPwd2))
-        || (!empty($newPwd) && !empty($newPwd2) && $newPwd != $newPwd2)
-    )
+    && ($newPointsFidelite == $pointsFidelite)
+    && ($newRole == $role)
+    && ($newTypeCompte == $typeCompte)
+
 ) {
-    $listOfErrorsProfileEdit[] = "Vous n'avez rien modifié";
+    $listOfErrorsUsersEdit[] = "Vous n'avez rien modifié";
 }
 
 if (isset($newLastname) && !empty($newLastname) && $newLastname != $nom) {
@@ -83,7 +88,7 @@ if (isset($newLastname) && !empty($newLastname) && $newLastname != $nom) {
         "id" => $idUtilisateur
     ]);
     $nom = $newLastname;
-    $successProfileEdit[] = "Votre nom a bien été modifié";
+    $successUsersEdit[] = "Le nom a bien été modifié";
 
 }
 if (isset($newFirstName) && !empty($newFirstName) && $newFirstName != $prenom) {
@@ -93,7 +98,7 @@ if (isset($newFirstName) && !empty($newFirstName) && $newFirstName != $prenom) {
         "id" => $idUtilisateur
     ]);
     $prenom = $newFirstName;
-    $successProfileEdit[] = "Votre prénom a bien été modifié";
+    $successUsersEdit[] = "Le prénom a bien été modifié";
 
 }
 if (isset($newPseudo) && !empty($newPseudo) && $newPseudo != $pseudo) {
@@ -103,7 +108,7 @@ if (isset($newPseudo) && !empty($newPseudo) && $newPseudo != $pseudo) {
         "id" => $idUtilisateur
     ]);
     $pseudo = $newPseudo;
-    $successProfileEdit[] = "Votre pseudo a bien été modifié";
+    $successUsersEdit[] = "Le pseudo a bien été modifié";
 
 }
 if (isset($newEmail) && !empty($newEmail) && $newEmail != $email) {
@@ -113,7 +118,7 @@ if (isset($newEmail) && !empty($newEmail) && $newEmail != $email) {
         "id" => $idUtilisateur
     ]);
     $email = $newEmail;
-    $successProfileEdit[] = "Votre email a bien été modifié";
+    $successUsersEdit[] = "L'email a bien été modifié";
 
 }
 if (isset($newTelephone) && !empty($newTelephone) && $newTelephone != $telephone) {
@@ -123,7 +128,7 @@ if (isset($newTelephone) && !empty($newTelephone) && $newTelephone != $telephone
         "id" => $idUtilisateur
     ]);
     $telephone = $newTelephone;
-    $successProfileEdit[] = "Votre numéro de téléphone a bien été modifié";
+    $successUsersEdit[] = "Le numéro de téléphone a bien été modifié";
 
 }
 if (isset($newDateNaissance) && !empty($newDateNaissance) && $newDateNaissance != $dateNaissance) {
@@ -133,7 +138,7 @@ if (isset($newDateNaissance) && !empty($newDateNaissance) && $newDateNaissance !
         "id" => $idUtilisateur
     ]);
     $dateNaissance = $newDateNaissance;
-    $successProfileEdit[] = "Votre date de naissance a bien été modifié";
+    $successUsersEdit[] = "La date de naissance a bien été modifié";
 
 }
 if (isset($newPays) && !empty($newPays) && $newPays != $pays) {
@@ -143,7 +148,7 @@ if (isset($newPays) && !empty($newPays) && $newPays != $pays) {
         "id" => $idUtilisateur
     ]);
     $pays = $newPays;
-    $successProfileEdit[] = "Votre pays a bien été modifié";
+    $successUsersEdit[] = "Le pays a bien été modifié";
 
 }
 if (isset($newAdresse) && !empty($newAdresse) && $newAdresse != $adresse) {
@@ -153,7 +158,7 @@ if (isset($newAdresse) && !empty($newAdresse) && $newAdresse != $adresse) {
         "id" => $idUtilisateur
     ]);
     $adresse = $newAdresse;
-    $successProfileEdit[] = "Votre adresse a bien été modifié";
+    $successUsersEdit[] = "L'adresse a bien été modifié";
 
 }
 if (isset($newCodePostal) && !empty($newCodePostal) && $newCodePostal != $codePostal) {
@@ -163,7 +168,7 @@ if (isset($newCodePostal) && !empty($newCodePostal) && $newCodePostal != $codePo
         "id" => $idUtilisateur
     ]);
     $codePostal = $newCodePostal;
-    $successProfileEdit[] = "Votre code postal a bien été modifié";
+    $successUsersEdit[] = "Le code postal a bien été modifié";
 
 }
 
@@ -175,36 +180,46 @@ if (isset($newVille) && !empty($newVille) && $newVille != $ville) {
         "id" => $idUtilisateur
     ]);
     $ville = $newVille;
-    $successProfileEdit[] = "Votre ville a bien été modifié";
+    $successUsersEdit[] = "Le ville a bien été modifié";
 
 }
 
-if (isset($newPwd) && isset($newPwd2)) {
-    if (!empty($newPwd) && $newPwd != $newPwd2) {
-        $listOfErrorsProfileEdit[] = "Les mots de passe ne correspondent pas";
-    } elseif (!empty($newPwd) && !password_verify($oldPwd, $pwd)) {
-        $listOfErrorsProfileEdit[] = "Votre mot de passe actuel n'est pas valide";
-    } elseif (!empty($newPwd)) {
-        // Vérifier la longueur du mot de passe
-        if(strlen($pwd) < 8 || !preg_match("#[a-z]#", $pwd) || !preg_match("#[A-Z]#", $pwd) || !preg_match("#[0-9]#", $pwd)) {
-            $listOfErrorsProfileEdit[] = "Le mot de passe doit avoir au moins 8 caractères et contenir au moins un chiffre";
-        } else {
-            $hashedNewPwd = password_hash($newPwd, PASSWORD_DEFAULT); // Hacher le nouveau mot de passe
-            $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET pwd=:pwd WHERE id_utilisateur=:id");
-            $queryPrepared->execute([
-                "pwd" => $hashedNewPwd,
-                "id" => $idUtilisateur
-            ]);
-            $pwd = $hashedNewPwd;
-            $successProfileEdit[] = "Votre mot de passe a bien été modifié";
-        }
-    }
+
+if (isset($pointsFidelite) && !empty($pointsFidelite) && $pointsFidelite != $pointsFidelite) {
+    $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET points_fidelite=:pointsFidelite WHERE id_utilisateur=:id");
+    $queryPrepared->execute([
+        "pointsFidelite" => $pointsFidelite,
+        "id" => $idUtilisateur
+    ]);
+    $pointsFidelite = $pointsFidelite;
+    $successUsersEdit[] = "Les points de fidélité ont bien été modifié";
+
 }
+if (isset($role) && !empty($role) && $role != $role) {
+    $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET role=:role WHERE id_utilisateur=:id");
+    $queryPrepared->execute([
+        "role" => $role,
+        "id" => $idUtilisateur
+    ]);
+    $role = $role;
+    $successUsersEdit[] = "Le rôle a bien été modifié";
 
+}
+if (isset($statut) && !empty($statut) && $statut != $statut) {
+    $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET statut=:statut WHERE id_utilisateur=:id");
+    $queryPrepared->execute([
+        "statut" => $statut,
+        "id" => $idUtilisateur
+    ]);
+    $statut = $statut;
+    $successUsersEdit[] = "Le statut a bien été modifié";
 
+}
 //si NOK alors on affiche un message d'erreur
-$_SESSION['successProfileEdit'] = $successProfileEdit;
-$_SESSION['listoferrorsProfileEdit'] = $listOfErrorsProfileEdit;
+$_SESSION['successUsersEdit'] = $successUsersEdit;
+$_SESSION['listoferrorsUsersEdit'] = $listOfErrorsUsersEdit;
 $_SESSION['data'] = $_POST;
-//redirection('../modifier-profil');
+$_SESSION['userId'] = $idUtilisateur;
 
+//print_r($_SESSION['data']);
+redirection('../userEdit');

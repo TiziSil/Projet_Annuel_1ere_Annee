@@ -260,6 +260,7 @@ if(empty($listOfErrors)){
 	$_SESSION['data'] = $_POST;
 	//Redirection sur la page d'inscription
 	//header('location: ../erreur_inscription.php/');
+	redirection("../erreur_inscription.php");
 }	
 
 
