@@ -3,19 +3,24 @@ session_start();
 require_once '../conf.inc.php';
 require_once 'functions.php';
 require('pdf/fpdf.php');
-
+//utilisateur
 $connexion = connectDB();
 $queryPrepared = $connexion->prepare("SELECT * FROM " . DB_PREFIX . "UTILISATEUR WHERE email = :email ");
 
 $email = $_SESSION['email']; // Récupère l'e-mail de la session
 
-$queryPrepared->bindParam(':email', $email); // Lie la valeur de $email au paramètre :email
 
-$queryPrepared->execute();
+$queryPrepared->execute([
+    "email" => $email
+]);
 $results = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
-  // Affiche les résultats
+
+
+//utilisateur
+// Affiche les résultats
 foreach ($results as $row) {
     // Accédez aux colonnes par leur nom
+    $id = $row['id_utilisateur'];
     $nom = $row['nom_utilisateur'];
     $prenom = $row['prenom_utilisateur'];
     $pseudo = $row['pseudo'];
@@ -34,13 +39,18 @@ foreach ($results as $row) {
     $ville = $row['ville'];
 
 }
+$recipePrepared = $connexion->prepare("SELECT * FROM " . DB_PREFIX . "RECETTE WHERE auteur_recette = :id ");
+$recipePrepared->execute([
+    "id" => $id
+]);
+$recipeResults = $recipePrepared->fetchAll(PDO::FETCH_ASSOC);
 
 $pdf = new FPDF();
-$pdf->AddPage();
+$pdf->AddPage("UTF-8");
 
-$pdf->SetFont('Arial', 'B', 16);
+$pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 10, 'Informations de '.$prenom ." " .$nom, 0, 1, 'C');
-
+$pdf->SetFont('Arial', '', 12);
 $pdf->Cell(0, 10, 'Nom: '.$nom, 0, 1);
 $pdf->Cell(0, 10, 'Prenom: '.$prenom, 0, 1);
 $pdf->Cell(0, 10, 'Pseudo: '.$pseudo, 0, 1);
@@ -57,8 +67,34 @@ $pdf->Cell(0, 10, 'Pays: '.$pays, 0, 1);
 $pdf->Cell(0, 10, 'Adresse: '.$adresse, 0, 1);
 $pdf->Cell(0, 10, 'Code postal: '.$codePostal, 0, 1);
 $pdf->Cell(0, 10, 'Ville: '.$ville, 0, 1);
+$pdf ->Ln(10);
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 10, 'Recettes de '.$prenom ." " .$nom, 0, 1, 'C');
+$pdf->SetFont('Arial', '', 12);
+foreach ($recipeResults as $rowRecipe) {
+    $nomRecette = $rowRecipe['nom_recette'];
+    $difficulte = $rowRecipe['difficulte'];
+    $tempsPreparation = $rowRecipe['temps_preparation'];
+    $description = $rowRecipe['description_recette'];
+    $image = $rowRecipe['image_recette'];
 
+    $pdf->Cell(0, 10, 'Nom de la recette: '.$nomRecette, 0, 1);
+    $pdf->Cell(0, 10, 'Difficulte: '.$difficulte, 0, 1);
+    $pdf->Cell(0, 10, 'Temps de préparation: '.$tempsPreparation, 0, 1);
+    $pdf->MultiCell(0, 10, 'Description: '.$description, 0, 1);
+    //$pdf->Cell(0, 10, 'Image: '.$image, 0, 1);
+    $pdf->Image('../'.$image, 10,$pdf->GetY()+ 10, 50, 50);
+
+    $pdf->Ln(10); // Ajoute un espace entre les recettes
+    $pdf->Ln(10); // Ajoute un espace entre les recettes
+    $pdf ->Ln(10);
+    $pdf ->Ln(10);
+    $pdf ->Ln(10);
+    $pdf ->Ln(10);
+
+     
+}
 // Ajoutez les autres informations de l'utilisateur ici
-$pdf->Output("Voici vos informations.pdf","I");
-//$pdf->Output("Voici vos informations.pdf", "D");
+$pdf->Output("Voici-vos-informations.pdf","I");
+
 ?>

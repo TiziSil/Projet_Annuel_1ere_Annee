@@ -3,7 +3,7 @@
     require "../conf.inc.php";
     require "functions.php";
     redirectIfNotConnected(); 
-    
+    logUserActivity("../log.txt");
     $id_recipeDel =  $_GET['id_recette'];
     $listOfErrorsRecipeDel = [];
     $isRecipeDeleted = false;

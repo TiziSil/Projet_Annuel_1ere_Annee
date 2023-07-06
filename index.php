@@ -15,7 +15,7 @@ include "head.php"; ?>
 // }
 
 
-//récupère la date en format [Y-m-d H:i:s]
+
 ?>
 <body>
 
