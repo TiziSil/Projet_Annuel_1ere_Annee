@@ -116,7 +116,7 @@ function cleanCodePostal($codePostal) {
 }
 
 
-function logUserAcitivty($logFile){
+function logUserActivity($logFile){
 	// Récupère l'adresse IP de l'utilisateur
 	$ip = $_SERVER['REMOTE_ADDR'];
 
