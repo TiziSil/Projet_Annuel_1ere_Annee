@@ -54,6 +54,7 @@ $newCodePostal = htmlspecialchars($_POST['newCodePostal']);
 $newVille = htmlspecialchars(cleanFirstname($_POST['newVille']));
 $newPointsFidelite = htmlspecialchars($_POST['newPointsFidelite']);
 $newRole = htmlspecialchars($_POST['newRole']);
+$newStatut = htmlspecialchars($_POST['newStatut']);
 $newTypeCompte = htmlspecialchars($_POST['newTypeCompte']);
 
 
@@ -240,26 +241,34 @@ if (isset($pointsFidelite) && !empty($pointsFidelite) && $pointsFidelite != $poi
     $successUsersEdit[] = "Les points de fidélité ont bien été modifié";
 
 }
-if (isset($role) && !empty($role) && $role != $role) {
-    $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET role=:role WHERE id_utilisateur=:id");
-    $queryPrepared->execute([
-        "role" => $role,
-        "id" => $idUtilisateur
-    ]);
-    $role = $role;
-    $successUsersEdit[] = "Le rôle a bien été modifié";
-
+if (isset($newRole) && !empty($newRole) && $role != $newRole) {
+    if (($newRole == -1) || ($newRole == 1)) {
+        $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET role_utilisateur =:role WHERE id_utilisateur=:id");
+        $queryPrepared->execute([
+            "role" => $newRole,
+            "id" => $idUtilisateur
+        ]);
+        $role = $newRole;
+        $successUsersEdit[] = "Le rôle a bien été modifié";
+    } else {
+        $listOfErrorsUsersEdit[] = "Le rôle n'existe pas";
+    }
 }
-if (isset($statut) && !empty($statut) && $statut != $statut) {
-    $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET statut=:statut WHERE id_utilisateur=:id");
-    $queryPrepared->execute([
-        "statut" => $statut,
-        "id" => $idUtilisateur
-    ]);
-    $statut = $statut;
-    $successUsersEdit[] = "Le statut a bien été modifié";
 
+if (isset($newStatut) && !empty($newStatut) && $statut != $newStatut) {
+    if (($newStatut == 0) || ($newStatut == 1) || ($newStatut == 2)) {
+        $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET statut=:statut WHERE id_utilisateur=:id");
+        $queryPrepared->execute([
+            "statut" => $newStatut,
+            "id" => $idUtilisateur
+        ]);
+        $statut = $newStatut;
+        $successUsersEdit[] = "Le statut a bien été modifié";
+    } else {
+        $listOfErrorsUsersEdit[] = "Le statut n'existe pas";
+    }
 }
+
 //si NOK alors on affiche un message d'erreur
 $_SESSION['successUsersEdit'] = $successUsersEdit;
 $_SESSION['listoferrorsUsersEdit'] = $listOfErrorsUsersEdit;
