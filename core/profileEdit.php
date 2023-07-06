@@ -77,7 +77,7 @@ if (
 }
 
 if (isset($newLastname) && !empty($newLastname) && $newLastname != $nom) {
-    if(strlen($lastname) < 2){
+    if(strlen($newLastname) < 2){
         $listOfErrorsProfileEdit[] = "Le nom doit faire plus de 2 caractères";
     }else{
         
@@ -92,7 +92,7 @@ if (isset($newLastname) && !empty($newLastname) && $newLastname != $nom) {
 
 }
 if (isset($newFirstName) && !empty($newFirstName) && $newFirstName != $prenom) {
-    if(strlen($firstname) < 2){
+    if(strlen($newFirstName) < 2){
         $listOfErrorsProfileEdit[] = "Le prénom doit faire plus de 2 caractères";
     }else{
         $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET prenom_utilisateur=:prenom WHERE id_utilisateur=:id");
