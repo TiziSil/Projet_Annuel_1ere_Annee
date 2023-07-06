@@ -82,7 +82,6 @@ foreach ($results as $row) {
                     <a class="flex-fill button3 btnmoncompte mx-1" href="./creation-recette">Créer des recettes</a>
 <?php if ($role == 1) { ?>
                         <a class="flex-fill button3 mx-1" href="./user">Liste des utilisateurs</a>
-                        <a class="flex-fill button3 mx-1" href="./attente-validation">Valider des recettes</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./user">Liste des utilisateurs</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./attente-validation">Valider des recettes</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./backoffice">Gestion des recettes et autres éléments</a>
