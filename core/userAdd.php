@@ -246,10 +246,7 @@ if(empty($listOfErrors)){
 
 	//Redirection sur la page de connexion
 	//header('location: ../index.php');
-	echo'<pre>';
-	print_r($_POST);
-	var_dump($_POST);
-	echo'</pre>';
+	redirection("../index.php");
 }else{
 
 	//Si NOK

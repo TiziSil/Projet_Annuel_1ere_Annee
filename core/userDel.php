@@ -40,6 +40,5 @@ $queryAvatar->execute([':id' => $userId]);
 $queryUser = $connection->prepare("DELETE FROM " . DB_PREFIX . "UTILISATEUR WHERE id_utilisateur = :id");
 $queryUser->execute([':id' => $userId]);
 
-
-header("Location: ../user");
+redirection('../user');
 ?>
