@@ -14,6 +14,8 @@ include "head.php"; ?>
 //     echo var_dump($_SESSION);
 // }
 
+
+//récupère la date en format [Y-m-d H:i:s]
 ?>
 <body>
 

@@ -80,11 +80,13 @@ foreach ($results as $row) {
                     <a class="flex-fill button3 btnmoncompte mx-1" href="./modifier-profil">Modifier mon profil</a>
                     <a class="flex-fill button3 btnmoncompte mx-1" href="./mon-abonnement">Mon abonnement</a>
                     <a class="flex-fill button3 btnmoncompte mx-1" href="./creation-recette">Créer des recettes</a>
+                    <a class="flex-fill button3 btnmoncompte mx-1" href="./core/exportPdf.php" target = "_blank">Exporter mes données du site</a>
                     <?php if ($role == 1) { ?>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./user">Liste des utilisateurs</a>
+                        <a class="flex-fill button3 btnmoncompte mx-1" href="./core/extractlogtopdf.php" target ="_blank">Extraire les log de connexion</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./attente-validation">Valider des recettes</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./backoffice">Gestion des recettes et autres éléments</a>
-                        <a class="flex-fill button3 btnmoncompte mx-1" href="./core/inactivityAlert.php">Envoyer un mail aux utilisateurs inactifs</a>
+                        <a class="flex-fill button3 btnmoncompte mx-1" href="./core/inactivityAlert.php" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">Envoyer un mail aux utilisateurs inactifs</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./core/newsletter.php">Envoi de la Newsletter</a>
                     <?php } ?>
                 </div>
