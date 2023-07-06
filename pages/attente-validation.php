@@ -3,17 +3,9 @@
 // require "core/functions.php";
 //redirectIfNotConnected(); 
 //LOGS
-$date = "[".date("Y-m-d H:i:s")."]";
-
-$url = $_SERVER['REMOTE_ADDR'].' conect to ' .$_SERVER['SERVER_NAME'] .$_SERVER['PHP_SELF'];
+logUserActivity("../log.txt");
 
 
-$files = fopen("log.txt", "a+");
-fputs($files, $date." ".$url."\n");
-fclose($files);
-?>
-
-<?php
 $connection = connectDB();
 $results = $connection->query("SELECT id_recette, nom_recette, difficulte, temps_preparation, description_recette, nom_categorie FROM " . DB_PREFIX .
     "APPARTENIR, " . DB_PREFIX . "CATEGORIE, " . DB_PREFIX . "RECETTE WHERE statut_publication= -1 && recette_categorie = id_recette  && categorie = id_categorie");

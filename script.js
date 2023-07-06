@@ -523,9 +523,22 @@ function ouvrirModaleAfficherRecette(idRecette) {
       const modale = document.querySelector("#afficher-recette");
       modale.style.display = "block";
       modale.querySelector("#afficher-recette-titre").textContent = recette2.nom_recette;
-      modale.querySelector("#afficher-recette-description").textContent = recette2.description_recette;
+      
+      const afficherRecetteDescription = modale.querySelector("#afficher-recette-description");
+      afficherRecetteDescription.innerHTML = '';
+      
+      const imageRecette = document.createElement("img");
+      imageRecette.src = recette2.image_recette;
+      afficherRecetteDescription.appendChild(imageRecette);
+      
+      const descriptionRecette = document.createElement("p");
+      descriptionRecette.textContent = recette2.description_recette;
+      afficherRecetteDescription.appendChild(descriptionRecette);
+      console.log(recette2.image_recette);
     });
 }
+
+
 
 function fermerModalAfficheRecette() {
   const modale = document.querySelector("#afficher-recette");

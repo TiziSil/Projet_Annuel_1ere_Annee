@@ -1,7 +1,7 @@
 <?php
 redirectIfNotConnected();
 redirectIfNotAdmin();
-logUserAcitivty("../../log.txt");
+logUserActivity("../log.txt");
 $connexion = connectDB();
 if(isset($_POST['id']) && isset($_POST['id'])  ){
     // On récupère l'id de l'utilisateur

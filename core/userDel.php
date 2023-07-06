@@ -3,7 +3,7 @@ session_start();
 require "../conf.inc.php";
 require "functions.php";
 //redirectIfNotConnected();
-
+logUserActivity("../log.txt");
 
 $userId = $_POST['id'];
 

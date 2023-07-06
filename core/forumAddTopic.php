@@ -4,7 +4,7 @@ require "../conf.inc.php";
 require "functions.php";
 
 if(!isset($_SESSION['id'])) {
-    header('location: .');
+    redirection('../index.php');
 }
 
 if (isset($_POST['validate'])) {
@@ -23,8 +23,8 @@ if (isset($_POST['validate'])) {
         $insertQuestionWebsite->execute(
             array($question_title,  $question_text,  $question_date,  $question_id_author,  $question_pseudo_author)
         );
-        header('location:../forum');
+        redirection('../forum');
     } else {
-        header('location:../forum');
+        redirection('../forum');
     }
 }

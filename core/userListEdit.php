@@ -2,7 +2,7 @@
 session_start();
 require "../conf.inc.php";
 require 'functions.php';
-
+logUserActivity("../log.txt");
 
 $idUtilisateur = $_POST['id']; // Récupère l'id
 print_r($idUtilisateur);

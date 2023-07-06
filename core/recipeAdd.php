@@ -3,7 +3,7 @@ session_start();
 require "../conf.inc.php";
 require "functions.php";
 redirectIfNotConnected(); 
-
+logUserActivity("../log.txt");
 
 // Vérification si tous les champs sont remplis
 if( count($_POST)!=7 
@@ -14,11 +14,19 @@ if( count($_POST)!=7
 	|| empty($_POST['description_recette'])
 	|| empty($_POST['quantite_ingredient'][0])
 	|| empty($_POST['id_ingredient'][0])
+	|| count($_FILES)!= 1
+	|| !(isset($_FILES['image_recette']) && $_FILES['image_recette']['error'] == 0)
 ) {
 
 	die ("ERREUR - La saisie est incorrecte.");
 }
 
+
+$listOfErrorsRecipe = [];
+$isRecipeCreated = false;
+
+
+// Vérification des données $_POST
 $nom_recette = trim($_POST['nom_recette']);
 $id_categorie = $_POST['id_categorie'];
 $difficulte = $_POST['difficulte'];
@@ -35,8 +43,28 @@ foreach($_POST["id_ingredient"] as $ingredient) {
 	$id_ingredient[] = $ingredient;
 }
 
-$listOfErrorsRecipe = [];
-$isRecipeCreated = false;
+
+
+// Vérification et stockage des données $_FILES
+//$dossier_image = "C:\\xampp\\htdocs\\ProjetAnnuel\\pages\\recettes\\photo_recette\\";
+$dossier_image = '/var/www/pages/recettes/photo_recette/';
+$photo_temp = $_FILES['image_recette']['tmp_name'];
+
+if (!is_uploaded_file($photo_temp)) {
+	$listOfErrorsRecipe[] = "Fichier introuvable";
+}
+
+if ($_FILES['image_recette']['size'] >= 1000000) {
+	$listOfErrorsRecipe[] = "Fichier trop volumineux";
+}
+
+$extension = ["png", "jpeg", "jpg"];
+$photo_extension = strtolower(pathinfo($_FILES['image_recette']['name'], PATHINFO_EXTENSION));
+
+if (!in_array($photo_extension, $extension)) {
+	$listOfErrorsRecipe[] = "Type de fichier non-autorisé";
+}
+
 
 
 // Récupération id de l'utilisateur
@@ -86,12 +114,12 @@ if(strlen($description_recette) < 50) {
 	$listOfErrorsRecipe[] = "La description doit faire au moins 50 caractères";
 }
 
-// Vérification quantité
+/* Vérification quantité
 foreach($quantite_ingredient as $quantite) {
 	if(!is_numeric($quantite) || $quantite <= 0) {
 		$listOfErrorsRecipe[] = "Les quantités ne sont pas toutes valides.";
 	}
-}
+}*/
 
 // Vérification ingrédient
 $listIngredient = [];
@@ -157,7 +185,22 @@ if(empty($listOfErrorsRecipe)) {
 			"quantite_ingredient" => $quantite
 		]);
 	}
-				
+
+	// Insertion en BDD de la photo
+	$photo_nom = "MAKISINE_recette_".$results3[0].".".$photo_extension;
+	if (!move_uploaded_file($photo_temp, $dossier_image.$photo_nom)) {
+		exit("Impossible d'enregistrer l'image dans le dossier");
+	}
+
+	$queryPrepared = $connection->prepare("UPDATE ".DB_PREFIX."RECETTE SET image_recette=:image_recette WHERE id_recette=:id_recette");
+
+	$queryPrepared->execute([
+								"image_recette" => ($dossier_image.$photo_nom),
+								"id_recette" => $results3[0]
+							]);
+
+
+
 	$isRecipeCreated = true;
 	$_SESSION['isRecipeCreated'] = $isRecipeCreated;
 

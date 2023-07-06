@@ -8,7 +8,8 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 //!!!!!!!!!!!!!!
-require '../vendor/autoload.php'; //mettre le chemin pour le serveur
+require 'vendor/autoload.php'; //mettre le chemin pour le serveur
+//require '../vendor/autoload.php'; 
 //!!!!!!!!!!!!!!
 ?>
 

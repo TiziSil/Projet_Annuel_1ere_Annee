@@ -3,6 +3,7 @@ session_start();
 require "../conf.inc.php";
 require "functions.php";
 // redirectIfNotConnected(); 
+logUserActivity("../log.txt");
 
 // Vérification si tous les champs sont remplis
 if( count($_POST)!=1 
@@ -48,5 +49,21 @@ if(empty($listOfErrorsRecipeDel)){
 	$_SESSION['listOfErrorsRecipeDel'] = $listOfErrorsRecipeDel;
 }
 
+// Supression de l'image sur serveur et BDD
+if ($isRecipeDeleted) {
+    $queryPrepared = $connection->prepare("SELECT image_recette FROM ".DB_PREFIX."RECETTE WHERE id_recette=:id_recette");
+    $queryPrepared->execute(["id_recette" => $id_recipeDel]);
+    $result = $queryPrepared->fetch;
+
+    $image_recette = $result['image_recette'];
+    if (file_exists($image_recette)) {
+        unlink($image_recette);
+    }
+        
+    $queryPrepared = $connection->prepare("DELETE FROM ".DB_PREFIX."RECETTE WHERE id_recette=:id_recette");
+    $queryPrepared->execute(["id_recette" => $id_recipeDel]);
+}
+
+
 // Redirection backoffice
-header('location:../backoffice');
+redirection('../backoffice');

@@ -3,19 +3,24 @@ session_start();
 require_once '../conf.inc.php';
 require_once 'functions.php';
 require('pdf/fpdf.php');
-
+//utilisateur
 $connexion = connectDB();
 $queryPrepared = $connexion->prepare("SELECT * FROM " . DB_PREFIX . "UTILISATEUR WHERE email = :email ");
 
 $email = $_SESSION['email']; // Récupère l'e-mail de la session
 
-$queryPrepared->bindParam(':email', $email); // Lie la valeur de $email au paramètre :email
 
-$queryPrepared->execute();
+$queryPrepared->execute([
+    "email" => $email
+]);
 $results = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
-  // Affiche les résultats
+
+//recettes
+
+// Affiche les résultats
 foreach ($results as $row) {
     // Accédez aux colonnes par leur nom
+    $id = $row['id_utilisateur'];
     $nom = $row['nom_utilisateur'];
     $prenom = $row['prenom_utilisateur'];
     $pseudo = $row['pseudo'];
@@ -34,7 +39,10 @@ foreach ($results as $row) {
     $ville = $row['ville'];
 
 }
-
+$recipePrepared = $connexion->prepare("SELECT * FROM " . DB_PREFIX . "RECETTE WHERE email_utilisateur = :email ");
+$recipePrepared->execute([
+    "id" => $id
+]);
 $pdf = new FPDF();
 $pdf->AddPage();
 
