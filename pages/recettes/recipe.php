@@ -13,7 +13,11 @@
     $queryPrepared2->execute([ "id_recipe" => $id_recipe ]);
     $recipe_name = $queryPrepared2->fetch();
 
-    
+    $queryPrepared3 = $connection->prepare("SELECT nom_ingredient, quantite_ingredient FROM ".DB_PREFIX."CONSTITUER, ".DB_PREFIX."INGREDIENT WHERE 
+                                id_ingredient = ingredient && preparation =:id_recipe");
+    $queryPrepared3->execute([ "id_recipe" => $id_recipe ]);
+    $ingredients_list = $queryPrepared3->fetchAll();
+
 ?>
 <section class="recipe">
     <div class=" titre-principal d-flex justify-content-center align-items-center">
@@ -32,6 +36,10 @@
                         }
                         echo "<br><br><b>Auteur</b><br>".$recipe["pseudo"];
                         echo "<br><br><b>Ingrédients</b><br>"; }
+                        foreach ($ingredients_list as $ingredient) {
+                            echo "<li>".$ingredient["quantite_ingredient"]." ".$ingredient["nom_ingredient"]."</li>";
+                        }
+
                 ?>
             </div>
             <div class="col-6">
