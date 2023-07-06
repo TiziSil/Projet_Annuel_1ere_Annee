@@ -58,7 +58,7 @@ $pwd = $_POST['pwd'];
 $pwdConfirm = $_POST['pwdConfirm'];
 $address = $_POST['address'];
 $postalcode = $_POST['codepostal'];
-$ville = $_POST['ville'];
+$ville = cleanLastname($_POST['ville']);
 $country = $_POST['country'];
 $cgu = $_POST['cgu'];
 

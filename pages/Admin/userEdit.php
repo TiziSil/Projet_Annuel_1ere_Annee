@@ -116,7 +116,7 @@ foreach ($results as $row) {
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                            <label class="d-flex col-6">Nom</label>
+                            <label class="d-flex col-6">Pseudo</label>
                             <input type="text" class="form-control" name = "newPseudo" placeholder="Pseudo" value ='<?= $pseudo ?>'>
                         </div>
                     </div>
