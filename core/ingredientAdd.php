@@ -98,4 +98,4 @@ if(empty($listOfErrorsIngredient)){
 }
 
 // Redirection backoffice
-header('location:../backoffice'); 
+redirection('../backoffice');
