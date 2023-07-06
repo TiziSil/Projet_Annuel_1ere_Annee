@@ -548,35 +548,6 @@ btn_affichageingredient.addEventListener("click", () => {
 })
 
 
-/*Ajout champs ajout allergène pour création ingrédient
-
-var btn_ajout_allergene = document.getElementById('btn-ajout-allergene');
-var conteneur_allergene = document.getElementById('conteneur_allergene');
-var champs_allergene = document.getElementById('champs_allergene');
-
-function ajoutAllergene() {
-  var nouvelAllergene = champs_allergene.cloneNode(true);
-  nouvelAllergene.style.display = "";
-
-  var boutonSupprimer = document.createElement('button');
-  boutonSupprimer.classList = 'btn btn-link';
-  
-  var imgSupprimer = document.createElement('img');
-  imgSupprimer.src = 'assets/bouton-retrait.png';
-  imgSupprimer.width = 20;
-  imgSupprimer.alt = 'Supprimer';
-  boutonSupprimer.appendChild(imgSupprimer);
-
-  boutonSupprimer.addEventListener('click', function() {
-    conteneur_allergene.removeChild(nouvelAllergene);
-  });
-  
-  nouvelAllergene.appendChild(boutonSupprimer);
-  conteneur_allergene.appendChild(nouvelAllergene);
-}
-
-btn_ajout_allergene.addEventListener('click', ajoutAllergene);*/
-
 //Ajout champs ajout allergène pour création ingrédient
 
 var btn_ajout_allergene = document.getElementById('btn-ajout-allergene');
@@ -629,12 +600,22 @@ function ajoutIngredient(event) {
 btn_ajout_ingredient.addEventListener('click', ajoutIngredient);
 
 
-// Burger 
-document.addEventListener('drag', () => {
-  console.log('test');
-  const classBurger = document.querySelector('#navbarToggleExternalContent');
-  console.log(classBurger);
+
+//fermerture burger
+
+const burger = document.querySelector(".collapse");
+const menu = document.querySelector(".menu-burger")
+
+burger.addEventListener("click", (e) => {
+    if(menu.style.visibility == "hidden") {
+        menu.style.visibility == "visible"
+        console.log(e)
+    } else {
+        menu.style.visibility == "hidden"
+        console.log(e)
+    } 
 })
+
 
 // Forum
 function activerModeEditionReponseForum(idReponseForum) {

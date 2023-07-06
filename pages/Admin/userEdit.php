@@ -1,7 +1,7 @@
 <?php
 redirectIfNotConnected();
 redirectIfNotAdmin();
-
+logUserAcitivty("../../log.txt");
 $connexion = connectDB();
 if(isset($_POST['id']) && isset($_POST['id'])  ){
     // On récupère l'id de l'utilisateur
@@ -160,20 +160,20 @@ foreach ($results as $row) {
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                            <label class="d-flex col-6 align-items-center">Rôle<small class = "text-muted">&nbsp 1 si admin, 0 sinon</small></label>
+                            <label class="d-flex col-6 align-items-center">Rôle<small class = "text-muted">&nbsp 1 si admin, -1 sinon</small></label>
                             
                             <input type="number" class="form-control" name = "newRole" placeholder="1 Si admin 0 sinon"  value ='<?= $role?>'>
                         </div>
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                        <label class="d-flex col-6 align-items-center">Statut<small class = "text-muted">&nbsp 1 si Actif, 0 sinon</small></label>
+                        <label class="d-flex col-6 align-items-center">Statut<small class = "text-muted">&nbsp 1 si Actif, -1 inactif, 2 banni</small></label>
                             <input type="number" class="form-control" name = "newStatut" placeholder="1 = Actif 0 sinon"  value ='<?= $statut?>'>
                         </div>
                     </div>
                     <div class="d-flex flex-column my-2">
                         <div class="d-flex flex-row">
-                        <label class="d-flex col-6 align-items-center">Type de compte<small class = "text-muted">&nbsp 1 si premium, 2 si banni</small></label>
+                        <label class="d-flex col-6 align-items-center">Type de compte<small class = "text-muted">&nbsp -1 si normal, 1 si premium</small></label>
                             <input type="number" class="form-control" name = "newTypeCompte" placeholder="premium = 1 sinon 0"  value ='<?= $typeCompte?>'>
                         </div>
                     </div>
@@ -205,6 +205,5 @@ foreach ($results as $row) {
     </div>
     </div>
 </section>
-<?php
-$_SESSION['data']= $_POST;   
+<?php   
 ?>

@@ -55,7 +55,7 @@ redirectIfNotConnected();
 			<div class="mb-3 row">
 				<label for="nom_recette" class="col-sm-2 col-form-label">Nom de la recette</label>
 				<div class="col-10 col-sm-8 col-lg-6">
-					<input type="text" class="form-control" name="nom_recette" placeholder="Nom de la recette" required="required" 
+					<input type="text" id="nom_recette" class="form-control" name="nom_recette" placeholder="Nom de la recette" required="required" 
 					value="">
 				</div>
 			</div>
@@ -63,7 +63,7 @@ redirectIfNotConnected();
 			<div class="mb-3 row">
 				<label for="id_categorie" class="col-sm-2 col-form-label">Catégorie</label>
 				<div class="col-10 col-sm-8 col-lg-6">
-					<select class="form-select" name="id_categorie" required="required" value="">
+					<select class="form-select" id="id_categorie" name="id_categorie" required="required" value="">
 						<option selected>Choisissez une catégorie</option>
 
 						<?php
@@ -95,30 +95,69 @@ redirectIfNotConnected();
 			<div class="mb-3 row">
 				<label for="temps_preparation" class="col-sm-2 col-form-label">Temps de préparation (min)</label>
 				<div class="col-10 col-sm-8 col-lg-6">
-					<input type="text" class="form-control" name="temps_preparation" placeholder="Temps de préparation" required="required" value="">
+					<input type="text" id="temps_preparation" class="form-control" name="temps_preparation" placeholder="Temps de préparation" required="required" value="">
 				</div>
 			</div>
 
 			<div class="mb-3 row">
 				<label for="description_recette" class="col-sm-2 col-form-label">Étapes de préparation</label>
 				<div class="col-10 col-sm-8 col-lg-6">
-					<textarea class="form-control" name="description_recette" placeholder="Décrivez les étapes de préparation" required="required" 
+					<textarea class="form-control" id="description_recette" name="description_recette" placeholder="Décrivez les étapes de préparation" required="required" 
 					value="" rows="7"></textarea>
 				</div>
 			</div>
 
 			<div class="mb-3 row">
-				<label for="id_ingredient" class="col-sm-2 col-form-label">Ingrédient(s)</label>
+			<label for="id_ingredient" class="col-sm-2 col-form-label">Ingrédient(s)</label>
 				<div id="conteneur_ingredient"></div>
-				<div id="champs_ingredient">
-					<div class="row">
-						<div class="col-2">
-							<input type="text" class="form-control" name="quantite_ingredient" placeholder="Quantité" required="required" value="">
+					<div id="champs_ingredient">
+						<div class="row">
+							<div class="col-2">
+								<input type="text" class="form-control" name="quantite_ingredient[]" placeholder="Quantité" required="required" value="">
+							</div>
+
+							<div class="col-8 col-sm-6 col-lg-4">
+								<select class="form-select" name="id_ingredient[]" required="required">
+									<option selected>Choisissez un ingrédient</option>
+									<?php
+										$connection = connectDB();
+										$results = $connection->query("SELECT id_ingredient, nom_ingredient FROM ".DB_PREFIX."INGREDIENT");
+										$results = $results->fetchAll();
+
+										foreach ($results as $ingredient) {
+											echo "<option value='".$ingredient["id_ingredient"]."'>".$ingredient["nom_ingredient"]."</option>";
+										}
+									?>
+								</select>
+							</div>
 						</div>
+
+						<div class="row">
+							<div class="col-2">
+								<input type="text" class="form-control" name="quantite_ingredient[]" placeholder="Quantité" required="required" value="">
+							</div>
+
+							<div class="col-8 col-sm-6 col-lg-4">
+								<select class="form-select" name="id_ingredient[]" required="required">
+									<option selected>Choisissez un ingrédient</option>
+									<?php
+										$connection = connectDB();
+										$results = $connection->query("SELECT id_ingredient, nom_ingredient FROM ".DB_PREFIX."INGREDIENT");
+										$results = $results->fetchAll();
+
+										foreach ($results as $ingredient) {
+											echo "<option value='".$ingredient["id_ingredient"]."'>".$ingredient["nom_ingredient"]."</option>";
+										}
+									?>
+								</select>
+							</div>
+
+
+						<!--
 						<div class="col-8 col-sm-6 col-lg-4">
 							<select class="form-select" name="id_ingredient" required="required" value="">
 								<option selected>Choisissez un ingrédient</option>
-								<?php
+								<!?php
 									$connection = connectDB();
 									$results = $connection->query("SELECT id_ingredient, nom_ingredient FROM ".DB_PREFIX."INGREDIENT");
 									$results = $results->fetchAll();
@@ -127,7 +166,7 @@ redirectIfNotConnected();
 										echo "<option value='".$ingredient["id_ingredient"]."'>".$ingredient["nom_ingredient"]."</option>";
 									} ?>
 							</select>
-						</div>
+						</div>-->
 					</div>
 				</div>
 			</div>
