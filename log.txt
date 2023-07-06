@@ -19,3 +19,7 @@
 [2023-07-06 02:41:04] ::1 conect to localhost/ProjetAnnuel/index.php
 [2023-07-06 02:53:57] ::1 conect to localhost/ProjetAnnuel/index.php
 [2023-07-06 02:54:29] ::1 conect to localhost/ProjetAnnuel/index.php
+[2023-07-06 15:15:03] ::1 connected to http://localhost/ProjetAnnuel/userEdit
+[2023-07-06 15:19:18] ::1 connected to http://localhost/ProjetAnnuel/userEdit
+[2023-07-06 15:20:56] 127.0.0.1 connected to http://127.0.0.1/ProjetAnnuel/userEdit
+[2023-07-06 15:25:59] 127.0.0.1 connected to http://127.0.0.1/ProjetAnnuel/forum
