@@ -87,6 +87,7 @@ foreach ($results as $row) {
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./attente-validation">Valider des recettes</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./backoffice">Gestion des recettes et autres éléments</a>
                         <a class="flex-fill button3 btnmoncompte mx-1" href="./core/inactivityAlert.php">Envoyer un mail aux utilisateurs inactifs</a>
+                        <a class="flex-fill button3 btnmoncompte mx-1" href="./core/newsletter.php">Envoi de la Newsletter</a>
                     <?php } ?>
                 </div>
             </div>
