@@ -1535,6 +1535,37 @@ footer * a {
   width: 600px;
 }
 
+#afficher-ingredient {
+  display: none;
+  transition: all 0.5s;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modale_ingredient {
+  max-width: 800px;
+  margin: auto;
+  padding: 50px;
+}
+
+.contenu-afficher-ingredient {
+  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: var(--couleur-primaire);
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 17px;
+  width: 600px;
+}
+
 .fermer-modal {
   position: absolute;
   top: 5px;

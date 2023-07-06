@@ -518,6 +518,43 @@ function fermerModalAfficheRecette() {
   modale.style.display = "none";
 }
 
+
+// Afficher et fermer modale des ingrédients
+
+function ouvrirModaleAfficherIngredient(idRecette) {
+  fetch("./core/ingredientsGet.php?id_recette=" + idRecette)
+    .then((reponsePHP) => {
+      if (reponsePHP.ok) {
+        return reponsePHP.json();
+      } else {
+        console.log("Erreur : " + reponsePHP.statusText);
+      }
+      return reponsePHP.json();
+    })
+    .then((recette) => {
+      const recette3 = recette[0];
+      const modale = document.querySelector("#afficher-ingredient");
+      modale.style.display = "block";
+      modale.querySelector("#afficher-ingredient-titre").textContent = "Ingrédient";
+
+      const descriptionListe = modale.querySelector("#afficher-ingredient-description");
+      descriptionListe.innerHTML = "";
+
+      recette.forEach((recette3) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = recette3.quantite_ingredient + " " + recette3.nom_ingredient;
+        descriptionListe.appendChild(listItem);
+      });
+    });
+}
+
+function fermerModalAfficheIngredient() {
+  const modale = document.querySelector("#afficher-ingredient");
+  modale.style.display = "none";
+}
+
+
+
 //DarkMode
 function obtenirCookieDarkMode() {
   const name = "darkmode=";

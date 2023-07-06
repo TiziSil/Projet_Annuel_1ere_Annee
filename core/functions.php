@@ -1,10 +1,6 @@
 <?php
 
 
-function Hello() {
-	return "Hello";
-}
-
 function cleanFirstname($firstName){
 	return ucwords(strtolower(trim($firstName)));
 }
@@ -84,7 +80,7 @@ function redirectIfNotConnected(){
 
 function redirectIfNotAdmin(){
 	if (!isConnected()){
-		echo '<script>window.location.href = "mon-compte";</script>';
+		echo '<script>window.location.href = "./index.php";</script>';
 	}else{
 		$connection = connectDB();
 		$queryPrepared = $connection->prepare("SELECT role_utilisateur FROM ".DB_PREFIX."UTILISATEUR where email=:email");

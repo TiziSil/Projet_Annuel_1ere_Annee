@@ -31,6 +31,14 @@ $results = $results->fetchAll()
         </div>
     </div>
 
+    <div id="afficher-ingredient" class="modal py-5">
+        <div class="modal-content modale_ingredient">
+            <span class="close" onclick="fermerModalAfficheIngredient()">&times;</span>
+                <h2 id="afficher-ingredient-titre"></h2>
+            <div id="afficher-ingredient-description"></div>
+        </div>
+    </div>
+
         <div class="image-attente-validation">
             <h1 class="h1-attente-validation">Gestion des validations en attente</h1>
         </div>
@@ -64,7 +72,7 @@ $results = $results->fetchAll()
                             echo "<td>" . $recipe["difficulte"] . "</td>";
                             echo "<td>" . $recipe["temps_preparation"] . "</td>";
                             echo "<td><button class='button2' onclick='ouvrirModaleAfficherRecette(" . $recipe["id_recette"] . ")'>Recette</button></td>";
-                            echo "<td></td>";
+                            echo "<td><button class='button2' onclick='ouvrirModaleAfficherIngredient(" . $recipe["id_recette"] . ")'>Ingrédient(s)</button></td>";
                             echo "<td><a href='core/recipeValidation.php?id_recette=" . $recipe["id_recette"] . "' class='btn button4'>Valider</a><a href='core/recipeReject.php?id_recette=" . $recipe["id_recette"] . "' class='btn btn-danger'>Refuser</a></td>";
                             echo "</tr>";
                         } ?>
