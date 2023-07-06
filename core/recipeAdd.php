@@ -19,14 +19,17 @@ if( count($_POST)!=7
 	die ("ERREUR - La saisie est incorrecte.");
 }
 
-print_r($_POST);
-/*
 $nom_recette = trim($_POST['nom_recette']);
 $id_categorie = $_POST['id_categorie'];
 $difficulte = $_POST['difficulte'];
 $temps_preparation = $_POST['temps_preparation'];
 $description_recette = $_POST['description_recette'];
-$quantite_ingredient = 3;
+$quantite_ingredient = [];
+$id_ingredient = [];
+
+foreach($_POST["quantite_ingredient"] as $quantite) {
+	$quantite_ingredient[] = $quantite;
+}
 
 foreach($_POST["id_ingredient"] as $ingredient) {
 	$id_ingredient[] = $ingredient;
@@ -39,7 +42,7 @@ $isRecipeCreated = false;
 // Récupération id de l'utilisateur
 $connection = connectDB();
 $queryPrepared = $connection->prepare("SELECT id_utilisateur FROM ".DB_PREFIX."UTILISATEUR WHERE email=:email");
-$queryPrepared->execute([ "email" => $_SESSION["data"]["email"] ]);
+$queryPrepared->execute([ "email" => $_SESSION["email"] ]);
 $results3 = $queryPrepared->fetch();
 $auteur_recette = $results3['id_utilisateur'];
 
@@ -74,13 +77,20 @@ if( !in_array($difficulte, $listDifficulty) ) {
 }
 
 // Vérification temps de préparation
-if($temps_preparation <= 0) {
+if(!is_numeric($temps_preparation) || $temps_preparation <= 0) {
 	$listOfErrorsRecipe[] = "La durée n'est pas valide.";
 }
 
 // Vérification description
 if(strlen($description_recette) < 50) {
 	$listOfErrorsRecipe[] = "La description doit faire au moins 50 caractères";
+}
+
+// Vérification quantité
+foreach($quantite_ingredient as $quantite) {
+	if(!is_numeric($quantite) || $quantite <= 0) {
+		$listOfErrorsRecipe[] = "Les quantités ne sont pas toutes valides.";
+	}
 }
 
 // Vérification ingrédient
@@ -94,7 +104,7 @@ foreach ($results4 as $ingredient) {
 
 foreach($id_ingredient as $ingredient2) {
 	if( !in_array($ingredient2, $listIngredient) ){
-		$listOfErrorsRecipe[] = "L'ingrédient n'existe pas";
+		$listOfErrorsRecipe[] = "Ingrédients inexistants. Contactez-nous.";
 	}
 }
 
@@ -132,20 +142,21 @@ if(empty($listOfErrorsRecipe)) {
 
 
 	// Insertion en BDD des ingrédients
-	foreach($id_ingredient as $ingredient) {
-		$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."CONSTITUER
-												(ingredient, preparation, quantite_ingredient)
-												VALUES 
-												(:ingredient, :id_recette, :quantite_ingredient)");
+	foreach($quantite_ingredient as $quantite) {
+		foreach($id_ingredient as $ingredient) {
+			$queryPrepared = $connection->prepare("INSERT INTO ".DB_PREFIX."CONSTITUER
+													(ingredient, preparation, quantite_ingredient)
+													VALUES 
+													(:ingredient, :id_recette, :quantite_ingredient)");
 
-		$queryPrepared->execute([
-									":ingredient"=>$ingredient,
-									":id_recette"=>$results3[0],
-									"quantite_ingredient"=>$quantite_ingredient
-								]);
+			$queryPrepared->execute([
+										":ingredient"=>$ingredient,
+										":id_recette"=>$results3[0],
+										"quantite_ingredient"=>$quantite
+									]);
+		}
 	}
 							
-
 	$isRecipeCreated = true;
 	$_SESSION['isRecipeCreated'] = $isRecipeCreated;
 
@@ -155,5 +166,4 @@ if(empty($listOfErrorsRecipe)) {
 }
 
 // Redirection backoffice
-redirection('../backoffice');
-*/
+redirection('../creation-recette');

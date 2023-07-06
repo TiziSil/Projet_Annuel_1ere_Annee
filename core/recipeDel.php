@@ -32,6 +32,9 @@ if( !in_array($id_recipeDel, $listRecipe) ){
 
 // Si tout est bon, supression en BDD
 if(empty($listOfErrorsRecipeDel)){
+    $queryPrepared = $connection->prepare("DELETE FROM ".DB_PREFIX."CONSTITUER WHERE preparation=:preparation");
+    $queryPrepared->execute(["preparation"=>$id_recipeDel]);
+
     $queryPrepared = $connection->prepare("DELETE FROM ".DB_PREFIX."APPARTENIR WHERE recette_categorie=:recette_categorie");
     $queryPrepared->execute(["recette_categorie"=>$id_recipeDel]);
 
