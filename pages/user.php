@@ -7,7 +7,45 @@ redirectIfNotAdmin();
 logUserAcitivty("../log.txt");
 // ?>
 <div>
-    <h1>Liste des utilisateurs</h1>
+<h2>Recherche d'utilisateurs</h2>
+<input type="text" id="searchInput" placeholder="Entrez un nom d'utilisateur">
+<button id="searchButton">Rechercher</button>
+<div id="searchResults"></div>
+
+<script>
+    var searchButton = document.getElementById('searchButton');
+    var searchInput = document.getElementById('searchInput');
+    var searchResults = document.getElementById('searchResults');
+    
+    searchButton.addEventListener('click', function() {
+        var searchTerm = searchInput.value.trim();
+        
+        if (searchTerm !== '') {
+            searchUsers(searchTerm);
+        }
+    });
+    
+    function searchUsers(searchTerm) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'search.php?query=' + encodeURIComponent(searchTerm), true);
+        
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                var response = xhr.responseText;
+                searchResults.innerHTML = response;
+            } else {
+                console.error('Erreur lors de la requête AJAX');
+            }
+        };
+        
+        xhr.onerror = function() {
+            console.error('Erreur lors de la requête AJAX');
+        };
+        
+        xhr.send();
+    }
+    </script>
+<h1>Liste des utilisateurs</h1>
 </div>
 <nav class="nav flex-column">
 <a class="nav-link active" href="mon-compte">Retour à mon compte</a>
@@ -16,11 +54,44 @@ logUserAcitivty("../log.txt");
 $connection = connectDB();
 $results = $connection->query("SELECT * FROM ".DB_PREFIX."UTILISATEUR");
 $results = $results -> fetchAll();
+// $tableHTML = '<table>
+//     <thead>
+//         <tr>
+//             <th>Id</th>
+//             <th>Nom</th>
+//             <th>Prénom</th>
+//             <th>Pseudo</th>
+//             <th>Email</th>
+//         </tr>
+//     </thead>
+//     <tbody>';
 
-echo "<br>";
+
+// foreach ($results as $user){
+//     $id = $user["id_utilisateur"];
+//     $nom = $user["nom_utilisateur"];
+//     $prenom = $user["prenom_utilisateur"];
+//     $pseudo = $user["pseudo"];
+//     $email = $user["email"];
+
+//     $tableHTML .= '
+//             <tr>
+//             <td>' . $id . '</td>
+//             <td>' . $nom . '</td>
+//             <td>' . $prenom . '</td>
+//             <td>' . $pseudo . '</td>
+//             <td>' . $email . '</td>
+//             </tr>';
+// }
+// $tableHTML .= '</tbody>
+// </table>';
+
+// // Renvoyer le tableau des résultats sous forme de HTML
+// echo $tableHTML;
 ?>
+
 <div class = "row">
-    <div class ="col-12">
+    <div class ="col-11">
         <table class = "table">
             <thead>
                 <tr>
