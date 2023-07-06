@@ -28,7 +28,9 @@ p {
 a {
   text-decoration: none !important;
 }
-
+.clickable {
+  cursor: pointer;
+}
 .h2-homepage{
 text-decoration: none;
 

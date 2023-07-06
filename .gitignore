@@ -1,2 +1,3 @@
 # On ignore le fichier vendor car il est installé avec Composer
 vendor/* 
+log.txt

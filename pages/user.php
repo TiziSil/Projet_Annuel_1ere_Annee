@@ -1,99 +1,100 @@
-
-<div class="userliste flex-row">
 <?php
 // session_start();
 // require "../conf.inc.php";
 // require "../core/functions.php";
 redirectIfNotConnected();
 redirectIfNotAdmin();
+logUserAcitivty("../log.txt");
 // ?>
+<div>
+    <h1>Liste des utilisateurs</h1>
+</div>
+<nav class="nav flex-column">
+<a class="nav-link active" href="mon-compte">Retour à mon compte</a>
+</nav>
+<?php
+$connection = connectDB();
+$results = $connection->query("SELECT * FROM ".DB_PREFIX."UTILISATEUR");
+$results = $results -> fetchAll();
 
-
-    <div class="user">
-        <h1>Liste des utilisateurs</h1>
-    </div>
-    <nav class="nav flex-column">
-        <a class="nav-link active button3 retour-moncompte my-5 py-2" href="mon-compte">Retour à mon compte</a>
-    </nav>
-
-
-    <?php
-    $connection = connectDB();
-    $results = $connection->query("SELECT * FROM ".DB_PREFIX."UTILISATEUR");
-    $results = $results -> fetchAll();
-    
-    echo "<br>";
-    ?>
-
-
-    <div class = "row">
-        <div class ="col-12">
-            <table class = "table tableau-moncompte boite">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Pseudo</th>
-                        <th>Email</th>
-                        <th>Téléphone</th>
-                        <th>Date de naissance</th>
-                        <th>Nombres de points</th>
-                        <th>Role utilisateur</th>
-                        <th>Type compte</th>
-                        <th>Statut</th>
-                        <th>Ajouté</th>
-                        <th>Modifié</th>
-                        <th>id_Avatar</th>
-                        <th>Pays</th>
-                        <th>Adresse</th>
-                        <th>Code postal</th>
-                        <th>Ville</th>
-                        <th>Actions</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($results as $user){
-
-                        echo "<tr>";
-                        echo "<td>".$user["id_utilisateur"]."</td>";
-                        echo "<td>".$user["nom_utilisateur"]."</td>";
-                        echo "<td>".$user["prenom_utilisateur"]."</td>";
-                        echo "<td>".$user["pseudo"]."</td>"; 
-                        echo "<td class = 'col-md-3'>".$user["email"]."</td>";
-                        echo "<td>".$user["telephone"]."</td>";
-                        echo "<td>".$user["date_de_naissance"]."</td>";
-                        echo "<td>".$user["point_utilisateur"]."</td>";
-                        echo "<td>".$user["role_utilisateur"]."</td>"; 
-                        echo "<td>".$user["type_compte"]."</td>";
-                        echo "<td>".$user["statut"]."</td>";    
-                        echo  "<td>".$user["date_inserted"]."</td>";
-                        echo  "<td>".$user["date_updated"]."</td>";
-                        echo  "<td>".$user["avatar_utilisateur"]."</td>";
-                        echo  "<td>".$user["country"]."</td>";
-                        echo  "<td>".$user["adresse"]."</td>";
-                        echo  "<td>".$user["code_postal"]."</td>";
-                        echo  "<td>".$user["ville"]."</td>";
-                        echo "<td>
-                        <form id='deleteForm' action='core/userDel.php' method='POST'>
-                        <input type='hidden' name='id' value='".$user["id_utilisateur"]."'>
-                        <button type='submit' class='btn btn-danger' onclick='confirmDelete()'>Supprimer</button>
-                        </form>
-                        <form action='userEdit' method='POST'>
-                        <input type='hidden' name='id' value='".$user["id_utilisateur"]."'>
-                        <button type='submit' class='btn btn-primary'>Modifier</button>
-                        </form>
+echo "<br>";
+?>
+<div class = "row">
+    <div class ="col-12">
+        <table class = "table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Pseudo</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Date de naissance</th>
+                    <th>Nombres de points</th>
+                    <th>Role utilisateur</th>
+                    <th>Type compte</th>
+                    <th>Statut</th>
+                    <th>Ajouté</th>
+                    <th>Modifié</th>
+                    <th>Pays</th>
+                    <th>Adresse</th>
+                    <th>Code postal</th>
+                    <th>Ville</th>
+                    <th>Actions</th>
+                    <th>Banissement</th>
                     
-                        </td>";
-                        echo "</tr>";
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($results as $user){
+                    
+                    echo "<tr>";
+                    echo "<td>".$user["id_utilisateur"]."</td>";
+                    echo "<td>".$user["nom_utilisateur"]."</td>";
+                    echo "<td>".$user["prenom_utilisateur"]."</td>";
+                    echo "<td>".$user["pseudo"]."</td>"; 
+                    echo "<td class = 'col-md-3'>".$user["email"]."</td>";
+                    echo "<td>".$user["telephone"]."</td>";
+                    echo "<td>".$user["date_de_naissance"]."</td>";
+                    echo "<td>".$user["point_utilisateur"]."</td>";
+                    echo "<td>".$user["role_utilisateur"]."</td>"; 
+                    echo "<td>".$user["type_compte"]."</td>";
+                    echo "<td>".$user["statut"]."</td>";    
+                    echo  "<td>".$user["date_inserted"]."</td>";
+                    echo  "<td>".$user["date_updated"]."</td>";
+                    echo  "<td>".$user["country"]."</td>";
+                    echo  "<td>".$user["adresse"]."</td>";
+                    echo  "<td>".$user["code_postal"]."</td>";
+                    echo  "<td>".$user["ville"]."</td>";
+                    echo "<td>
+                    <form id='deleteForm' action='core/userDel.php' method='POST'>
+                    <input type='hidden' name='id' value='".$user["id_utilisateur"]."'>
+                    <button type='submit' class='btn btn-danger' onclick='confirmDelete()'>Supprimer</button>
+                    </form>
+                    <form action='userEdit' method='POST'>
+                    <input type='hidden' name='id' value='".$user["id_utilisateur"]."'>
+                    <button type='submit' class='btn btn-primary'>Modifier</button>
+                    </form>
+                
+                    </td>";
+                        echo "<td>";
+                        echo "<form id='banForm' action='core/banUser.php' method='POST' style='display:inline;'>";
+                        echo "<input type='hidden' name='id' value='" . $user["id_utilisateur"] . "'>";
+                        if ($user["statut"] == 2) {
+                            echo "<button type='submit' name='unban' class='btn btn-success' onclick='confirmUnban()'>Débannir</button>";
+                        } else {
+                            echo "<button type='submit' name='ban' class='btn btn-danger' onclick='confirmBan()'>Bannir</button>";
+                        }
+                        echo "</form>";
+                        echo "</td>";
+                    echo "</tr>";
 
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
 </div>
 

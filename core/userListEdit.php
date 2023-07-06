@@ -56,8 +56,6 @@ $newPointsFidelite = htmlspecialchars($_POST['newPointsFidelite']);
 $newRole = htmlspecialchars($_POST['newRole']);
 $newStatut = htmlspecialchars($_POST['newStatut']);
 $newTypeCompte = htmlspecialchars($_POST['newTypeCompte']);
-
-
 //vérification des données du formulaire
 // Vérification des données du formulaire
 if (
