@@ -1,5 +1,7 @@
 /* CONNEXIONS ENTRE PAGES */
-document.querySelector("#button-enregistrer").disabled = true;
+if(document.querySelector("#button-enregistrer")) {
+  document.querySelector("#button-enregistrer").disabled = true;
+}
 
 function ouvrirModaleConnexion() {
   const modale = document.querySelector("#modale-connexion");
@@ -295,26 +297,20 @@ function puzzleEstBon() {
 }
 
 // creation d'avatar
-let couleurPeau = [
-  "#ffdbb4",
-  "#edb98a",
-  "#fd9841",
-  "#fcee93", // Les différentes couleurs possible
-  "#d08b5b",
-  "#ae5d29",
-  "#614335",
-];
+// Les différentes couleurs possible
+let couleurPeau = ["#ffdbb4","#edb98a","#fd9841","#fcee93","#d08b5b","#ae5d29","#614335"];
 let couleurCheveux = ["#fd9841", "#d08b5b", "#ffdbb4", "#edb98a", "#fcee93", "#ae5d29", "#614335"];
 let peau = ["#peau-1", "#peau-2"];
-let cheveux = ["#cheveux-1", "#cheveux-2"];
-let yeux = ["#yeux-1", "#yeux-2"]; // Tableaux représentant diffétentes options possibles
+let cheveux = ["#cheveux-1", "#cheveux-2", '#none'];
+let yeux = ["#yeux-1", "#yeux-2"];
 let accessoires = ["#none", "#lunettes"];
 let pilosite = ["#none", "#pilosite-1", "#pilosite-2"];
 let bouche = ["#none", "#bouche-1", "#bouche-2", "#bouche-4"];
 
+// Définies à 0 pour indiquer par la première option par défault
 let iCouleurPeau = 0;
 let iCouleurCheveux = 0;
-let iYeux = 0; // Définies à 0 pour indiquer par la première option par défault
+let iYeux = 0;
 let iAccessoire = 0;
 let iCoiffure = 0;
 let iPilosite = 0;
@@ -325,7 +321,6 @@ function changerCouleurPeau() {
   const cheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";"; // Récupère la couleur de cheveux dans le tableau 'couleurCheveux' en revenant à la première couleur lorsque toutes les options ont été parcourues.
   const peau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
   document.querySelector("body").style = cheveux + peau; //MAJ la couleur des cheveux et de la peau de l'avatar en temps réel.
-  console.log(couleurPeau, "couleurPeau");
 }
 
 function changerCouleurCheveux() {
@@ -333,37 +328,41 @@ function changerCouleurCheveux() {
   const cheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";";
   const peau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
   document.querySelector("body").style = cheveux + peau;
-  console.log(couleurCheveux);
 }
 
 function changerCoiffure() {
-  document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure % cheveux.length];
-  iCoiffure++;
-  console.log(cheveux);
+  if(document.querySelector("#cheveuxSelectionne")) {
+    document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure % cheveux.length];
+    iCoiffure++;
+  }
 }
 
 function changerYeux() {
-  document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux % yeux.length];
-  iYeux++;
-  console.log(yeux);
+  if(document.querySelector("#yeuxSelectionne")) {
+    document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux % yeux.length];
+    iYeux++;
+  }
 }
 
 function changerAccessoire() {
-  document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire % accessoires.length];
-  iAccessoire++;
-  console.log(accessoires);
+  if(document.querySelector("#accesoireSelectionne")) {
+    document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire % accessoires.length];
+    iAccessoire++;
+  }
 }
 
 function changerPilosite() {
-  document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite % pilosite.length];
-  iPilosite++;
-  console.log(pilosite);
+  if(document.querySelector("#pilositeSelectionne")) {
+    document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite % pilosite.length];
+    iPilosite++;
+  }
 }
 
 function changerBouche() {
-  document.querySelector("#boucheSelectionne").href.baseVal = bouche[iBouche % bouche.length];
-  iBouche++;
-  console.log(bouche);
+  if(document.querySelector("#boucheSelectionne")) {
+    document.querySelector("#boucheSelectionne").href.baseVal = bouche[iBouche % bouche.length];
+    iBouche++;
+  }
 }
 
 changerCouleurPeau();
@@ -373,6 +372,29 @@ changerAccessoire(); // Fonctions appelées pour changer la couleur de peau/coif
 changerPilosite();
 changerBouche();
 changerCouleurCheveux();
+
+function afficherVisioneuseAvatar() {
+  // fetch()
+  if(document.querySelector("#cheveuxSelectionne") && document.querySelector("#yeuxSelectionne") && document.querySelector("#accesoireSelectionne") &&  document.querySelector("#pilositeSelectionne")&& document.querySelector("#boucheSelectionne")) {
+    const iCouleurCheveux = 1; 
+    const iCouleurPeau = 1; 
+    const iCoiffure = 2; 
+    const iYeux = 1; 
+    const iAccessoire = 1; 
+    const iPilosite = 1; 
+    const iBouche = 1; 
+    const cssCouleurCheveux = "--couleur-cheveux: " + couleurCheveux[iCouleurCheveux % couleurCheveux.length] + ";"; 
+    const cssCouleurPeau = "--couleur-peau: " + couleurPeau[iCouleurPeau % couleurPeau.length] + ";";
+    document.querySelector("body").style = cssCouleurCheveux + cssCouleurPeau; 
+    document.querySelector("#cheveuxSelectionne").href.baseVal = cheveux[iCoiffure % cheveux.length];
+    document.querySelector("#yeuxSelectionne").href.baseVal = yeux[iYeux % yeux.length];
+    document.querySelector("#accesoireSelectionne").href.baseVal = accessoires[iAccessoire % accessoires.length];
+    document.querySelector("#pilositeSelectionne").href.baseVal = pilosite[iPilosite % pilosite.length];
+    document.querySelector("#boucheSelectionne").href.baseVal = bouche[iBouche % bouche.length];
+  }
+}
+// afficherVisioneuseAvatar();
+
 
 
 //enregistrement avatar
@@ -525,28 +547,30 @@ afficherDarkMode();
 // Affichage liste des catégories
 let btn_affichagecategorie = document.getElementById("btn_affichagecategorie");
 let d1 = document.getElementById("d1");
-d1.style.display = "none";
-btn_affichagecategorie.addEventListener("click", () => {
-  if(getComputedStyle(d1).display != "none"){
-    d1.style.display = "none";
-  } else {
-    d1.style.display = "block";
-  }
-})
-
+if(d1?.style) {
+  d1.style.display = "none";
+  btn_affichagecategorie.addEventListener("click", () => {
+    if(getComputedStyle(d1).display != "none"){
+      d1.style.display = "none";
+    } else {
+      d1.style.display = "block";
+    }
+  })
+}
 
 // Affichage liste des ingrédients
 let btn_affichageingredient = document.getElementById("btn_affichageingredient");
 let d2 = document.getElementById("d2");
-d2.style.display = "none";
-btn_affichageingredient.addEventListener("click", () => {
-  if(getComputedStyle(d2).display != "none"){
-    d2.style.display = "none";
-  } else {
-    d2.style.display = "block";
-  }
-})
-
+if(d2?.style) {
+  d2.style.display = "none";
+  btn_affichageingredient.addEventListener("click", () => {
+    if(getComputedStyle(d2).display != "none"){
+      d2.style.display = "none";
+    } else {
+      d2.style.display = "block";
+    }
+  })
+}
 
 //Ajout champs ajout allergène pour création ingrédient
 
@@ -570,8 +594,9 @@ function ajoutAllergene(event) {
   nouvelAllergene.appendChild(boutonSupprimer);
   conteneur_allergene.appendChild(nouvelAllergene);
 }
-
-btn_ajout_allergene.addEventListener('click', ajoutAllergene);
+if(btn_ajout_allergene) {
+  btn_ajout_allergene.addEventListener('click', ajoutAllergene);
+}
 
 
 // Ajout champs ajout d'ingrédient pour création recette
@@ -596,8 +621,9 @@ function ajoutIngredient(event) {
   nouvelIngredient.appendChild(boutonSupprimer);
   conteneur_ingredient.appendChild(nouvelIngredient);
 }
-
-btn_ajout_ingredient.addEventListener('click', ajoutIngredient);
+if(btn_ajout_ingredient) {
+  btn_ajout_ingredient.addEventListener('click', ajoutIngredient);
+}
 
 
 

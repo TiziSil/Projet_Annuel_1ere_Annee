@@ -1360,6 +1360,9 @@ footer * a {
   padding: 0;
 }
 
+.retour-mon-compte{
+  color: #FFFFFF !important;
+}
 .bloc-en-attente-validation {
   background-color: var(--couleur-primaire);
   padding: 24px;
@@ -1872,4 +1875,31 @@ text-align: center;
 
 .badge {
   background: #897c7c !important;
+}
+
+/* USER */
+
+.userliste {
+  background-image: url("assets/images/listeutilisateuravif.avif");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+}
+
+.user {
+  margin: auto;
+  text-align: center;
+
+}
+
+.retour-moncompte {
+  color: #FFFFFF !important;
+  margin: 80px;
+
+}
+
+.tableau-moncompte {
+  border-style: groove;
+  border-radius: 17px;
 }

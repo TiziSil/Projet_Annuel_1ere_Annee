@@ -54,6 +54,28 @@ function isConnected(){
 	return false;
 }
 
+function aAvatar() {
+	$connection = connectDB();
+	$avatar = $connection->prepare("SELECT couleurPeau, couleurCheveux, yeux, coiffure, accessoire, pilosite, bouche FROM MAKISINE_UTILISATEUR u JOIN MAKISINE_AVATAR a ON u.avatar_utilisateur = a.id_avatar WHERE u.id_utilisateur = ?");
+	$avatar->execute(array($_SESSION['id_utilisateur']));
+	$result = $avatar->fetch();
+	$avatarVisible = false;
+	if (
+		isset($result['couleurPeau']) and
+		isset($result['couleurCheveux']) and
+		isset($result['yeux']) and
+		isset($result['coiffure']) and
+		isset($result['accessoire']) and
+		isset($result['pilosite']) and
+		isset($result['bouche'])
+	) {
+		$avatarVisible = true;
+	}
+
+	return $avatarVisible;
+}
+
+
 function redirectIfNotConnected(){
 	if(!isConnected()){
 		echo '<script>window.location.href = "./index.php";</script>';
