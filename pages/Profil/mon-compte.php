@@ -45,16 +45,6 @@ foreach ($results as $row) {
         <div class="container my-5 py-5">
             <div class="search-bar">
                 <h1 class="h1-moncompte">Bienvenue <?= $pseudo ?> !</h1>
-                <!-- <form id="" class="d-flex row">
-                    <div class="col-10 input-form-mon-compte d-flex">
-                        <svg width="16px" height="16px">
-                            <image height="16px" fill="#DEC7B1" width="16px" href="./assets/images/loupe.svg" />
-                        </svg>
-                        <input class="input-form-mon-compte" placeholder="Recherchez votre recette" required
-                            type="text">
-                    </div>
-                    <button class="button2  col-2">Recherchez</button>
-                </form> -->
             </div>
 
             <div class="container py-4"></div>

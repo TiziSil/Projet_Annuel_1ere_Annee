@@ -124,6 +124,10 @@ switch ($page) {
     case $fichier . '/creation-recette':
         require './pages/recipeCreation.php';
         break;
+    
+    case $fichier . '/filtre':
+        require './pages/recettes/Filtre.php';
+        break;
 
     //logs
     
