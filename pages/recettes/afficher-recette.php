@@ -13,6 +13,7 @@
                     <option value="" disabled selected>Sélectionnez un allergène</option>
                     <option value="">Toutes les recettes</option>
                     <?php
+                        $connection = connectDB();
                         $results2 = $connection->query("SELECT nom_allergene, id_allergene FROM " . DB_PREFIX . "ALLERGENE");
                         $results2 = $results2->fetchAll();
 
@@ -47,12 +48,12 @@
                     $id_allergene = isset($_GET['allergene']) ? $_GET['allergene'] : null;
 
                     $queryPrepare = $connection->prepare("SELECT id_recette, nom_recette, difficulte, temps_preparation, description_recette, nom_categorie
-                        FROM MAKISINE_APPARTENIR, MAKISINE_RECETTE, MAKISINE_CATEGORIE 
+                        FROM " . DB_PREFIX . "APPARTENIR, " . DB_PREFIX . "RECETTE, " . DB_PREFIX . "CATEGORIE 
                         WHERE statut_publication = 1 
                         AND id_recette = recette_categorie 
                         AND id_categorie = categorie 
                         AND id_recette NOT IN (
-                            SELECT id_recette FROM MAKISINE_ALLERGENE, MAKISINE_INGREDIENT, MAKISINE_CONTENIR, MAKISINE_RECETTE, MAKISINE_CONSTITUER 
+                            SELECT id_recette FROM " . DB_PREFIX . "ALLERGENE, " . DB_PREFIX . "INGREDIENT, " . DB_PREFIX . "CONTENIR, " . DB_PREFIX . "RECETTE, " . DB_PREFIX . "CONSTITUER 
                             WHERE id_allergene = allergene 
                             AND id_ingredient = produit 
                             AND id_ingredient = ingredient 
