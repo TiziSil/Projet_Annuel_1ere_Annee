@@ -44,4 +44,4 @@ if(empty($listOfErrorsCategoryDel)){
 }
 
 // Redirection backoffice
-header('location:../backoffice');
+redirection('../backoffice');

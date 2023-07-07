@@ -41,7 +41,7 @@ $statut = $row['statut'];
 //recupérations des données du formulaire
 $newLastname = htmlspecialchars(cleanLastname($_POST['newLastname']));
 $newFirstName = htmlspecialchars(cleanFirstname($_POST['newFirstName']));
-$newPseudo =htmlspecialchars(cleanLastname($_POST['newPseudo']));
+$newPseudo =htmlspecialchars($_POST['newPseudo']);
 $newEmail = htmlspecialchars(cleanEmail($_POST['newEmail']));
 $newTelephone = htmlspecialchars(cleanPhone($_POST['newTelephone']));
 $newDateNaissance = htmlspecialchars($_POST['newDateNaissance']);
@@ -77,7 +77,7 @@ if (
 }
 
 if (isset($newLastname) && !empty($newLastname) && $newLastname != $nom) {
-    if(strlen($lastname) < 2){
+    if(strlen($newLastname) < 2){
         $listOfErrorsProfileEdit[] = "Le nom doit faire plus de 2 caractères";
     }else{
         
@@ -92,7 +92,7 @@ if (isset($newLastname) && !empty($newLastname) && $newLastname != $nom) {
 
 }
 if (isset($newFirstName) && !empty($newFirstName) && $newFirstName != $prenom) {
-    if(strlen($firstname) < 2){
+    if(strlen($newFirstName) < 2){
         $listOfErrorsProfileEdit[] = "Le prénom doit faire plus de 2 caractères";
     }else{
         $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET prenom_utilisateur=:prenom WHERE id_utilisateur=:id");
@@ -106,10 +106,10 @@ if (isset($newFirstName) && !empty($newFirstName) && $newFirstName != $prenom) {
 
 }
 if (isset($newPseudo) && !empty($newPseudo) && $newPseudo != $pseudo) {
-    $pseudoPrepared = $connexion -> prepare("SELECT pseudo FROM ".DB_PREFIX."UTILISATEUR WHERE pseudo = :pseudo");
-    $pseudoPrepared -> execute(["pseudo" => $pseudo]);
-    $results = $pseudoPrepared -> fetch();
-    if (!empty($results)){
+    $pseudoPrepared = $connexion->prepare("SELECT pseudo FROM " . DB_PREFIX . "UTILISATEUR WHERE pseudo = :newPseudo");
+    $pseudoPrepared->execute(["newPseudo" => $newPseudo]);
+    $count = $pseudoPrepared->rowCount();
+    if ($count > 0) {
         $listOfErrorsProfileEdit[] = "Le pseudo est déjà utilisé";
     }else{
         $queryPrepared = $connexion->prepare("UPDATE " . DB_PREFIX . "UTILISATEUR SET pseudo=:pseudo WHERE id_utilisateur=:id");

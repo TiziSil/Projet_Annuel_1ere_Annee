@@ -43,7 +43,7 @@
                 ?>
             </div>
             <div class="col-6">
-                <img src="<?= $recipe["image_recette"] ?>" width="600px">
+                <img src="<?= $recipe['image_recette'] ?>" width="600px">
             </div>
         </div>
 
