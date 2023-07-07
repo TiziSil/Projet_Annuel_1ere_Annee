@@ -3,7 +3,7 @@ session_start();
 require "../conf.inc.php";
 require "functions.php";
 
-if(!isset($_SESSION['id'])) {
+if(!isConnected()) {
     redirection('../index.php');
 }
 

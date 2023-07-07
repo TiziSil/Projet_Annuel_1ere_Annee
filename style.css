@@ -1763,7 +1763,9 @@ margin: 20%;
 
 /* FORUM */
 
-
+.button-form {
+  color: #FFFFFF !important;
+}
 .card {
   background-color: var(--couleur-quaternaire) !important;
 }

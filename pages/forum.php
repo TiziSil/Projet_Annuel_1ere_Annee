@@ -73,8 +73,6 @@
                             <div class="buttons-liste-forum">
                                 <?php echo '<a href="./forum-article?id=' . $question['question_id'] . '" class="button3">Accéder à l\'article</a>'; ?>
                                 <?php if (isset($_SESSION['id_utilisateur']) and $_SESSION['id_utilisateur'] === $question['question_id_author']) { ?>
-                                    <a href="#" class="button3">Modifier l'article</a>
-                                    <a href="#" class="button3">Supprimer mon article</a>
                                 <?php } ?>
 
                             </div>
