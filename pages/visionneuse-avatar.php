@@ -1,5 +1,5 @@
 <?php
-if(isConnected()) { // On vérifie que l'utilisateur est connecté
+if(isConnected()) {
     $couleurPeau = array("#ffdbb4","#edb98a","#fd9841","#fcee93","#d08b5b","#ae5d29","#614335");
     $couleurCheveux = array("#fd9841", "#d08b5b", "#ffdbb4", "#edb98a", "#fcee93", "#ae5d29", "#614335");
     $peau = array("#peau-1", "#peau-2");

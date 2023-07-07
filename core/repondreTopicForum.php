@@ -18,5 +18,5 @@ if (isset($_POST['id']) and isset($_POST['id']) and !empty($_POST['reponse']) an
     $insertQuestionWebsite->execute(
         array($reponse_id_author,  $_POST['id'],  $reponse_date, $reponse_pseudo_author, $reponse_text)
     );
-    header('Location: ../forum-article?id='.$_POST['id']);
+    redirection('../forum-article?id='.$_POST['id']);
 }
