@@ -50,4 +50,4 @@ if (
         $updateUserAvatar->execute(array($avatarId, $_SESSION['id_utilisateur']));
     }
 }
-redirection('../modifier-profil');
+redirection(': ../modifier-profil');
